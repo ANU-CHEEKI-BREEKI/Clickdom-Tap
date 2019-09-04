@@ -4,10 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.Entities;
+using Unity.Mathematics;
 
 public struct VelocityAbsoluteComponentData : IComponentData
 {
     public float value;
+}
+
+public struct VelocityComponentData : IComponentData
+{
+    public float2 value;
 }
 
 public struct RotationVelocityDegreeComponentData : IComponentData

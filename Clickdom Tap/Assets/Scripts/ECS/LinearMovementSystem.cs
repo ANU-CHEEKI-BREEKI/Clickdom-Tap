@@ -11,38 +11,38 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public struct MovementComponentData : IComponentData
+public struct LinearMovementComponentData : IComponentData
 {
     public float2 positionToMove;
     public bool isMoving;
 }
 
-public class MovementSystem : JobComponentSystem
+public class LinearMovementSystem : JobComponentSystem
 {
     [ExcludeComponent(typeof(Scale))]
     [BurstCompile]
-    struct MovementJob : IJobForEach<Translation, MovementComponentData, VelocityAbsoluteComponentData>
+    struct MovementJob : IJobForEach<Translation, LinearMovementComponentData, VelocityAbsoluteComponentData>
     {
         [ReadOnly] public float deltatime;
 
-        public void Execute(ref Translation translation, ref MovementComponentData movementData, [ReadOnly] ref VelocityAbsoluteComponentData velocity)
+        public void Execute(ref Translation translation, ref LinearMovementComponentData movementData, [ReadOnly] ref VelocityAbsoluteComponentData velocity)
         {
             Move(ref translation, ref movementData, ref velocity, 1, deltatime);
         }
     }
 
     [BurstCompile]
-    struct MovementScaledJob : IJobForEach<Translation, MovementComponentData, VelocityAbsoluteComponentData, Scale>
+    struct MovementScaledJob : IJobForEach<Translation, LinearMovementComponentData, VelocityAbsoluteComponentData, Scale>
     {
         [ReadOnly] public float deltatime;
 
-        public void Execute(ref Translation translation, ref MovementComponentData movementData, [ReadOnly] ref VelocityAbsoluteComponentData velocity, [ReadOnly] ref Scale scale)
+        public void Execute(ref Translation translation, ref LinearMovementComponentData movementData, [ReadOnly] ref VelocityAbsoluteComponentData velocity, [ReadOnly] ref Scale scale)
         {
             Move(ref translation, ref movementData, ref velocity, scale.Value, deltatime);
         }
     }
 
-    static private void Move(ref Translation translation, ref MovementComponentData movementData, ref VelocityAbsoluteComponentData velocity, float scale, float deltatime)
+    static private void Move(ref Translation translation, ref LinearMovementComponentData movementData, ref VelocityAbsoluteComponentData velocity, float scale, float deltatime)
     {
         if (movementData.isMoving)
         {
