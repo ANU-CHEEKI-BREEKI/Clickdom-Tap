@@ -15,6 +15,9 @@ public struct ProjectileLaunshSetupComponentData : IComponentData
 {
     public const float g = 9.8f;
 
+    public ProjectileComponentData.GrountType ground;
+    public float targetWidth;
+
     public float2 targetPosition;
     /// <summary>
     /// x, y - всегда будут >= 0. если задать < 0, они будут автоматом приведены в > 0
@@ -22,7 +25,13 @@ public struct ProjectileLaunshSetupComponentData : IComponentData
     /// y - сопротивление вертикальному движению (гравитация, короче) советую ставить ProjectileComponentData.g
     /// </summary>
     public float2 accelerationResistance;
-    public bool removeComponentWhenProjectileStops;
+    public bool removeEntityWhenProjectileStops;
+
+    /// <summary>
+    /// когда projectile остановит своё движение, этот счетчик начнет уменьшаться.
+    /// когда lifetimeAfterProjectileStop <= 0 projectile entity будет удален
+    /// </summary>
+    public float lifetimeAfterProjectileStop;
 
     public float absoluteVelocity;
 }
@@ -33,8 +42,8 @@ public class LaunchProjectileSystem : ComponentSystem
     {
         var desc = new EntityQueryDesc()
         {
-            All = new ComponentType[] { new ComponentType(typeof(ProjectileLaunshSetupComponentData)), new ComponentType(typeof(Translation)) },
-            None = new ComponentType[] { new ComponentType(typeof(ProjectileComponentData)), new ComponentType(typeof(VelocityComponentData)) }
+            All = new ComponentType[] { ComponentType.ReadOnly<ProjectileLaunshSetupComponentData>(), ComponentType.ReadOnly<Translation>() },
+            None = new ComponentType[] { ComponentType.ReadOnly<ProjectileComponentData>(), ComponentType.ReadOnly<VelocityComponentData>() }
         };
         var query = GetEntityQuery(desc);
         var entities = query.ToEntityArray(Allocator.TempJob);
@@ -56,7 +65,11 @@ public class LaunchProjectileSystem : ComponentSystem
             {
                 accelerationResistance = setup.accelerationResistance,
                 targetPosition = setup.targetPosition,
-                removeComponentWhenProjectileStops = setup.removeComponentWhenProjectileStops
+                startPosition = new float2(translation.Value.x, translation.Value.y),
+                removeEntityWhenProjectileStops = setup.removeEntityWhenProjectileStops,
+                lifetimeAfterProjectileStop = setup.lifetimeAfterProjectileStop,
+                ground = setup.ground,
+                targetWidth = setup.targetWidth
             });
             manager.AddComponent<VelocityComponentData>(entity);
             manager.SetComponentData(entity, new VelocityComponentData()

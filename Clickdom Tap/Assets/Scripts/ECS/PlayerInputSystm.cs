@@ -45,8 +45,11 @@ public class PlayerInputSystm : ComponentSystem
                 {
                     targetPosition = pos,
                     accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.g),
-                    removeComponentWhenProjectileStops = true,
-                    absoluteVelocity = 20
+                    removeEntityWhenProjectileStops = true,
+                    absoluteVelocity = 20,
+                    lifetimeAfterProjectileStop = 5f,
+                    ground = ProjectileComponentData.GrountType.START_Y,
+                    targetWidth = 2 * scale.Value
                 });
                 PostUpdateCommands.SetComponent(entity, new Scale()
                 {

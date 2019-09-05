@@ -65,8 +65,9 @@
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetAnimationSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetInstancedRendererSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\LinearMovementSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\MovementSystem\LinearMovementSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\PlayerInputSystm.cs" />
+    <Compile Include="Assets\Scripts\ECS\Projectiles\DeleteProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\LaunchProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\ProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\RotationToMoveDirectionSystem.cs" />
