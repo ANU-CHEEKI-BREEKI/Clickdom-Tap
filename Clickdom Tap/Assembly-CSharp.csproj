@@ -62,20 +62,52 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
+    <Compile Include="Assets\Scripts\Data\ProjectilesData.cs" />
+    <Compile Include="Assets\Scripts\Data\ShaderSpriteUvAnimationSetupData.cs" />
+    <Compile Include="Assets\Scripts\Data\SquadData.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetAnimationSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetInstancedRendererSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\LinearMovementSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\MovementSystem\SequenceMovementSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\PlayerInputSystm.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\DeleteProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\LaunchProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\ProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\ScaleByPositionSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Spawners\ArcherSpawner.cs" />
+    <Compile Include="Assets\Scripts\ECS\Spawners\ASpawner.cs" />
+    <Compile Include="Assets\Scripts\ECS\Spawners\GroundSwordsmanSpawner.cs" />
+    <Compile Include="Assets\Scripts\ECS\Spawners\SwordsmanSpawner.cs" />
+    <Compile Include="Assets\Scripts\ECS\SquadsSystem\IJobForEachWithEntity.cs" />
+    <Compile Include="Assets\Scripts\ECS\SquadsSystem\SquadSortSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\SquadsSystem\SquadSystem.cs" />
     <Compile Include="Assets\Scripts\EntitySpavner.cs" />
-    <Compile Include="Assets\Scripts\ScriptableObjects\ShaderSpriteUvAnimationSetupData.cs" />
+    <Compile Include="Assets\Scripts\GO\RopeRenderer.cs" />
+    <Compile Include="Assets\Scripts\GO\ScaleByPosition.cs" />
+    <Compile Include="Assets\Scripts\SequencePath.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\Materials\Shaders\SpriteSheetShader.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -75,14 +75,16 @@ public class ProjectileSystem : JobComponentSystem
     {
         var acceleration = projectileData.accelerationResistance * -1;
 
+        var realVelocity = velocity.value * scale;
+
         //пока летит - двигаем
         if (velocity.value.y != 0 || velocity.value.x != 0)
         {
             //подвинем горизонтально
-            translation.Value.y += Utils.Physics.GetDisplacement(velocity.value.y, deltaTime, acceleration.y);
+            translation.Value.y += Utils.Physics.GetDisplacement(realVelocity.y, deltaTime, acceleration.y);
 
             //если падает вниз и коснулoсь пола, то положим ровно на пол и уменьшим дельта тайм соответствующе пройденому пути
-            if (velocity.value.y < 0)//падает вниз
+            if (realVelocity.y < 0)//падает вниз
             {
                 if (
                     //если пол - это таргет_У, то останавливаем после достижения У
@@ -103,7 +105,7 @@ public class ProjectileSystem : JobComponentSystem
                     projectileData.targetPosition.y = translation.Value.y;
                     var delta = Utils.Physics.GetTime(
                         projectileData.targetPosition.y - translation.Value.y,
-                        velocity.value.y,
+                        realVelocity.y,
                         acceleration.y
                     );
                     deltaTime -= delta;
@@ -112,7 +114,7 @@ public class ProjectileSystem : JobComponentSystem
             }
 
             //ну и двигаем вбок
-            translation.Value.x += Utils.Physics.GetDisplacement(velocity.value.x, deltaTime, acceleration.x);
+            translation.Value.x += Utils.Physics.GetDisplacement(realVelocity.x, deltaTime, acceleration.x);
 
             if (velocity.value.y == 0)
             {

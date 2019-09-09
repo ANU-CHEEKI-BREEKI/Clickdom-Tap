@@ -38,19 +38,26 @@ public struct ProjectileLaunshSetupComponentData : IComponentData
 
 public class LaunchProjectileSystem : ComponentSystem
 {
+    EntityManager manager;
+
+    protected override void OnCreate()
+    {
+        base.OnCreate();
+        manager = World.Active.EntityManager;
+    }
+
     protected override void OnUpdate()
     {
         var desc = new EntityQueryDesc()
         {
-            All = new ComponentType[] { ComponentType.ReadOnly<ProjectileLaunshSetupComponentData>(), ComponentType.ReadOnly<Translation>() },
+            All = new ComponentType[] { ComponentType.ReadOnly<ProjectileLaunshSetupComponentData>(), ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<Scale>() },
             None = new ComponentType[] { ComponentType.ReadOnly<ProjectileComponentData>(), ComponentType.ReadOnly<VelocityComponentData>() }
         };
         var query = GetEntityQuery(desc);
         var entities = query.ToEntityArray(Allocator.TempJob);
         var translations = query.ToComponentDataArray<Translation>(Allocator.TempJob);
+        var scales = query.ToComponentDataArray<Scale>(Allocator.TempJob);
         var setups = query.ToComponentDataArray<ProjectileLaunshSetupComponentData>(Allocator.TempJob);
-
-        var manager = World.Active.EntityManager;
 
         var l = entities.Length;
         for (int i = 0; i < l; i++)
@@ -58,7 +65,10 @@ public class LaunchProjectileSystem : ComponentSystem
             var entity = entities[i];
             var setup = setups[i];
             var translation = translations[i];
-            
+            var scale = scales[i].Value;
+            if (scale == 0) scale = 0.01f;
+
+
             manager.RemoveComponent<ProjectileLaunshSetupComponentData>(entity);
             manager.AddComponent<ProjectileComponentData>(entity);
             manager.SetComponentData(entity, new ProjectileComponentData()
@@ -74,12 +84,13 @@ public class LaunchProjectileSystem : ComponentSystem
             manager.AddComponent<VelocityComponentData>(entity);
             manager.SetComponentData(entity, new VelocityComponentData()
             {
-                value = Utils.Physics.GetVelocity(translation.Value, setup.targetPosition, setup.absoluteVelocity, setup.accelerationResistance * -1)
+                value = Utils.Physics.GetVelocity(translation.Value / scale, setup.targetPosition / scale, setup.absoluteVelocity, setup.accelerationResistance * -1)
             });
         }
 
         entities.Dispose();
         translations.Dispose();
         setups.Dispose();
+        scales.Dispose();
     }
 }

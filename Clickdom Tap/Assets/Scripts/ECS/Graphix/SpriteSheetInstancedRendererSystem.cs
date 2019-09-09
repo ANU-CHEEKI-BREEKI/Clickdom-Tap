@@ -13,64 +13,19 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public struct RenderData
-{
-    public float3 position;
-    public Matrix4x4 matrix;
-    public Vector4 uv;
-}
 
-[ExcludeComponent(typeof(Scale))]
-[BurstCompile]
-public struct CullAndSliceEntitiesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData>
-{
-    [ReadOnly] public float minX;
-    [ReadOnly] public float maxX;
-    /// <summary>
-    /// сверху вних (в порядке убывания)
-    /// </summary>
-    [ReadOnly] public NativeArray<float> ySlice;
-    /// <summary>
-    /// сверху вних (в порядке убывания)
-    /// </summary>
-    public NativeMultiHashMap<int, RenderData>.ParallelWriter slicedQueues;
-
-    public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref SpriteSheetAnimationComponentData animationData)
-    {
-        SpriteSheetInstancedRendererSystem.Slice(ref ySlice, ref slicedQueues, ref translation, ref animationData, 1, minX, maxX);
-    }
-}
 
 [BurstCompile]
-public struct CullAndSliceScaledEntitiesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData, Scale>
+public struct MultiHashToQueueJob<TKey, TVal> : IJob where TKey : struct, IEquatable<TKey> where TVal : struct
 {
-    [ReadOnly] public float minX;
-    [ReadOnly] public float maxX;
-    /// <summary>
-    /// сверху вних (в порядке убывания)
-    /// </summary>
-    [ReadOnly] public NativeArray<float> ySlice;
-    /// <summary>
-    /// сверху вних (в порядке убывания)
-    /// </summary>
-    public NativeMultiHashMap<int, RenderData>.ParallelWriter slicedQueues;
-
-    public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref SpriteSheetAnimationComponentData animationData, [ReadOnly] ref Scale scale)
-    {
-        SpriteSheetInstancedRendererSystem.Slice(ref ySlice, ref slicedQueues, ref translation, ref animationData, scale.Value, minX, maxX);
-    }
-}
-[BurstCompile]
-public struct MultiHashToQueueJob : IJob
-{
-    public NativeQueue<RenderData> queue;
-    [ReadOnly] public NativeMultiHashMap<int, RenderData> map;
-    [ReadOnly] public int key;
+    public NativeQueue<TVal> queue;
+    [ReadOnly] public NativeMultiHashMap<TKey, TVal> map;
+    [ReadOnly] public TKey key;
 
     public void Execute()
     {
-        RenderData rdata;
-        NativeMultiHashMapIterator<int> iterator;
+        TVal rdata;
+        NativeMultiHashMapIterator<TKey> iterator;
         if (map.TryGetFirstValue(key, out rdata, out iterator))
         {
             queue.Enqueue(rdata);
@@ -81,16 +36,16 @@ public struct MultiHashToQueueJob : IJob
 }
 
 [BurstCompile]
-public struct QueueToArrayJob : IJob
+public struct QueueToArrayJob<T> : IJob  where T : struct
 {
-    public NativeArray<RenderData> array;
-    public NativeQueue<RenderData> queue;
+    public NativeArray<T> array;
+    public NativeQueue<T> queue;
 
     public void Execute()
     {
         int index = 0;
         int arrayLength = array.Length;
-        RenderData rdata;
+        T rdata;
         while(index < arrayLength && queue.TryDequeue(out rdata))
         {
             array[index] = rdata;
@@ -99,54 +54,100 @@ public struct QueueToArrayJob : IJob
     }
 }
 
-[BurstCompile]
-public struct SwapSowrByPositionJob : IJob
+[UpdateAfter(typeof(SpriteSheetAnimationSystem))]
+public class SpriteSheetInstancedRendererSystem : ComponentSystem
 {
-    public NativeArray<RenderData> sortArray;
-
-    public void Execute()
+    public struct RenderData
     {
-        var cnt = sortArray.Length;
-        for (int i = 0; i < cnt; i++)
+        public float3 position;
+        public Matrix4x4 matrix;
+        public Vector4 uv;
+    }
+
+    [ExcludeComponent(typeof(Scale))]
+    [BurstCompile]
+    public struct CullAndSliceEntitiesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData>
+    {
+        [ReadOnly] public float minX;
+        [ReadOnly] public float maxX;
+        /// <summary>
+        /// сверху вних (в порядке убывания)
+        /// </summary>
+        [ReadOnly] public NativeArray<float> ySlice;
+        /// <summary>
+        /// сверху вних (в порядке убывания)
+        /// </summary>
+        public NativeMultiHashMap<int, RenderData>.ParallelWriter slicedQueues;
+
+        public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref SpriteSheetAnimationComponentData animationData)
         {
-            for (int j = i + 1; j < cnt; j++)
+            SpriteSheetInstancedRendererSystem.Slice(ref ySlice, ref slicedQueues, ref translation, ref animationData, 1, minX, maxX);
+        }
+    }
+
+    [BurstCompile]
+    public struct MergeArraysParallelJob : IJobParallelFor
+    {
+        [ReadOnly] public int startIndex;
+        [ReadOnly] public NativeArray<RenderData> sourceArray;
+        [NativeDisableContainerSafetyRestriction] public NativeArray<Matrix4x4> matrices;
+        [NativeDisableContainerSafetyRestriction] public NativeArray<Vector4> uvs;
+
+        public void Execute(int index)
+        {
+            var rdata = sourceArray[index];
+            matrices[startIndex + index] = rdata.matrix;
+            uvs[startIndex + index] = rdata.uv;
+        }
+    }
+
+    [BurstCompile]
+    public struct SwapSowrByPositionJob : IJob
+    {
+        public NativeArray<RenderData> sortArray;
+
+        public void Execute()
+        {
+            var cnt = sortArray.Length;
+            for (int i = 0; i < cnt; i++)
             {
-                if (sortArray[i].position.y < sortArray[j].position.y)
+                for (int j = i + 1; j < cnt; j++)
                 {
-                    var tmp = sortArray[i];
-                    sortArray[i] = sortArray[j];
-                    sortArray[j] = tmp;
+                    if (sortArray[i].position.y < sortArray[j].position.y)
+                    {
+                        var tmp = sortArray[i];
+                        sortArray[i] = sortArray[j];
+                        sortArray[j] = tmp;
+                    }
                 }
             }
         }
     }
-}
 
-[BurstCompile]
-public struct MergeArraysParallelJob : IJobParallelFor
-{
-    [ReadOnly] public int startIndex;
-    [ReadOnly] public NativeArray<RenderData> sourceArray;
-    [NativeDisableContainerSafetyRestriction] public NativeArray<Matrix4x4> matrices;
-    [NativeDisableContainerSafetyRestriction] public NativeArray<Vector4> uvs;
-    
-    public void Execute(int index)
+    [BurstCompile]
+    public struct CullAndSliceScaledEntitiesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData, Scale>
     {
-        var rdata = sourceArray[index];
-        matrices[startIndex + index] = rdata.matrix;
-        uvs[startIndex + index] = rdata.uv;
-    }
-}
+        [ReadOnly] public float minX;
+        [ReadOnly] public float maxX;
+        /// <summary>
+        /// сверху вних (в порядке убывания)
+        /// </summary>
+        [ReadOnly] public NativeArray<float> ySlice;
+        /// <summary>
+        /// сверху вних (в порядке убывания)
+        /// </summary>
+        public NativeMultiHashMap<int, RenderData>.ParallelWriter slicedQueues;
 
-[UpdateAfter(typeof(SpriteSheetAnimationSystem))]
-public class SpriteSheetInstancedRendererSystem : ComponentSystem
-{
+        public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref SpriteSheetAnimationComponentData animationData, [ReadOnly] ref Scale scale)
+        {
+            SpriteSheetInstancedRendererSystem.Slice(ref ySlice, ref slicedQueues, ref translation, ref animationData, scale.Value, minX, maxX);
+        }
+    }
+
     protected override void OnUpdate()
     {
         var entities = GetEntityQuery(typeof(Translation), typeof(SpriteSheetAnimationComponentData));
-        var entitiesArray = entities.ToComponentDataArray<Translation>(Allocator.TempJob);
-        var entitiesCount = entitiesArray.Length;
-        entitiesArray.Dispose();
+        var entitiesCount = entities.CalculateEntityCount();
 
         //распределить entity на списки, по расположению на экране (зоны экрана, если его разбить горизонтальными прямыми линиями)
         var camera = Camera.main;
@@ -187,7 +188,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         for (int i = 0; i < sliceCount; i++)
         {
             slicedQueues[i] = new NativeQueue<RenderData>(Allocator.TempJob);
-            var multihash2queue = new MultiHashToQueueJob()
+            var multihash2queue = new MultiHashToQueueJob<int, RenderData>()
             {
                 queue = slicedQueues[i],
                 key = i,
@@ -202,7 +203,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         for (int i = 0; i < sliceCount; i++)
         {
             slicedArrays[i] = new NativeArray<RenderData>(slicedQueues[i].Count, Allocator.TempJob);
-            var queue2array = new QueueToArrayJob()
+            var queue2array = new QueueToArrayJob<RenderData>()
             {
                 array = slicedArrays[i],
                 queue = slicedQueues[i]

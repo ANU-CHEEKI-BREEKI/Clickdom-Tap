@@ -36,11 +36,16 @@ public class SpriteSheetAnimationSystem : JobComponentSystem
 
         public void Execute([ReadOnly] ref Translation translation, ref SpriteSheetAnimationComponentData animationData)
         {
-            animationData.frameTimer += deltaTime;
-            while (animationData.frameTimer >= animationData.frameDuration)
+            if (animationData.frameCount == 0) return;
+
+            if (animationData.frameCount > 1 && animationData.frameDuration != 0)
             {
-                animationData.frameTimer -= animationData.frameDuration;
-                animationData.currentFrame = (animationData.currentFrame + 1) % animationData.frameCount;
+                animationData.frameTimer += deltaTime;
+                while (animationData.frameTimer >= animationData.frameDuration)
+                {
+                    animationData.frameTimer -= animationData.frameDuration;
+                    animationData.currentFrame = (animationData.currentFrame + 1) % animationData.frameCount;
+                }
             }
 
             animationData.uv = new Vector4(

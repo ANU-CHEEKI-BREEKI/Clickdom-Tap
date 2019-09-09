@@ -12,55 +12,90 @@ using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 
-
+[DisableAutoCreation]
 public class PlayerInputSystm : ComponentSystem
 {
+    EntityManager manager;
+    EntityArchetype prijectileArchetype;
+
+    protected override void OnCreate()
+    {
+        base.OnCreate();
+        manager = World.Active.EntityManager;
+
+        prijectileArchetype = EntityManager.CreateArchetype(
+            typeof(ProjectileLaunshSetupComponentData),
+            typeof(RotationToMoveDirectionComponentData),
+            typeof(Translation),
+            typeof(Rotation),
+            typeof(Scale),
+            //typeof(SpriteSheetAnimationComponentData),
+            typeof(LocalToWorld),
+            typeof(RenderMesh)
+        );
+    }
+
     protected override void OnUpdate()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            var pos = Utils.GetMouseWorldPosition();
-
-            var prijectileArchetype = EntityManager.CreateArchetype(
-                typeof(ProjectileLaunshSetupComponentData),
-                typeof(RotationToMoveDirectionComponentData),
-                typeof(Translation),
-                typeof(Rotation),
-                typeof(Scale),
-                typeof(RenderMesh),
-                typeof(LocalToWorld)
-            );
+            var pos = Utils.GetMouseWorldPosition();           
 
             var mesh = EntitySpavner.Instance.arrowMesh;
             var mat = EntitySpavner.Instance.arrowMeterial;
 
-            Entities.ForEach<ArcherTagComponentData, Translation, Scale>((ref ArcherTagComponentData tag, ref Translation translation, ref Scale scale) =>
+            var query = GetEntityQuery(ComponentType.ReadOnly<ArcherTagComponentData>(), ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<Scale>());
+            var translations = query.ToComponentDataArray<Translation>(Allocator.TempJob);
+            var scales = query.ToComponentDataArray<Scale>(Allocator.TempJob);
+
+            var entities = new NativeArray<Entity>(translations.Length, Allocator.TempJob);
+            manager.CreateEntity(this.prijectileArchetype, entities);
+                       
+            for (int i = 0; i < entities.Length; i++)
             {
-                var entity = PostUpdateCommands.CreateEntity(prijectileArchetype);
-                PostUpdateCommands.SetComponent(entity, new Translation()
+                var trans = translations[i].Value;
+                var scale = scales[i].Value;
+                var entity = entities[i];
+                manager.SetComponentData(entity, new Translation()
                 {
-                    Value = translation.Value
+                    Value = trans
                 });
-                PostUpdateCommands.SetComponent(entity, new ProjectileLaunshSetupComponentData()
+                manager.SetComponentData(entity, new ProjectileLaunshSetupComponentData()
                 {
                     targetPosition = pos,
                     accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.g),
                     removeEntityWhenProjectileStops = true,
-                    absoluteVelocity = 20,
+                    absoluteVelocity = 25,
                     lifetimeAfterProjectileStop = 5f,
                     ground = ProjectileComponentData.GrountType.START_Y,
-                    targetWidth = 2 * scale.Value
+                    targetWidth = 2 * scale
                 });
-                PostUpdateCommands.SetComponent(entity, new Scale()
+                manager.SetComponentData(entity, new Scale()
                 {
-                    Value = 0.3f * scale.Value
+                    Value = 0.5f * scale
                 });
-                PostUpdateCommands.SetSharedComponent(entity, new RenderMesh()
+                var data = EntitySpavner.Instance.arrow;
+                data.InitRandomSprite();
+                //manager.SetComponentData(entity, new SpriteSheetAnimationComponentData()
+                //{
+                //    currentFrame = data.RamdomInitFrame,
+                //    frameCount = data.FramesCount,
+                //    frameDuration = data.FrameDuration,
+                //    frameHeight = data.FrameHeigth,
+                //    frameWidth = data.FrameWidth,
+                //    horisontalOffset = data.HorisontalOffset,
+                //    verticalOffset = data.VerticalOffset
+                //});
+                manager.SetSharedComponentData(entity, new RenderMesh()
                 {
-                    mesh = mesh,
-                    material = mat
+                    mesh = data.Mesh,
+                    material = data.NewMaterial
                 });
-            });
+            }
+
+            translations.Dispose();
+            scales.Dispose();
+            entities.Dispose();
         }
     }
 }

@@ -152,12 +152,12 @@ public static class Utils
             var hasResult = QuadraticEquation(a, b, c, out n2);
 
             //так как n - это T^2, то n > 0. Более того, нас интересует минимильное вермя.
-            if (!hasResult || (n2.x < 0 && n2.y < 0))
+            if (!hasResult || (n2.x <= 0 && n2.y <= 0))
                 //хз что делать... пускай под 45 грудусов будет...
                 return new float2(absoluteVelocity * math.sign(delta.x), absoluteVelocity) / math.SQRT2;
 
             var n = math.min(n2.x, n2.y);
-            if (n < 0) n = math.max(n2.x, n2.y);
+            if (n <= 0) n = math.max(n2.x, n2.y);
 
             //|T| = Sqrt(n). Отрицательное значение отбрасываем. Т.к. нам надо положительное время...
             var time = math.sqrt(n);

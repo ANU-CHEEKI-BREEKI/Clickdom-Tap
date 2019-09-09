@@ -10,7 +10,7 @@ using System.Linq;
 using Unity.Jobs;
 using Unity.Burst;
 
-public struct ArcherTagComponentData : IComponentData { }
+
 
 public class EntitySpavner : MonoBehaviour
 {
@@ -33,6 +33,7 @@ public class EntitySpavner : MonoBehaviour
     [Space]
     [SerializeField] int entityCount = 1000;
     [SerializeField] ShaderSpriteUvAnimationSetupData archerAnimation;
+    [SerializeField] public ShaderSpriteUvAnimationSetupData arrow;
 
     public static EntitySpavner Instance { get; private set; }
 
@@ -50,32 +51,31 @@ public class EntitySpavner : MonoBehaviour
         var archetipe = entityManager.CreateArchetype(
             typeof(ArcherTagComponentData),
             typeof(Translation),
-           // typeof(MovementComponentData),
+            //typeof(LinearMovementComponentData),
             typeof(VelocityAbsoluteComponentData),
             typeof(SpriteSheetAnimationComponentData),
             typeof(Scale),
-            typeof(ScaleByPositionComponentData)
+            typeof(ScaleByPositionComponentData)//,
+            //typeof(SequenceMovementCurrentPositionIndexComponentData),
+            //typeof(SequenceMovementSharedComponentData),
+            //typeof(SquadFormationComponentData)
           );
 
         var entities = new NativeArray<Entity>(entityCount, Allocator.Temp);
         entityManager.CreateEntity(archetipe, entities);
 
+        
         foreach (var entity in entities)
         {
             entityManager.SetComponentData(entity, new Translation()
             {
-                Value = new float3(UnityEngine.Random.Range(-7f, 0f), UnityEngine.Random.Range(-4f, 4f), 0f)
+                Value = new float3(UnityEngine.Random.Range(-17f, 17f), UnityEngine.Random.Range(-12f, 12f), 0f)
             });
-
-            //entityManager.SetComponentData(entity, new MovementComponentData()
-            //{
-            //    positionToMove = new float2(UnityEngine.Random.Range(-6f, 6f), UnityEngine.Random.Range(-6f, 6f)),
-            //    isMoving = true                
-            //});
 
             entityManager.SetComponentData(entity, new VelocityAbsoluteComponentData()
             {
-                value = UnityEngine.Random.Range(0f, 2f)
+                //value = UnityEngine.Random.Range(0f, 2f)
+                value = 2
             });
 
             entityManager.SetComponentData(entity, new SpriteSheetAnimationComponentData()
@@ -87,7 +87,7 @@ public class EntitySpavner : MonoBehaviour
                 verticalOffset = archerAnimation.VerticalOffset,
                 frameTimer = 0,
                 frameHeight = archerAnimation.FrameHeigth,
-                frameWidth = archerAnimation.FrameWidth
+                frameWidth = archerAnimation.FrameWidth,
             });
 
             entityManager.SetComponentData(entity, new Scale()
@@ -100,8 +100,21 @@ public class EntitySpavner : MonoBehaviour
                 minScale = 0.2f,
                 maxScale = 1f
             });
-
             
+            //entityManager.SetComponentData(entity, new SquadFormationComponentData()
+            //{
+            //    directionBottomToTop = true,
+            //    directionLeftToRight = false,
+            //    formation = SquadFormationComponentData.FormationType.RECTANGLE,
+            //    formationAccuracy = 0f,
+            //    formationCenter = new float2(0, 0),
+            //    heightUnitsCount = 30,
+            //    horisontalSpacing = 0.8f,
+            //    verticalSpacing = 0.2f,
+            //    indexInSquad = -1,
+            //    squadId = 1
+            //});
+
         }
 
         entities.Dispose();
