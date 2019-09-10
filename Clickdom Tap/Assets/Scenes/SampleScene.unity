@@ -2831,7 +2831,7 @@ MonoBehaviour:
   defMeterial: {fileID: 2100000, guid: 05f8ac37205d8e04bac37d8852713fd6, type: 2}
   arrowMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   arrowMeterial: {fileID: 2100000, guid: 05f8ac37205d8e04bac37d8852713fd6, type: 2}
-  entityCount: 30000
+  entityCount: 0
   archerAnimation: {fileID: 11400000, guid: 92815cd3b90c8814991ea3db24e643bf, type: 2}
   arrow: {fileID: 11400000, guid: 27f9913e04f108f48bfbfa2683f7623c, type: 2}
 --- !u!4 &2031212444

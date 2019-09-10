@@ -51,14 +51,12 @@ public class EntitySpavner : MonoBehaviour
         var archetipe = entityManager.CreateArchetype(
             typeof(ArcherTagComponentData),
             typeof(Translation),
-            //typeof(LinearMovementComponentData),
             typeof(VelocityAbsoluteComponentData),
             typeof(SpriteSheetAnimationComponentData),
             typeof(Scale),
-            typeof(ScaleByPositionComponentData)//,
-            //typeof(SequenceMovementCurrentPositionIndexComponentData),
-            //typeof(SequenceMovementSharedComponentData),
-            //typeof(SquadFormationComponentData)
+            typeof(ScaleByPositionComponentData),
+            typeof(RenderSharedComponentData),
+            typeof(RenderScaleComponentdata)
           );
 
         var entities = new NativeArray<Entity>(entityCount, Allocator.Temp);
@@ -74,7 +72,6 @@ public class EntitySpavner : MonoBehaviour
 
             entityManager.SetComponentData(entity, new VelocityAbsoluteComponentData()
             {
-                //value = UnityEngine.Random.Range(0f, 2f)
                 value = 2
             });
 
@@ -94,26 +91,21 @@ public class EntitySpavner : MonoBehaviour
             {
                 Value = 1f
             });
+            entityManager.SetComponentData(entity, new RenderScaleComponentdata()
+            {
+                value = new float2(1, 1)
+            });
 
             entityManager.SetComponentData(entity, new ScaleByPositionComponentData()
             {
                 minScale = 0.2f,
                 maxScale = 1f
             });
-            
-            //entityManager.SetComponentData(entity, new SquadFormationComponentData()
-            //{
-            //    directionBottomToTop = true,
-            //    directionLeftToRight = false,
-            //    formation = SquadFormationComponentData.FormationType.RECTANGLE,
-            //    formationAccuracy = 0f,
-            //    formationCenter = new float2(0, 0),
-            //    heightUnitsCount = 30,
-            //    horisontalSpacing = 0.8f,
-            //    verticalSpacing = 0.2f,
-            //    indexInSquad = -1,
-            //    squadId = 1
-            //});
+            entityManager.SetSharedComponentData(entity, new RenderSharedComponentData()
+            {
+                mesh = EntitySpavner.Instance.quadMesh,
+                material = EntitySpavner.Instance.animatedMeterial
+            });
 
         }
 

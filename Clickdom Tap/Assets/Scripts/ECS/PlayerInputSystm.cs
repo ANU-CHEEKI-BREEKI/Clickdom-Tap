@@ -12,7 +12,7 @@ using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 
-[DisableAutoCreation]
+
 public class PlayerInputSystm : ComponentSystem
 {
     EntityManager manager;
@@ -29,9 +29,11 @@ public class PlayerInputSystm : ComponentSystem
             typeof(Translation),
             typeof(Rotation),
             typeof(Scale),
-            //typeof(SpriteSheetAnimationComponentData),
-            typeof(LocalToWorld),
-            typeof(RenderMesh)
+            typeof(SpriteSheetAnimationComponentData),
+            typeof(RenderScaleComponentdata),
+            typeof(RenderSharedComponentData)
+            //typeof(LocalToWorld),
+            //typeof(RenderMesh)
         );
     }
 
@@ -63,34 +65,43 @@ public class PlayerInputSystm : ComponentSystem
                 manager.SetComponentData(entity, new ProjectileLaunshSetupComponentData()
                 {
                     targetPosition = pos,
-                    accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.g),
+                    accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.g - 5),
                     removeEntityWhenProjectileStops = true,
-                    absoluteVelocity = 25,
+                    absoluteVelocity = 17 - 7,
                     lifetimeAfterProjectileStop = 5f,
                     ground = ProjectileComponentData.GrountType.START_Y,
                     targetWidth = 2 * scale
                 });
                 manager.SetComponentData(entity, new Scale()
                 {
-                    Value = 0.5f * scale
+                    Value = scale
+                });
+                manager.SetComponentData(entity, new Rotation()
+                {
+                    Value = quaternion.identity
                 });
                 var data = EntitySpavner.Instance.arrow;
                 data.InitRandomSprite();
-                //manager.SetComponentData(entity, new SpriteSheetAnimationComponentData()
-                //{
-                //    currentFrame = data.RamdomInitFrame,
-                //    frameCount = data.FramesCount,
-                //    frameDuration = data.FrameDuration,
-                //    frameHeight = data.FrameHeigth,
-                //    frameWidth = data.FrameWidth,
-                //    horisontalOffset = data.HorisontalOffset,
-                //    verticalOffset = data.VerticalOffset
-                //});
-                manager.SetSharedComponentData(entity, new RenderMesh()
+                manager.SetComponentData(entity, new SpriteSheetAnimationComponentData()
+                {
+                    currentFrame = data.RamdomInitFrame,
+                    frameCount = data.FramesCount,
+                    frameDuration = data.FrameDuration,
+                    frameHeight = data.FrameHeigth,
+                    frameWidth = data.FrameWidth,
+                    horisontalOffset = data.HorisontalOffset,
+                    verticalOffset = data.VerticalOffset
+                });
+                manager.SetComponentData(entity, new RenderScaleComponentdata()
+                {
+                    value = Vector2.one * 0.35f
+                });
+                manager.SetSharedComponentData(entity, new RenderSharedComponentData()
                 {
                     mesh = data.Mesh,
-                    material = data.NewMaterial
+                    material = data.Material
                 });
+
             }
 
             translations.Dispose();

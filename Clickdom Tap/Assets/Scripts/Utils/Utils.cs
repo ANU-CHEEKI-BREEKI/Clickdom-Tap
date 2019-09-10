@@ -11,7 +11,7 @@ public static class Utils
     #region extentions
     public static quaternion XLookTo(this quaternion q, float2 direction)
     {
-        var k = Quaternion.Euler(0, 0, 90) * new Vector3(direction.x, direction.y, 0);
+        var k = Quaternion.Euler(0, 0, -90) * new Vector3(direction.x, direction.y, 0);
         return quaternion.LookRotation(new float3(0, 0, 1), new float3(k.x, k.y, 0));
     }
 
