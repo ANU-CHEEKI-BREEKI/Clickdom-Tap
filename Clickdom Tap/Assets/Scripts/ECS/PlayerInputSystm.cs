@@ -39,7 +39,7 @@ public class PlayerInputSystm : ComponentSystem
 
     protected override void OnUpdate()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space))
         {
             var pos = Utils.GetMouseWorldPosition();           
 
