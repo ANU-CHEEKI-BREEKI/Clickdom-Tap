@@ -50,6 +50,27 @@ public static class Utils
     {
         return math.normalizesafe(thisPos);
     }
+    
+    public static float2 ToF2(this float3 param)
+    {
+        return new float2(param.x, param.y);
+    }
+
+    public static float3 ToF3(this float2 param, float z = 0)
+    {
+        return new float3(param.x, param.y, z);
+    }
+
+    public static float2 ToF2(this Vector3 param)
+    {
+        return new float2(param.x, param.y);
+    }
+
+    public static Vector3 ToV3(this float2 param, float z = 0)
+    {
+        return new Vector3(param.x, param.y, z);
+    }
+
     #endregion
 
     public static class Physics
@@ -89,39 +110,12 @@ public static class Utils
         public static float GetTime(float s, float v0, float a)
         {
             float2 roots;
-            if (!QuadraticEquation(a * 0.5f, v0, -s, out roots))
+            if (!Math.QuadraticEquation(a * 0.5f, v0, -s, out roots))
                 return 0;
             else
                 return roots.x;
         }
-
-        static float D(float a, float b, float c)
-        {
-            return b * b - 4 * a * c;
-        }
-
-        static bool QuadraticEquation(float a, float b, float c, out float2 res)
-        {
-            var d = D(a, b, c);
-            if (d < 0)
-            {
-                res.x = 0;
-                res.y = 0;
-                return false;
-            }
-            else if (d == 0)
-            {
-                res.x = res.y = (-b) / (2 * a);
-            }
-            else
-            {
-                res.x = (-b - math.sqrt(d)) / (2 * a);
-                res.y = (-b + math.sqrt(d)) / (2 * a);
-            }
-
-            return true;
-        }
-
+        
         /// <summary>
         /// Расчитать начальную скорость, чтобы переместить обьект с начала движения до самого конца.
         /// Перемещение будет расчитано с учетом горизонтального и вертикального движения. (как если кинуть камень или запустить стрелу)
@@ -149,7 +143,7 @@ public static class Utils
             var b = 4 * (absoluteVelocity * absoluteVelocity + delta.x * acceleration.x + delta.y * acceleration.y);
             var c = 4 * (-delta.x * delta.x - delta.y * delta.y);
             float2 n2;
-            var hasResult = QuadraticEquation(a, b, c, out n2);
+            var hasResult = Math.QuadraticEquation(a, b, c, out n2);
 
             //так как n - это T^2, то n > 0. Более того, нас интересует минимильное вермя.
             if (!hasResult || (n2.x <= 0 && n2.y <= 0))
@@ -169,6 +163,179 @@ public static class Utils
 
             return velocity;
         }
+                
+    }
+
+    public static class Math
+    {
+        public struct LineEquation
+        {
+            public float k;
+            public float b;
+
+            public LineEquation(float k = 0, float b = 0)
+            {
+                this.k = k;
+                this.b = b;
+            }
+        }
+
+        public static float Descriminant(float a, float b, float c)
+        {
+            return b * b - 4 * a * c;
+        }
+
+        public static bool QuadraticEquation(float a, float b, float c, out float2 res)
+        {
+            var d = Descriminant(a, b, c);
+            if (d < 0)
+            {
+                res.x = 0;
+                res.y = 0;
+                return false;
+            }
+            else if (d == 0)
+            {
+                res.x = res.y = (-b) / (2 * a);
+            }
+            else
+            {
+                res.x = (-b - math.sqrt(d)) / (2 * a);
+                res.y = (-b + math.sqrt(d)) / (2 * a);
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// if line equation is: [y = kx + b], returns [k] and [b] by passed (x1,y1) and (x2,y2). if line is vertical returns (NaN, x)
+        /// </summary>
+        public static LineEquation GetLineEquation(float2 linePoint1, float2 linePoint2)
+        {
+            if (linePoint1.x == linePoint2.x)
+                return new LineEquation(float.NaN, linePoint1.x);
+
+            var k = (linePoint1.y - linePoint2.y) / (linePoint1.x - linePoint2.x);
+            return new LineEquation(k, -(k * linePoint1.x - linePoint1.y));
+        }
+
+        /// <summary>
+        /// if line equation is: [y = kx + b]. if line is vertical returns (0, y), if horisontal returns (NaN,x)
+        /// </summary>
+        public static LineEquation GetPerpendicularLineEquation(float2 linePoint, LineEquation lineEquation)
+        {
+            if (float.IsNaN(lineEquation.k))
+                return new LineEquation(0, linePoint.y);
+
+            if (lineEquation.k == 0)
+                return new LineEquation(float.NaN, linePoint.x);
+
+            var k = -1f / lineEquation.k;
+            return new LineEquation(k, linePoint.x / k + linePoint.y);
+        }
+
+        /// <summary>
+        /// if line equation is: [y = kx + b]. if lines matches or parallel retrns (NaN,NaN)
+        /// </summary>
+        public static float2 GetLinesCrossPoint(LineEquation line1Equation, LineEquation line2Equation)
+        {
+            //если одна вертикальная а вторая нет, то считаем на прямую
+            if (float.IsNaN(line1Equation.k) && !float.IsNaN(line2Equation.k))
+            {
+                return new float2(
+                    line1Equation.b,
+                    line2Equation.k * line1Equation.b + line2Equation.b
+                );
+            }
+            else if (!float.IsNaN(line1Equation.k) && float.IsNaN(line2Equation.k))
+            {
+                return new float2(
+                    line2Equation.b,
+                    line1Equation.k * line2Equation.b + line1Equation.b
+                );
+            }
+            else if (float.IsNaN(line1Equation.k) && float.IsNaN(line2Equation.k))
+            {
+                return new float2(float.NaN, float.NaN);
+            }
+            else
+            {
+                var cross = new float2();
+                cross.x = (line2Equation.b - line1Equation.b) / (line1Equation.k - line2Equation.k);
+                cross.y = line1Equation.k * cross.x + line1Equation.b;
+                return cross;
+            }
+        }
+
+
+        public static float2 GetLinesCrossPoint(float2 line1Start, float2 line1End, float2 line2Start, float2 line2End)
+        {
+            var l1Eq = GetLineEquation(line1Start, line1End);
+            var l2Eq = GetLineEquation(line2Start, line2End);
+            return GetLinesCrossPoint(l1Eq, l2Eq);
+        }
+
+        public static bool PointInsideRect(float2 firstCorner, float2 secondCorner, float2 point)
+        {
+            //возможные варианты входных параметров
+            //  f----     ----f    s----    ----s 
+            //  | 1 |     | 2 |    | 3 |    | 4 |
+            //  ----s     s----    ----f    f----
+
+            Rect rect;
+
+            //1 variant
+            if (firstCorner.x <= secondCorner.x && firstCorner.y >= secondCorner.y)
+                rect = new Rect(
+                    new Vector2(firstCorner.x, secondCorner.y),
+                    new Vector2(secondCorner.x - firstCorner.x, firstCorner.y - secondCorner.y)
+                );
+            //2 variant
+            else if (firstCorner.x > secondCorner.x && firstCorner.y >= secondCorner.y)
+                rect = new Rect(
+                   secondCorner,
+                   firstCorner - secondCorner
+               );
+            // 3 variant
+            else if (firstCorner.x > secondCorner.x && firstCorner.y < secondCorner.y)
+                rect = new Rect(
+                   new Vector2(secondCorner.x, firstCorner.y),
+                   new Vector2(firstCorner.x - secondCorner.x, secondCorner.y - firstCorner.y)
+               );
+            // 4 variant
+            else
+                rect = new Rect(
+                    firstCorner,
+                    secondCorner - firstCorner
+                );
+
+            return rect.Contains(point);
+        }
+
+        public static bool IsSegmentIntersectsPoint(float2 segmentStart, float2 segmentEnd, float2 point, float radius = 0)
+        {
+            //получить уравнеие прямой
+            var lineEquation = GetLineEquation(segmentStart, segmentEnd);
+            //получить уравнение перпендикулярной прямой
+            var perpendicularLineEquation = GetPerpendicularLineEquation(point, lineEquation);
+            //найти точку пересечения прямых
+            var crossPoint = GetLinesCrossPoint(lineEquation, perpendicularLineEquation);//совпадать прямые не могут!
+            //если пересеччени нет, то это фалс
+            if (float.IsNaN(crossPoint.x) || float.IsNaN(crossPoint.y))
+                return false;
+            //если точки совпадают, то эта тру
+            if (point.Equals(crossPoint))
+                return true;
+            //определить находится ли пересечение в отрезке
+            if (!PointInsideRect(segmentStart, segmentEnd, point))
+                return false;
+            //найти расстояние от точки пересечения до point
+            var sqrRadius = radius * radius;
+            var sqrDist = math.distancesq(crossPoint, point);
+            //если оно не больше radius, то норм
+            return sqrDist <= sqrRadius;
+        }
+
     }
 
     public static float2 GetMouseWorldPosition()

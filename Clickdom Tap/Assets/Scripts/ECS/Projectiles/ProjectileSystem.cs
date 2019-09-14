@@ -25,6 +25,12 @@ public struct ProjectileComponentData : IComponentData
 
     public GrountType ground;
 
+    public float3 previousProjectilePosition;
+    /// <summary>
+    /// если true, это значит, что частица остановилась в этом кадре
+    /// </summary>
+    public bool itStopsRightNow;
+
     /// <summary>
     /// x >= 0, y => 0.
     /// x - сопротивление горизонтальному движению (сопротивления воздуха).
@@ -73,8 +79,9 @@ public class ProjectileSystem : JobComponentSystem
 
     static bool MoveProjectile(ref Translation translation, ref ProjectileComponentData projectileData, ref VelocityComponentData velocity, float scale, float deltaTime)
     {
+        projectileData.itStopsRightNow = false;
+        projectileData.previousProjectilePosition = translation.Value;
         var acceleration = projectileData.accelerationResistance * -1;
-
         var realVelocity = velocity.value * scale;
 
         //пока летит - двигаем
@@ -119,6 +126,7 @@ public class ProjectileSystem : JobComponentSystem
             if (velocity.value.y == 0)
             {
                 velocity.value.x = 0;
+                projectileData.itStopsRightNow = true;
                 return false;
             }
 

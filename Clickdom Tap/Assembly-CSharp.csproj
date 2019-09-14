@@ -74,7 +74,10 @@
     <Compile Include="Assets\Scripts\ECS\PlayerInputSystm.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\DeleteProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\LaunchProjectileSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Projectiles\ProcessProjectileHitSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\ProjectileSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Projectiles\RegisterProjectileHitSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\QuadrantSystem\QuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\ScaleByPositionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ArcherSpawner.cs" />

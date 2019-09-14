@@ -31,7 +31,8 @@ public class PlayerInputSystm : ComponentSystem
             typeof(Scale),
             typeof(SpriteSheetAnimationComponentData),
             typeof(RenderScaleComponentdata),
-            typeof(RenderSharedComponentData)
+            typeof(RenderSharedComponentData),
+            typeof(ProjectileCollisionComponentData)
             //typeof(LocalToWorld),
             //typeof(RenderMesh)
         );
@@ -50,9 +51,10 @@ public class PlayerInputSystm : ComponentSystem
             var translations = query.ToComponentDataArray<Translation>(Allocator.TempJob);
             var scales = query.ToComponentDataArray<Scale>(Allocator.TempJob);
 
-            var entities = new NativeArray<Entity>(translations.Length, Allocator.TempJob);
+            var cnt = translations.Length;
+            var entities = new NativeArray<Entity>(cnt /*translations.Length*/, Allocator.TempJob);
             manager.CreateEntity(this.prijectileArchetype, entities);
-                       
+            
             for (int i = 0; i < entities.Length; i++)
             {
                 var trans = translations[i].Value;
@@ -67,7 +69,7 @@ public class PlayerInputSystm : ComponentSystem
                     targetPosition = pos,
                     accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.g - 5),
                     removeEntityWhenProjectileStops = true,
-                    absoluteVelocity = 17 - 7,
+                    absoluteVelocity = 17 - 5,
                     lifetimeAfterProjectileStop = 5f,
                     ground = ProjectileComponentData.GrountType.START_Y,
                     targetWidth = 2 * scale
@@ -95,6 +97,14 @@ public class PlayerInputSystm : ComponentSystem
                 manager.SetComponentData(entity, new RenderScaleComponentdata()
                 {
                     value = Vector2.one * 0.35f
+                });
+                manager.SetComponentData(entity, new ProjectileCollisionComponentData()
+                {
+                    type = ProjectileCollisionComponentData.HitProcessingType.REMOVE,
+                    maxHitCount = 1, 
+                    colisionTimeOut = 1f,
+                    detectTime = ProjectileCollisionComponentData.DetectCillisionTime.WHEN_STOPS,
+                    ownerFaction = FactionComponentData.Faction.NEUTRAL
                 });
                 manager.SetSharedComponentData(entity, new RenderSharedComponentData()
                 {
