@@ -51,7 +51,7 @@ public class PlayerInputSystm : ComponentSystem
             var translations = query.ToComponentDataArray<Translation>(Allocator.TempJob);
             var scales = query.ToComponentDataArray<Scale>(Allocator.TempJob);
 
-            var cnt = translations.Length;
+            var cnt = translations.Length;// > 0 ? 1 : 0;
             var entities = new NativeArray<Entity>(cnt /*translations.Length*/, Allocator.TempJob);
             manager.CreateEntity(this.prijectileArchetype, entities);
             

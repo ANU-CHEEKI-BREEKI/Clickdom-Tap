@@ -51,16 +51,16 @@ public static class Utils
         return math.normalizesafe(thisPos);
     }
     
-    public static float2 ToF2(this float3 param)
-    {
-        return new float2(param.x, param.y);
-    }
 
     public static float3 ToF3(this float2 param, float z = 0)
     {
         return new float3(param.x, param.y, z);
     }
 
+    public static float2 ToF2(this float3 param)
+    {
+        return new float2(param.x, param.y);
+    }
     public static float2 ToF2(this Vector3 param)
     {
         return new float2(param.x, param.y);
@@ -168,6 +168,7 @@ public static class Utils
 
     public static class Math
     {
+        [Serializable]
         public struct LineEquation
         {
             public float k;
@@ -216,7 +217,7 @@ public static class Utils
                 return new LineEquation(float.NaN, linePoint1.x);
 
             var k = (linePoint1.y - linePoint2.y) / (linePoint1.x - linePoint2.x);
-            return new LineEquation(k, -(k * linePoint1.x - linePoint1.y));
+            return new LineEquation(k, linePoint1.y - k * linePoint1.x);
         }
 
         /// <summary>
@@ -231,7 +232,7 @@ public static class Utils
                 return new LineEquation(float.NaN, linePoint.x);
 
             var k = -1f / lineEquation.k;
-            return new LineEquation(k, linePoint.x / k + linePoint.y);
+            return new LineEquation(k, linePoint.y - k * linePoint.x);
         }
 
         /// <summary>
