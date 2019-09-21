@@ -12,7 +12,7 @@ using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 
-
+[DisableAutoCreation]
 public class PlayerInputSystm : ComponentSystem
 {
     EntityManager manager;
@@ -100,7 +100,12 @@ public class PlayerInputSystm : ComponentSystem
                 });
                 manager.SetComponentData(entity, new ProjectileCollisionComponentData()
                 {
-                    type = ProjectileCollisionComponentData.HitProcessingType.REMOVE,
+                    processData = new ProcessCollisionData()
+                    {
+                        type = HitProcessingType.LAUNCH_AS_PROJECTILE,
+                        destroyDelay = 5,
+                        absoluteProjectileVelocity = UnityEngine.Random.Range(6, 10)                        
+                    },
                     maxHitCount = 1, 
                     colisionTimeOut = 1f,
                     detectTime = ProjectileCollisionComponentData.DetectCillisionTime.WHEN_STOPS,

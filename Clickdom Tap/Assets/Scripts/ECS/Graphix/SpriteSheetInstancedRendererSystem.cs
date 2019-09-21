@@ -262,7 +262,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                 do j--; while (arr[j].CompareTo(pivot) < 0);
                 if (i >= j) return j;
                 Swap(ref arr, i, j);
-            }               
+            }
         }
 
         void Swap(ref NativeArray<T> arr, int i, int j)
@@ -349,7 +349,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
     EntityManager manager;
     NativeQueue<RenderData>[] slicedQueues;
     NativeArray<RenderData>[] slicedArrays;
-    const int sliceCount = 1;
+    const int sliceCount = 20;
 
     protected override void OnCreate()
     {
@@ -394,7 +394,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             scaleType = GetArchetypeChunkComponentType<Scale>(true),
             renderDataType = GetArchetypeChunkSharedComponentType<RenderSharedComponentData>(),
             rotationType = GetArchetypeChunkComponentType<Rotation>(true)
-        };        
+        };
 
         var slicedMultihashConcurent = new NativeMultiHashMap<int, RenderData>(entitiesCount, Allocator.TempJob);
 

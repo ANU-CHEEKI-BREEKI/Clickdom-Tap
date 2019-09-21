@@ -12,6 +12,8 @@ using Unity.Transforms;
 using UnityEngine;
 public struct SpriteSheetAnimationComponentData : IComponentData
 {
+    public bool frameChangedEventFlag;
+
     public int currentFrame;
     public int frameCount;
 
@@ -25,8 +27,11 @@ public struct SpriteSheetAnimationComponentData : IComponentData
 
     public float frameDuration;
     public float frameTimer;
+
+    public bool pause;
 }
 
+[UpdateInGroup(typeof(PresentationSystemGroup))]
 public class SpriteSheetAnimationSystem : JobComponentSystem
 {
     [BurstCompile]
@@ -37,15 +42,24 @@ public class SpriteSheetAnimationSystem : JobComponentSystem
         public void Execute([ReadOnly] ref Translation translation, ref SpriteSheetAnimationComponentData animationData)
         {
             if (animationData.frameCount == 0) return;
+            if (animationData.pause) return;
 
             if (animationData.frameCount > 1 && animationData.frameDuration != 0)
             {
                 animationData.frameTimer += deltaTime;
-                while (animationData.frameTimer >= animationData.frameDuration)
+                if(animationData.frameTimer >= animationData.frameDuration)
                 {
-                    animationData.frameTimer -= animationData.frameDuration;
-                    animationData.currentFrame = (animationData.currentFrame + 1) % animationData.frameCount;
+                    while (animationData.frameTimer >= animationData.frameDuration)
+                    {
+                        animationData.frameTimer -= animationData.frameDuration;
+                        animationData.currentFrame = (animationData.currentFrame + 1) % animationData.frameCount;
+                        animationData.frameChangedEventFlag = true;
+                    }
                 }
+                else
+                {
+                    animationData.frameChangedEventFlag = false;
+                }                
             }
 
             animationData.uv = new Vector4(

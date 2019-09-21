@@ -62,11 +62,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
     <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
     <Compile Include="Assets\Scripts\Data\ProjectilesData.cs" />
     <Compile Include="Assets\Scripts\Data\ShaderSpriteUvAnimationSetupData.cs" />
     <Compile Include="Assets\Scripts\Data\SquadData.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
+    <Compile Include="Assets\Scripts\ECS\DestroyEntityWithDelaySystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\AnimationPauserSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\AnimationResumerSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\AnimationSetterUtil.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animator\AnimatorMovementStatesSetterSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Components.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetAnimationSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetInstancedRendererSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\LinearMovementSystem.cs" />
@@ -80,6 +87,7 @@
     <Compile Include="Assets\Scripts\ECS\QuadrantSystem\QuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\ScaleByPositionSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\ArcherShootSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ArcherSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ASpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\GroundSwordsmanSpawner.cs" />

@@ -87,6 +87,10 @@ public class ProjectileSystem : JobComponentSystem
         //пока летит - двигаем
         if (velocity.value.y != 0 || velocity.value.x != 0)
         {
+            //обновляем велосити
+            velocity.value.x = Utils.Physics.GetVelocity(velocity.value.x, deltaTime, acceleration.x);
+            velocity.value.y = Utils.Physics.GetVelocity(velocity.value.y, deltaTime, acceleration.y);
+
             //подвинем горизонтально
             translation.Value.y += Utils.Physics.GetDisplacement(realVelocity.y, deltaTime, acceleration.y);
 
@@ -130,10 +134,6 @@ public class ProjectileSystem : JobComponentSystem
                 return false;
             }
 
-            //обновляем велосити
-            velocity.value.x = Utils.Physics.GetVelocity(velocity.value.x, deltaTime, acceleration.x);
-            velocity.value.y = Utils.Physics.GetVelocity(velocity.value.y, deltaTime, acceleration.y);
-
             return true;
         }
 
@@ -148,7 +148,6 @@ public class ProjectileSystem : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {    
-
         var dt = Time.deltaTime;
         var j1 = new ProjectileMovingJob()
         {

@@ -735,6 +735,17 @@ PrefabInstance:
       propertyPath: squadId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3550666286225924679, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: animationProvider
+      value: 
+      objectReference: {fileID: 11400000, guid: ce7c035006da3c04cb98f647ffcf23dd,
+        type: 2}
+    - target: {fileID: 6839555778457418339, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b3c856c13bace499789ad496458335, type: 3}
 --- !u!1 &809962102
@@ -1086,6 +1097,17 @@ PrefabInstance:
         type: 3}
       propertyPath: squadId
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550666286225924679, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: animationProvider
+      value: 
+      objectReference: {fileID: 11400000, guid: ce7c035006da3c04cb98f647ffcf23dd,
+        type: 2}
+    - target: {fileID: 6839555778457418339, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b3c856c13bace499789ad496458335, type: 3}
@@ -1765,6 +1787,17 @@ PrefabInstance:
         type: 3}
       propertyPath: squadId
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550666286225924679, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: animationProvider
+      value: 
+      objectReference: {fileID: 11400000, guid: ce7c035006da3c04cb98f647ffcf23dd,
+        type: 2}
+    - target: {fileID: 6839555778457418339, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b3c856c13bace499789ad496458335, type: 3}
@@ -3664,6 +3697,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3550666286225924679, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: animationProvider
+      value: 
+      objectReference: {fileID: 11400000, guid: ce7c035006da3c04cb98f647ffcf23dd,
+        type: 2}
     - target: {fileID: 6839555778457418339, guid: 67b3c856c13bace499789ad496458335,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument

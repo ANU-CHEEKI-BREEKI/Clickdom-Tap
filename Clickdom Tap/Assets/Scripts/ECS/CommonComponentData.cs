@@ -21,3 +21,7 @@ public struct RotationVelocityDegreeComponentData : IComponentData
     public float value;
 }
 
+public struct HealthComponentData : IComponentData
+{
+    public float value;
+}
