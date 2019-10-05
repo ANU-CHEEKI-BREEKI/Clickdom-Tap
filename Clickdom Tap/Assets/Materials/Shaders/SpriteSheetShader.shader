@@ -10,7 +10,7 @@
         Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
         LOD 100
 		Blend SrcAlpha OneMinusSrcAlpha
-
+		Cull off 
 		Pass
 		{
 			CGPROGRAM

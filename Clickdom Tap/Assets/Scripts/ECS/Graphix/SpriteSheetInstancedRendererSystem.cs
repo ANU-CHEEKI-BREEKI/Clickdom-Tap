@@ -80,6 +80,7 @@ public struct QueueToArrayJob<T> : IJob where T : struct
     }
 }
 
+[UpdateInGroup(typeof(PresentationSystemGroup))]
 [UpdateAfter(typeof(SpriteSheetAnimationSystem))]
 public class SpriteSheetInstancedRendererSystem : ComponentSystem
 {
@@ -199,80 +200,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             }
         }
     }
-
-    /// <summary>
-    /// БОльшие элементы будут первыми в массиве
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    [BurstCompile]
-    public struct DecreacingQuickSortRecursivelyJob<T> : IJob where T : struct, IComparable<T>
-    {
-        public NativeArray<T> sortArray;
-
-        public void Execute()
-        {
-            QSort(ref sortArray, 0, sortArray.Length - 1);
-        }
-
-        void QSort(ref NativeArray<T> arr, int low, int high)
-        {
-            if (low < high)
-            {
-
-                var pi = PartitionLomuto(ref arr, low, high);
-                //var pi = PartitionHoar(ref arr, low, high);
-                QSort(ref arr, low, pi - 1);
-                QSort(ref arr, pi + 1, high);
-            }
-        }
-
-        /// <summary>
-        /// Разбиение Ломуто
-        /// </summary>
-        /// <returns></returns>
-        int PartitionLomuto(ref NativeArray<T> arr, int low, int high)
-        {
-            T pivot = arr[high];
-
-            int i = low - 1;
-            for (int j = low; j <= high - 1; j++)
-            {
-                if (arr[j].CompareTo(pivot) >= 0)
-                {
-                    i++;
-                    Swap(ref arr, i, j);
-                }
-            }
-            Swap(ref arr, i + 1, high);
-            return i + 1;
-        }
-
-        /// <summary>
-        /// Разбиение Хоара
-        /// </summary>
-        /// <returns></returns>
-        int PartitionHoar(ref NativeArray<T> arr, int low, int high)
-        {
-            T pivot = arr[(low + high) / 2];
-            var i = low - 1;
-            var j = high + 1;
-            while (true)
-            {
-                do i++; while (arr[i].CompareTo(pivot) > 0);
-                do j--; while (arr[j].CompareTo(pivot) < 0);
-                if (i >= j) return j;
-                Swap(ref arr, i, j);
-            }
-        }
-
-        void Swap(ref NativeArray<T> arr, int i, int j)
-        {
-            T temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
-    }
-
+   
     [ExcludeComponent(typeof(Scale))]
     [BurstCompile]
     public struct CullAndSliceEntitiesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData>
@@ -369,7 +297,6 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         var maxX = cameraPosition.x + camWidth;
         var minX = cameraPosition.x - camWidth;
 
-        //var sliceCount = math.max(9, entitiesCount / 500);
         var ySliceSize = camHeight * 2 / sliceCount;
         var ySlices = new NativeArray<float>(sliceCount + 1, Allocator.TempJob);
         for (int i = 0; i < ySlices.Length; i++)
@@ -447,21 +374,13 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             JobHandle.CompleteAll(jhandles);
 
             //сортировка всех массивов паралельно
-            int fullVisibleCount = 0;
-            //for (int i = 0; i < sliceCount; i++)
-            //{
-            //    var swapSortJob = new SwapSowrByPositionJob()
-            //    {
-            //        sortArray = slicedArrays[i]
-            //    };
-            //    jhandles[i] = swapSortJob.Schedule();
-            //    fullVisibleCount += slicedArrays[i].Length;
-            //}
+            int fullVisibleCount = 0;          
             for (int i = 0; i < sliceCount; i++)
             {
-                var swapSortJob = new DecreacingQuickSortRecursivelyJob<RenderData>()
+                var swapSortJob = new Utils.Algoritm.Jobs.QuickSortRecursivelyJob<RenderData>
                 {
-                    sortArray = slicedArrays[i]
+                    sortArray = slicedArrays[i],
+                    descending = true
                 };
                 jhandles[i] = swapSortJob.Schedule();
                 fullVisibleCount += slicedArrays[i].Length;
@@ -491,8 +410,6 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             var mpb = new MaterialPropertyBlock();
             const int drawCallSize = 1023;
 
-            //var mesh = EntitySpavner.Instance.quadMesh;
-            //var material = EntitySpavner.Instance.animatedMeterial;
             var sharedData = manager.GetSharedComponentData<RenderSharedComponentData>(chunksIndices[j]);
             var mesh = sharedData.mesh;
             var material = sharedData.material;

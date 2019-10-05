@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\ECS\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\ScaleByPositionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\ArcherShootSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\ShootTargetBySquadUpdateSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ArcherSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ASpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\GroundSwordsmanSpawner.cs" />
