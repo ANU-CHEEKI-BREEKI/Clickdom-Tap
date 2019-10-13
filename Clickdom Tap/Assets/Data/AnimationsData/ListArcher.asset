@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3947d4f26ba092b4a9b2adf6ee2ac779, type: 3}
+  m_Name: ListArcher
+  m_EditorClassIdentifier: 
+  IDLE_animation: {fileID: 0}
+  RUN_animation: {fileID: 11400000, guid: 9aa7cebd25840a6418765734b744bae1, type: 2}
+  CLIMB_animation: {fileID: 0}
+  FIGHT_animation: {fileID: 0}
+  SHOOT_animation: {fileID: 11400000, guid: 92815cd3b90c8814991ea3db24e643bf, type: 2}
+  DEATH_animation: {fileID: 0}
+  JUMP_animation: {fileID: 0}
+  FALL_animation: {fileID: 0}
