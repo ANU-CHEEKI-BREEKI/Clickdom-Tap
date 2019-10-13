@@ -38,8 +38,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: LoverEnvironmant
+    uniqueID: 508054035
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TopEnvironmant
+    uniqueID: 3581444423
     locked: 0
   - name: UI
     uniqueID: 1929880661

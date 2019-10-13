@@ -11,7 +11,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public struct AnimatorStateTriggerComponentData :IComponentData
+public struct AnimatorStateTriggerComponentData : IComponentData
 {
     public float2 leftUpTriggetZoneCorner;
     public float2 rightUpTriggetZoneCorner;
@@ -19,6 +19,11 @@ public struct AnimatorStateTriggerComponentData :IComponentData
     public float2 leftBotTriggetZoneCorner;
 
     public AnimationType animation;
+}
+
+public struct AnimatorStateLastTriggeredAnimationComponentData : IComponentData
+{
+    public AnimationType triggeredAnimation;
 }
 
 [UpdateInGroup(typeof(PresentationSystemGroup))]
@@ -66,81 +71,59 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
     /// Пока что, это используется в небольшом кол-ве мест. и и так сойдет (лестницы например...)
     /// </summary>
     [BurstCompile]
-    struct TriggerStateUpdateJob : IJobForEach<Translation, AnimatorStatesComponentData>
+    struct TriggerStateUpdateJob : IJobForEach<Translation, AnimatorStatesComponentData, AnimatorStateLastTriggeredAnimationComponentData>
     {
         [ReadOnly] public NativeArray<AnimatorStateTriggerComponentData> triggerZones;
 
-        public void Execute([ReadOnly] ref Translation translation, ref AnimatorStatesComponentData states)
+        public void Execute([ReadOnly] ref Translation translation, ref AnimatorStatesComponentData states, ref AnimatorStateLastTriggeredAnimationComponentData lastTriggeredData)
         {
             bool triggered = false;
-            AnimationType animation = AnimationType.IDLE;
+            AnimationType animation = lastTriggeredData.triggeredAnimation;
+
             for (int i = 0; i < triggerZones.Length; i++)
             {
                 var pos = translation.Value;
                 var zone = triggerZones[i];
 
                 //get 4 lines and check if positioon inside 4sided poligon
+                var upline = Utils.Math.GetLineEquation(zone.leftUpTriggetZoneCorner, zone.rightUpTriggetZoneCorner);
+                var rightline = Utils.Math.GetLineEquation(zone.rightUpTriggetZoneCorner, zone.rightBotTriggetZoneCorner);
+                var botline = Utils.Math.GetLineEquation(zone.rightBotTriggetZoneCorner, zone.leftBotTriggetZoneCorner);
+                var leftline = Utils.Math.GetLineEquation(zone.leftBotTriggetZoneCorner, zone.leftUpTriggetZoneCorner);
 
                 //if zone rotated right
                 //          lu
                 //  lb               
                 //                  ru
                 //          rb
-
-                //up line
-                var line = Utils.Math.GetLineEquation(zone.leftUpTriggetZoneCorner, zone.rightUpTriggetZoneCorner);
-                if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line))
-                {
-                    //right line
-                    line = Utils.Math.GetLineEquation(zone.rightUpTriggetZoneCorner, zone.rightBotTriggetZoneCorner);
-                    if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line, false))
-                    {
-                        //bot line
-                        line = Utils.Math.GetLineEquation(zone.rightBotTriggetZoneCorner, zone.leftBotTriggetZoneCorner);
-                        if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line, false))
-                        {
-                            //left line
-                            line = Utils.Math.GetLineEquation(zone.leftBotTriggetZoneCorner, zone.leftUpTriggetZoneCorner);
-                            if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line))
+                if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), upline))
+                    if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), rightline, false))
+                        if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), botline, false))
+                            if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), leftline))
                             {
                                 triggered = true;
                                 animation = zone.animation;
                                 break;
                             }
-                        }
-                    }
-                }
 
                 //if zone rotated left
                 //          ru
                 //  lu               
                 //                  rb
                 //          lb
-
-                //up line
-                line = Utils.Math.GetLineEquation(zone.leftUpTriggetZoneCorner, zone.rightUpTriggetZoneCorner);
-                if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line))
-                {
-                    //right line
-                    line = Utils.Math.GetLineEquation(zone.rightUpTriggetZoneCorner, zone.rightBotTriggetZoneCorner);
-                    if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line))
-                    {
-                        //bot line
-                        line = Utils.Math.GetLineEquation(zone.rightBotTriggetZoneCorner, zone.leftBotTriggetZoneCorner);
-                        if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line, false))
-                        {
-                            //left line
-                            line = Utils.Math.GetLineEquation(zone.leftBotTriggetZoneCorner, zone.leftUpTriggetZoneCorner);
-                            if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), line, false))
+                if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), upline))
+                    if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), rightline))
+                        if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), botline, false))
+                            if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), leftline, false))
                             {
                                 triggered = true;
                                 animation = zone.animation;
                                 break;
                             }
-                        }
-                    }
-                }
             }
+
+            if (triggered)
+                lastTriggeredData.triggeredAnimation = animation;
 
             //set animation state
             switch (animation)
@@ -183,7 +166,6 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
                 default:
                     break;
             }
-
         }
     }
 

@@ -149,6 +149,12 @@ TextureImporter:
   - first:
       213: 5743243492238442836
     second: particle_dust_4
+  - first:
+      213: 1830040954066358357
+    second: ss_swordsman_idle_8f
+  - first:
+      213: 8304610757141259746
+    second: ss_swordsman_idle2_6f
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -354,8 +360,8 @@ TextureImporter:
         y: 1252
         width: 220
         height: 188
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.45452, y: 0.19663839}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -110, y: -94}
@@ -1455,6 +1461,48 @@ TextureImporter:
       bones: []
       spriteID: 5510110426e874d4595f098355cc09e4
       internalID: 5743243492238442836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_swordsman_idle_8f
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 384
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4408a7f0266bb4c498a285ef9dc92a32
+      internalID: 1830040954066358357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_swordsman_idle2_6f
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 288
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 887c133d1b306b745ac11ec104a6f6c0
+      internalID: 8304610757141259746
       vertices: []
       indices: 
       edges: []

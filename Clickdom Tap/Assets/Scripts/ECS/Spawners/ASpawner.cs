@@ -62,7 +62,8 @@ public abstract class ASpawner : MonoBehaviour
             typeof(ActionOnAnimationFrameComponentData),
             typeof(DestroyWithHealthComponentData),
             typeof(HealthComponentData),
-            typeof(AnimatorStatesComponentData)
+            typeof(AnimatorStatesComponentData), 
+            typeof(AnimatorStateLastTriggeredAnimationComponentData)
         );
 
         squadTag = DataToComponentData.ToComponentData(squadData, squadId, squadPosition.position);
