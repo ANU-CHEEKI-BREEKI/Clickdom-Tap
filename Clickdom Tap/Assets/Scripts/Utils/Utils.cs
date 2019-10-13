@@ -361,6 +361,25 @@ public static class Utils
             return sqrDist <= sqrRadius;
         }
 
+        /// <summary>
+        /// under or left
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="line"></param>
+        /// <param name="trueResultIfLineIncludesPoint"></param>
+        /// <returns></returns>
+        public static bool PointUnderOrLeftLine(float2 point, LineEquation line, bool trueResultIfLineIncludesPoint = true)
+        {
+            if (float.IsNaN(line.k))
+            {
+                return trueResultIfLineIncludesPoint ? point.x <= line.b : point.x < line.b;
+            }
+            else
+            {
+                var lineY = line.k * point.x + line.b;
+                return trueResultIfLineIncludesPoint ? point.y <= lineY : point.y < lineY;
+            }
+        }
     }
 
     public static class Algoritm

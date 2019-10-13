@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ParticleStarter.cs" />
+    <Compile Include="Assets\Scripts\AnimatorTrigger.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
     <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
     <Compile Include="Assets\Scripts\Data\ProjectilesData.cs" />
@@ -73,13 +74,14 @@
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWhenHealthZeroSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWithDelaySystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\AnimationPauserSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\AnimationResumerSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\AnimationSetterUtil.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\Animator\AnimatorMovementStatesSetterSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\Components.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetAnimationSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetInstancedRendererSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationComponents.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationPauserSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationResumerSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationSetterUtil.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\Animator\AnimatorStatesUpdateSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\Animator\AnimatorSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\SpriteSheetAnimationSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\SpriteSheetInstancedRendererSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\LinearMovementSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\SequenceMovementSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\PlayerInputSystm.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Assets\Scripts\ECS\QuadrantSystem\QuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\ScaleByPositionSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\SimpleConvertionToEntity.cs" />
     <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Archers\ArcherShootSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Archers\ShootTargetBySquadUpdateSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Swordsmans\FindMeleeTargetSystem.cs" />
