@@ -62,12 +62,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ParticleStarter.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
     <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
     <Compile Include="Assets\Scripts\Data\ProjectilesData.cs" />
     <Compile Include="Assets\Scripts\Data\ShaderSpriteUvAnimationSetupData.cs" />
     <Compile Include="Assets\Scripts\Data\SquadData.cs" />
+    <Compile Include="Assets\Scripts\Data\ZByYSettings.cs" />
+    <Compile Include="Assets\Scripts\DebugQuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
+    <Compile Include="Assets\Scripts\ECS\DestroyEntityWhenHealthZeroSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWithDelaySystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\AnimationPauserSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\AnimationResumerSystem.cs" />
@@ -87,11 +91,13 @@
     <Compile Include="Assets\Scripts\ECS\QuadrantSystem\QuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\ScaleByPositionSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Soldiers\ArcherShootSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Soldiers\ShootTargetBySquadUpdateSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Archers\ArcherShootSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Archers\ShootTargetBySquadUpdateSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Swordsmans\FindMeleeTargetSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Swordsmans\MeleeAttackComponentSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\SoldiersBehaivour\Swordsmans\StopMoveIfHasTargetSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ArcherSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ASpawner.cs" />
-    <Compile Include="Assets\Scripts\ECS\Spawners\GroundSwordsmanSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\SwordsmanSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\SquadsSystem\IJobForEachWithEntity.cs" />
     <Compile Include="Assets\Scripts\ECS\SquadsSystem\SquadSortSystem.cs" />
@@ -99,6 +105,7 @@
     <Compile Include="Assets\Scripts\EntitySpavner.cs" />
     <Compile Include="Assets\Scripts\GO\RopeRenderer.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleByPosition.cs" />
+    <Compile Include="Assets\Scripts\GO\ZByY.cs" />
     <Compile Include="Assets\Scripts\SequencePath.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

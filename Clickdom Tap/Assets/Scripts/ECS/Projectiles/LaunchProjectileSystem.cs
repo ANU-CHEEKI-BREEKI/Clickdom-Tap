@@ -114,7 +114,7 @@ public class LaunchProjectileSystem : ComponentSystem
         scales.Dispose();
     }
 
-    public static void Launch(EntityManager manager, Entity entity, float absoluteVelocity, float mass, float2 direction, float destroyDelay)
+    public static void Launch(EntityManager manager, Entity entity, float absoluteVelocity, float mass, float2 direction, float destroyDelay = -1)
     {
         if (!manager.HasComponent<ProjectileComponentData>(entity))
         {
@@ -125,7 +125,7 @@ public class LaunchProjectileSystem : ComponentSystem
             data.accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.scaledG);
             data.ground = ProjectileComponentData.GrountType.TARGET_Y;
             data.lifetimeAfterProjectileStop = destroyDelay;
-            data.removeEntityWhenProjectileStops = true;
+            data.removeEntityWhenProjectileStops = destroyDelay >= 0;
             data.targetPosition = new float2(0, pos.Value.y - .1f * scale.Value);
             manager.SetComponentData(entity, data);
             if (!manager.HasComponent<VelocityComponentData>(entity))

@@ -34,6 +34,11 @@ public static class Utils
         return GetDirectionTo(thisPos, new float2(targetPos.x, targetPos.y));
     }
 
+    public static bool EqualsEpsilon(this float3 thisPos, float3 targetPos, float epsilon)
+    {
+        return math.distancesq(thisPos, targetPos) <= epsilon * epsilon;
+    }
+
     public static bool EqualsEpsilon(this float2 thisPos, float2 targetPos, float epsilon)
     {
         return math.distancesq(thisPos, targetPos) <= epsilon * epsilon;
@@ -42,6 +47,22 @@ public static class Utils
     public static bool EqualsEpsilon(this float3 thisPos, float2 targetPos, float epsilon)
     {
         return EqualsEpsilon(new float2(thisPos.x, thisPos.y), targetPos, epsilon);
+    }
+
+    /// <summary>
+    /// сравнить, какая из позиций ближе к thisPos. если targetPos1 - то return -1. если targetPos2 - то return 1. иначе - 0.
+    /// </summary>
+    /// <param name="thisPos"></param>
+    /// <param name="targetPos"></param>
+    /// <param name="anotherPos"></param>
+    /// <param name="epsilon"></param>
+    /// <returns></returns>
+    public static int CompareToAnother(this float3 thisPos, float3 targetPos1, float3 targetPos2)
+    {
+        var target1DistSq = math.distancesq(thisPos, targetPos1);
+        var target2DistSq = math.distancesq(thisPos, targetPos2);
+
+        return target1DistSq < target2DistSq ? -1 : target1DistSq > target2DistSq ? 1 : 0;
     }
 
     public static float3 GetNormalized(this float3 thisPos)
@@ -428,6 +449,8 @@ public static class Utils
         var mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos);
         return new float2(mouseWorldPos.x, mouseWorldPos.y);
     }
+
+
 
     public static class Native
     {

@@ -14,7 +14,6 @@ using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 
-
 public struct RenderScaleComponentdata : IComponentData
 {
     public float2 value;
@@ -102,8 +101,8 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
     {
         [ReadOnly] public float minX;
         [ReadOnly] public float maxX;
-
-        [ReadOnly] public NativeArray<float> ySlice;
+        [ReadOnly] public float minY;
+        [ReadOnly] public float maxY;
 
         public NativeMultiHashMap<int, RenderData>.ParallelWriter chunkDataMap;
         public NativeHashMap<int, ArchetypeChunk>.ParallelWriter chunkMap;
@@ -138,7 +137,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             for (int i = 0; i < cnt; i++)
             {
                 var pos = positions[i].Value;
-                if (pos.x < minX || pos.x > maxX || pos.y > ySlice[0] || pos.y < ySlice[sliceCount]) continue;
+                if (pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY) continue;
 
                 var anim = animations[i];
                 var renderScale = float2.zero;
@@ -149,7 +148,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                 var rotation = quaternion.identity;
                 if (hasRotation) rotation = rotations[i].Value;
 
-                pos.z = pos.y * 0.01f;
+                pos.z = pos.y;// * 0.01f;
                 var rdata = new RenderData()
                 {
                     position = pos,
@@ -177,115 +176,13 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             uvs[startIndex + index] = rdata.uv;
         }
     }
-
-    [BurstCompile]
-    public struct SwapSowrByPositionJob : IJob
-    {
-        public NativeArray<RenderData> sortArray;
-
-        public void Execute()
-        {
-            var cnt = sortArray.Length;
-            for (int i = 0; i < cnt; i++)
-            {
-                for (int j = i + 1; j < cnt; j++)
-                {
-                    if (sortArray[i].position.y < sortArray[j].position.y)
-                    {
-                        var tmp = sortArray[i];
-                        sortArray[i] = sortArray[j];
-                        sortArray[j] = tmp;
-                    }
-                }
-            }
-        }
-    }
-   
-    [ExcludeComponent(typeof(Scale))]
-    [BurstCompile]
-    public struct CullAndSliceEntitiesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData>
-    {
-        [ReadOnly] public float minX;
-        [ReadOnly] public float maxX;
-        /// <summary>
-        /// сверху вних (в порядке убывания)
-        /// </summary>
-        [ReadOnly] public NativeArray<float> ySlice;
-        /// <summary>
-        /// сверху вних (в порядке убывания)
-        /// </summary>
-        public NativeMultiHashMap<int, RenderData>.ParallelWriter slicedQueues;
-
-        public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref SpriteSheetAnimationComponentData animationData)
-        {
-            Slice(ref ySlice, ref slicedQueues, ref translation, ref animationData, 1, minX, maxX);
-        }
-    }
-
-    [BurstCompile]
-    public struct CullAndSliceScaledEntitiesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData, Scale>
-    {
-        [ReadOnly] public float minX;
-        [ReadOnly] public float maxX;
-        /// <summary>
-        /// сверху вних (в порядке убывания)
-        /// </summary>
-        [ReadOnly] public NativeArray<float> ySlice;
-        /// <summary>
-        /// сверху вних (в порядке убывания)
-        /// </summary>
-        public NativeMultiHashMap<int, RenderData>.ParallelWriter slicedQueues;
-
-        public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref SpriteSheetAnimationComponentData animationData, [ReadOnly] ref Scale scale)
-        {
-            Slice(ref ySlice, ref slicedQueues, ref translation, ref animationData, scale.Value, minX, maxX);
-        }
-    }
-
-    [BurstCompile]
-    public struct CullAndSliceJob : IJob
-    {
-        [ReadOnly] public float minX;
-        [ReadOnly] public float maxX;
-        /// <summary>
-        /// сверху вних (в порядке убывания)
-        /// </summary>
-        [ReadOnly] public NativeArray<float> ySlice;
-        /// <summary>
-        /// сверху вних (в порядке убывания)
-        /// </summary>
-        public NativeMultiHashMap<int, RenderData>.ParallelWriter slicedData;
-
-        [ReadOnly] public int chunkKey;
-        [ReadOnly] public NativeMultiHashMap<int, RenderData> chunkMap;
-
-        public void Execute()
-        {
-            RenderData data;
-            NativeMultiHashMapIterator<int> iterator;
-            if (chunkMap.TryGetFirstValue(chunkKey, out data, out iterator))
-            {
-                do
-                {
-                    Slice(ref ySlice, ref slicedData, ref data, minX, maxX);
-                } while (chunkMap.TryGetNextValue(out data, ref iterator));
-            }
-
-        }
-    }
-
+           
     EntityManager manager;
-    NativeQueue<RenderData>[] slicedQueues;
-    NativeArray<RenderData>[] slicedArrays;
-    const int sliceCount = 20;
 
     protected override void OnCreate()
     {
         base.OnCreate();
         manager = EntityManager;
-
-        slicedQueues = new NativeQueue<RenderData>[sliceCount];
-        slicedArrays = new NativeArray<RenderData>[sliceCount];
     }
 
     protected override void OnUpdate()
@@ -296,11 +193,8 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         var camWidth = camHeight * camera.aspect;
         var maxX = cameraPosition.x + camWidth;
         var minX = cameraPosition.x - camWidth;
-
-        var ySliceSize = camHeight * 2 / sliceCount;
-        var ySlices = new NativeArray<float>(sliceCount + 1, Allocator.TempJob);
-        for (int i = 0; i < ySlices.Length; i++)
-            ySlices[i] = cameraPosition.y + camHeight - ySliceSize * i;
+        var maxY = cameraPosition.y + camHeight;
+        var minY = cameraPosition.y - camHeight;
 
         var query = GetEntityQuery(ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<SpriteSheetAnimationComponentData>(), ComponentType.ReadOnly<RenderSharedComponentData>());
         var entitiesCount = query.CalculateEntityCount();
@@ -312,7 +206,8 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         {
             maxX = maxX,
             minX = minX,
-            ySlice = ySlices,
+            maxY = maxY,
+            minY = minY,
             chunkDataMap = chunkDataMap.AsParallelWriter(),
             chunkMap = chunkMap.AsParallelWriter(),
             animationType = GetArchetypeChunkComponentType<SpriteSheetAnimationComponentData>(true),
@@ -323,88 +218,49 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             rotationType = GetArchetypeChunkComponentType<Rotation>(true)
         };
 
-        var slicedMultihashConcurent = new NativeMultiHashMap<int, RenderData>(entitiesCount, Allocator.TempJob);
-
         chunkJob.Schedule(query).Complete();
         var chunksIndices = chunkMap.GetKeyArray(Allocator.TempJob);
 
         for (int j = 0; j < chunksIndices.Length; j++)
         {
-            slicedMultihashConcurent.Clear();
-
             ArchetypeChunk chunk;
             if (!chunkMap.TryGetValue(chunksIndices[j], out chunk)) continue;
 
-            new CullAndSliceJob()
+            //теперь надо получить из словаря данные для нужного sharedIndex
+            var sharedQueue = new NativeQueue<RenderData>(Allocator.TempJob);
+            new MultiHashToQueueJob<int, RenderData>()
             {
-                maxX = maxX,
-                minX = minX,
-                ySlice = ySlices,
-                slicedData = slicedMultihashConcurent.AsParallelWriter(),
-                chunkKey = chunksIndices[j],
-                chunkMap = chunkDataMap
+                queue = sharedQueue,
+                key = chunksIndices[j],
+                map = chunkDataMap
+            }.Schedule().Complete();
+            //списки перевести в массивы, чтобы можно было сортировать            
+            var sharedArray = new NativeArray<RenderData>(sharedQueue.Count, Allocator.TempJob);
+            new QueueToArrayJob<RenderData>()
+            {
+                array = sharedArray,
+                queue = sharedQueue
             }.Schedule().Complete();
 
-            //теперь надо получить их словаря всё чо надо
-            var jhandles = new NativeArray<JobHandle>(sliceCount, Allocator.TempJob);
-            for (int i = 0; i < sliceCount; i++)
-            {
-                slicedQueues[i] = new NativeQueue<RenderData>(Allocator.TempJob);
-                var multihash2queue = new MultiHashToQueueJob<int, RenderData>()
-                {
-                    queue = slicedQueues[i],
-                    key = i,
-                    map = slicedMultihashConcurent
-                };
-                jhandles[i] = multihash2queue.Schedule();
-            }
-            JobHandle.CompleteAll(jhandles);
-
-            //списки перевести в массивы, чтобы можно было сортировать            
-            for (int i = 0; i < sliceCount; i++)
-            {
-                slicedArrays[i] = new NativeArray<RenderData>(slicedQueues[i].Count, Allocator.TempJob);
-                var queue2array = new QueueToArrayJob<RenderData>()
-                {
-                    array = slicedArrays[i],
-                    queue = slicedQueues[i]
-                };
-                jhandles[i] = queue2array.Schedule();
-            }
-            JobHandle.CompleteAll(jhandles);
-
             //сортировка всех массивов паралельно
-            int fullVisibleCount = 0;          
-            for (int i = 0; i < sliceCount; i++)
+            int fullVisibleCount = sharedArray.Length;          
+            new Utils.Algoritm.Jobs.QuickSortRecursivelyJob<RenderData>
             {
-                var swapSortJob = new Utils.Algoritm.Jobs.QuickSortRecursivelyJob<RenderData>
-                {
-                    sortArray = slicedArrays[i],
-                    descending = true
-                };
-                jhandles[i] = swapSortJob.Schedule();
-                fullVisibleCount += slicedArrays[i].Length;
-            }
-            JobHandle.CompleteAll(jhandles);
+                sortArray = sharedArray,
+                descending = true
+            }.Schedule().Complete();
 
             //слитие массивов в один большой
             var matrices = new NativeArray<Matrix4x4>(fullVisibleCount, Allocator.TempJob);
             var uvs = new NativeArray<Vector4>(fullVisibleCount, Allocator.TempJob);
 
-            int startIndex = 0;
-            for (int i = 0; i < sliceCount; i++)
+            new MergeArraysParallelJob()
             {
-                var mergejob = new MergeArraysParallelJob()
-                {
-                    sourceArray = slicedArrays[i],
-                    startIndex = startIndex,
-                    matrices = matrices,
-                    uvs = uvs
-                };
-                jhandles[i] = mergejob.Schedule(slicedArrays[i].Length, 10);
-                startIndex += slicedArrays[i].Length;
-            }
-            JobHandle.CompleteAll(jhandles);
+                sourceArray = sharedArray,
+                startIndex = 0,
+                matrices = matrices,
+                uvs = uvs
+            }.Schedule(sharedArray.Length, 10).Complete();
 
             //драв колы по 1023 ентити за раз
             var mpb = new MaterialPropertyBlock();
@@ -438,13 +294,8 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                 drawnCount += callSize;
             }
 
-            //диспос всему что не диспоснуто ещё
-            for (int i = 0; i < sliceCount; i++)
-            {
-                slicedQueues[i].Dispose();
-                slicedArrays[i].Dispose();
-            }
-            jhandles.Dispose();
+            sharedQueue.Dispose();
+            sharedArray.Dispose();           
             matrices.Dispose();
             uvs.Dispose();
         }
@@ -452,53 +303,5 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         chunksIndices.Dispose();
         chunkMap.Dispose();
         chunkDataMap.Dispose();
-        slicedMultihashConcurent.Dispose();
-        ySlices.Dispose();
-    }
-
-    static public void Slice(ref NativeArray<float> ySlice, ref NativeMultiHashMap<int, RenderData>.ParallelWriter slicedQueues, ref Translation translation, ref SpriteSheetAnimationComponentData animationData, float scale, float minX, float maxX)
-    {
-        if (ySlice == null && ySlice.Length < 2) return;
-
-        var sliceCount = ySlice.Length - 1;
-        var pos = translation.Value;
-        if (pos.x < minX || pos.x > maxX || pos.y > ySlice[0] || pos.y < ySlice[sliceCount]) return;
-
-        //чтобы рендерить слоями
-        pos.z = pos.y * 0.01f;
-
-        var rdata = new RenderData()
-        {
-            position = pos,
-            uv = animationData.uv,
-            matrix = Matrix4x4.TRS(pos, Quaternion.identity, Vector3.one * scale)
-        };
-
-        for (int slice = 0; slice < sliceCount; slice++)
-        {
-            if (pos.y > ySlice[slice + 1])
-            {
-                slicedQueues.Add(slice, rdata);
-                break;
-            }
-        }
-    }
-
-    static public void Slice(ref NativeArray<float> ySlice, ref NativeMultiHashMap<int, RenderData>.ParallelWriter slicedData, ref RenderData data, float minX, float maxX)
-    {
-        if (ySlice == null && ySlice.Length < 2) return;
-
-        var sliceCount = ySlice.Length - 1;
-        var pos = data.position;
-        if (pos.x < minX || pos.x > maxX || pos.y > ySlice[0] || pos.y < ySlice[sliceCount]) return;
-
-        for (int slice = 0; slice < sliceCount; slice++)
-        {
-            if (pos.y > ySlice[slice + 1])
-            {
-                slicedData.Add(slice, data);
-                break;
-            }
-        }
     }
 }

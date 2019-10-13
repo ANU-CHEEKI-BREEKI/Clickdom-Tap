@@ -10,6 +10,7 @@
         Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
         LOD 100
 		Blend SrcAlpha OneMinusSrcAlpha
+		ZWrite off
 		Cull off 
 		Pass
 		{

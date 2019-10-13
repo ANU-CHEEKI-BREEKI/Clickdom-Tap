@@ -70,7 +70,7 @@ public class PlayerInputSystm : ComponentSystem
                     accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.g - 5),
                     removeEntityWhenProjectileStops = true,
                     absoluteVelocity = 17 - 5,
-                    lifetimeAfterProjectileStop = 5f,
+                    lifetimeAfterProjectileStop = 0f,
                     ground = ProjectileComponentData.GrountType.START_Y,
                     targetWidth = 2 * scale
                 });
@@ -103,13 +103,15 @@ public class PlayerInputSystm : ComponentSystem
                     processData = new ProcessCollisionData()
                     {
                         type = HitProcessingType.LAUNCH_AS_PROJECTILE,
-                        destroyDelay = 5,
-                        absoluteProjectileVelocity = UnityEngine.Random.Range(6, 10)                        
+                        destroyDelay = -1,
+                        damage = 1,
+                        absoluteProjectileVelocity = 1                        
                     },
+                    
                     maxHitCount = 1, 
                     colisionTimeOut = 1f,
                     detectTime = ProjectileCollisionComponentData.DetectCillisionTime.WHEN_STOPS,
-                    ownerFaction = FactionComponentData.Faction.NEUTRAL
+                    ownerFaction = FactionComponentData.Faction.ALLY
                 });
                 manager.SetSharedComponentData(entity, new RenderSharedComponentData()
                 {
