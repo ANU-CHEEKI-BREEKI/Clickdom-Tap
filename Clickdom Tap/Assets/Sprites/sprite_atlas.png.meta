@@ -698,9 +698,17 @@ TextureImporter:
         width: 157
         height: 143
       alignment: 9
-      pivot: {x: 0.59161764, y: 0.13788652}
+      pivot: {x: 0.52788097, y: 0.5308326}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -25.5, y: -71.5}
+        - {x: -39.5, y: -71.5}
+        - {x: -77.5, y: -45.5}
+        - {x: -78.5, y: -34.5}
+        - {x: -78.5, y: 39.5}
+        - {x: -57.5, y: 71.5}
+        - {x: 78.5, y: 71.5}
+        - {x: 78.5, y: -36.5}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -719,9 +727,20 @@ TextureImporter:
         width: 120
         height: 157
       alignment: 9
-      pivot: {x: 0.52397335, y: 0.06023587}
+      pivot: {x: 0.4790718, y: 0.45246178}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -60, y: -30.5}
+        - {x: -60, y: 49.5}
+        - {x: -35, y: 78.5}
+        - {x: -17, y: 78.5}
+        - {x: 2, y: 54.5}
+        - {x: 23, y: 53.5}
+        - {x: 27, y: 35.5}
+        - {x: 60, y: -6.5}
+        - {x: 60, y: -64.5}
+        - {x: 9, y: -78.5}
+        - {x: -2, y: -78.5}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -740,9 +759,20 @@ TextureImporter:
         width: 135
         height: 191
       alignment: 9
-      pivot: {x: 0.58523834, y: 0.036851812}
+      pivot: {x: 0.4769043, y: 0.40761834}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 20.5, y: -95.5}
+        - {x: 4.5, y: -95.5}
+        - {x: -67.5, y: -39.5}
+        - {x: -67.5, y: 61.5}
+        - {x: -19.5, y: 95.5}
+        - {x: 10.5, y: 95.5}
+        - {x: 17.5, y: 67.5}
+        - {x: 56.5, y: 41.5}
+        - {x: 55.5, y: 12.5}
+        - {x: 67.5, y: -1.5}
+        - {x: 67.5, y: -46.5}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -761,7 +791,7 @@ TextureImporter:
         width: 101
         height: 92
       alignment: 9
-      pivot: {x: 0.5640871, y: 0.09349657}
+      pivot: {x: 0.525981, y: 0.6038699}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -6.5, y: -46}
@@ -790,7 +820,7 @@ TextureImporter:
         width: 58
         height: 79
       alignment: 9
-      pivot: {x: 0.56200016, y: 0.08122621}
+      pivot: {x: 0.56200016, y: 0.4807129}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -29, y: -39.5}

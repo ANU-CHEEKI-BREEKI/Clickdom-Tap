@@ -22,7 +22,9 @@ public class AnimatorTrigger : MonoBehaviour, IConvertGameObjectToEntity
             leftBotTriggetZoneCorner = points[3],
             animation = animation
         });
+#if UNITY_EDITOR
         dstManager.SetName(entity, gameObject.name);
+#endif
     }
 
 #if UNITY_EDITOR
@@ -42,6 +44,9 @@ public class AnimatorTrigger : MonoBehaviour, IConvertGameObjectToEntity
 
     private void OnDrawGizmos()
     {
+        if (path == null)
+            return;
+
         var points = path.CopyOfWorldPointsAsF2;
 
         Gizmos.color = Color.green;

@@ -37,6 +37,9 @@ public struct ProjectileLaunshSetupComponentData : IComponentData
     public float lifetimeAfterProjectileStop;
 
     public float absoluteVelocity;
+
+    public EffectId effectOnParticleStops;
+    public EffectId effectOnParticleRemoves;
 }
 
 public class LaunchProjectileSystem : ComponentSystem
@@ -99,7 +102,9 @@ public class LaunchProjectileSystem : ComponentSystem
                 removeEntityWhenProjectileStops = setup.removeEntityWhenProjectileStops,
                 lifetimeAfterProjectileStop = setup.lifetimeAfterProjectileStop,
                 ground = setup.ground,
-                targetWidth = setup.targetWidth
+                targetWidth = setup.targetWidth,
+                effectOnParticleRemoves = setup.effectOnParticleRemoves,
+                effectOnParticleStops = setup.effectOnParticleStops
             });
             manager.AddComponent<VelocityComponentData>(entity);
             manager.SetComponentData(entity, new VelocityComponentData()
@@ -114,23 +119,27 @@ public class LaunchProjectileSystem : ComponentSystem
         scales.Dispose();
     }
 
-    public static void Launch(EntityManager manager, Entity entity, float absoluteVelocity, float mass, float2 direction, float destroyDelay = -1)
+    public static void Launch(EntityManager manager, Entity entity, float2 targetPosition, float absoluteVelocity, float2 direction, float destroyDelay = -1)
     {
         if (!manager.HasComponent<ProjectileComponentData>(entity))
         {
             manager.AddComponent<ProjectileComponentData>(entity);
-            var pos = manager.GetComponentData<Translation>(entity);
             var data = manager.GetComponentData<ProjectileComponentData>(entity);
+
+            var pos = manager.GetComponentData<Translation>(entity);
             var scale = manager.GetComponentData<Scale>(entity);
+
             data.accelerationResistance = new float2(0, ProjectileLaunshSetupComponentData.scaledG);
             data.ground = ProjectileComponentData.GrountType.TARGET_Y;
             data.lifetimeAfterProjectileStop = destroyDelay;
             data.removeEntityWhenProjectileStops = destroyDelay >= 0;
-            data.targetPosition = new float2(0, pos.Value.y - .1f * scale.Value);
+            data.targetPosition = targetPosition;
+
             manager.SetComponentData(entity, data);
             if (!manager.HasComponent<VelocityComponentData>(entity))
                 manager.AddComponent<VelocityComponentData>(entity);
             var velocity = manager.GetComponentData<VelocityComponentData>(entity);
+
             velocity.value = direction.GetNormalized() * scale.Value * absoluteVelocity;
             manager.SetComponentData(entity, velocity);
         }

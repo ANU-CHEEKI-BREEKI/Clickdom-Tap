@@ -288,3 +288,11 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Boo.L
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Boo.Lang.Parser.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Boo.Lang.Useful.dll
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Postprocessing.Editor.dll
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Postprocessing.Runtime.dll
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.Lightweight.Editor.dll
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.Lightweight.Runtime.dll
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.Lightweight.Runtime.pdb
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.Lightweight.Editor.pdb
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Postprocessing.Editor.pdb
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Postprocessing.Runtime.pdb

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ParticleStarter : MonoBehaviour
 {
     [SerializeField] ParticleSystem[] particles;
+    public UnityEvent OnStartPlayParticleSystem = new UnityEvent();
 
     public void StartParticleSystems()
     {
@@ -12,6 +14,8 @@ public class ParticleStarter : MonoBehaviour
             return;
         foreach (var sys in particles)
             sys?.Play();
+
+        OnStartPlayParticleSystem.Invoke();
     }
 
     public void StartParticleSystem(int index)
@@ -20,5 +24,7 @@ public class ParticleStarter : MonoBehaviour
             return;
 
         particles[index]?.Play();
+
+        OnStartPlayParticleSystem.Invoke();
     }
 }

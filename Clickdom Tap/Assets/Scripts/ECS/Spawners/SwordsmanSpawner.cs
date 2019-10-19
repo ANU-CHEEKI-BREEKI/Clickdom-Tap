@@ -17,6 +17,7 @@ public class SwordsmanSpawner : ASpawner
     private SequencePath path;
     [Space]
     [SerializeField] float targetFindingRange = 0.5f;
+    [SerializeField] float meeleeDamage = 1f;
 
     protected override void Start()
     {
@@ -39,7 +40,7 @@ public class SwordsmanSpawner : ASpawner
         });        
         manager.AddComponentData(entity, new MeleeAttackComponentData()
         {
-            damage = 0.5f
+            damage = meeleeDamage
         });
         
     }

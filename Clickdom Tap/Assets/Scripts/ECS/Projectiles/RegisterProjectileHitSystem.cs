@@ -53,7 +53,7 @@ public struct ProcessCollisionData
     /// если type == .*LAUNCH_AS_PROJECTILE.*, то это скорость, котороя будет задана (в направлении полета частицы, которая спровоцировала колизию)
     /// </summary>
     public float absoluteProjectileVelocity;
-    public float2 direction;
+    [HideInInspector] public float2 direction;
 }
 
 public enum HitProcessingType
@@ -79,6 +79,11 @@ public struct ProjectileCollisionComponentData : IComponentData
         ALL_TIME
     }
 
+    /// <summary>
+    /// если меньшне или раво нулю, то будет считаться равным 0.5f
+    /// </summary>
+    [Tooltip("If les or equals 0 then radius will be proceed as 0.5f")]
+    public float collisionRadius;
     /// <summary>
     /// сколько раз частица может совершить колизий
     /// </summary>
@@ -150,7 +155,9 @@ public class RegisterProjectileHitSystem : ComponentSystem
                         break;
 
                     //ну и проверяем на столкновение и создаём RegisteredHitData
-                    var radius = 0.5f;
+                    var radius = processData.collisionRadius;
+                    if (radius <= 0)
+                        radius = 0.5f;
                     var radSqr = radius * radius;
                     var hit = false;
 

@@ -46,6 +46,9 @@ public struct ProjectileComponentData : IComponentData
     /// когда lifetimeAfterProjectileStop <= 0 projectile entity будет удален
     /// </summary>
     public float lifetimeAfterProjectileStop;
+
+    public EffectId effectOnParticleStops;
+    public EffectId effectOnParticleRemoves;
 }
 
 public class ProjectileSystem : JobComponentSystem

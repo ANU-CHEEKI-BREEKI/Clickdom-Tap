@@ -16,6 +16,8 @@ public struct LinearMovementComponentData : IComponentData
     public float2 positionToMove;
     public bool isMoving;
     public bool doMoving;
+
+    public float2 previousPosition;
 }
 
 public class LinearMovementSystem : JobComponentSystem
@@ -58,6 +60,8 @@ public class LinearMovementSystem : JobComponentSystem
 
         if (movementData.isMoving)
         {
+            movementData.previousPosition = translation.Value.ToF2();
+
             var direction = translation.Value
                 .GetDirectionTo(movementData.positionToMove)
                 .GetNormalized();

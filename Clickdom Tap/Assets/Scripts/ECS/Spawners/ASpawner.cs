@@ -14,8 +14,8 @@ public abstract class ASpawner : MonoBehaviour
     [SerializeField] protected float spawnRandRange = 0.2f;
     [SerializeField] protected float velocity = 2;
     [Space]
-    [SerializeField] protected float minScale = 0.2f;
-    [SerializeField] protected float maxScale = 1f;
+    [SerializeField] ScaleByPositionSettings scaleByPosSettings;
+    [Space]
     [SerializeField] protected bool flipHorisontalScale = false;
     [Space]
     [SerializeField] protected AnimationList animationProvider;
@@ -63,7 +63,9 @@ public abstract class ASpawner : MonoBehaviour
             typeof(DestroyWithHealthComponentData),
             typeof(HealthComponentData),
             typeof(AnimatorStatesComponentData), 
-            typeof(AnimatorStateLastTriggeredAnimationComponentData)
+            typeof(AnimatorStateLastTriggeredAnimationComponentData), 
+            typeof(FlibHorisontalByMoveDirTagComponentData),
+            typeof(FlibHorisontalByTargetTagComponentData)
         );
 
         squadTag = DataToComponentData.ToComponentData(squadData, squadId, squadPosition.position);
@@ -134,7 +136,9 @@ public abstract class ASpawner : MonoBehaviour
             SetEntityComponentsData(entity, manager);
             SetEntitySharedComponentsData(entity, manager);
             EndInitEntityData(entity, manager);
+#if UNITY_EDITOR
             manager.SetName(entity, GenerateEntityName());
+#endif
         }
 
         entities.Dispose();
@@ -165,8 +169,10 @@ public abstract class ASpawner : MonoBehaviour
         });
         manager.SetComponentData(entity, new ScaleByPositionComponentData()
         {
-            minScale = minScale,
-            maxScale = maxScale
+            minScale = scaleByPosSettings.MinScale,
+            maxScale = scaleByPosSettings.MaxScale,
+            minY = scaleByPosSettings.MinY,
+            maxY = scaleByPosSettings.MaxY
         });
         manager.SetComponentData(entity, new FactionComponentData() { value = faction });
         manager.SetComponentData(entity, new LinearMovementComponentData()
@@ -177,6 +183,12 @@ public abstract class ASpawner : MonoBehaviour
         {
             value = health
         });
+        manager.SetComponentData(entity, new DestroyWithHealthComponentData()
+        {
+            delay = 1f
+        });
+
+        
     }
 
     protected virtual void SetEntitySharedComponentsData(Entity entity, EntityManager manager)
