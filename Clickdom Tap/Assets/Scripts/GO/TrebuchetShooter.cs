@@ -40,7 +40,7 @@ public class TrebuchetShooter : MonoBehaviour
         });
         manager.AddComponentData(entity, new Scale()
         {
-            Value = transform.localScale.x
+            Value = transform.localScale.x + 0.3f
         });
         //manager.AddComponentData(entity, new ScaleByPositionComponentData()
         //{
@@ -53,7 +53,7 @@ public class TrebuchetShooter : MonoBehaviour
         manager.AddSharedComponentData(entity, renderData);
         manager.AddComponentData(entity, new RenderScaleComponentdata()
         {
-            value = new Unity.Mathematics.float2(1,1)
+            value = new Unity.Mathematics.float2(0.7f, 0.7f)
         });
         var launch = launchData;
         launch.targetPosition = targetPositions[UnityEngine.Random.Range(0, targetPositions.Length)].position.ToF2();
