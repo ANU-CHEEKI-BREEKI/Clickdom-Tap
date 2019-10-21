@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 6644505373017063308}
   - component: {fileID: 2915721957922127311}
   - component: {fileID: 2014269061677425239}
+  - component: {fileID: 5583393612177616506}
   m_Layer: 0
   m_Name: trebuchet
   m_TagString: Untagged
@@ -195,7 +196,31 @@ MonoBehaviour:
   - {fileID: 7166931990379349424}
   - {fileID: 3777633485542999771}
   - {fileID: 8482329820629272052}
-  scaleByPosSettings: {fileID: 11400000, guid: 2de0756cd3c02c8419dab3905e47f454, type: 2}
+--- !u!114 &2014269061677425239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943736142348028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b3bb3e6a9223b4d8a535758ca06c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &5583393612177616506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943736142348028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310451db5f993684b9ca0775eb75e728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   projectileRenderData: {fileID: 11400000, guid: 27f9913e04f108f48bfbfa2683f7623c,
     type: 2}
   launchData:
@@ -227,19 +252,9 @@ MonoBehaviour:
       direction:
         x: 0
         y: 0
---- !u!114 &2014269061677425239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943736142348028644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b3bb3e6a9223b4d8a535758ca06c2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+  renderScale:
+    x: 0.7
+    y: 0.7
 --- !u!1 &1272085646310237570
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +311,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -406,6 +422,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -497,6 +514,7 @@ LineRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -924,6 +942,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1094,6 +1113,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

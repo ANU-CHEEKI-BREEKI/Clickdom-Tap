@@ -29,7 +29,7 @@ public class MeleeAttackComponentSystem : ComponentSystem
             if (!action.needAction)
                 return;
 
-            if (animation.currentFrame == action.frame && animation.frameChangedEventFlag)
+            if (animation.currentFrame == action.actionData.frame && animation.frameChangedEventFlag)
                 detectedActionEntities.TryAdd(entity, entity);
         }
     }

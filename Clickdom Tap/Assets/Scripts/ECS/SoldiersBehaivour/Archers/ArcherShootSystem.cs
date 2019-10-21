@@ -40,10 +40,16 @@ public struct ArcherTargetPositionComponentData :IComponentData
     public float2 value;
 }
 
+[Serializable]
+public struct ActionData
+{
+    public int frame;
+}
+
 public struct ActionOnAnimationFrameComponentData : IComponentData
 {
     public bool needAction;
-    public int frame;
+    public ActionData actionData;
 }
 
 //[DisableAutoCreation]
@@ -95,7 +101,7 @@ public class ArcherShootSystem : ComponentSystem
                 var action = actions[i];
                 if (!action.needAction)
                     continue;
-                if (animations[i].currentFrame != action.frame || !animations[i].frameChangedEventFlag) 
+                if (animations[i].currentFrame != action.actionData.frame || !animations[i].frameChangedEventFlag) 
                     continue;
 
                 detectedActions.Add(index, new ShootData()

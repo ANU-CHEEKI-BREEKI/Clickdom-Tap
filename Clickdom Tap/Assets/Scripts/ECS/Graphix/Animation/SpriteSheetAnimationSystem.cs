@@ -10,6 +10,8 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+
+[Serializable]
 public struct SpriteSheetAnimationComponentData : IComponentData
 {
     public bool frameChangedEventFlag;

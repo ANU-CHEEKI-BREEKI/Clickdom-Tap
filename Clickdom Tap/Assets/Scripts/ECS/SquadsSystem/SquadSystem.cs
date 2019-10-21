@@ -18,6 +18,7 @@ public enum FormationType
     CIRCLE
 }
 
+[Serializable]
 public struct SquadTagSharedComponentData : ISharedComponentData, IEquatable<SquadTagSharedComponentData>
 {
     public RefInt id;
@@ -47,6 +48,7 @@ public struct SquadTagSharedComponentData : ISharedComponentData, IEquatable<Squ
         [HideInInspector]
         public float2 formationCenter;
     }
+    [Serializable]
     public class RefInt
     {
         public int value = 0;
@@ -72,7 +74,6 @@ public struct SquadComponentData : IComponentData
     public int indexInSquad;
     public float2 indexPositionInSquad;
 }
-
 
 [UpdateAfter(typeof(SquadSortSystem))]
 public class SquadSystem : ComponentSystem

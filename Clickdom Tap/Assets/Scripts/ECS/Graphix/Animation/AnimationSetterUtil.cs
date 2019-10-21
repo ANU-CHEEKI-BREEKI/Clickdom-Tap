@@ -5,6 +5,81 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
+
+public enum AnimationType
+{
+    IDLE,
+    RUN,
+    CLIMB,
+    FIGHT,
+    SHOOT,
+    DEATH,
+    JUMP,
+    FALL
+}
+
+[Serializable]
+public struct WrapSpriteSheetAnimationComponentData
+{
+    public WrapSpriteSheetAnimationComponentData(SpriteSheetAnimationComponentData value)
+    {
+        this.value = value;
+        HasValue = true;
+    }
+
+    public readonly bool HasValue;
+
+    public SpriteSheetAnimationComponentData value;
+}
+[Serializable]
+public struct WrapRefPauseData
+{
+    public WrapRefPauseData(PauseData value)
+    {
+        this.value = value;
+        HasValue = true;
+    }
+
+    public readonly bool HasValue;
+
+    public PauseData value;
+}
+[Serializable]
+public struct WrapActionData
+{
+    public WrapActionData(ActionData value)
+    {
+        this.value = value;
+        HasValue = true;
+    }
+
+    public readonly bool HasValue;
+
+    public ActionData value;
+}
+
+[Serializable]
+public struct AnimationListSharedComponentData : ISharedComponentData, IEquatable<AnimationListSharedComponentData>
+{
+    public WrapSpriteSheetAnimationComponentData[] animations;
+    [Space]
+    public WrapRefPauseData[] pauses;
+    [Space]
+    public WrapActionData[] actions;
+
+    public bool Equals(AnimationListSharedComponentData other)
+    {
+        return     ReferenceEquals(animations, other.animations) 
+                && ReferenceEquals(pauses, other.pauses)
+                && ReferenceEquals(actions, other.actions);
+    }
+
+    public override int GetHashCode()
+    {
+        return animations.GetHashCode() * pauses.GetHashCode() * actions.GetHashCode();
+    }
+}
 
 public static class AnimationSetterUtil
 {
@@ -22,7 +97,7 @@ public static class AnimationSetterUtil
                 if (!manager.HasComponent<SpriteSheetAnimationComponentData>(entity))
                     manager.AddComponent<SpriteSheetAnimationComponentData>(entity);
 
-                var val = anim.Value;
+                var val = anim.value;
                 if(randomInitFrameRange != null)
                 {
                     var range = math.clamp(randomInitFrameRange.Value, 0, val.frameCount);
@@ -41,7 +116,7 @@ public static class AnimationSetterUtil
                         manager.SetComponentData(entity, new AnimationPauseComponentData()
                         {
                             needPause = true,
-                            pauseData = pause.Value
+                            pauseData = pause.value
                         });
                     }
                     else if (manager.HasComponent<AnimationPauseComponentData>(entity))
@@ -62,7 +137,7 @@ public static class AnimationSetterUtil
                         manager.SetComponentData(entity, new ActionOnAnimationFrameComponentData()
                         {
                             needAction = true,
-                            frame = action.Value
+                            actionData = action.value
                         });
                     }
                     else if (manager.HasComponent<ActionOnAnimationFrameComponentData>(entity))

@@ -31,7 +31,8 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     [SerializeField] bool needActionOnFrame;
     [Tooltip("тригер для какого то события на этом кадре")]
     [SerializeField] int actionOnFrame;
-    
+    [SerializeField] ActionData actionData;
+
     public float FrameDuration => frameDuration;
     public int FramesCount => framesCount;
     public float HorisontalOffset => spriteSheet.rect.x / spriteSheet.texture.width;
@@ -47,7 +48,7 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     public PauseData PauseData => pauseData;
 
     public bool NeedActionOnSomeFrames => needActionOnFrame;
-    public int ActionFrame => actionOnFrame;
+    public ActionData ActionData => actionData;
 
     Dictionary<Sprite, Mesh> meshes = new Dictionary<Sprite, Mesh>();
     public Mesh Mesh

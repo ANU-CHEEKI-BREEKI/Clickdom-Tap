@@ -54,7 +54,7 @@ public class SquadSortSystem : ComponentSystem
     }
 
     [BurstCompile]
-    public struct SortJobChunk : IJobChunk
+    public struct SetIndexInSquadJobChunk : IJobChunk
     {
         [ReadOnly] public NativeHashMap<int, SquadSortData> sortDatas;
         public ArchetypeChunkComponentType<SquadComponentData> squadDataType;
@@ -76,28 +76,41 @@ public class SquadSortSystem : ComponentSystem
         }
     }
 
-    protected override void OnCreate()
+    [BurstCompile]
+    public struct GetExistsIndicesInSquadJobChunk : IJobChunk
     {
-        base.OnCreate();
-        
+        public NativeMultiHashMap<int, int>.ParallelWriter indicesInSquadBySharedIndices;
+        [ReadOnly] public ArchetypeChunkSharedComponentType<SquadTagSharedComponentData> squadTagType;
+        [ReadOnly] public ArchetypeChunkComponentType<SquadComponentData> squadDataType;
+
+        public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
+        {
+            var index = chunk.GetSharedComponentIndex(squadTagType);
+            var datas = chunk.GetNativeArray(squadDataType);
+
+            for (int i = 0; i < chunk.Count; i++)
+            {
+                if (datas[i].indexOlreadySet)
+                {
+                    indicesInSquadBySharedIndices.Add(
+                        index,
+                        datas[i].indexInSquad
+                    );
+                }
+            }
+        }
     }
 
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        
-    }    
-    
     protected override void OnUpdate()
     {
         var query = GetEntityQuery(
             typeof(SquadTagSharedComponentData), 
             typeof(SquadComponentData), 
-            typeof(LinearMovementComponentData)//, 
-            //ComponentType.Exclude<SequenceMovementSharedComponentData>()
-            );
+            typeof(LinearMovementComponentData)
+        );
         var chunkCount = query.CalculateChunkCount();
-        
+        var entityCount = query.CalculateEntityCount();
+
         var sharedIndices = new NativeMultiHashMap<int, ChunkSquadCountData>(chunkCount, Allocator.TempJob);
         //получим индексы SquadTagSharedComponentData
         //и количество ентити в каждом чанке
@@ -108,8 +121,18 @@ public class SquadSortSystem : ComponentSystem
         }.Schedule(query);
         
         var sortData = new NativeHashMap<int, SquadSortData>(chunkCount * 2, Allocator.TempJob);
+        //var indicesInSquadBySharedIndices = new NativeMultiHashMap<int, int>(entityCount, Allocator.TempJob);
+
+        //собираем все уже установленные индексы солдат в их отрядах
+        //var eqistsIndicesInSquadJobHandle = new GetExistsIndicesInSquadJobChunk()
+        //{
+        //    indicesInSquadBySharedIndices = indicesInSquadBySharedIndices.AsParallelWriter(),
+        //    squadTagType = GetArchetypeChunkSharedComponentType<SquadTagSharedComponentData>(),
+        //    squadDataType = GetArchetypeChunkComponentType<SquadComponentData>()
+        //}.Schedule(query);
 
         sharedIndicesJob.Complete();
+
         //сформируем список с данными, какой минимальный номер
         //ентити должен быть в каждом чанке
         //для каждого индекса SquadTagSharedComponentData
@@ -121,16 +144,19 @@ public class SquadSortSystem : ComponentSystem
             var cnt = Utils.Native.CountForKey(sharedIndices, key);
             if (cnt <= 0)
                 continue;
+
             var dataArray = new NativeArray<ChunkSquadCountData>(cnt, Allocator.TempJob);
-            int index = 0;
+            int index = 0; 
             Utils.Native.IterateForKey(sharedIndices, key, (ival)=>
             {
                 dataArray[index] = ival;
                 index++;
             });
+            
             //сортируем по номеру чанка
             var indexer = new NativeArrayIndexer<ChunkSquadCountData>(dataArray);
             Utils.Algoritm.QuickSort<NativeArrayIndexer<ChunkSquadCountData>, ChunkSquadCountData>(ref indexer);
+            
             //теперь надо создать список с данными, какой минимальный номер
             //ентити должен быть в каждом чанке
             //для каждого индекса SquadTagSharedComponentData
@@ -145,9 +171,10 @@ public class SquadSortSystem : ComponentSystem
                 maxCntForSharedIndex += ival.entityCount;
             }
             cnts.TryAdd(key, maxCntForSharedIndex);
+
             dataArray.Dispose();
         }
-        var retHandle = new SortJobChunk()
+        var retHandle = new SetIndexInSquadJobChunk()
         {
             sortDatas = sortData,
             squadDataType = GetArchetypeChunkComponentType<SquadComponentData>()
@@ -178,5 +205,7 @@ public class SquadSortSystem : ComponentSystem
         retHandle.Complete();
 
         sortData.Dispose();
+
+        //indicesInSquadBySharedIndices.Dispose();
     }
 }

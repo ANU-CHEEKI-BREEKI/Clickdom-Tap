@@ -76,7 +76,6 @@
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWhenHealthZeroSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWithDelaySystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationComponents.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationPauserSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationResumerSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationSetterUtil.cs" />
@@ -103,7 +102,6 @@
     <Compile Include="Assets\Scripts\ECS\Spawners\ArcherSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\ASpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Spawners\SwordsmanSpawner.cs" />
-    <Compile Include="Assets\Scripts\ECS\SquadsSystem\IJobForEachWithEntity.cs" />
     <Compile Include="Assets\Scripts\ECS\SquadsSystem\SquadSortSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\SquadsSystem\SquadSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\FlipHorisontalByMoveDirectionSystem.cs" />
@@ -121,6 +119,8 @@
     <Compile Include="Assets\Scripts\ParticleStarter.cs" />
     <Compile Include="Assets\Scripts\SequencePath.cs" />
     <Compile Include="Assets\Scripts\Test\DebugQuadrantSystem.cs" />
+    <Compile Include="Assets\Scripts\Test\LaunchMisileToMousePos.cs" />
+    <Compile Include="Assets\Scripts\Test\LaunchProjectileToPosition.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnCollisionProjectileEntity.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnOnClick.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
@@ -148,6 +148,9 @@
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Properties">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Entities.Properties.dll</HintPath>
@@ -200,6 +203,9 @@
     <Reference Include="Unity.RenderPipelines.Lightweight.Editor">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Extensions.Hybrid">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
     </Reference>
@@ -233,11 +239,17 @@
     <Reference Include="Unity.Properties">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
@@ -275,23 +287,11 @@
     <Reference Include="Unity.InternalAPIEditorBridge.001">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Transforms.Hybrid">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Transforms.Hybrid">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

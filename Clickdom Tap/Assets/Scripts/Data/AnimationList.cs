@@ -17,58 +17,73 @@ public class AnimationList : ScriptableObject
 
     [NonSerialized]
     private ShaderSpriteUvAnimationSetupData[] animationsSource;
-    
-    private SpriteSheetAnimationComponentData?[] animations;
-    public SpriteSheetAnimationComponentData?[] Animations
+
+    [NonSerialized]
+    private WrapSpriteSheetAnimationComponentData[] animations;
+    public WrapSpriteSheetAnimationComponentData[] Animations
     {
         get
         {
             if (animations == null)
             {                
                 InitAnimationSourceArray();
-                animations = new SpriteSheetAnimationComponentData?[animationsSource.Length];
+                animations = new WrapSpriteSheetAnimationComponentData[animationsSource.Length];
                 for (int i = 0; i < animationsSource.Length; i++)
                 {
-                    if(animationsSource[i] != null)
-                        animations[i] = DataToComponentData.ToComponentData(animationsSource[i]);
+                    if (animationsSource[i] != null)
+                    {
+                        animations[i] = new WrapSpriteSheetAnimationComponentData(
+                            DataToComponentData.ToComponentData(animationsSource[i])
+                        );
+                    }
                 }
             }
             return animations;
         }
     }
 
-    private PauseData?[] pauseData;
-    public PauseData?[] PausesData
+    [NonSerialized]
+    private WrapRefPauseData[] pauseData;
+    public WrapRefPauseData[] PausesData
     {
         get
         {
             if (pauseData == null)
             {
                 InitAnimationSourceArray();
-                pauseData = new PauseData?[animationsSource.Length];
+                pauseData = new WrapRefPauseData[animationsSource.Length];
                 for (int i = 0; i < animationsSource.Length; i++)
                 {
                     if (animationsSource[i] != null && animationsSource[i].NeedPauseOnSomeFrames)
-                        pauseData[i] = animationsSource[i].PauseData;
+                    {
+                        pauseData[i] = new WrapRefPauseData(
+                            animationsSource[i].PauseData
+                        );
+                    }
                 }
             }
             return pauseData;
         }
     }
 
-    private int?[] actionsData;
-    public int?[] ActionsData
+    [NonSerialized]
+    private WrapActionData[] actionsData;
+    public WrapActionData[] ActionsData
     {
         get
         {
             if (actionsData == null)
             {
                 InitAnimationSourceArray();
-                actionsData = new int?[animationsSource.Length];
+                actionsData = new WrapActionData[animationsSource.Length];
                 for (int i = 0; i < animationsSource.Length; i++)
                 {
                     if (animationsSource[i] != null && animationsSource[i].NeedActionOnSomeFrames)
-                        actionsData[i] = animationsSource[i].ActionFrame;
+                    {
+                        actionsData[i] = new WrapActionData(
+                            animationsSource[i].ActionData
+                        );
+                    }
                 }
             }
             return actionsData;
@@ -76,7 +91,7 @@ public class AnimationList : ScriptableObject
     }
 
 
-    public SpriteSheetAnimationComponentData? FirstAnimation => Animations.Where(a => a.HasValue).FirstOrDefault();
+    public WrapSpriteSheetAnimationComponentData FirstAnimation => Animations.Where(a => a.HasValue).FirstOrDefault();
 
     private void InitAnimationSourceArray()
     {

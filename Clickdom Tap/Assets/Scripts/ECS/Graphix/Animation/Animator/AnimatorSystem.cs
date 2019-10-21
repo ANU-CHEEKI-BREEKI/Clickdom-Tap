@@ -11,6 +11,19 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
+public struct AnimatorStatesComponentData : IComponentData
+{
+    public bool running;
+    public bool shooting;
+    public bool climbing;
+    public bool fighting;
+    public bool death;
+    public bool jumping;
+    public bool falling;
+
+    public bool stateChangedEventFlag;
+}
+
 [UpdateInGroup(typeof(PresentationSystemGroup))]
 [UpdateAfter(typeof(AnimatorStatesUpdateSystem))]
 public class AnimatorSystem : ComponentSystem

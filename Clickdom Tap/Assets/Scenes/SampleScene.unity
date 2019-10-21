@@ -35701,13 +35701,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1524779737}
   - component: {fileID: 1524779736}
+  - component: {fileID: 1524779738}
+  - component: {fileID: 1524779739}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ManualTrebuchetLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1524779736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35715,7 +35717,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524779735}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c818cb6e91f3ca49b807dc003ddf442, type: 3}
   m_Name: 
@@ -35739,6 +35741,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1524779738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524779735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fd133238d658940891858135a59d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setZByY: 1
+  settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+  scaleByPos: 0
+  scaleSettings: {fileID: 0}
+--- !u!114 &1524779739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524779735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310451db5f993684b9ca0775eb75e728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileRenderData: {fileID: 11400000, guid: 27f9913e04f108f48bfbfa2683f7623c,
+    type: 2}
+  launchData:
+    ground: 1
+    targetWidth: 0
+    targetPosition:
+      x: 0
+      y: 0
+    accelerationResistance:
+      x: 0
+      y: 1
+    removeEntityWhenProjectileStops: 1
+    lifetimeAfterProjectileStop: 0
+    absoluteVelocity: 100
+    effectOnParticleStops: 1
+    effectOnParticleRemoves: 0
+  collisionData:
+    collisionRadius: 100
+    maxHitCount: 1000
+    colisionTimeOut: 0.2
+    ownerFaction: 0
+    detectTime: 1
+    processData:
+      damage: 100
+      type: 4
+      destroyDelay: 0
+      animation: 7
+      absoluteProjectileVelocity: 15
+      direction:
+        x: 0
+        y: 0
+  renderScale:
+    x: 0.7
+    y: 0.7
 --- !u!1001 &1555827421
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Linq;
+using Unity.Mathematics;
 
 [CreateAssetMenu(fileName = "ScaleByPositionSettings")]
 public class ScaleByPositionSettings : ScriptableObject
@@ -17,5 +18,13 @@ public class ScaleByPositionSettings : ScriptableObject
 
     public float MaxY => maxY;
     public float MinY => minY;
+
+    public float LerpEvaluete(float3 pos) => Mathf.Lerp(MaxScale, MinScale, pos.y / (MaxY - MinY));
+
+    private void OnValidate()
+    {
+        if (minY == maxY)
+            maxY++;
+    }
 
 }
