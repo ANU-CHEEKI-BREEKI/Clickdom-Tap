@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ANU.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,20 +28,3 @@ public struct HealthComponentData : IComponentData
     public float value;
 }
 
-public struct NativeArrayIndexer<T> : Utils.Algoritm.IIndexer<T> where T : struct
-{
-    private NativeArray<T> array;
-
-    public NativeArrayIndexer(NativeArray<T> array)
-    {
-        this.array = array;
-    }
-
-    public T this[int index]
-    {
-        get => array[index];
-        set => array[index] = value;
-    }
-
-    public int Length => array.Length;
-}

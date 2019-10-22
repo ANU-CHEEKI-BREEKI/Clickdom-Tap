@@ -109,7 +109,7 @@ public class LaunchProjectileSystem : ComponentSystem
             manager.AddComponent<VelocityComponentData>(entity);
             manager.SetComponentData(entity, new VelocityComponentData()
             {
-                value = Utils.Physics.GetVelocity(translation.Value / scale, setup.targetPosition / scale, setup.absoluteVelocity, setup.accelerationResistance * -1)
+                value = ANU.Utils.Physics.GetVelocity(translation.Value / scale, setup.targetPosition / scale, setup.absoluteVelocity, setup.accelerationResistance * -1)
             });
         }
 

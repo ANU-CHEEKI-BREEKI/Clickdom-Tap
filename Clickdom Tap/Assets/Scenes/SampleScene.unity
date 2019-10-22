@@ -35755,8 +35755,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setZByY: 1
   settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
-  scaleByPos: 0
-  scaleSettings: {fileID: 0}
+  scaleByPos: 1
+  scaleSettings: {fileID: 11400000, guid: 2de0756cd3c02c8419dab3905e47f454, type: 2}
 --- !u!114 &1524779739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35779,10 +35779,10 @@ MonoBehaviour:
       y: 0
     accelerationResistance:
       x: 0
-      y: 1
+      y: 0
     removeEntityWhenProjectileStops: 1
     lifetimeAfterProjectileStop: 0
-    absoluteVelocity: 100
+    absoluteVelocity: 250
     effectOnParticleStops: 1
     effectOnParticleRemoves: 0
   collisionData:
@@ -58029,16 +58029,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3550666286225924679, guid: 67b3c856c13bace499789ad496458335,
         type: 3}
-      propertyPath: maxEntityCoun
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3550666286225924679, guid: 67b3c856c13bace499789ad496458335,
-        type: 3}
-      propertyPath: spavnFrequency
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3550666286225924679, guid: 67b3c856c13bace499789ad496458335,
-        type: 3}
       propertyPath: scaleByPosSettings
       value: 
       objectReference: {fileID: 11400000, guid: 2de0756cd3c02c8419dab3905e47f454,
@@ -58107,6 +58097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424947888802920319, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b3c856c13bace499789ad496458335, type: 3}

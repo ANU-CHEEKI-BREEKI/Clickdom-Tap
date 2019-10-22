@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ANU.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -157,7 +158,7 @@ public class ArcherShootSystem : ComponentSystem
             var collision = sharedData.collisionData;
             var render = sharedData.renderData;
 
-            Utils.Native.IterateForKey(detectedActions, indices[i], (detect) =>
+            detectedActions.IterateForKey(indices[i], (detect) =>
             {
                 var launch = sharedData.launchData;
                 launch.targetPosition = detect.targetPosition;

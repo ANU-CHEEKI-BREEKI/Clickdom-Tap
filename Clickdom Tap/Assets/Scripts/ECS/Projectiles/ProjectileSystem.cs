@@ -91,11 +91,11 @@ public class ProjectileSystem : JobComponentSystem
         if (velocity.value.y != 0 || velocity.value.x != 0)
         {
             //обновляем велосити
-            velocity.value.x = Utils.Physics.GetVelocity(velocity.value.x, deltaTime, acceleration.x);
-            velocity.value.y = Utils.Physics.GetVelocity(velocity.value.y, deltaTime, acceleration.y);
+            velocity.value.x = ANU.Utils.Physics.GetVelocity(velocity.value.x, deltaTime, acceleration.x);
+            velocity.value.y = ANU.Utils.Physics.GetVelocity(velocity.value.y, deltaTime, acceleration.y);
 
             //подвинем горизонтально
-            translation.Value.y += Utils.Physics.GetDisplacement(realVelocity.y, deltaTime, acceleration.y);
+            translation.Value.y += ANU.Utils.Physics.GetDisplacement(realVelocity.y, deltaTime, acceleration.y);
 
             //если падает вниз и коснулoсь пола, то положим ровно на пол и уменьшим дельта тайм соответствующе пройденому пути
             if (realVelocity.y < 0)//падает вниз
@@ -103,32 +103,33 @@ public class ProjectileSystem : JobComponentSystem
                 if (
                     //если пол - это таргет_У, то останавливаем после достижения У
                     (projectileData.ground == ProjectileComponentData.GrountType.TARGET_Y &&
-                    translation.Value.y < projectileData.targetPosition.y) 
+                    translation.Value.y <= projectileData.targetPosition.y) 
                     ||
                     //если пол - это старт_У, то останавливаем на таргет_У, если упало в радиусе targetWidth от таргет_X.
                     (projectileData.ground == ProjectileComponentData.GrountType.START_Y &&
-                    translation.Value.y < projectileData.targetPosition.y &&
+                    translation.Value.y <= projectileData.targetPosition.y &&
                     translation.Value.x >= projectileData.targetPosition.x - projectileData.targetWidth / 2 &&
                     translation.Value.x <= projectileData.targetPosition.x + projectileData.targetWidth / 2) 
                     ||
                     //иначе - останавливаем на старт_У
                     (projectileData.ground == ProjectileComponentData.GrountType.START_Y &&
-                    translation.Value.y < projectileData.startPosition.y)
+                    translation.Value.y <= projectileData.startPosition.y)
                 )
                 {
-                    projectileData.targetPosition.y = translation.Value.y;
-                    var delta = Utils.Physics.GetTime(
-                        projectileData.targetPosition.y - translation.Value.y,
-                        realVelocity.y,
+                    var delta = ANU.Utils.Physics.GetTime(
+                        math.abs(projectileData.targetPosition.y - translation.Value.y),
+                        math.abs(realVelocity.y),
                         acceleration.y
                     );
+
                     deltaTime -= delta;
                     velocity.value.y = 0;
+                    translation.Value.y = projectileData.targetPosition.y;
                 }
             }
 
             //ну и двигаем вбок
-            translation.Value.x += Utils.Physics.GetDisplacement(realVelocity.x, deltaTime, acceleration.x);
+            translation.Value.x += ANU.Utils.Physics.GetDisplacement(realVelocity.x, deltaTime, acceleration.x);
 
             if (velocity.value.y == 0)
             {

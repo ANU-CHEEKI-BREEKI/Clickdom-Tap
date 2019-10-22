@@ -163,7 +163,7 @@ public class RegisterProjectileHitSystem : ComponentSystem
 
                     if (projectileMoved)
                     {
-                        hit = Utils.Math.IsSegmentIntersectsPoint(
+                        hit = ANU.Utils.Math.IsSegmentIntersectsPoint(
                             projectileData.previousProjectilePosition.ToF2(),
                             translation.Value.ToF2(),
                             qdata.position.ToF2(),

@@ -123,6 +123,12 @@
     <Compile Include="Assets\Scripts\Test\LaunchProjectileToPosition.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnCollisionProjectileEntity.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnOnClick.cs" />
+    <Compile Include="Assets\Scripts\Utils\Algorithm.cs" />
+    <Compile Include="Assets\Scripts\Utils\Jobs.cs" />
+    <Compile Include="Assets\Scripts\Utils\Math.cs" />
+    <Compile Include="Assets\Scripts\Utils\Native.cs" />
+    <Compile Include="Assets\Scripts\Utils\NativeArrayIndexer.cs" />
+    <Compile Include="Assets\Scripts\Utils\Physics.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

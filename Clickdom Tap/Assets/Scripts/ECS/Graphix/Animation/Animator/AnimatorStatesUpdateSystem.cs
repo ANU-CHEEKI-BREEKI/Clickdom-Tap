@@ -86,20 +86,20 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
                 var zone = triggerZones[i];
 
                 //get 4 lines and check if positioon inside 4sided poligon
-                var upline = Utils.Math.GetLineEquation(zone.leftUpTriggetZoneCorner, zone.rightUpTriggetZoneCorner);
-                var rightline = Utils.Math.GetLineEquation(zone.rightUpTriggetZoneCorner, zone.rightBotTriggetZoneCorner);
-                var botline = Utils.Math.GetLineEquation(zone.rightBotTriggetZoneCorner, zone.leftBotTriggetZoneCorner);
-                var leftline = Utils.Math.GetLineEquation(zone.leftBotTriggetZoneCorner, zone.leftUpTriggetZoneCorner);
+                var upline = ANU.Utils.Math.GetLineEquation(zone.leftUpTriggetZoneCorner, zone.rightUpTriggetZoneCorner);
+                var rightline = ANU.Utils.Math.GetLineEquation(zone.rightUpTriggetZoneCorner, zone.rightBotTriggetZoneCorner);
+                var botline = ANU.Utils.Math.GetLineEquation(zone.rightBotTriggetZoneCorner, zone.leftBotTriggetZoneCorner);
+                var leftline = ANU.Utils.Math.GetLineEquation(zone.leftBotTriggetZoneCorner, zone.leftUpTriggetZoneCorner);
 
                 //if zone rotated right
                 //          lu
                 //  lb               
                 //                  ru
                 //          rb
-                if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), upline))
-                    if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), rightline, false))
-                        if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), botline, false))
-                            if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), leftline))
+                if (ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), upline))
+                    if (!ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), rightline, false))
+                        if (!ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), botline, false))
+                            if (ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), leftline))
                             {
                                 triggered = true;
                                 animation = zone.animation;
@@ -111,10 +111,10 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
                 //  lu               
                 //                  rb
                 //          lb
-                if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), upline))
-                    if (Utils.Math.PointUnderOrLeftLine(pos.ToF2(), rightline))
-                        if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), botline, false))
-                            if (!Utils.Math.PointUnderOrLeftLine(pos.ToF2(), leftline, false))
+                if (ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), upline))
+                    if (ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), rightline))
+                        if (!ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), botline, false))
+                            if (!ANU.Utils.Math.PointUnderOrLeftLine(pos.ToF2(), leftline, false))
                             {
                                 triggered = true;
                                 animation = zone.animation;

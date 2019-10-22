@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ANU.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -244,7 +245,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
 
             //сортировка всех массивов паралельно
             int fullVisibleCount = sharedArray.Length;          
-            new Utils.Algoritm.Jobs.QuickSortRecursivelyJob<RenderData>
+            new Jobs.QuickSortRecursivelyJob<RenderData>
             {
                 sortArray = sharedArray,
                 descending = true
