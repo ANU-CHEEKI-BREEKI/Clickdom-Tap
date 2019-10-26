@@ -116,13 +116,13 @@ public class RegisterProjectileHitSystem : ComponentSystem
     }
 
     [BurstCompile]
-    struct RegisterHitJob : IJobForEach<Translation, ProjectileComponentData, ProjectileCollisionComponentData, VelocityComponentData>
+    struct RegisterHitJob : IJobForEach<Translation, Scale, ProjectileComponentData, ProjectileCollisionComponentData, VelocityComponentData>
     {
         [ReadOnly] public NativeMultiHashMap<int, QuadrantSystem.QuadrandEntityData> quadrantMap;
         public NativeHashMap<Entity, RegisteredHitData>.ParallelWriter registegedHits;
         [ReadOnly] public float deltaTime;
 
-        public void Execute(ref Translation translation, ref ProjectileComponentData projectileData, ref ProjectileCollisionComponentData processData, ref VelocityComponentData velocity)
+        public void Execute(ref Translation translation, ref Scale scale, ref ProjectileComponentData projectileData, ref ProjectileCollisionComponentData processData, ref VelocityComponentData velocity)
         {
             if (processData.colisionTimeOut > 0)
             {
@@ -143,57 +143,64 @@ public class RegisterProjectileHitSystem : ComponentSystem
             processData.processData.direction = projectileData.previousProjectilePosition.ToF2().GetDirectionTo(translation.Value);
             processData.processData.direction.y = 0;
 
-            var quadrantKey = QuadrantSystem.GetHashKeyByPosition(translation.Value);
-            //получаем все энтити в квадранте
-            QuadrantSystem.QuadrandEntityData qdata;
-            NativeMultiHashMapIterator<int> iterator;
-            if (quadrantMap.TryGetFirstValue(quadrantKey, out qdata, out iterator))
+            var radius = processData.collisionRadius;
+            if (radius <= 0)
+                radius = 0.5f;
+            radius *= scale.Value;
+            var radSqr = radius * radius;
+
+            QuadrantSystem.GuadrantIterator qiterator;
+            if(QuadrantSystem.TryGetFirstQuadrantInRadius(translation.Value, radius, out qiterator))
             {
                 do
                 {
-                    if (processData.maxHitCount <= 0)
-                        break;
+                    var key = QuadrantSystem.GetHashKeyByQuadrant(qiterator.quadrant);
+                    //получаем все энтити в квадранте
+                    QuadrantSystem.QuadrandEntityData qdata;
+                    NativeMultiHashMapIterator<int> iterator;
+                    if (quadrantMap.TryGetFirstValue(key, out qdata, out iterator))
+                    {
+                        do
+                        {
+                            if (processData.maxHitCount <= 0)
+                                break;
 
-                    //ну и проверяем на столкновение и создаём RegisteredHitData
-                    var radius = processData.collisionRadius;
-                    if (radius <= 0)
-                        radius = 0.5f;
-                    var radSqr = radius * radius;
-                    var hit = false;
-
-                    if (projectileMoved)
-                    {
-                        hit = ANU.Utils.Math.IsSegmentIntersectsPoint(
-                            projectileData.previousProjectilePosition.ToF2(),
-                            translation.Value.ToF2(),
-                            qdata.position.ToF2(),
-                            radius
-                        );
-                    }
-                    else
-                    {
-                        hit = math.distancesq(translation.Value, qdata.position) <= radSqr ||
-                        math.distancesq(projectileData.previousProjectilePosition, qdata.position) <= radSqr;
-                    }
-                    
-                    //если попал и попал не в своего
-                    if (hit && (processData.ownerFaction == FactionComponentData.Faction.NEUTRAL || processData.ownerFaction != qdata.faction))
-                    {
-                        registegedHits.TryAdd(
-                            qdata.entity,
-                            new RegisteredHitData()
+                            //ну и проверяем на столкновение и создаём RegisteredHitData
+                            var hit = false;
+                            if (projectileMoved)
                             {
-                                entity = qdata.entity,
-                                processData = new ProcessProjectileCollisionTag()
-                                {
-                                    hittedByProjectile = true,
-                                    processData = processData.processData
-                                }
+                                hit = ANU.Utils.Math.IsSegmentIntersectsPoint(
+                                    projectileData.previousProjectilePosition.ToF2(),
+                                    translation.Value.ToF2(),
+                                    qdata.position.ToF2(),
+                                    radius
+                                );
                             }
-                        );
-                        processData.maxHitCount--;
+                            else
+                            {
+                                hit = math.distancesq(translation.Value.ToF2(), qdata.position.ToF2()) <= radSqr;
+                            }
+
+                            //если попал и попал не в своего
+                            if (hit && (processData.ownerFaction == FactionComponentData.Faction.NEUTRAL || processData.ownerFaction != qdata.faction))
+                            {
+                                registegedHits.TryAdd(
+                                    qdata.entity,
+                                    new RegisteredHitData()
+                                    {
+                                        entity = qdata.entity,
+                                        processData = new ProcessProjectileCollisionTag()
+                                        {
+                                            hittedByProjectile = true,
+                                            processData = processData.processData
+                                        }
+                                    }
+                                );
+                                processData.maxHitCount--;
+                            }
+                        } while (quadrantMap.TryGetNextValue(out qdata, ref iterator));
                     }
-                } while (quadrantMap.TryGetNextValue(out qdata, ref iterator));
+                } while (QuadrantSystem.TryGetNextQuadrantInRadius(ref qiterator));           
             }          
         }
     }

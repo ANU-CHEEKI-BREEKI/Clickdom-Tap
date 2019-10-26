@@ -112,7 +112,7 @@ TextureImporter:
     second: trebuchet_weight
   - first:
       213: -7451953295746623981
-    second: arrow_1
+    second: spritesheet_arrows
   - first:
       213: 4793074969510804509
     second: arrow_2
@@ -155,6 +155,9 @@ TextureImporter:
   - first:
       213: 8304610757141259746
     second: ss_swordsman_idle2_6f
+  - first:
+      213: -8190799070003381337
+    second: spritesheet_numbers_10f
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -211,7 +214,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -222,7 +225,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -233,7 +237,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -244,6 +249,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1223,13 +1229,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: arrow_1
+      name: spritesheet_arrows
       rect:
         serializedVersion: 2
         x: 0
-        y: 1436
-        width: 48
-        height: 3
+        y: 144
+        width: 384
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1239,153 +1245,6 @@ TextureImporter:
       bones: []
       spriteID: 9f394f32e978bd541a0a1c79fdfc16b7
       internalID: -7451953295746623981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1432
-        width: 48
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77e92ca9a27945341936873092f9dde6
-      internalID: 4793074969510804509
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 1428
-        width: 48
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 478e93ae74455c34e95a77dc82280630
-      internalID: 3839242804211812186
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1424
-        width: 48
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 446fd0d9ccb9fad409c7af9ed947a99f
-      internalID: 8816886408898176165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1428
-        width: 48
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41414721df0f7834c943c4cf9a8ac573
-      internalID: 4397636249099975194
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow_5
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 1436
-        width: 48
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 047f4893e8f82fa4c983c28bd51b43b4
-      internalID: 5248468730252472093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow_6
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 1432
-        width: 48
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 006dfedcc5ba6314993fe702513ad353
-      internalID: 737259663583089233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow_8
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 1424
-        width: 48
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c80ff4a26f409b469b7dcd18ef5b7de
-      internalID: 7136696450250356169
       vertices: []
       indices: 
       edges: []
@@ -1533,6 +1392,27 @@ TextureImporter:
       bones: []
       spriteID: 887c133d1b306b745ac11ec104a6f6c0
       internalID: 8304610757141259746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_numbers_10f
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1388
+        width: 337
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9217133a6d5367141977f519fc3ced4d
+      internalID: -8190799070003381337
       vertices: []
       indices: 
       edges: []

@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: GroundArchersArrowsData
   m_EditorClassIdentifier: 
   animation: {fileID: 11400000, guid: 27f9913e04f108f48bfbfa2683f7623c, type: 2}
+  renderScale:
+    x: 0.75
+    y: 0.15
   collision:
+    collisionRadius: 0.1
     maxHitCount: 1
     colisionTimeOut: 1
     ownerFaction: 1
@@ -39,3 +43,5 @@ MonoBehaviour:
     removeEntityWhenProjectileStops: 1
     lifetimeAfterProjectileStop: 1
     absoluteVelocity: 12
+    effectOnParticleStops: 0
+    effectOnParticleRemoves: 0

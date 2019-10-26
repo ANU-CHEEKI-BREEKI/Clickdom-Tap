@@ -83,7 +83,6 @@ public class PlayerInputSystm : ComponentSystem
                     Value = quaternion.identity
                 });
                 var data = EntitySpavner.Instance.arrow;
-                data.InitRandomSprite();
                 manager.SetComponentData(entity, new SpriteSheetAnimationComponentData()
                 {
                     currentFrame = data.RamdomInitFrame,

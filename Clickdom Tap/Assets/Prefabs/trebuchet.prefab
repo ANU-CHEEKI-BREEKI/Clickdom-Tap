@@ -221,8 +221,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310451db5f993684b9ca0775eb75e728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileRenderData: {fileID: 11400000, guid: 27f9913e04f108f48bfbfa2683f7623c,
+  projectileRenderData: {fileID: 11400000, guid: 6125c46092503394c832085d8153d7ab,
     type: 2}
+  animatedProjectile: 0
+  renderScale:
+    x: 0.5
+    y: 2
   launchData:
     ground: 1
     targetWidth: 0
@@ -238,7 +242,7 @@ MonoBehaviour:
     effectOnParticleStops: 1
     effectOnParticleRemoves: 0
   collisionData:
-    collisionRadius: 100
+    collisionRadius: 0.7
     maxHitCount: 1000
     colisionTimeOut: 0.2
     ownerFaction: 0
@@ -252,9 +256,6 @@ MonoBehaviour:
       direction:
         x: 0
         y: 0
-  renderScale:
-    x: 0.7
-    y: 0.7
 --- !u!1 &1272085646310237570
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class AnimationPauserSystem : JobComponentSystem
             if (!pause.needPause) return;
             if (animation.pause) return;
 
-            if (animation.currentFrame == pause.pauseData.pauseOnFrame && animation.frameChangedEventFlag)
+            if (animation.currentFrame == pause.pauseData.pauseOnFrame && animation.out_FrameChangedEventFlag)
             {
                 animation.pause = true;
                 pause.timerToResume = pause.pauseData.pauseDuration + rnd.NextFloat(-pause.pauseData.pauseSpread, pause.pauseData.pauseSpread);

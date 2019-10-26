@@ -66,9 +66,16 @@ public class ArcherSpawner : ASpawner
     {
         base.Start();
 
-        projectilesData.Animation.InitRandomSprite();
         launchArrowData = new SquadProjectileLaunchDataSharedComponentData()
         {
+            renderScaleData = new RenderScaleComponentdata()
+            {
+                value = projectilesData.RenderScale
+            },
+            spriteData = new SpriteRendererComponentData()
+            {
+                uv = projectilesData.Animation.RandomUV
+            },
             animaionData = DataToComponentData.ToComponentData(projectilesData.Animation),
             renderData = new RenderSharedComponentData()
             {

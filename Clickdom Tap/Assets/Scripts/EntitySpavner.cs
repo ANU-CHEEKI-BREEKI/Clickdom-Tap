@@ -82,7 +82,7 @@ public class EntitySpavner : MonoBehaviour
                 frameDuration = archerAnimation.FrameDuration,
                 horisontalOffset = archerAnimation.HorisontalOffset,
                 verticalOffset = archerAnimation.VerticalOffset,
-                frameTimer = 0,
+                out_frameTimer = 0,
                 frameHeight = archerAnimation.FrameHeigth,
                 frameWidth = archerAnimation.FrameWidth,
             });

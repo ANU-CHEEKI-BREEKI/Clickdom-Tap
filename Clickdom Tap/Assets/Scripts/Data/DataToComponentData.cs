@@ -17,7 +17,7 @@ public static class DataToComponentData
             frameDuration = animationData.FrameDuration,
             horisontalOffset = animationData.HorisontalOffset,
             verticalOffset = animationData.VerticalOffset,
-            frameTimer = 0,
+            out_frameTimer = 0,
             frameHeight = animationData.FrameHeigth,
             frameWidth = animationData.FrameWidth,
         };

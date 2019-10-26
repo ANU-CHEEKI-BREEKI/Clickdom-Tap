@@ -18,8 +18,8 @@ public class DebugQuadrantSystem : MonoBehaviour
         var maxY = cameraPosition.y + camHeight;
         var minY = cameraPosition.y - camHeight;
 
-        var xStep = QuadrantSystem.xQuadrantSize;
-        var yStep = QuadrantSystem.yQuadrantSize;
+        var xStep = QuadrantSystem.quadrantSize;
+        var yStep = QuadrantSystem.quadrantSize;
 
         for (float x = minX; x < maxX; x += xStep)
         {

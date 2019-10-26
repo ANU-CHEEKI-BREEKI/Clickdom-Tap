@@ -15,6 +15,18 @@ using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 
+[Serializable]
+public struct SpriteRendererComponentData : IComponentData
+{
+    public Vector4 uv;
+}
+
+[Serializable]
+public struct SpriteTintComponentData : IComponentData
+{
+    public Vector4 color;
+}
+
 public struct RenderScaleComponentdata : IComponentData
 {
     public float2 value;
@@ -89,7 +101,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         public float3 position;
         public Matrix4x4 matrix;
         public Vector4 uv;
-        public float2 renderScale;
+        public Color color;
 
         public int CompareTo(RenderData other)
         {
@@ -109,7 +121,8 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         public NativeHashMap<int, ArchetypeChunk>.ParallelWriter chunkMap;
 
         [ReadOnly] public ArchetypeChunkComponentType<Translation> translationType;
-        [ReadOnly] public ArchetypeChunkComponentType<SpriteSheetAnimationComponentData> animationType;
+        [ReadOnly] public ArchetypeChunkComponentType<SpriteRendererComponentData> spriteType;
+        [ReadOnly] public ArchetypeChunkComponentType<SpriteTintComponentData> spriteTintType;
         [ReadOnly] public ArchetypeChunkComponentType<RenderScaleComponentdata> renderScaleType;
         [ReadOnly] public ArchetypeChunkComponentType<Scale> scaleType;
         [ReadOnly] public ArchetypeChunkComponentType<Rotation> rotationType;
@@ -118,7 +131,8 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
         {
             var positions = chunk.GetNativeArray(translationType);
-            var animations = chunk.GetNativeArray(animationType);
+            var sprites = chunk.GetNativeArray(spriteType);
+            
             var renderScales = new NativeArray<RenderScaleComponentdata>();
             var hasRenderScale = chunk.Has(renderScaleType);
             if (hasRenderScale)
@@ -133,6 +147,11 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                 rotations = chunk.GetNativeArray(rotationType);
             var cnt = chunk.Count;
 
+            var tints = new NativeArray<SpriteTintComponentData>();
+            var hasTint = chunk.Has(spriteTintType);
+            if (hasTint)
+                tints = chunk.GetNativeArray(spriteTintType);
+
             var sharedIndex = chunk.GetSharedComponentIndex(renderDataType);
 
             for (int i = 0; i < cnt; i++)
@@ -140,7 +159,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                 var pos = positions[i].Value;
                 if (pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY) continue;
 
-                var anim = animations[i];
+                var sprite = sprites[i];
                 var renderScale = float2.zero;
                 if (hasRenderScale) renderScale = renderScales[i].value;
                 else renderScale = new float2(1, 1);
@@ -149,11 +168,15 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                 var rotation = quaternion.identity;
                 if (hasRotation) rotation = rotations[i].Value;
 
+                var color = Vector4.one;
+                if (hasTint) color = tints[i].color;
+
                 pos.z = pos.y;// * 0.01f;
                 var rdata = new RenderData()
                 {
                     position = pos,
-                    uv = anim.uv,
+                    uv = sprite.uv,
+                    color = color,
                     matrix = Matrix4x4.TRS(pos, rotation, new Vector3(renderScale.x, renderScale.y, 1) * scale)
                 };
                 chunkDataMap.Add(sharedIndex, rdata);
@@ -169,12 +192,14 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         [ReadOnly] public NativeArray<RenderData> sourceArray;
         [NativeDisableContainerSafetyRestriction] public NativeArray<Matrix4x4> matrices;
         [NativeDisableContainerSafetyRestriction] public NativeArray<Vector4> uvs;
+        [NativeDisableContainerSafetyRestriction] public NativeArray<Vector4> colors;
 
         public void Execute(int index)
         {
             var rdata = sourceArray[index];
             matrices[startIndex + index] = rdata.matrix;
             uvs[startIndex + index] = rdata.uv;
+            colors[startIndex + index] = rdata.color;
         }
     }
            
@@ -197,7 +222,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
         var maxY = cameraPosition.y + camHeight;
         var minY = cameraPosition.y - camHeight;
 
-        var query = GetEntityQuery(ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<SpriteSheetAnimationComponentData>(), ComponentType.ReadOnly<RenderSharedComponentData>());
+        var query = GetEntityQuery(ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<SpriteRendererComponentData>(), ComponentType.ReadOnly<RenderSharedComponentData>());
         var entitiesCount = query.CalculateEntityCount();
         var chunkCnt = query.CalculateChunkCount();
 
@@ -211,12 +236,13 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             minY = minY,
             chunkDataMap = chunkDataMap.AsParallelWriter(),
             chunkMap = chunkMap.AsParallelWriter(),
-            animationType = GetArchetypeChunkComponentType<SpriteSheetAnimationComponentData>(true),
+            spriteType = GetArchetypeChunkComponentType<SpriteRendererComponentData>(true),
             translationType = GetArchetypeChunkComponentType<Translation>(true),
             renderScaleType = GetArchetypeChunkComponentType<RenderScaleComponentdata>(true),
             scaleType = GetArchetypeChunkComponentType<Scale>(true),
             renderDataType = GetArchetypeChunkSharedComponentType<RenderSharedComponentData>(),
-            rotationType = GetArchetypeChunkComponentType<Rotation>(true)
+            rotationType = GetArchetypeChunkComponentType<Rotation>(true),
+            spriteTintType = GetArchetypeChunkComponentType<SpriteTintComponentData>(true)
         };
 
         chunkJob.Schedule(query).Complete();
@@ -254,13 +280,15 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             //слитие массивов в один большой
             var matrices = new NativeArray<Matrix4x4>(fullVisibleCount, Allocator.TempJob);
             var uvs = new NativeArray<Vector4>(fullVisibleCount, Allocator.TempJob);
+            var colors = new NativeArray<Vector4>(fullVisibleCount, Allocator.TempJob);
 
             new MergeArraysParallelJob()
             {
                 sourceArray = sharedArray,
                 startIndex = 0,
                 matrices = matrices,
-                uvs = uvs
+                uvs = uvs,
+                colors = colors
             }.Schedule(sharedArray.Length, 10).Complete();
 
             //драв колы по 1023 ентити за раз
@@ -273,7 +301,10 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
 
             var matricesInstanced = new Matrix4x4[drawCallSize];
             var uvsInstanced = new Vector4[drawCallSize];
-            int materialPropId = Shader.PropertyToID("_MainTex_UV");
+            var colorsInstanced = new Vector4[drawCallSize];
+
+            int uv_MaterialPropId = Shader.PropertyToID("_MainTex_UV");
+            int color_MaterialPropId = Shader.PropertyToID("_Color");
             int drawnCount = 0;
             while (drawnCount < fullVisibleCount)
             {
@@ -281,7 +312,10 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
 
                 NativeArray<Matrix4x4>.Copy(matrices, drawnCount, matricesInstanced, 0, callSize);
                 NativeArray<Vector4>.Copy(uvs, drawnCount, uvsInstanced, 0, callSize);
-                mpb.SetVectorArray(materialPropId, uvsInstanced);
+                NativeArray<Vector4>.Copy(colors, drawnCount, colorsInstanced, 0, callSize);
+                
+                mpb.SetVectorArray(uv_MaterialPropId, uvsInstanced);
+                mpb.SetVectorArray(color_MaterialPropId, colorsInstanced);
 
                 Graphics.DrawMeshInstanced(
                     mesh,
@@ -299,6 +333,7 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             sharedArray.Dispose();           
             matrices.Dispose();
             uvs.Dispose();
+            colors.Dispose();
         }
 
         chunksIndices.Dispose();

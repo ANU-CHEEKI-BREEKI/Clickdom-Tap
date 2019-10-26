@@ -11,11 +11,11 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
+
+
 [Serializable]
 public struct SpriteSheetAnimationComponentData : IComponentData
 {
-    public bool frameChangedEventFlag;
-
     public int currentFrame;
     public int frameCount;
 
@@ -25,51 +25,58 @@ public struct SpriteSheetAnimationComponentData : IComponentData
     public float horisontalOffset;
     public float verticalOffset;
 
-    public Vector4 uv;
-
     public float frameDuration;
-    public float frameTimer;
 
     public bool pause;
+
+    public bool out_FrameChangedEventFlag;
+    public float out_frameTimer;
 }
 
 [UpdateInGroup(typeof(PresentationSystemGroup))]
 public class SpriteSheetAnimationSystem : JobComponentSystem
 {
     [BurstCompile]
-    public struct UnscaledSpritesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData>
+    public struct UnscaledSpritesJob : IJobForEach<Translation, SpriteSheetAnimationComponentData, SpriteRendererComponentData>
     {
         [ReadOnly] public float deltaTime;
-
-        public void Execute([ReadOnly] ref Translation translation, ref SpriteSheetAnimationComponentData animationData)
+        
+        public void Execute([ReadOnly] ref Translation translation, ref SpriteSheetAnimationComponentData animationData, ref SpriteRendererComponentData sprite)
         {
             if (animationData.frameCount == 0) return;
             if (animationData.pause) return;
 
             if (animationData.frameCount > 1 && animationData.frameDuration != 0)
             {
-                animationData.frameTimer += deltaTime;
-                if(animationData.frameTimer >= animationData.frameDuration)
+                animationData.out_frameTimer += deltaTime;
+                if(animationData.out_frameTimer >= animationData.frameDuration)
                 {
-                    while (animationData.frameTimer >= animationData.frameDuration)
+                    while (animationData.out_frameTimer >= animationData.frameDuration)
                     {
-                        animationData.frameTimer -= animationData.frameDuration;
+                        animationData.out_frameTimer -= animationData.frameDuration;
                         animationData.currentFrame = (animationData.currentFrame + 1) % animationData.frameCount;
-                        animationData.frameChangedEventFlag = true;
+                        animationData.out_FrameChangedEventFlag = true;
                     }
                 }
                 else
                 {
-                    animationData.frameChangedEventFlag = false;
+                    animationData.out_FrameChangedEventFlag = false;
                 }                
             }
 
-            animationData.uv = new Vector4(
-                animationData.frameWidth, 
-                animationData.frameHeight, 
+            sprite.uv = new Vector4(
+                animationData.frameWidth,
+                animationData.frameHeight,
                 animationData.horisontalOffset + animationData.frameWidth * animationData.currentFrame,
                 animationData.verticalOffset
             );
+
+            //animationData.uv = new Vector4(
+            //    animationData.frameWidth, 
+            //    animationData.frameHeight, 
+            //    animationData.horisontalOffset + animationData.frameWidth * animationData.currentFrame,
+            //    animationData.verticalOffset
+            //);
         }
     }
 

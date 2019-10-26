@@ -75,7 +75,7 @@ public struct SquadComponentData : IComponentData
     public float2 indexPositionInSquad;
 }
 
-[UpdateAfter(typeof(SquadSortSystem))]
+[UpdateAfter(typeof(SquadsortSetIndicesSystem))]
 public class SquadSystem : ComponentSystem
 {
     public struct SquadFormationData

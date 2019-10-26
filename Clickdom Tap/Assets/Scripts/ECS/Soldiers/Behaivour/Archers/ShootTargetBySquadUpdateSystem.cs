@@ -57,6 +57,9 @@ public class ShootTargetBySquadUpdateSystem : ComponentSystem
             if (data.xUnitCount == 0) data.xUnitCount = 1;
             if (data.yUnitCount == 0) data.yUnitCount = 1;
 
+            data.xUnitCount += 2;
+            data.yUnitCount += 2;
+
             var indices = chunk.GetNativeArray(squadType);
             var providers = chunk.GetNativeArray(targetProviderType);
             var targets = chunk.GetNativeArray(targetTypr);
@@ -64,6 +67,9 @@ public class ShootTargetBySquadUpdateSystem : ComponentSystem
             for (int i = 0; i < chunk.Count; i++)
             {
                 var index = indices[i].indexPositionInSquad;
+                index.x++;
+                index.y++;
+
                 var target = targets[i];
                 target.value = providers[i].EvaluateShootTarget(index.x / data.xUnitCount, index.y / data.yUnitCount, data.left2right, data.bot2top);
                 target.value += rnd.NextFloat2(new float2(1, 1) * -providers[i].randomSpread, new float2(1, 1) * providers[i].randomSpread);

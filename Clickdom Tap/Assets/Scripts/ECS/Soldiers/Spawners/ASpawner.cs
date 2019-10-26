@@ -27,6 +27,8 @@ public abstract class ASpawner : MonoBehaviour
     [Space]
     [SerializeField] private float health = 1;
     [Space]
+    [SerializeField] private Color tint = Color.white;
+    [Space]
 
     private EntityArchetype archetype;
     private EntityManager manager;
@@ -48,6 +50,8 @@ public abstract class ASpawner : MonoBehaviour
             typeof(LinearMovementComponentData),
             typeof(VelocityAbsoluteComponentData),
             typeof(SpriteSheetAnimationComponentData),
+            typeof(SpriteRendererComponentData),
+            typeof(SpriteTintComponentData),
             typeof(Scale),
             typeof(RenderScaleComponentdata),
             typeof(ScaleByPositionComponentData),
@@ -187,7 +191,10 @@ public abstract class ASpawner : MonoBehaviour
         {
             delay = 1f
         });
-
+        manager.SetComponentData(entity, new SpriteTintComponentData()
+        {
+            color = tint
+        });
         
     }
 

@@ -19,7 +19,7 @@ public class ScaleByPositionSettings : ScriptableObject
     public float MaxY => maxY;
     public float MinY => minY;
 
-    public float LerpEvaluete(float3 pos) => Mathf.Lerp(MaxScale, MinScale, pos.y / (MaxY - MinY));
+    public float LerpEvaluete(float3 pos) => Mathf.Lerp(MaxScale, MinScale, (pos.y - MinY) / (MaxY - MinY));
 
     private void OnValidate()
     {

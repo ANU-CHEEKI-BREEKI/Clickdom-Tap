@@ -13,10 +13,12 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     /// </summary>
     public enum AnimationType { LOOP }//, PING_PONG, SINGLE, SINGLE_AND_DESTROY }
 
+    [Header("Рендер")]
+    [SerializeField] Material material;
+    [SerializeField] Mesh mesh;
+
     [Header("Данные анимации")]
     [SerializeField] Sprite spriteSheet;
-    [SerializeField] Sprite[] spriteSheets;
-    [SerializeField] Material material;
     [SerializeField] int framesCount;
     [SerializeField] float frameDuration;
     [SerializeField] AnimationType type;
@@ -30,7 +32,7 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     [Tooltip("нужен ли триггер тригер для какого то события")]
     [SerializeField] bool needActionOnFrame;
     [Tooltip("тригер для какого то события на этом кадре")]
-    [SerializeField] int actionOnFrame;
+    //[SerializeField] int actionOnFrame;
     [SerializeField] ActionData actionData;
 
     public float FrameDuration => frameDuration;
@@ -43,6 +45,25 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     public int MinInitFrame => minInitFrame;
     public int MaxInitFrame => maxInitFrame;
     public Material Material => material;
+    public Mesh Mesh => mesh;
+    /// <summary>
+    /// get uv for 0 frame of current initiated spritesheet
+    /// </summary>
+    public Vector4 UV => GetUvForFrame(0);
+    public Vector4 RandomUV => GetUvForFrame(UnityEngine.Random.Range(0, FramesCount));
+
+    public Vector4 GetUvForFrame(int frameIndex)
+    {
+        if (frameIndex < 0 || frameIndex >= FramesCount)
+            throw new ArgumentException(nameof(frameIndex) + $"equals {frameIndex}");
+
+        return new Vector4(
+            FrameWidth,
+            FrameHeigth,
+            HorisontalOffset + FrameWidth * frameIndex,
+            VerticalOffset
+        );
+    }
 
     public bool NeedPauseOnSomeFrames => needPauseOnFrame;
     public PauseData PauseData => pauseData;
@@ -51,7 +72,7 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     public ActionData ActionData => actionData;
 
     Dictionary<Sprite, Mesh> meshes = new Dictionary<Sprite, Mesh>();
-    public Mesh Mesh
+    public Mesh GeneratedMesh
     {
         get
         {
@@ -71,18 +92,7 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
         }
     }
     public AnimationType Type { get { return type; } }
-
-    public void InitRandomSprite()
-    {
-        var minindex = 4;//0; какой то баг со стрелами. то ли юв не правильно считеат.. 
-        //пока что нет времени развиралься. с 4ой просто буду брать
-        if (spriteSheets != null && spriteSheets.Length > minindex)
-        {
-            var index = UnityEngine.Random.Range(minindex, spriteSheets.Length);
-            spriteSheet = spriteSheets[index];
-        }
-    }
-
+       
     private Mesh CreateMeshFor(Sprite sprite)
     {
         return new Mesh()

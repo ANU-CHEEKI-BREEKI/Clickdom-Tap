@@ -9,9 +9,11 @@ public class LaunchProjectileToPosition : MonoBehaviour
 {
     [Space]
     [SerializeField] private ShaderSpriteUvAnimationSetupData projectileRenderData;
+    [SerializeField] private bool animatedProjectile = false;
+    [SerializeField] private float2 renderScale;
+
     [SerializeField] private ProjectileLaunshSetupComponentData launchData;
     [SerializeField] private ProjectileCollisionComponentData collisionData;
-    [SerializeField] private float2 renderScale;
 
     private EntityManager manager;
 
@@ -44,7 +46,12 @@ public class LaunchProjectileToPosition : MonoBehaviour
         {
             Value = scale
         });
-        manager.AddComponentData(entity, DataToComponentData.ToComponentData(projectileRenderData));
+        manager.AddComponentData(entity, new SpriteRendererComponentData()
+        {
+            uv = projectileRenderData.UV
+        });
+        if(animatedProjectile)
+            manager.AddComponentData(entity, DataToComponentData.ToComponentData(projectileRenderData));
         manager.AddSharedComponentData(entity, renderData);
         manager.AddComponentData(entity, new RenderScaleComponentdata()
         {

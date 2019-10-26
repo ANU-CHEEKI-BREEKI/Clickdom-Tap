@@ -14,14 +14,20 @@ using UnityEngine;
 
 public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentData, IEquatable<SquadProjectileLaunchDataSharedComponentData>
 {
+    public RenderScaleComponentdata renderScaleData;
     public ProjectileLaunshSetupComponentData launchData;
+    public SpriteRendererComponentData spriteData;
     public SpriteSheetAnimationComponentData animaionData;
     public RenderSharedComponentData renderData;
     public ProjectileCollisionComponentData collisionData;
 
+    public bool animated;
+
     public bool Equals(SquadProjectileLaunchDataSharedComponentData other)
     {
         return launchData.Equals(other.launchData) &&
+            renderScaleData.Equals(other.renderScaleData) &&
+             spriteData.Equals(other.spriteData) &&
             animaionData.Equals(other.animaionData) &&
             renderData.Equals(other.renderData) &&
             collisionData.Equals(other.collisionData);
@@ -30,8 +36,10 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
     public override int GetHashCode()
     {
         return launchData.GetHashCode()     * 2 +
-                animaionData.GetHashCode()  * 6 +
-                renderData.GetHashCode()    * 3 +
+                renderScaleData.GetHashCode() * 3 +
+                spriteData.GetHashCode()    / 3 +
+                animaionData.GetHashCode()  * 5 +
+                renderData.GetHashCode()    / 6 +
                 collisionData.GetHashCode() * 8;
     }
 }
@@ -102,7 +110,7 @@ public class ArcherShootSystem : ComponentSystem
                 var action = actions[i];
                 if (!action.needAction)
                     continue;
-                if (animations[i].currentFrame != action.actionData.frame || !animations[i].frameChangedEventFlag) 
+                if (animations[i].currentFrame != action.actionData.frame || !animations[i].out_FrameChangedEventFlag) 
                     continue;
 
                 detectedActions.Add(index, new ShootData()
@@ -154,9 +162,12 @@ public class ArcherShootSystem : ComponentSystem
         {
             var sharedData = EntityManager.GetSharedComponentData<SquadProjectileLaunchDataSharedComponentData>(indices[i]);
 
+            var sprite = sharedData.spriteData;
             var animation = sharedData.animaionData;
             var collision = sharedData.collisionData;
             var render = sharedData.renderData;
+            var animated = sharedData.animated;
+            var scale = sharedData.renderScaleData;
 
             detectedActions.IterateForKey(indices[i], (detect) =>
             {
@@ -164,14 +175,30 @@ public class ArcherShootSystem : ComponentSystem
                 launch.targetPosition = detect.targetPosition;
                 launch.targetWidth *= detect.ownerScale;
 
-                LaunchProjectileSystem.Instance.LaunchArrow(
-                   detect.ownerPosition,
-                   detect.ownerScale,
-                   launch,
-                   animation,
-                   render,
-                   collision
-                );
+                if (animated)
+                {
+                    LaunchProjectileSystem.Instance.LaunchArrow(
+                       detect.ownerPosition,
+                       detect.ownerScale,
+                       launch,
+                       animation,
+                       render,
+                       collision,
+                       scale
+                    );
+                }
+                else
+                {
+                    LaunchProjectileSystem.Instance.LaunchArrow(
+                       detect.ownerPosition,
+                       detect.ownerScale,
+                       launch,
+                       sprite,
+                       render,
+                       collision,
+                       scale
+                    );
+                }
             });
         }
 

@@ -62,7 +62,8 @@ public class LaunchProjectileSystem : ComponentSystem
             typeof(Translation),
             typeof(Rotation),
             typeof(Scale),
-            typeof(SpriteSheetAnimationComponentData),
+            typeof(SpriteRendererComponentData),
+            //typeof(SpriteSheetAnimationComponentData),
             typeof(RenderScaleComponentdata),
             typeof(RenderSharedComponentData),
             typeof(ProjectileCollisionComponentData)
@@ -145,74 +146,74 @@ public class LaunchProjectileSystem : ComponentSystem
         }
     }
     
-    public void LaunchArrow(float3 startPos, float2 targetPos, float scale, 
-        ProjectileComponentData.GrountType ground, float absVelocity = 12, 
-        float g = ProjectileLaunshSetupComponentData.scaledG, float horResist = 0, 
-        FactionComponentData.Faction faction = FactionComponentData.Faction.NEUTRAL)
-    {
-        var arrow = manager.CreateEntity(arrowArchetype);
+    //public void LaunchArrow(float3 startPos, float2 targetPos, float scale, 
+    //    ProjectileComponentData.GrountType ground, float absVelocity = 12, 
+    //    float g = ProjectileLaunshSetupComponentData.scaledG, float horResist = 0, 
+    //    FactionComponentData.Faction faction = FactionComponentData.Faction.NEUTRAL)
+    //{
+    //    var arrow = manager.CreateEntity(arrowArchetype);
 
-        manager.SetComponentData(arrow, new Translation()
-        {
-            Value = startPos
-        });
-        manager.SetComponentData(arrow, new ProjectileLaunshSetupComponentData()
-        {
-            targetPosition = targetPos,
-            accelerationResistance = new float2(horResist, g),
-            removeEntityWhenProjectileStops = true,
-            absoluteVelocity = absVelocity,
-            lifetimeAfterProjectileStop = ProjectileLaunshSetupComponentData.lifetime,
-            ground = ground,
-            targetWidth = 2 * scale
-        });
-        manager.SetComponentData(arrow, new Scale()
-        {
-            Value = scale
-        });
-        manager.SetComponentData(arrow, new Rotation()
-        {
-            Value = quaternion.identity
-        });
-        var data = EntitySpavner.Instance.arrow;
-        data.InitRandomSprite();
-        manager.SetComponentData(arrow, new SpriteSheetAnimationComponentData()
-        {
-            currentFrame = data.RamdomInitFrame,
-            frameCount = data.FramesCount,
-            frameDuration = data.FrameDuration,
-            frameHeight = data.FrameHeigth,
-            frameWidth = data.FrameWidth,
-            horisontalOffset = data.HorisontalOffset,
-            verticalOffset = data.VerticalOffset
-        });
-        manager.SetComponentData(arrow, new RenderScaleComponentdata()
-        {
-            value = Vector2.one * 0.35f
-        });
-        manager.SetComponentData(arrow, new ProjectileCollisionComponentData()
-        {
-            processData = new ProcessCollisionData()
-            {
-                type = HitProcessingType.LAUNCH_AS_PROJECTILE,
-                destroyDelay = 5,
-                absoluteProjectileVelocity = UnityEngine.Random.Range(2, 3)
-            },
-            maxHitCount = 1,
-            colisionTimeOut = 1f,
-            detectTime = ProjectileCollisionComponentData.DetectCillisionTime.WHEN_STOPS,
-            ownerFaction = faction
-        });
-        manager.SetSharedComponentData(arrow, new RenderSharedComponentData()
-        {
-            mesh = data.Mesh,
-            material = data.Material
-        });
-    }
+    //    manager.SetComponentData(arrow, new Translation()
+    //    {
+    //        Value = startPos
+    //    });
+    //    manager.SetComponentData(arrow, new ProjectileLaunshSetupComponentData()
+    //    {
+    //        targetPosition = targetPos,
+    //        accelerationResistance = new float2(horResist, g),
+    //        removeEntityWhenProjectileStops = true,
+    //        absoluteVelocity = absVelocity,
+    //        lifetimeAfterProjectileStop = ProjectileLaunshSetupComponentData.lifetime,
+    //        ground = ground,
+    //        targetWidth = 2 * scale
+    //    });
+    //    manager.SetComponentData(arrow, new Scale()
+    //    {
+    //        Value = scale
+    //    });
+    //    manager.SetComponentData(arrow, new Rotation()
+    //    {
+    //        Value = quaternion.identity
+    //    });
+    //    var data = EntitySpavner.Instance.arrow;
+    //    manager.AddComponentData(arrow, new SpriteSheetAnimationComponentData()
+    //    {
+    //        currentFrame = data.RamdomInitFrame,
+    //        frameCount = data.FramesCount,
+    //        frameDuration = data.FrameDuration,
+    //        frameHeight = data.FrameHeigth,
+    //        frameWidth = data.FrameWidth,
+    //        horisontalOffset = data.HorisontalOffset,
+    //        verticalOffset = data.VerticalOffset
+    //    });
+    //    manager.SetComponentData(arrow, new RenderScaleComponentdata()
+    //    {
+    //        value = Vector2.one * 0.35f
+    //    });
+    //    manager.SetComponentData(arrow, new ProjectileCollisionComponentData()
+    //    {
+    //        processData = new ProcessCollisionData()
+    //        {
+    //            type = HitProcessingType.LAUNCH_AS_PROJECTILE,
+    //            destroyDelay = 5,
+    //            absoluteProjectileVelocity = UnityEngine.Random.Range(2, 3)
+    //        },
+    //        maxHitCount = 1,
+    //        colisionTimeOut = 1f,
+    //        detectTime = ProjectileCollisionComponentData.DetectCillisionTime.WHEN_STOPS,
+    //        ownerFaction = faction
+    //    });
+    //    manager.SetSharedComponentData(arrow, new RenderSharedComponentData()
+    //    {
+    //        mesh = data.Mesh,
+    //        material = data.Material
+    //    });
+    //}
 
     public void LaunchArrow(float3 startPos, float scale, 
         ProjectileLaunshSetupComponentData launchData, SpriteSheetAnimationComponentData animaionData,
-        RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData)
+        RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData,
+        RenderScaleComponentdata renderScale)
     {
         var arrow = manager.CreateEntity(arrowArchetype);
 
@@ -229,11 +230,34 @@ public class LaunchProjectileSystem : ComponentSystem
         {
             Value = quaternion.identity
         });        
-        manager.SetComponentData(arrow, animaionData);
-        manager.SetComponentData(arrow, new RenderScaleComponentdata()
+        manager.AddComponentData(arrow, animaionData);
+        manager.SetComponentData(arrow, renderScale);
+        manager.SetComponentData(arrow, collisionData);
+        manager.SetSharedComponentData(arrow, renderData);
+    }
+
+    public void LaunchArrow(float3 startPos, float scale,
+        ProjectileLaunshSetupComponentData launchData, SpriteRendererComponentData spriteData,
+        RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData,
+        RenderScaleComponentdata renderScale)
+    {
+        var arrow = manager.CreateEntity(arrowArchetype);
+
+        manager.SetComponentData(arrow, new Translation()
         {
-            value = Vector2.one * 0.35f
+            Value = startPos
         });
+        manager.SetComponentData(arrow, launchData);
+        manager.SetComponentData(arrow, new Scale()
+        {
+            Value = scale
+        });
+        manager.SetComponentData(arrow, new Rotation()
+        {
+            Value = quaternion.identity
+        });
+        manager.SetComponentData(arrow, spriteData);
+        manager.SetComponentData(arrow, renderScale);
         manager.SetComponentData(arrow, collisionData);
         manager.SetSharedComponentData(arrow, renderData);
     }

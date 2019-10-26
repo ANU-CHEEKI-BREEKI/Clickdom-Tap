@@ -77,8 +77,7 @@ public class QuadrantSystem : ComponentSystem
         }
     }
 
-    public const int xQuadrantSize = 1;
-    public const int yQuadrantSize = 1;
+    public const int quadrantSize = 1;
 
     public static QuadrantSystem Instance { get; private set; }
     public NativeMultiHashMap<int, QuadrandEntityData> quadrantMap;
@@ -86,8 +85,8 @@ public class QuadrantSystem : ComponentSystem
     public static int2 GetQuadrant(float3 position)
     {
         var quadrant = new int2((int)position.x, (int)position.y);
-        quadrant.x = (int)(math.floor(position.x / xQuadrantSize));
-        quadrant.y = (int)(math.floor(position.y / yQuadrantSize));
+        quadrant.x = (int)(math.floor(position.x / quadrantSize));
+        quadrant.y = (int)(math.floor(position.y / quadrantSize));
         return quadrant;
     }
 
@@ -152,10 +151,10 @@ public class QuadrantSystem : ComponentSystem
     public static void DrawQuadrant(float3 position, Color color)
     {
         var quadrant = GetQuadrant(position);
-        Debug.DrawLine(new Vector3(quadrant.x, quadrant.y, -9), new Vector3(quadrant.x + xQuadrantSize, quadrant.y, -9), color);
-        Debug.DrawLine(new Vector3(quadrant.x + xQuadrantSize, quadrant.y, -9), new Vector3(quadrant.x + xQuadrantSize, quadrant.y + yQuadrantSize, -9), color);
-        Debug.DrawLine(new Vector3(quadrant.x + xQuadrantSize, quadrant.y + yQuadrantSize, -9), new Vector3(quadrant.x, quadrant.y + yQuadrantSize, -9), color);
-        Debug.DrawLine(new Vector3(quadrant.x, quadrant.y + yQuadrantSize, -9), new Vector3(quadrant.x, quadrant.y, -9), color);
+        Debug.DrawLine(new Vector3(quadrant.x, quadrant.y, -9), new Vector3(quadrant.x + quadrantSize, quadrant.y, -9), color);
+        Debug.DrawLine(new Vector3(quadrant.x + quadrantSize, quadrant.y, -9), new Vector3(quadrant.x + quadrantSize, quadrant.y + quadrantSize, -9), color);
+        Debug.DrawLine(new Vector3(quadrant.x + quadrantSize, quadrant.y + quadrantSize, -9), new Vector3(quadrant.x, quadrant.y + quadrantSize, -9), color);
+        Debug.DrawLine(new Vector3(quadrant.x, quadrant.y + quadrantSize, -9), new Vector3(quadrant.x, quadrant.y, -9), color);
     }
 
     public enum NearestQuadrant { CURRENT, LEFT_UP, UP, RIGHT_UP, RIGHT, RIGHT_DOWN, DOWN, LEFT_DOWN, LEFT }
@@ -194,5 +193,63 @@ public class QuadrantSystem : ComponentSystem
                 break;
         }
         return GetHashKeyByQuadrant(quadrant);
+    }
+
+    public struct GuadrantIterator
+    {
+        public float3 position;
+        public float radius;
+
+        public int2 quadrant;
+
+        public int currentIterateRadius;
+        public int indexHor;
+        public int indexVer;
+    }
+
+    public static bool TryGetFirstQuadrantInRadius(float3 position, float radius, out GuadrantIterator iterator)
+    {
+        iterator = new GuadrantIterator()
+        {
+            position = position,
+            radius = radius,
+            quadrant = GetQuadrant(position),
+
+            currentIterateRadius = 0,
+            indexHor = 0,
+            indexVer = 0
+        };
+        return true;
+    }
+
+    public static bool TryGetNextQuadrantInRadius(ref GuadrantIterator iterator)
+    {
+        if (iterator.currentIterateRadius * QuadrantSystem.quadrantSize > iterator.radius + 2 * QuadrantSystem.quadrantSize)
+            return false;
+
+        iterator.indexHor++;
+
+        if (iterator.indexVer > iterator.currentIterateRadius)
+        {
+            iterator.currentIterateRadius++;
+            iterator.indexVer = -iterator.currentIterateRadius;
+            iterator.indexHor = 0;
+        }
+        else if (iterator.indexHor > iterator.currentIterateRadius - math.abs(iterator.indexVer))
+        {
+            iterator.indexVer++;
+            iterator.indexHor = -(iterator.currentIterateRadius - math.abs(iterator.indexVer));
+        }
+
+        iterator.quadrant = GetQuadrant(
+            new float3()
+            {
+                x = iterator.position.x + iterator.indexHor * QuadrantSystem.quadrantSize,
+                y = iterator.position.y + iterator.indexVer * QuadrantSystem.quadrantSize,
+                z = iterator.position.z
+            }
+        );
+
+        return true;
     }
 }
