@@ -17,6 +17,7 @@ public class PopUpNumbers : MonoBehaviour
         [Range(0.01f, 5)] public float lifetime;
         [Range(0.01f, 5)] public float scale;
         public Color color;
+        [Range(0, 1)] public float aplhaAtDestroy;
     }
 
     public static PopUpNumbers Instance { get; private set; }
@@ -81,6 +82,12 @@ public class PopUpNumbers : MonoBehaviour
             manager.AddComponentData(entity, new SpriteTintComponentData()
             {
                 color = floatData.color
+            });
+            manager.AddComponentData(entity, new AlphaAnimationComponentData()
+            {
+                startAlpha = floatData.color.a,
+                endAlpha = floatData.aplhaAtDestroy,
+                duration = floatData.lifetime
             });
             manager.AddComponentData(entity, new UniformMotiontagComponentData());
             manager.AddSharedComponentData(entity, renderData);

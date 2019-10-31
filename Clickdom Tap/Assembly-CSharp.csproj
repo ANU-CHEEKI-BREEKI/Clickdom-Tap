@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ResetPositionOnAwake.cs" />
     <Compile Include="Assets\Scripts\AnimatorTrigger.cs" />
     <Compile Include="Assets\Scripts\AutoRemoveWhenStops.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\Scripts\Data\SquadData.cs" />
     <Compile Include="Assets\Scripts\Data\ZByYSettings.cs" />
     <Compile Include="Assets\Scripts\DelayStartAnimation.cs" />
+    <Compile Include="Assets\Scripts\ECS\AlphaAnimation.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWhenHealthZeroSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWithDelaySystem.cs" />
@@ -86,7 +88,6 @@
     <Compile Include="Assets\Scripts\ECS\MovementSystem\LinearMovementSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\SequenceMovementSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\UniformMotionSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\PlayerInputSystm.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\DeleteProjectileSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\EffectSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Projectiles\LaunchProjectileSystem.cs" />
@@ -111,7 +112,7 @@
     <Compile Include="Assets\Scripts\ECS\Transform\FlipHorisontalByTargetDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\ScaleByPositionSystem.cs" />
-    <Compile Include="Assets\Scripts\EntitySpavner.cs" />
+    <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacesByParticlesSystem.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShakerTrigger.cs" />
     <Compile Include="Assets\Scripts\GO\PopUpNumbers.cs" />
@@ -121,6 +122,19 @@
     <Compile Include="Assets\Scripts\GO\TrebuchetShooter.cs" />
     <Compile Include="Assets\Scripts\GO\ZByY.cs" />
     <Compile Include="Assets\Scripts\ParticleStarter.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\InteractableByCost.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressBinding.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressButtonBinding.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressCostBinding.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressCostPresenterBinding.cs" />
+    <Compile Include="Assets\Scripts\Progress\Progress.cs" />
+    <Compile Include="Assets\Scripts\Progress\ProgressCost.cs" />
+    <Compile Include="Assets\Scripts\Progress\ProgressLoader.cs" />
+    <Compile Include="Assets\Scripts\Progress\ProgressUpgradeObserver.cs" />
+    <Compile Include="Assets\Scripts\Progress\UserProgress.cs" />
+    <Compile Include="Assets\Scripts\Progress\UserProgressCost.cs" />
+    <Compile Include="Assets\Scripts\Progress\WholeProgress.cs" />
+    <Compile Include="Assets\Scripts\Progress\WholeProgressHandle.cs" />
     <Compile Include="Assets\Scripts\SequencePath.cs" />
     <Compile Include="Assets\Scripts\Test\DebugQuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\Test\LaunchMisileToMousePos.cs" />

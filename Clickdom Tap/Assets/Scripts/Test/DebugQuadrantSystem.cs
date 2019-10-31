@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class DebugQuadrantSystem : MonoBehaviour
 {
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         var camera = Camera.main;
@@ -32,4 +33,5 @@ public class DebugQuadrantSystem : MonoBehaviour
         var mousePos = Utils.GetMouseWorldPosition(camera);
         QuadrantSystem.DrawQuadrant(mousePos.ToF3(), Color.red);
     }
+#endif
 }

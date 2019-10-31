@@ -24,8 +24,8 @@ public class LaunchProjectileToPosition : MonoBehaviour
         manager = World.Active.EntityManager;
         renderData = new RenderSharedComponentData()
         {
-            material = EntitySpavner.Instance.animatedMeterial,
-            mesh = EntitySpavner.Instance.quadMesh
+            material = projectileRenderData.Material,
+            mesh = projectileRenderData.Mesh
         };
     }
 

@@ -9,7 +9,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public abstract class ASpawner : MonoBehaviour
+public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettable
 {
     [SerializeField] protected float spawnRandRange = 0.2f;
     [SerializeField] protected float velocity = 2;
@@ -75,8 +75,8 @@ public abstract class ASpawner : MonoBehaviour
         squadTag = DataToComponentData.ToComponentData(squadData, squadId, squadPosition.position);
         renderData = new RenderSharedComponentData()
         {
-            mesh = EntitySpavner.Instance.quadMesh,
-            material = EntitySpavner.Instance.animatedMeterial
+            material = animationProvider.Material,
+            mesh = animationProvider.Mesh
         };
         animationData = new AnimationListSharedComponentData()
         {
@@ -215,14 +215,45 @@ public abstract class ASpawner : MonoBehaviour
         return "Soldier";
     }
 
+    public void SetMaxEntityCount(int newCount)
+    {
+        maxEntityCoun = newCount;
+    }
+
     public void IncreaceMaxEntityCount(int addCount)
     {
-        if (addCount < 0) throw new ArgumentException(nameof(addCount));
         maxEntityCoun += addCount;
+    }
+
+    public void SetMaxEntityCount(float newCount)
+    {
+        SetMaxEntityCount((int)newCount);
+    }
+
+    public void IncreaceMaxEntityCount(float addCount)
+    {
+        IncreaceMaxEntityCount((int)addCount);
     }
 
     public void SetSpawnFrequency(float newFrequency)
     {
         spavnFrequency = newFrequency;
     }
+
+    public void IncreaceSpawnFrequency(float addFrequency)
+    {
+        spavnFrequency += addFrequency;
+    }
+
+    #region adapter
+    void ICountSettable.SetCount(float count)
+    {
+        SetMaxEntityCount(count);
+    }
+
+    void IFrequencySettable.SetFrequency(float frequency)
+    {
+        SetSpawnFrequency(frequency);
+    }
+    #endregion
 }

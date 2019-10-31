@@ -81,16 +81,6 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
             return meshes[spriteSheet];
         }
     }
-    Dictionary<Sprite, Material> mats = new Dictionary<Sprite, Material>();
-    public Material NewMaterial
-    {
-        get
-        {
-            if (!mats.ContainsKey(spriteSheet))
-                mats.Add(spriteSheet, CreateMaterialForTexture(EntitySpavner.Instance.arrowMeterial, CreateTextureForSprite(spriteSheet)));
-            return mats[spriteSheet];
-        }
-    }
     public AnimationType Type { get { return type; } }
        
     private Mesh CreateMeshFor(Sprite sprite)

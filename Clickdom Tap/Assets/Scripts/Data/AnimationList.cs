@@ -17,6 +17,22 @@ public class AnimationList : ScriptableObject
 
     [NonSerialized]
     private ShaderSpriteUvAnimationSetupData[] animationsSource;
+    public  Material Material
+    {
+        get
+        {
+            InitAnimationSourceArray();
+            return animationsSource.Where(a => a != null).First().Material;
+        }
+    }
+    public Mesh Mesh
+    {
+        get
+        {
+            InitAnimationSourceArray();
+            return animationsSource.Where(a => a != null).First().Mesh;
+        }
+    }
 
     [NonSerialized]
     private WrapSpriteSheetAnimationComponentData[] animations;

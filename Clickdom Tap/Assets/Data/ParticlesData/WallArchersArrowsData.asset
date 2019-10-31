@@ -23,7 +23,7 @@ MonoBehaviour:
     ownerFaction: 2
     detectTime: 1
     processData:
-      damage: 0.3
+      damage: 1
       type: 4
       destroyDelay: -1
       animation: 0
