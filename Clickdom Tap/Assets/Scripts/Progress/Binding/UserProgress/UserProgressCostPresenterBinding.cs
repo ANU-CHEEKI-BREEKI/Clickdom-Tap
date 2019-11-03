@@ -9,6 +9,7 @@ public class UserProgressCostPresenterBinding : MonoBehaviour
 {
     [Header("presenter")]
     [SerializeField] protected TextMeshProUGUI text;
+    [SerializeField] private string format = "";
 
     private UserProgressCostBinding costBinding;
 
@@ -17,7 +18,7 @@ public class UserProgressCostPresenterBinding : MonoBehaviour
         costBinding = GetComponent<UserProgressCostBinding>();
         costBinding.CostBindingSource.OnNewCostExpected += CostBindingSource_OnNewCostExpected;
 
-        CostBindingSource_OnNewCostExpected(0);
+        CostBindingSource_OnNewCostExpected(costBinding.CostBindingSource.EvaluateRelated);
     }
 
     private void OnDestroy()
@@ -27,7 +28,7 @@ public class UserProgressCostPresenterBinding : MonoBehaviour
 
     private void CostBindingSource_OnNewCostExpected(float newCost)
     {
-        text.text = newCost.ToString();
+        text.text = newCost.ToString(format);
     }
 
 }

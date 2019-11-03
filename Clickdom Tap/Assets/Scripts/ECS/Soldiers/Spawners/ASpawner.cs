@@ -9,7 +9,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettable
+public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettable, ISpeedSettable
 {
     [SerializeField] protected float spawnRandRange = 0.2f;
     [SerializeField] protected float velocity = 2;
@@ -19,6 +19,8 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [SerializeField] protected bool flipHorisontalScale = false;
     [Space]
     [SerializeField] protected AnimationList animationProvider;
+    [Header("update pause for animations")]
+    [SerializeField] private AnimationType[] forAnimation = new AnimationType[1];
     [Space]
     [SerializeField] protected int squadId = 0;
     [SerializeField] protected Transform squadPosition;
@@ -39,8 +41,11 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
 
     private float timer = 0;
     [Space]
+    [Header("spawn rate in units per second")]
     [SerializeField] [Range(0.001f, 60)] private float spavnFrequency = 1;
     [SerializeField] private int maxEntityCoun = 0;
+    
+    public float SquadId => squadId;
 
     protected virtual void Start()
     {
@@ -91,10 +96,11 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
         var cnt = squadTag.unitCount == null ? 0 : squadTag.unitCount.value;
         if (cnt < maxEntityCoun)
         {
+            var delay = spavnFrequency == 0 ? 1 : 1 / spavnFrequency;
             timer += Time.deltaTime;
-            while (timer > spavnFrequency && cnt < maxEntityCoun)
+            while (timer > delay && cnt < maxEntityCoun)
             {
-                timer -= spavnFrequency;
+                timer -= delay;
                 Spawn(1);
                 cnt++;
             }
@@ -254,6 +260,19 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     void IFrequencySettable.SetFrequency(float frequency)
     {
         SetSpawnFrequency(frequency);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        //скорость атаки
+        //в ударах в минуту
+
+        var pauseDuration = 1f;
+        if (speed != 0)
+            pauseDuration = 60f / speed;
+
+        foreach (var animation in forAnimation)
+            animationData.pauses[(int)animation].value.pauseDuration = pauseDuration;
     }
     #endregion
 }

@@ -12,7 +12,7 @@ using UnityEngine;
 public struct SwordsmanTagComponentData : IComponentData { }
 
 [RequireComponent(typeof(SequencePath))]
-public class SwordsmanSpawner : ASpawner
+public class SwordsmanSpawner : ASpawner, IDamageSettable
 {
     private SequencePath path;
     [Space]
@@ -65,5 +65,10 @@ public class SwordsmanSpawner : ASpawner
     protected override string GenerateEntityName()
     {
         return $"Swordsman {faction}";
+    }
+
+    public void SetDamage(float damage)
+    {
+        meeleeDamage = damage;
     }
 }

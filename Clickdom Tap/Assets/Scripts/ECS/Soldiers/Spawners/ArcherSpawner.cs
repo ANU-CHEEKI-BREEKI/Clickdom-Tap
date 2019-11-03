@@ -50,7 +50,7 @@ public struct LerpShootTargetProvederComponentData : IComponentData
 }
 
 
-public class ArcherSpawner : ASpawner
+public class ArcherSpawner : ASpawner, IDamageSettable
 {
     [SerializeField] ProjectilesData projectilesData;
     [Space]
@@ -59,9 +59,9 @@ public class ArcherSpawner : ASpawner
     [SerializeField] Transform shootTarget3;
     [SerializeField] Transform shootTarget4;
     [SerializeField] float shootRandomSpread = 0.5f;
-    
+
     private SquadProjectileLaunchDataSharedComponentData launchArrowData;
-    
+
     protected override void Start()
     {
         base.Start();
@@ -126,6 +126,11 @@ public class ArcherSpawner : ASpawner
     protected override string GenerateEntityName()
     {
         return $"Archer {faction}";
+    }
+
+    public void SetDamage(float damage)
+    {
+        launchArrowData.collisionData.processData.damage = damage;
     }
 
 #if UNITY_EDITOR

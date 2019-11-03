@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7110009271470757375}
   - component: {fileID: 4798370640707078248}
   - component: {fileID: 2568167389978998565}
+  - component: {fileID: 8037168109582596923}
   - component: {fileID: 7354083056078129484}
   - component: {fileID: 9183614172175772372}
   - component: {fileID: 6288234494099829689}
@@ -108,6 +109,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &8037168109582596923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375364259603018698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12409fdb9bfc9ec469fa17351febcbe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabledAlpha: 0.6
 --- !u!114 &7354083056078129484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,11 +162,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  disabledAlpha: 0.6
+  additionalBindings: []
+  bindingIntecactable: 1
+  interact: {fileID: 8037168109582596923}
+  disablePriority: 1
   toDeactivate:
   - {fileID: 9132437982491922954}
   button: {fileID: 4798370640707078248}
   canvasg: {fileID: 2568167389978998565}
+  score: {fileID: 0}
 --- !u!114 &6680356409476904074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 20000924274577148}
+  format: '###0'
 --- !u!114 &5922533051922502122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userScore: {fileID: 0}
-  canvasg: {fileID: 2568167389978998565}
-  disabledAlpha: 0.6
+  interact: {fileID: 8037168109582596923}
+  disablePriority: 0
 --- !u!1 &2488640888697767806
 GameObject:
   m_ObjectHideFlags: 0

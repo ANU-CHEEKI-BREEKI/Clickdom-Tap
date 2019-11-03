@@ -110,7 +110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3921312870265438740}
   - component: {fileID: 8004379021357329834}
-  - component: {fileID: 6644505373017063308}
   - component: {fileID: 2915721957922127311}
   - component: {fileID: 2014269061677425239}
   - component: {fileID: 5583393612177616506}
@@ -132,11 +131,11 @@ Transform:
   m_LocalPosition: {x: 1.29, y: -9.27, z: -9.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 926597385686538884}
-  - {fileID: 1696089371469690582}
-  - {fileID: 313503892170615786}
-  - {fileID: 6059537764469392665}
   - {fileID: 1356384906817904714}
+  - {fileID: 6059537764469392665}
+  - {fileID: 313503892170615786}
+  - {fileID: 1696089371469690582}
+  - {fileID: 926597385686538884}
   - {fileID: 154573674246831150}
   - {fileID: 7034712190007453067}
   m_Father: {fileID: 0}
@@ -161,17 +160,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!210 &6644505373017063308
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943736142348028644}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!114 &2915721957922127311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,12 +268,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272085646310237570}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39600003, y: 0.87899965, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.39600003, y: 0.8789997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3921312870265438740}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5638543825090822147
 SpriteRenderer:
@@ -391,12 +379,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979707449028566654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09, y: 3.57, z: 3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.0900002, y: 3.5699997, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3921312870265438740}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6685532263434847460
 SpriteRenderer:
@@ -473,8 +461,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044195100790962433}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.54, y: -1.76, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.54, y: -1.7600002, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1233466072638584688}
@@ -488,7 +476,7 @@ Transform:
   - {fileID: 3724930652372697167}
   - {fileID: 5615201364914955246}
   m_Father: {fileID: 3921312870265438740}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &2158940921666260698
 LineRenderer:
@@ -911,12 +899,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5052379353580996429}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3921312870265438740}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2040759106390350768
 SpriteRenderer:
@@ -1083,7 +1071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5360151614126418018}
   m_LocalRotation: {x: -0, y: -0, z: 0.9261081, w: 0.3772583}
-  m_LocalPosition: {x: 0.11, y: 2.81, z: 2}
+  m_LocalPosition: {x: 0.110000014, y: 2.81, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3921312870265438740}

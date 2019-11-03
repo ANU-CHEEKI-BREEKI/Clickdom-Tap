@@ -62,8 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FloatToText.cs" />
+    <Compile Include="Assets\HoldButton.cs" />
+    <Compile Include="Assets\LinearProgressBar.cs" />
     <Compile Include="Assets\ResetPositionOnAwake.cs" />
+    <Compile Include="Assets\Scripts\AnimationPauseApdater.cs" />
     <Compile Include="Assets\Scripts\AnimatorTrigger.cs" />
+    <Compile Include="Assets\Scripts\ArrowDamageUpdater.cs" />
     <Compile Include="Assets\Scripts\AutoRemoveWhenStops.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
     <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="Assets\Scripts\Data\ShaderSpriteUvAnimationSetupData.cs" />
     <Compile Include="Assets\Scripts\Data\SquadData.cs" />
     <Compile Include="Assets\Scripts\Data\ZByYSettings.cs" />
+    <Compile Include="Assets\Scripts\DeactivateGroup.cs" />
     <Compile Include="Assets\Scripts\DelayStartAnimation.cs" />
     <Compile Include="Assets\Scripts\ECS\AlphaAnimation.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
@@ -112,9 +118,11 @@
     <Compile Include="Assets\Scripts\ECS\Transform\FlipHorisontalByTargetDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\ScaleByPositionSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacerByMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacesByParticlesSystem.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShakerTrigger.cs" />
+    <Compile Include="Assets\Scripts\GO\InteractableByPriority.cs" />
     <Compile Include="Assets\Scripts\GO\PopUpNumbers.cs" />
     <Compile Include="Assets\Scripts\GO\RopeRenderer.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleAsParent.cs" />
@@ -136,6 +144,7 @@
     <Compile Include="Assets\Scripts\Progress\WholeProgress.cs" />
     <Compile Include="Assets\Scripts\Progress\WholeProgressHandle.cs" />
     <Compile Include="Assets\Scripts\SequencePath.cs" />
+    <Compile Include="Assets\Scripts\SwordDamageApdater.cs" />
     <Compile Include="Assets\Scripts\Test\DebugQuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\Test\LaunchMisileToMousePos.cs" />
     <Compile Include="Assets\Scripts\Test\LaunchProjectileToPosition.cs" />
@@ -148,6 +157,8 @@
     <Compile Include="Assets\Scripts\Utils\NativeArrayIndexer.cs" />
     <Compile Include="Assets\Scripts\Utils\Physics.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
+    <Compile Include="Assets\SetPositionToMouse.cs" />
+    <Compile Include="Assets\SpriteCircleProgressBar.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

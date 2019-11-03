@@ -9,7 +9,7 @@ using UnityEngine.Events;
 [Serializable]
 public class Progress
 {
-    [SerializeField] private readonly float maxProgress;
+    [SerializeField] private float maxProgress;
     [SerializeField] private float progressValue;
 
     public float MaxValue => maxProgress;

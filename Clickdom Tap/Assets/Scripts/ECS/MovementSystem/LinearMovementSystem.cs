@@ -53,6 +53,8 @@ public class LinearMovementSystem : JobComponentSystem
         if(!movementData.doMoving)
         {
             movementData.isMoving = false;
+            //включаем обратно. (а в других системах, будем только убирать флаг, запрещая движение)
+            movementData.doMoving = true;
             return;
         }
 
@@ -68,9 +70,7 @@ public class LinearMovementSystem : JobComponentSystem
             translation.Value.x += direction.x * deltatime * realVelocity;
             translation.Value.y += direction.y * deltatime * realVelocity;
         }
-
-        //включаем обратно. (а в других системах, будем только убирать флаг, запрещая движение)
-        movementData.doMoving = true;
+        
     }
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)

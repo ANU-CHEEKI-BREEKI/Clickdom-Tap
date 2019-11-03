@@ -5,7 +5,7 @@ using System;
 
 public class WholeProgress : MonoBehaviour
 {
-    [SerializeField] private Progress wholeProgress = new Progress(0, 10_000);
+    [SerializeField] private Progress wholeProgress = new Progress(0, float.MaxValue);
     [SerializeField] private float money = 1;
 
     public Progress Progress => wholeProgress;

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5876422243175265819, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
       propertyPath: m_Name
-      value: UpgradePanel (1)
+      value: ArcherUpgradePanel (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8481575974091263335, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
@@ -117,21 +117,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2102363512328581765, guid: 5c0dff02e3099f44e83833098f3640d5,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -90.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267211796063661202, guid: 5c0dff02e3099f44e83833098f3640d5,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -73.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5323364244138822096, guid: 5c0dff02e3099f44e83833098f3640d5,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -123.2
-      objectReference: {fileID: 0}
     - target: {fileID: 5832254723064682162, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -142,21 +127,171 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -16.400002
       objectReference: {fileID: 0}
-    - target: {fileID: 5265051246004956100, guid: 5c0dff02e3099f44e83833098f3640d5,
+    - target: {fileID: 3171942744695461191, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -104.79997
+      propertyPath: m_Name
+      value: CountUpgradeButton
       objectReference: {fileID: 0}
-    - target: {fileID: 4308103299695398534, guid: 5c0dff02e3099f44e83833098f3640d5,
+    - target: {fileID: 7518491758871254324, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323364244138822096, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -104.8
+      value: -123.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267211796063661202, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -73.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102363512328581765, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -90.6
       objectReference: {fileID: 0}
     - target: {fileID: 7999535101731354067, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -104.79997
       objectReference: {fileID: 0}
+    - target: {fileID: 5133013941137853811, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133013941137853811, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Name
+      value: DamageUpgradeButton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265051246004956100, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -104.79997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883349645605496881, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883349645605496881, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackSpeedUpgradeButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463974069132342117, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463974069132342117, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463974069132342117, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463974069132342117, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463974069132342117, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463974069132342117, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308103299695398534, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -104.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437029886095603238, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnRateUpgradeButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193842781819381826, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296992888663511945, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5389778403257052593, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+        type: 3}
+    - target: {fileID: 7415719961995201696, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: path
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314986090857199189, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682856303240024759, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: path
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613177630905350133, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: path
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992761448872810450, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247185120344935680, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113123429758775782, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113123429758775782, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3134570664356912180, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+        type: 3}
+    - target: {fileID: 8981669335169773311, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6419319919173709906, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+        type: 3}
+    - target: {fileID: 6534857546358681832, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -922198145025421034, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+        type: 3}
+    - target: {fileID: 1043992587742088125, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3403330769429977085, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0dff02e3099f44e83833098f3640d5, type: 3}
 --- !u!1001 &8939798233459017053
@@ -275,6 +410,127 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322473067432028691, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322473067432028691, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2308765580234064941, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+        type: 3}
+    - target: {fileID: 5080705466693545454, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_Name
+      value: SwordUpgradePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012337410277727889, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779055838260582022, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779055838260582022, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_Name
+      value: DamageUpgradeButton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254341782944239282, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_Name
+      value: CountUpgradeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097434835841263760, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097434835841263760, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097434835841263760, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097434835841263760, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097434835841263760, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.61463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097434835841263760, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61463
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516133115298673604, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516133115298673604, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackSpeedUpgradeButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 359776972434582995, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnRateUpgradeButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176216434529013441, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207417050800478037, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: path
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401970318894642103, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337598966059698498, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: path
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660137327448714656, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505597436600847399, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678482584673790976, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: path
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468553771836577525, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1788423e915b734b8c53234dce659e2, type: 3}

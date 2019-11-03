@@ -8,9 +8,8 @@ public class InteractableByCost : MonoBehaviour
     [SerializeField] private WholeProgress userScore;
     [Header("disable settings")]
     [Tooltip("to disable interactivity")]
-    [SerializeField] private CanvasGroup canvasg;
-    [Space]
-    [SerializeField] [Range(0, 1)] private float disabledAlpha = 0.6f;
+    [SerializeField] private InteractableByPriority interact;
+    [SerializeField] private int disablePriority = 0;
 
     private UserProgressCostBinding costBinding;
 
@@ -30,13 +29,11 @@ public class InteractableByCost : MonoBehaviour
 
     private void UserScore_OnMoneyChanged(float money)
     {
-        SetEnadled(money >= costBinding.CostBindingSource.EvaluateRelated);
+        SetEnabled(money >= costBinding.CostBindingSource.EvaluateRelated);
     }
 
-    private void SetEnadled(bool enabled)
+    private void SetEnabled(bool enabled)
     {
-        canvasg.interactable = enabled;
-
-        canvasg.alpha = enabled ? 1 : disabledAlpha;
+        interact.SetEnabled(enabled, disablePriority);
     }
 }

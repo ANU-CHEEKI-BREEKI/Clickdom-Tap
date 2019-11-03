@@ -24,6 +24,11 @@ public class ProgressUpgradeObserver : MonoBehaviour
         speeds = GetComponents<ISpeedSettable>();
 
         Subscribe();
+
+        //SetCount(progress.Count.Value, progress.Count.Value);
+        //SetDamage(progress.Damage .Value, progress.Count.Value);
+        //SetFrequency(progress.SpawnRate.Value, progress.Count.Value);
+        //SetSpeed(progress.AttackSpeed.Value, progress.Count.Value);
     }
 
     private void OnDestroy()

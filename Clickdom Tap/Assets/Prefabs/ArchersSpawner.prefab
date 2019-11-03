@@ -162,6 +162,8 @@ GameObject:
   - component: {fileID: 1964236010006659632}
   - component: {fileID: 3098815629916385165}
   - component: {fileID: 3550666286225924679}
+  - component: {fileID: 9212391947690614101}
+  - component: {fileID: 5829169751731886045}
   m_Layer: 0
   m_Name: ArchersSpawner
   m_TagString: Untagged
@@ -211,13 +213,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   count:
+    maxProgress: 60
     progressValue: 0
   spawnRate:
+    maxProgress: 60
     progressValue: 1
   damage:
+    maxProgress: 60
     progressValue: 1
   attackSpeed:
-    progressValue: 1
+    maxProgress: 60
+    progressValue: 15
 --- !u!114 &3550666286225924679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +241,7 @@ MonoBehaviour:
   scaleByPosSettings: {fileID: 0}
   flipHorisontalScale: 0
   animationProvider: {fileID: 0}
+  forAnimation: 04000000
   squadId: 1
   squadPosition: {fileID: 6235383419969632547}
   squadData: {fileID: 11400000, guid: 6bfbb7c6b1b4efd4b926abd973158b71, type: 2}
@@ -249,6 +256,31 @@ MonoBehaviour:
   shootTarget3: {fileID: 7333913536852350370}
   shootTarget4: {fileID: 734304697465023642}
   shootRandomSpread: 0.5
+--- !u!114 &9212391947690614101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010530203703613902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96bbd425368e8b4090b106085da5678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5829169751731886045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010530203703613902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3382fbcd51752d042a652ef73edaa9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forAnimation: 04000000
 --- !u!1 &6067825792396837159
 GameObject:
   m_ObjectHideFlags: 0

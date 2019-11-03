@@ -8,8 +8,12 @@ public class UserProgressButtonBinding : MonoBehaviour
 {
     [Header("binding value")]
     [SerializeField] protected float value;
+    [SerializeField] protected UserProgressBinding[] additionalBindings;
+
     [Header("interactable bindins")]
-    [SerializeField] [Range(0, 1)] private float disabledAlpha = 0.6f;
+    [SerializeField] private bool bindingIntecactable = true;
+    [SerializeField] private InteractableByPriority interact;
+    [SerializeField] private int disablePriority = 0;
     [SerializeField] private GameObject[] toDeactivate;
     [Header("button")]
     [SerializeField] private Button button;
@@ -32,21 +36,24 @@ public class UserProgressButtonBinding : MonoBehaviour
                 return;
 
             binding.BindingSource.Value += value;
-            SetEnabled(binding.BindingSource.PercentValue < 1);
+            foreach (var addbinding in additionalBindings)
+                addbinding.BindingSource.Value += value;
+
+            if (bindingIntecactable)
+                SetEnabled(binding.BindingSource.PercentValue < 1);
 
             score.Money -= cost;
         });
 
-        SetEnabled(binding.BindingSource.PercentValue < 1);
+        if (bindingIntecactable)
+            SetEnabled(binding.BindingSource.PercentValue < 1);
     }
 
     private void SetEnabled(bool enabled)
     {
-        canvasg.interactable = enabled;
+        interact.SetEnabled(enabled, disablePriority);
 
         foreach (var go in toDeactivate)
             go?.SetActive(enabled);
-
-        canvasg.alpha = enabled ? 1 : disabledAlpha;
     }
 }

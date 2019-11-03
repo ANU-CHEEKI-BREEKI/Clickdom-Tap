@@ -51,5 +51,15 @@ public class ProgressCost
         }
     }
 
-    public float Evaluate(float t) => Mathf.Lerp(minCost, maxCost, costCurve.Evaluate(t));
+    public float Evaluate(float t)
+    {
+        var cost = Mathf.Lerp(minCost, maxCost, costCurve.Evaluate(t));
+
+        var numLen = ((int)cost).ToString().Length;
+        var periods = Mathf.Clamp(numLen - 2, 0, 255);
+
+        var digits =  (int)Mathf.Pow(10, periods);
+
+        return (float)System.Math.Round(cost / digits, 0) * digits;
+    }
 }

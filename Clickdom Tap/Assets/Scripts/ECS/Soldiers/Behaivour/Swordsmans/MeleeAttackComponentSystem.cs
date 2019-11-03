@@ -13,6 +13,7 @@ using UnityEngine;
 
 public struct MeleeAttackComponentData : IComponentData
 {
+    public bool attackEventFlag;
     public float damage;
 }
 
@@ -34,14 +35,28 @@ public class MeleeAttackComponentSystem : ComponentSystem
         }
     }
 
+    [RequireComponentTag(typeof(SwordsmanTagComponentData))]
+    [BurstCompile]
+    public struct ResetAttackFlag : IJobForEach<MeleeAttackComponentData>
+    {
+        public void Execute(ref MeleeAttackComponentData attack)
+        {
+            attack.attackEventFlag = false;
+        }
+    }
+
     protected override void OnUpdate()
     {
+        var resethandle = new ResetAttackFlag()
+        {
+        }.Schedule(this);
+
         var query = GetEntityQuery(
             ComponentType.ReadOnly<SwordsmanTagComponentData>(),
             ComponentType.ReadOnly<MeleeTargetComponentData>(),
             ComponentType.ReadOnly<ActionOnAnimationFrameComponentData>(),
             ComponentType.ReadOnly<SpriteSheetAnimationComponentData>(),
-            ComponentType.ReadOnly<MeleeAttackComponentData>()
+            ComponentType.ReadWrite<MeleeAttackComponentData>()
         );
         var cnt = query.CalculateEntityCount();
 
@@ -50,6 +65,8 @@ public class MeleeAttackComponentSystem : ComponentSystem
         {
             detectedActionEntities = detectedActionEntities.AsParallelWriter()
         }.Schedule(this);
+
+        resethandle.Complete();
 
         var entities = query.ToEntityArray(Allocator.TempJob);
         var targets = query.ToComponentDataArray<MeleeTargetComponentData>(Allocator.TempJob);
@@ -71,10 +88,18 @@ public class MeleeAttackComponentSystem : ComponentSystem
                 continue;
 
             var atackData = atackDatas[i];
+            atackData.attackEventFlag = true;
+            EntityManager.SetComponentData(entity, atackData);
             //наносим урон
             var enemyHealth = EntityManager.GetComponentData<HealthComponentData>(target);
             enemyHealth.value -= atackData.damage;
             EntityManager.SetComponentData(target, enemyHealth);
+
+            //после удара сбрасываем цель
+            EntityManager.SetComponentData(entity, new MeleeTargetComponentData()
+            {
+                target = Entity.Null
+            });
         }
 
         entities.Dispose();

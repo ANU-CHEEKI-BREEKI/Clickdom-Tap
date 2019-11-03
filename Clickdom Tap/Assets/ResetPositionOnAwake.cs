@@ -11,6 +11,12 @@ public class ResetPositionOnAwake : MonoBehaviour
 
     private void Awake()
     {
+        ResetPosition();
+    }
+
+    [ContextMenu("ResetPosition")]
+    private void ResetPosition()
+    {
         if (!enabled) return;
 
         var newPos = resetPosition;

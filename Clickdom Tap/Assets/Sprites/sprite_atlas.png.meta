@@ -158,6 +158,30 @@ TextureImporter:
   - first:
       213: -8190799070003381337
     second: spritesheet_numbers_10f
+  - first:
+      213: 2308765580234064941
+    second: icon_sword
+  - first:
+      213: 3134570664356912180
+    second: ison_archer
+  - first:
+      213: -722640908404139206
+    second: icon_ram
+  - first:
+      213: 8744317983284358825
+    second: icon_trebuchet
+  - first:
+      213: -922198145025421034
+    second: icon_frequency
+  - first:
+      213: 6419319919173709906
+    second: icon_speed
+  - first:
+      213: 5389778403257052593
+    second: icon_count
+  - first:
+      213: 3403330769429977085
+    second: icon_damage
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1413,6 +1437,174 @@ TextureImporter:
       bones: []
       spriteID: 9217133a6d5367141977f519fc3ced4d
       internalID: -8190799070003381337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_sword
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1297
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82204dccdf8f3d248a60dbf032969f49
+      internalID: 2308765580234064941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ison_archer
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1297
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7702cf0002dd9aa4898f2d36c43f1f13
+      internalID: 3134570664356912180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_ram
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 1297
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db8b21b6ea381d84e843f9371867a0ad
+      internalID: -722640908404139206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_trebuchet
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1297
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc07d736b0fc5cf48b3d2ccb9aeb4f27
+      internalID: 8744317983284358825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_frequency
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 1248
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2a385aa5f7c38448a8688f77976bfb5
+      internalID: -922198145025421034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_speed
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 1250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7792e6ae346284e90161ab99e292c3
+      internalID: 6419319919173709906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_count
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 1247
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb8224aa0a4aea4a93aaf684bcad9e7
+      internalID: 5389778403257052593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_damage
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 1247
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d184b593ca8cf43bdf2b4aeaa79603
+      internalID: 3403330769429977085
       vertices: []
       indices: 
       edges: []

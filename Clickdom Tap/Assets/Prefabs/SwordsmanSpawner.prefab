@@ -42,6 +42,9 @@ GameObject:
   - component: {fileID: 515951232119866031}
   - component: {fileID: 3797396703113117246}
   - component: {fileID: 2933442921217890998}
+  - component: {fileID: -1552290536768507364}
+  - component: {fileID: 6520975263373587670}
+  - component: {fileID: 5967738715514505027}
   m_Layer: 0
   m_Name: SwordsmanSpawner
   m_TagString: Untagged
@@ -96,6 +99,7 @@ MonoBehaviour:
   scaleByPosSettings: {fileID: 0}
   flipHorisontalScale: 0
   animationProvider: {fileID: 11400000, guid: 507392eeb3abf25449c597167d4e09c0, type: 2}
+  forAnimation: 03000000
   squadId: 2
   squadPosition: {fileID: 9005069450177004891}
   squadData: {fileID: 11400000, guid: 9178cfd8801ccfa4689c9c401f3fb32a, type: 2}
@@ -104,7 +108,7 @@ MonoBehaviour:
   tint: {r: 1, g: 1, b: 1, a: 1}
   spavnFrequency: 1
   maxEntityCoun: 0
-  targetFindingRange: 0.5
+  targetFindingRange: 0.25
   meeleeDamage: 1
 --- !u!114 &2933442921217890998
 MonoBehaviour:
@@ -120,10 +124,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   count:
-    value: 0
+    maxProgress: 60
+    progressValue: 0
   spawnRate:
-    value: 0
+    maxProgress: 60
+    progressValue: 1
   damage:
-    value: 0
+    maxProgress: 60
+    progressValue: 1
   attackSpeed:
-    value: 0
+    maxProgress: 60
+    progressValue: 15
+--- !u!114 &-1552290536768507364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848252148881765136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74dc025cdbd32db48bf4c48625826f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6520975263373587670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848252148881765136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e917f1778d96ef40935921c1a6610f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5967738715514505027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848252148881765136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3382fbcd51752d042a652ef73edaa9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forAnimation: 03000000
