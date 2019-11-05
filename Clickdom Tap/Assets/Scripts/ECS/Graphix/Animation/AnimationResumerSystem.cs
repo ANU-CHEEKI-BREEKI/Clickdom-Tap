@@ -22,6 +22,9 @@ public class AnimationResumerSystem : JobComponentSystem
 
         public void Execute(ref AnimationPauseComponentData pause, ref SpriteSheetAnimationComponentData animation)
         {
+            if (!pause.needResume)
+                return;
+
             pause.timerToResume -= deltaTime;
             if (pause.timerToResume <= 0)
             {

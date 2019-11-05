@@ -104,6 +104,9 @@
     <Compile Include="Assets\Scripts\ECS\SimpleConvertionToEntity.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\ArcherShootSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\ShootTargetBySquadUpdateSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\VolleySystem\VolleyAnimationPauserSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\VolleySystem\VolleyAnimationResumerSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\VolleySystem\VolleySquadsCollectorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\FindMeleeTargetSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\MeleeAttackComponentSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\StopMoveIfHasTargetSystem.cs" />

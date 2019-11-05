@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  renderScale:
-    x: 1
-    y: 1
   spriteSheet: {fileID: -7237757063699679498, guid: 0a739c874497c434b9f64cb6d2f84e6b,
     type: 3}
   framesCount: 29
@@ -28,7 +25,7 @@ MonoBehaviour:
   pauseData:
     pauseOnFrame: 23
     pauseDuration: 2
-    pauseSpread: 0.15
+    pauseSpread: 0.4
   needActionOnFrame: 1
   actionData:
     frame: 25

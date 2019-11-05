@@ -107,6 +107,7 @@ public class ArcherSpawner : ASpawner, IDamageSettable
                 randomSpread = shootRandomSpread
             });
         }
+        manager.AddComponent<VolleyAnimationPauseTagComponentData>(entity);
     }
 
     protected override void SetEntitySharedComponentsData(Entity entity, EntityManager manager)

@@ -22,6 +22,7 @@ public struct PauseData
 public struct AnimationPauseComponentData : IComponentData
 {
     public bool needPause;
+    public bool needResume;
     public PauseData pauseData;
     public float timerToResume;
 }

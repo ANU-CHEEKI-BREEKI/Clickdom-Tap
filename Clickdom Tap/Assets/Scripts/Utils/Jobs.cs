@@ -24,5 +24,44 @@ namespace ANU.Utils
                 Algoritm.QuickSort<NativeArrayIndexer<T>, T>(ref indexer, descending);
             }
         }
+
+        [BurstCompile]
+        public struct MultiHashToQueueJob<TKey, TVal> : IJob where TKey : struct, IEquatable<TKey> where TVal : struct
+        {
+            public NativeQueue<TVal> queue;
+            [ReadOnly] public NativeMultiHashMap<TKey, TVal> map;
+            [ReadOnly] public TKey key;
+
+            public void Execute()
+            {
+                TVal rdata;
+                NativeMultiHashMapIterator<TKey> iterator;
+                if (map.TryGetFirstValue(key, out rdata, out iterator))
+                {
+                    queue.Enqueue(rdata);
+                    while (map.TryGetNextValue(out rdata, ref iterator))
+                        queue.Enqueue(rdata);
+                }
+            }
+        }
+
+        [BurstCompile]
+        public struct QueueToArrayJob<T> : IJob where T : struct
+        {
+            public NativeArray<T> array;
+            public NativeQueue<T> queue;
+
+            public void Execute()
+            {
+                int index = 0;
+                int arrayLength = array.Length;
+                T rdata;
+                while (index < arrayLength && queue.TryDequeue(out rdata))
+                {
+                    array[index] = rdata;
+                    index++;
+                }
+            }
+        }
     }
 }

@@ -246,7 +246,7 @@ MonoBehaviour:
   squadPosition: {fileID: 6235383419969632547}
   squadData: {fileID: 11400000, guid: 6bfbb7c6b1b4efd4b926abd973158b71, type: 2}
   faction: 0
-  health: 3
+  health: 1
   tint: {r: 1, g: 1, b: 1, a: 1}
   spavnFrequency: 1
   maxEntityCoun: 0

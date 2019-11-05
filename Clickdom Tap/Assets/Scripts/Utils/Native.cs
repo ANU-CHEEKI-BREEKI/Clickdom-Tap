@@ -93,5 +93,13 @@ namespace ANU.Utils
 
             return res;
         }
+
+        public static bool ContainsValue<Tval>(this NativeArray<Tval> array, Tval value) where Tval : struct, IEquatable<Tval>
+        {
+            for (int i = 0; i < array.Length; i++)
+                if (array[i].Equals(value))
+                    return true;
+            return false;
+        }
     }
 }

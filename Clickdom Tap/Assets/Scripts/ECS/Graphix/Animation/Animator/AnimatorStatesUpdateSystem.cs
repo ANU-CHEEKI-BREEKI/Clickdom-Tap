@@ -31,12 +31,21 @@ public struct AnimatorStateLastTriggeredAnimationComponentData : IComponentData
 public class AnimatorStatesUpdateSystem : JobComponentSystem
 {
     [BurstCompile]
+    struct ResetFlagSystem : IJobForEach<AnimatorStatesComponentData>
+    {
+        public void Execute(ref AnimatorStatesComponentData states)
+        {
+            states.out_StateChangedEventFlag = false;
+        }
+    }
+
+    [BurstCompile]
     struct MovementStateUpdateJob : IJobForEach<LinearMovementComponentData, AnimatorStatesComponentData>
     {
         public void Execute([ReadOnly] ref LinearMovementComponentData move, ref AnimatorStatesComponentData states)
         {
             if (states.running != move.isMoving)
-                states.stateChangedEventFlag = true;
+                states.out_StateChangedEventFlag = true;
             states.running = move.isMoving;
         }
     }
@@ -48,7 +57,7 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
         {
             var hasTarget = melee.target != Entity.Null;
             if (states.fighting != hasTarget)
-                states.stateChangedEventFlag = true;
+                states.out_StateChangedEventFlag = true;
             states.fighting = hasTarget;
         }
     }
@@ -60,7 +69,7 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
         public void Execute([ReadOnly] ref LinearMovementComponentData move, ref AnimatorStatesComponentData states)
         {
             if (states.shooting == move.isMoving)
-                states.stateChangedEventFlag = true;
+                states.out_StateChangedEventFlag = true;
             states.shooting = !move.isMoving;
         }
     }
@@ -130,37 +139,37 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
             {
                 case AnimationType.RUN:
                     if (states.running != triggered)
-                        states.stateChangedEventFlag = true;
+                        states.out_StateChangedEventFlag = true;
                     states.running = triggered;
                     break;
                 case AnimationType.CLIMB:
                     if (states.climbing != triggered)
-                        states.stateChangedEventFlag = true;
+                        states.out_StateChangedEventFlag = true;
                     states.climbing = triggered;
                     break;
                 case AnimationType.FIGHT:
                     if (states.fighting != triggered)
-                        states.stateChangedEventFlag = true;
+                        states.out_StateChangedEventFlag = true;
                     states.fighting = triggered;
                     break;
                 case AnimationType.SHOOT:
                     if (states.shooting != triggered)
-                        states.stateChangedEventFlag = true;
+                        states.out_StateChangedEventFlag = true;
                     states.shooting = triggered;
                     break;
                 case AnimationType.DEATH:
                     if (states.death != triggered)
-                        states.stateChangedEventFlag = true;
+                        states.out_StateChangedEventFlag = true;
                     states.death = triggered;
                     break;
                 case AnimationType.JUMP:
                     if (states.jumping != triggered)
-                        states.stateChangedEventFlag = true;
+                        states.out_StateChangedEventFlag = true;
                     states.jumping = triggered;
                     break;
                 case AnimationType.FALL:
                     if (states.falling != triggered)
-                        states.stateChangedEventFlag = true;
+                        states.out_StateChangedEventFlag = true;
                     states.falling = triggered;
                     break;
                 default:
@@ -169,22 +178,40 @@ public class AnimatorStatesUpdateSystem : JobComponentSystem
         }
     }
 
+    private NativeArray<AnimatorStateTriggerComponentData> zones;
+
+    protected override void OnCreate()
+    {
+        base.OnCreate();
+        zones = new NativeArray<AnimatorStateTriggerComponentData>(0, Allocator.TempJob);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        zones.Dispose();
+    }
+
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         var query = GetEntityQuery(typeof(AnimatorStateTriggerComponentData));
-        var zones = query.ToComponentDataArray<AnimatorStateTriggerComponentData>(Allocator.TempJob);
 
-        var completeHandle = new TriggerStateUpdateJob()
+        zones.Dispose();
+        zones = query.ToComponentDataArray<AnimatorStateTriggerComponentData>(Allocator.TempJob);
+
+        var resetHandler = new ResetFlagSystem().Schedule(this, inputDeps);
+
+        var triggetUpdaterHandler = new TriggerStateUpdateJob()
         {
             triggerZones = zones
-        }.Schedule(this, inputDeps);        
+        }.Schedule(this, resetHandler);        
 
-        var handle = new MovementStateUpdateJob().Schedule(this, completeHandle);
+        var handle = new MovementStateUpdateJob().Schedule(this, triggetUpdaterHandler);
         handle = new MeleeAttackStateUpdateJob().Schedule(this, handle);
         handle = new ShootingStateUpdateJob().Schedule(this, handle);
 
-        completeHandle.Complete();
-        zones.Dispose();
+        //triggetUpdaterHandler.Complete();
+        //zones.Dispose();
 
         return handle;
     }

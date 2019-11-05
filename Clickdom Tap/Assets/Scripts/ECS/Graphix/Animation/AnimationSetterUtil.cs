@@ -98,6 +98,7 @@ public static class AnimationSetterUtil
                     manager.AddComponent<SpriteSheetAnimationComponentData>(entity);
 
                 var val = anim.value;
+                val.out_FrameChangedEventFlag = true;
                 if(randomInitFrameRange != null)
                 {
                     var range = math.clamp(randomInitFrameRange.Value, 0, val.frameCount);
@@ -116,6 +117,7 @@ public static class AnimationSetterUtil
                         manager.SetComponentData(entity, new AnimationPauseComponentData()
                         {
                             needPause = true,
+                            needResume = true,
                             pauseData = pause.value
                         });
                     }

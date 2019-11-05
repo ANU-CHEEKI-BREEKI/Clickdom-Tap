@@ -21,7 +21,7 @@ public struct AnimatorStatesComponentData : IComponentData
     public bool jumping;
     public bool falling;
 
-    public bool stateChangedEventFlag;
+    public bool out_StateChangedEventFlag;
 }
 
 [UpdateInGroup(typeof(PresentationSystemGroup))]
@@ -41,8 +41,8 @@ public class AnimatorSystem : ComponentSystem
 
         public void Execute(Entity entity, int index, ref AnimatorStatesComponentData states)
         {
-            if (!states.stateChangedEventFlag) return;
-            states.stateChangedEventFlag = false;
+            if (!states.out_StateChangedEventFlag) return;
+            //states.stateChangedEventFlag = false;
 
             var setData = new SetterData() { entity = entity, animation = AnimationType.IDLE };
 

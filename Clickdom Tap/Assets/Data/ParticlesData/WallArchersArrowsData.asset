@@ -27,7 +27,7 @@ MonoBehaviour:
       type: 4
       destroyDelay: -1
       animation: 0
-      absoluteProjectileVelocity: 1
+      absoluteProjectileVelocity: 0
       direction:
         x: 0
         y: 0
