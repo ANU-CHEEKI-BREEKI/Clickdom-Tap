@@ -150,8 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c8a6cb8734f0e449f0b2b73ed96377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDuration: 0.3
+  holdDuration: 0.5
+  clickMaxDuration: 0.25
   onExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  onClickExecute:
     m_PersistentCalls:
       m_Calls: []
   onBeginHold:

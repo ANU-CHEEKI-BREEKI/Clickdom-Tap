@@ -182,6 +182,18 @@ TextureImporter:
   - first:
       213: 3403330769429977085
     second: icon_damage
+  - first:
+      213: 7821495781897733626
+    second: hand_1
+  - first:
+      213: -8022500013068143544
+    second: hand_2
+  - first:
+      213: 8564092109643153127
+    second: hand_3
+  - first:
+      213: 2478794324347671373
+    second: touch
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1605,6 +1617,90 @@ TextureImporter:
       bones: []
       spriteID: 88d184b593ca8cf43bdf2b4aeaa79603
       internalID: 3403330769429977085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_1
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 1199
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.3888575, y: 0.91987354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89bba739255826a47b8c841846c906e9
+      internalID: 7821495781897733626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_2
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 1199
+        width: 46
+        height: 47
+      alignment: 9
+      pivot: {x: 0.409798, y: 0.10482463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 735b1c6df3628614f8d8baf06580bb45
+      internalID: -8022500013068143544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_3
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 1202
+        width: 47
+        height: 45
+      alignment: 9
+      pivot: {x: 0.18049784, y: 0.15751411}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5e46e5ad25dab4b863f4547ece855b
+      internalID: 8564092109643153127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: touch
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 1200
+        width: 52
+        height: 19
+      alignment: 9
+      pivot: {x: 0.56079805, y: 0.5416003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2acec4c381d36a64d8c034234817f641
+      internalID: 2478794324347671373
       vertices: []
       indices: 
       edges: []

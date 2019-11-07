@@ -96,6 +96,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AllyArchersSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3098815629916385165, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: count.maxProgress
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4010530203703613936, guid: 67b3c856c13bace499789ad496458335,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -150,11 +155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3098815629916385165, guid: 67b3c856c13bace499789ad496458335,
-        type: 3}
-      propertyPath: count.maxProgress
-      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5613588966230744909, guid: 67b3c856c13bace499789ad496458335, type: 3}

@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Data\ZByYSettings.cs" />
     <Compile Include="Assets\Scripts\DeactivateGroup.cs" />
     <Compile Include="Assets\Scripts\DelayStartAnimation.cs" />
+    <Compile Include="Assets\Scripts\DrawTypeBinding.cs" />
     <Compile Include="Assets\Scripts\ECS\AlphaAnimation.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWhenHealthZeroSystem.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\Animator\AnimatorStatesUpdateSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\Animator\AnimatorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\SpriteSheetAnimationSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetDynamicRendererSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetInstancedRendererSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\LinearMovementSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\SequenceMovementSystem.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacesByParticlesSystem.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShakerTrigger.cs" />
+    <Compile Include="Assets\Scripts\GO\FolowToTransform.cs" />
     <Compile Include="Assets\Scripts\GO\InteractableByPriority.cs" />
     <Compile Include="Assets\Scripts\GO\PopUpNumbers.cs" />
     <Compile Include="Assets\Scripts\GO\RopeRenderer.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Assets\Scripts\GO\ScaleByPosition.cs" />
     <Compile Include="Assets\Scripts\GO\TrebuchetShooter.cs" />
     <Compile Include="Assets\Scripts\GO\ZByY.cs" />
+    <Compile Include="Assets\Scripts\GraphixSettingsHolder.cs" />
     <Compile Include="Assets\Scripts\ParticleStarter.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\InteractableByCost.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressBinding.cs" />
@@ -146,6 +150,7 @@
     <Compile Include="Assets\Scripts\Progress\UserProgressCost.cs" />
     <Compile Include="Assets\Scripts\Progress\WholeProgress.cs" />
     <Compile Include="Assets\Scripts\Progress\WholeProgressHandle.cs" />
+    <Compile Include="Assets\Scripts\RenderSettings.cs" />
     <Compile Include="Assets\Scripts\SequencePath.cs" />
     <Compile Include="Assets\Scripts\SwordDamageApdater.cs" />
     <Compile Include="Assets\Scripts\Test\DebugQuadrantSystem.cs" />

@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 586693634743557926}
   - component: {fileID: 3012337410277727889}
   - component: {fileID: 983966813852045627}
+  - component: {fileID: -1160200039990059449}
   m_Layer: 5
   m_Name: UpgradePopUp
   m_TagString: Untagged
@@ -313,6 +314,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-1160200039990059449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8182140816316503439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1292356cdfba942b9788fbea791a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toFolow: {fileID: 0}
+  onlyOnStart: 1
+  updateDeltaTime: 0.2
+  scaledTime: 1
 --- !u!1001 &1661674679905885173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,17 +447,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1043992587742088125, guid: 5c0dff02e3099f44e83833098f3640d5,
+    - target: {fileID: 7296992888663511945, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3403330769429977085, guid: 0a739c874497c434b9f64cb6d2f84e6b,
-        type: 3}
-    - target: {fileID: 6534857546358681832, guid: 5c0dff02e3099f44e83833098f3640d5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -922198145025421034, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+      objectReference: {fileID: 5389778403257052593, guid: 0a739c874497c434b9f64cb6d2f84e6b,
         type: 3}
     - target: {fileID: 8981669335169773311, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
@@ -448,11 +459,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6419319919173709906, guid: 0a739c874497c434b9f64cb6d2f84e6b,
         type: 3}
-    - target: {fileID: 7296992888663511945, guid: 5c0dff02e3099f44e83833098f3640d5,
+    - target: {fileID: 6534857546358681832, guid: 5c0dff02e3099f44e83833098f3640d5,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5389778403257052593, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+      objectReference: {fileID: -922198145025421034, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+        type: 3}
+    - target: {fileID: 1043992587742088125, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3403330769429977085, guid: 0a739c874497c434b9f64cb6d2f84e6b,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0dff02e3099f44e83833098f3640d5, type: 3}

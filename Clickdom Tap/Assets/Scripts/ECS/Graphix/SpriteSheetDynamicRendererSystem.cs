@@ -16,47 +16,10 @@ using Unity.Transforms;
 using UnityEngine;
 using static ANU.Utils.Jobs;
 
-[Serializable]
-public struct SpriteRendererComponentData : IComponentData
-{
-    public Vector4 uv;
-}
-
-[Serializable]
-public struct SpriteTintComponentData : IComponentData
-{
-    public Vector4 color;
-}
-
-public struct RenderScaleComponentdata : IComponentData
-{
-    public float2 value;
-}
-
-public struct RenderSharedComponentData : ISharedComponentData, IEquatable<RenderSharedComponentData>
-{
-    public Mesh mesh;
-    public Material material;
-
-    public bool Equals(RenderSharedComponentData other)
-    {
-        if (mesh == null && other.mesh != null) return false;
-        if (mesh != null && other.mesh == null) return false;
-        if (material == null && other.material != null) return false;
-        if (material != null && other.material == null) return false;
-        if (mesh == null && material == null && other.mesh == null && other.material == null) return false;
-        return ReferenceEquals(mesh, other.mesh) && ReferenceEquals(material, other.material);
-    }
-
-    public override int GetHashCode()
-    {
-        return mesh.GetHashCode() * 12 + material.GetHashCode() * 5;
-    }
-}
-
 [UpdateInGroup(typeof(PresentationSystemGroup))]
 [UpdateAfter(typeof(SpriteSheetAnimationSystem))]
-public class SpriteSheetInstancedRendererSystem : ComponentSystem
+[UpdateBefore(typeof(SpriteSheetInstancedRendererSystem))]
+public class SpriteSheetDynamicRendererSystem : ComponentSystem
 {
     public struct RenderData : IComparable<RenderData>
     {
@@ -146,32 +109,9 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             }
         }
     }
-
-    [BurstCompile]
-    public struct MergeArraysParallelJob : IJobParallelFor
-    {
-        [ReadOnly] public int startIndex;
-        [ReadOnly] public NativeArray<RenderData> sourceArray;
-        public NativeArray<Matrix4x4> matrices;
-        public NativeArray<Vector4> uvs;
-        public NativeArray<Vector4> colors;
-
-        public void Execute(int index)
-        {
-            var rdata = sourceArray[index];
-            matrices[startIndex + index] = rdata.matrix;
-            uvs[startIndex + index] = rdata.uv;
-            colors[startIndex + index] = rdata.color;
-        }
-    }
            
     private EntityManager manager;
-    public static bool DoUpdate { get; set; } = false;
-
-    private const int drawCallSize = 1023;
-    private Matrix4x4[] matricesInstanced = new Matrix4x4[drawCallSize];
-    private Vector4[] uvsInstanced = new Vector4[drawCallSize];
-    private Vector4[] colorsInstanced = new Vector4[drawCallSize];
+    public static bool DoUpdate { get; set; } = true;
 
     protected override void OnCreate()
     {
@@ -225,81 +165,30 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
 
         for (int j = 0; j < chunksIndices.Length; j++)
         {
+            var chunkIndex = chunksIndices[j];
+
             ArchetypeChunk chunk;
-            if (!chunkMap.TryGetValue(chunksIndices[j], out chunk)) continue;
+            if (!chunkMap.TryGetValue(chunkIndex, out chunk)) continue;
 
-            //теперь надо получить из словаря данные для нужного sharedIndex
-            var sharedQueue = new NativeQueue<RenderData>(Allocator.TempJob);
-            new MultiHashToQueueJob<int, RenderData>()
-            {
-                queue = sharedQueue,
-                key = chunksIndices[j],
-                map = chunkDataMap
-            }.Schedule().Complete();
-            //списки перевести в массивы, чтобы можно было сортировать            
-            var sharedArray = new NativeArray<RenderData>(sharedQueue.Count, Allocator.TempJob);
-            new QueueToArrayJob<RenderData>()
-            {
-                array = sharedArray,
-                queue = sharedQueue
-            }.Schedule().Complete();
-
-            //сортировка всех массивов паралельно
-            int fullVisibleCount = sharedArray.Length;          
-            new Jobs.QuickSortRecursivelyJob<RenderData>
-            {
-                sortArray = sharedArray,
-                descending = true
-            }.Schedule().Complete();
-
-            //слитие массивов в один большой
-            var matrices = new NativeArray<Matrix4x4>(fullVisibleCount, Allocator.TempJob);
-            var uvs = new NativeArray<Vector4>(fullVisibleCount, Allocator.TempJob);
-            var colors = new NativeArray<Vector4>(fullVisibleCount, Allocator.TempJob);
-
-            new MergeArraysParallelJob()
-            {
-                sourceArray = sharedArray,
-                startIndex = 0,
-                matrices = matrices,
-                uvs = uvs,
-                colors = colors
-            }.Schedule(sharedArray.Length, 10).Complete();
-
-            //драв колы по 1023 ентити за раз
-            var sharedData = manager.GetSharedComponentData<RenderSharedComponentData>(chunksIndices[j]);
+            var sharedData = manager.GetSharedComponentData<RenderSharedComponentData>(chunkIndex);
             var mesh = sharedData.mesh;
             var material = sharedData.material;
-            
-            int drawnCount = 0;
-            while (drawnCount < fullVisibleCount)
+
+            chunkDataMap.IterateForKey(chunkIndex, (data)=>
             {
-                var callSize = math.min(drawCallSize, fullVisibleCount - drawnCount);
+                mpb.SetVector(uv_MaterialPropId, data.uv);
+                mpb.SetColor(color_MaterialPropId, data.color);
 
-                NativeArray<Matrix4x4>.Copy(matrices, drawnCount, matricesInstanced, 0, callSize);
-                NativeArray<Vector4>.Copy(uvs, drawnCount, uvsInstanced, 0, callSize);
-                NativeArray<Vector4>.Copy(colors, drawnCount, colorsInstanced, 0, callSize);
-
-                mpb.SetVectorArray(uv_MaterialPropId, uvsInstanced);
-                mpb.SetVectorArray(color_MaterialPropId, colorsInstanced);
-
-                Graphics.DrawMeshInstanced(
+                Graphics.DrawMesh(
                     mesh,
-                    0,
+                    data.matrix,
                     material,
-                    matricesInstanced,
-                    callSize,
+                    0,
+                    camera,
+                    0,
                     mpb
                 );
-
-                drawnCount += callSize;
-            }
-
-            sharedQueue.Dispose();
-            sharedArray.Dispose();           
-            matrices.Dispose();
-            uvs.Dispose();
-            colors.Dispose();
+            }); 
         }
 
         chunksIndices.Dispose();
