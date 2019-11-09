@@ -62,12 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CircleProgressBarAutoTimer.cs" />
     <Compile Include="Assets\FloatToText.cs" />
     <Compile Include="Assets\HoldButton.cs" />
     <Compile Include="Assets\LinearProgressBar.cs" />
     <Compile Include="Assets\ResetPositionOnAwake.cs" />
     <Compile Include="Assets\Scripts\AnimationPauseApdater.cs" />
     <Compile Include="Assets\Scripts\AnimatorTrigger.cs" />
+    <Compile Include="Assets\Scripts\ArchersVolleyManualTrigger.cs" />
     <Compile Include="Assets\Scripts\ArrowDamageUpdater.cs" />
     <Compile Include="Assets\Scripts\AutoRemoveWhenStops.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
@@ -91,6 +93,10 @@
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\Animator\AnimatorStatesUpdateSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\Animator\AnimatorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\SpriteSheetAnimationSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\ARendererCollectorSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\ARendererSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\DynamicRendererCollectorSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\InstancedRendererCollectorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetDynamicRendererSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetInstancedRendererSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\MovementSystem\LinearMovementSystem.cs" />

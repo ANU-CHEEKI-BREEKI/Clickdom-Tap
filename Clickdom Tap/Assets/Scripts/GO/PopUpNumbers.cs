@@ -39,7 +39,7 @@ public class PopUpNumbers : MonoBehaviour
         renderData = new RenderSharedComponentData()
         {
             material = numbersSpriteSheet.Material,
-            mesh = numbersSpriteSheet.Mesh
+            mesh = numbersSpriteSheet.Mesh,
         };
     }
     
@@ -89,7 +89,8 @@ public class PopUpNumbers : MonoBehaviour
                 endAlpha = floatData.aplhaAtDestroy,
                 duration = floatData.lifetime
             });
-            manager.AddComponentData(entity, new UniformMotiontagComponentData());
+            manager.AddComponent<UniformMotiontagComponentData>(entity);
+            manager.AddComponent<UseOnlyInstancedRendererTagComponentData>(entity);
             manager.AddSharedComponentData(entity, renderData);
             q++;
         }

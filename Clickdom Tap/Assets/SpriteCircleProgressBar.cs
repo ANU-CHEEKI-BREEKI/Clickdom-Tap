@@ -10,15 +10,28 @@ public class SpriteCircleProgressBar : MonoBehaviour
     private float progress;
     private Vector3 startScale;
 
-    private void Start()
-    {
-        startScale = fg.localScale;
+    private bool initiated = false;
 
+    private void Awake()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        if (initiated)
+            return;
+
+        initiated = true;
+        startScale = fg.localScale;
         SetProgress(0);
     }
 
     public void SetProgress(float progress)
     {
+        if (!initiated)
+            Init();
+
         progress = Mathf.Clamp01(progress);
         fg.localScale = Vector3.Lerp(Vector3.zero, startScale, progress);
     }

@@ -21,6 +21,9 @@ MonoBehaviour:
   type: 0
   minInitFrame: 0
   maxInitFrame: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 32
   needPauseOnFrame: 0
   pauseData:
     pauseOnFrame: 0

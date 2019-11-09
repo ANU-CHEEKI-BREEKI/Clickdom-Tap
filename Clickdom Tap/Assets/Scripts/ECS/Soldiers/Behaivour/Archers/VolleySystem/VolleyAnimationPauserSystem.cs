@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Burst;
+﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-using Unity.Mathematics;
-using Unity.Transforms;
-using UnityEngine;
 
 //[UpdateAfter(typeof(VolleySquadsCollectorSystem))]
 public class VolleyAnimationPauserSystem : JobComponentSystem
@@ -25,13 +17,8 @@ public class VolleyAnimationPauserSystem : JobComponentSystem
             if (!animator.shooting)
                 return;
 
-            if (
-                (animation.out_FrameChangedEventFlag && animation.currentFrame == 0) || 
-                (animator.out_StateChangedEventFlag)
-                )
-            {
+            if ((animation.out_FrameChangedEventFlag && animation.currentFrame == 0) || animator.out_StateChangedEventFlag)
                 pause.needResume = false;
-            }
         }
     }
 

@@ -1,17 +1,8 @@
-﻿using ANU.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-using Unity.Mathematics;
-using Unity.Transforms;
-using UnityEngine;
-using static ANU.Utils.Jobs;
 
 [UpdateAfter(typeof(VolleyAnimationPauserSystem))]
 [UpdateAfter(typeof(VolleySquadsCollectorSystem))]
@@ -77,12 +68,21 @@ public class VolleyAnimationResumerSystem : JobComponentSystem
 
     private NativeArray<int> sharedIndicesSquads;
     private NativeHashMap<int, int> toResumeSquadsIndices;
+    private NativeArray<int> prevFrameSquadIndicesToResume;
+
+    public event Action<NativeArray<int>> OnSquadsToResumeChanged;
+
+    public static VolleyAnimationResumerSystem Instance { get; private set; }
 
     protected override void OnCreate()
     {
         base.OnCreate();
+
+        Instance = this;
+
         sharedIndicesSquads = new NativeArray<int>(0, Allocator.TempJob);
         toResumeSquadsIndices = new NativeHashMap<int, int>(0, Allocator.TempJob);
+        prevFrameSquadIndicesToResume = new NativeArray<int>(0, Allocator.TempJob);
     }
 
     protected override void OnDestroy()
@@ -90,6 +90,7 @@ public class VolleyAnimationResumerSystem : JobComponentSystem
         base.OnDestroy();
         sharedIndicesSquads.Dispose();
         toResumeSquadsIndices.Dispose();
+        prevFrameSquadIndicesToResume.Dispose();
     }
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
@@ -101,6 +102,34 @@ public class VolleyAnimationResumerSystem : JobComponentSystem
            typeof(SpriteSheetAnimationComponentData),
            typeof(AnimationPauseComponentData)
         );
+       
+        var prevIndices = toResumeSquadsIndices.GetKeyArray(Allocator.TempJob);
+
+        //сравниваем индексы из предыдущего кадра. если поменялись, то вызываем ивент
+        prevIndices.Sort();
+        bool needEvent = false;
+        if (prevFrameSquadIndicesToResume.Length != prevIndices.Length)
+            needEvent = true;
+        else if (prevFrameSquadIndicesToResume.Length == prevIndices.Length)
+        {
+            for (int i = 0; i < prevIndices.Length; i++)
+            {
+                if(prevFrameSquadIndicesToResume[i] != prevIndices[i])
+                {
+                    needEvent = true;
+                    break;
+                }
+            }
+        }        
+        if(needEvent)//если поменялись, то вызываем ивент
+        { 
+            var eventArgs = new NativeArray<int>(prevIndices, Allocator.TempJob);
+            OnSquadsToResumeChanged.Invoke(prevIndices);
+            eventArgs.Dispose();
+        }
+
+        prevFrameSquadIndicesToResume.Dispose();
+        prevFrameSquadIndicesToResume = prevIndices;
 
         sharedIndicesSquads.Dispose();
         sharedIndicesSquads = VolleySquadsCollectorSystem.squads.GetKeyArray(Allocator.TempJob);

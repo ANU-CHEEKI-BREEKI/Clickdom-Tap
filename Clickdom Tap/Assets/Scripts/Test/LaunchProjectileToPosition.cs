@@ -25,7 +25,7 @@ public class LaunchProjectileToPosition : MonoBehaviour
         renderData = new RenderSharedComponentData()
         {
             material = projectileRenderData.Material,
-            mesh = projectileRenderData.Mesh
+            mesh = projectileRenderData.Mesh,
         };
     }
 

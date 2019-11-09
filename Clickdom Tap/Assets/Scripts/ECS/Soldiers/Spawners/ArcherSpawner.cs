@@ -80,7 +80,7 @@ public class ArcherSpawner : ASpawner, IDamageSettable
             renderData = new RenderSharedComponentData()
             {
                 material = projectilesData.Animation.Material,
-                mesh = projectilesData.Animation.Mesh
+                mesh = projectilesData.Animation.Mesh,
             },
             collisionData = projectilesData.Collision,
             launchData = projectilesData.Launch

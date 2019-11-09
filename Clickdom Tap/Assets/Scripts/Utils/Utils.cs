@@ -105,5 +105,11 @@ public static class Utils
         var mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos);
         return new float2(mouseWorldPos.x, mouseWorldPos.y);
     }
+
+    public static int GetFirstSetBitPos(this int n)
+    {
+        return (int)((Math.Log10(n & -n))
+                / Math.Log10(2)) + 1;
+    }
 }
 

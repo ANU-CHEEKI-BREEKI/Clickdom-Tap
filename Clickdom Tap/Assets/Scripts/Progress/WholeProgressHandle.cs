@@ -20,6 +20,9 @@ public class WholeProgressHandle : MonoBehaviour
     [SerializeField] private FloatEvent moneyChanged = new FloatEvent();
 
     private WholeProgress progress;
+    private Coroutine batchRoutine;
+
+    private Wrap<float> progressButch = null;
 
     private void Start()
     {
@@ -40,6 +43,9 @@ public class WholeProgressHandle : MonoBehaviour
     {
         progress.Progress.ValueChanged -= Progress_ValueChanged;
         progress.OnMoneyChanged -= Progress_OnMoneyChanged;
+
+        if (batchRoutine != null)
+            StopCoroutine(batchRoutine);
     }
 
     private void Progress_ValueChanged(float newValue, float oldValue)
@@ -57,10 +63,30 @@ public class WholeProgressHandle : MonoBehaviour
         moneyChanged.Invoke(obj);
     }
 
-    public void IncreaceProgressInPlace(float damage, Vector3 position)
+    public void IncreaceProgressInPlace(float damage, Vector3 position, float batchDelay = 1f)
     {
         PopUpNumbers.Instance.WriteLine((int)damage, position);
-        progress.Progress.Value += damage;
+
+        if(progressButch == null)
+        {
+            progressButch = new Wrap<float>() { value = damage };
+            batchRoutine = StartCoroutine(IncreaceProgressButched(batchDelay, progressButch, progress.Progress));
+        }
+        else
+            progressButch.value += damage;
+    }
+
+    private class Wrap<T>
+    {
+        public T value;
+    }
+
+    private IEnumerator IncreaceProgressButched(float batchDelay, Wrap<float> progressButch, Progress actualProgress)
+    {
+        yield return new WaitForSeconds(batchDelay);
+        actualProgress.Value += progressButch.value;
+        batchRoutine = null;
+        progressButch = null;
     }
 
     private void OnDrawGizmos()

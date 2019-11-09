@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.Collections;
+using Unity.Jobs;
 
 namespace ANU.Utils
 {
@@ -100,6 +101,39 @@ namespace ANU.Utils
                 if (array[i].Equals(value))
                     return true;
             return false;
+        }
+
+        public static bool ContainsValue<Tval>(this NativeList<Tval> list, Tval value) where Tval : struct, IEquatable<Tval>
+        {
+            for (int i = 0; i < list.Length; i++)
+                if (list[i].Equals(value))
+                    return true;
+            return false;
+        }
+
+        public static JobHandle GetUniqueKeysDependsOn<Tkey, Tval>(
+            this NativeMultiHashMap<Tkey, Tval> map, 
+            out NativeQueue<Tkey> buffer,
+            out NativeList<Tkey> uniqueKeys, 
+            Allocator allocator, 
+            JobHandle inputDeps
+        ) 
+            where Tkey : struct, IEquatable<Tkey>, IComparable<Tkey> 
+            where Tval : struct
+        {
+            buffer = new NativeQueue<Tkey>(allocator);
+            uniqueKeys = new NativeList<Tkey>(allocator);
+
+            var deps = new Jobs.MultiHashToKeysQueueJob<Tkey, Tval>()
+            {
+                keys = buffer.AsParallelWriter()
+            }.Schedule(map, 1, inputDeps);
+            var resHandle = new Jobs.QueueToUniqueListValuesJob<Tkey>()
+            {
+                vals = buffer,
+                uniqueVals = uniqueKeys
+            }.Schedule(deps);
+            return resHandle;
         }
     }
 }

@@ -21,10 +21,13 @@ MonoBehaviour:
   type: 0
   minInitFrame: 0
   maxInitFrame: 5
+  layer:
+    serializedVersion: 2
+    m_Bits: 1
   needPauseOnFrame: 1
   pauseData:
     pauseOnFrame: 23
-    pauseDuration: 2
+    pauseDuration: 5
     pauseSpread: 0.4
   needActionOnFrame: 1
   actionData:

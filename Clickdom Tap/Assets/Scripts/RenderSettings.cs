@@ -24,7 +24,7 @@ public class RenderSettings : MonoBehaviour
 
     private void Settings_OnDrawTypeChanged(GraphixSettings.DrawType type)
     {
-        SpriteSheetDynamicRendererSystem.DoUpdate = type == GraphixSettings.DrawType.DYNAMIC;
-        SpriteSheetInstancedRendererSystem.DoUpdate = type == GraphixSettings.DrawType.INSTANCED;
+        DynamicRendererCollectorSystem.Instance.UseAsDefault = type == GraphixSettings.DrawType.DYNAMIC;
+        InstancedRendererCollectorSystem.Instance.UseAsDefault = type == GraphixSettings.DrawType.INSTANCED;
     }
 }

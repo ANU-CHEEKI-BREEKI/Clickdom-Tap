@@ -27,35 +27,52 @@ public class WholeProgressIncreacesByParticlesSystem : ComponentSystem
         itialized = true;
     }
 
+    public struct ProgressData
+    {
+        public float3 position;
+        public float damage;
+    }
+
+    [BurstCompile]
+    public struct CollectTriggeredProjectilesJob : IJobForEach<Translation, ProjectileComponentData, ProjectileCollisionComponentData>
+    {
+        public NativeQueue<ProgressData>.ParallelWriter progressData;
+        [ReadOnly] public Rect triggerZone;
+
+        public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref ProjectileComponentData projectile, [ReadOnly] ref ProjectileCollisionComponentData collision)
+        {
+            if (collision.ownerFaction == FactionComponentData.Faction.ENEMY)
+                return;
+            if (!projectile.itStopsRightNow)
+                return;
+            if (!triggerZone.Contains(translation.Value.ToF2()))
+                return;
+
+            progressData.Enqueue(new ProgressData()
+            {
+                damage = collision.processData.damage,
+                position = translation.Value
+            });
+        }
+    }
+
     protected override void OnUpdate()
     {
         if (!itialized)
             return;
 
-        var query = GetEntityQuery(
-            ComponentType.ReadOnly<Translation>(),
-            ComponentType.ReadOnly<ProjectileComponentData>(),
-            ComponentType.ReadOnly<ProjectileCollisionComponentData>()
-        );
+        var progressData = new NativeQueue<ProgressData>(Allocator.TempJob);
 
-        var translation = query.ToComponentDataArray<Translation>(Allocator.TempJob);
-        var projectile = query.ToComponentDataArray<ProjectileComponentData>(Allocator.TempJob);
-        var collision = query.ToComponentDataArray<ProjectileCollisionComponentData>(Allocator.TempJob);
-
-        for (int i = 0; i < translation.Length; i++)
+        new CollectTriggeredProjectilesJob()
         {
-            if (collision[i].ownerFaction == FactionComponentData.Faction.ENEMY)
-                continue;
-            if (!projectile[i].itStopsRightNow)
-                continue;
-            if (!triggerZone.Contains(translation[i].Value.ToF2()))
-                continue;
+            progressData = progressData.AsParallelWriter(),
+            triggerZone = triggerZone
+        }.Schedule(this).Complete();
 
-            progress?.IncreaceProgressInPlace(collision[i].processData.damage, translation[i].Value);
-        }
+        ProgressData data;
+        while (progressData.TryDequeue(out data))
+            progress?.IncreaceProgressInPlace(data.damage, data.position);
 
-        translation.Dispose();
-        projectile.Dispose();
-        collision.Dispose();
+        progressData.Dispose();
     }
 }

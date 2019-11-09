@@ -1,152 +1,20 @@
 ﻿using ANU.Utils;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Unity.Burst;
 using Unity.Collections;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 using static ANU.Utils.Jobs;
-
-[Serializable]
-public struct SpriteRendererComponentData : IComponentData
-{
-    public Vector4 uv;
-}
-
-[Serializable]
-public struct SpriteTintComponentData : IComponentData
-{
-    public Vector4 color;
-}
-
-public struct RenderScaleComponentdata : IComponentData
-{
-    public float2 value;
-}
-
-public struct RenderSharedComponentData : ISharedComponentData, IEquatable<RenderSharedComponentData>
-{
-    public Mesh mesh;
-    public Material material;
-
-    public bool Equals(RenderSharedComponentData other)
-    {
-        if (mesh == null && other.mesh != null) return false;
-        if (mesh != null && other.mesh == null) return false;
-        if (material == null && other.material != null) return false;
-        if (material != null && other.material == null) return false;
-        if (mesh == null && material == null && other.mesh == null && other.material == null) return false;
-        return ReferenceEquals(mesh, other.mesh) && ReferenceEquals(material, other.material);
-    }
-
-    public override int GetHashCode()
-    {
-        return mesh.GetHashCode() * 12 + material.GetHashCode() * 5;
-    }
-}
+using static ARendererCollectorSystem;
 
 [UpdateInGroup(typeof(PresentationSystemGroup))]
-[UpdateAfter(typeof(SpriteSheetAnimationSystem))]
-public class SpriteSheetInstancedRendererSystem : ComponentSystem
-{
-    public struct RenderData : IComparable<RenderData>
-    {
-        public float3 position;
-        public Matrix4x4 matrix;
-        public Vector4 uv;
-        public Color color;
-
-        public int CompareTo(RenderData other)
-        {
-            return position.y.CompareTo(other.position.y);
-        }
-    }
-
-    [BurstCompile]
-    public struct SortByChunkIdAndCalcMatrixJobAndCull : IJobChunk
-    {
-        [ReadOnly] public float minX;
-        [ReadOnly] public float maxX;
-        [ReadOnly] public float minY;
-        [ReadOnly] public float maxY;
-
-        public NativeMultiHashMap<int, RenderData>.ParallelWriter chunkDataMap;
-        public NativeHashMap<int, ArchetypeChunk>.ParallelWriter chunkMap;
-
-        [ReadOnly] public ArchetypeChunkComponentType<Translation> translationType;
-        [ReadOnly] public ArchetypeChunkComponentType<SpriteRendererComponentData> spriteType;
-        [ReadOnly] public ArchetypeChunkComponentType<SpriteTintComponentData> spriteTintType;
-        [ReadOnly] public ArchetypeChunkComponentType<RenderScaleComponentdata> renderScaleType;
-        [ReadOnly] public ArchetypeChunkComponentType<Scale> scaleType;
-        [ReadOnly] public ArchetypeChunkComponentType<Rotation> rotationType;
-        [ReadOnly] public ArchetypeChunkSharedComponentType<RenderSharedComponentData> renderDataType;
-
-        public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
-        {
-            var positions = chunk.GetNativeArray(translationType);
-            var sprites = chunk.GetNativeArray(spriteType);
-            
-            var renderScales = new NativeArray<RenderScaleComponentdata>();
-            var hasRenderScale = chunk.Has(renderScaleType);
-            if (hasRenderScale)
-                renderScales = chunk.GetNativeArray(renderScaleType);
-            var scales = new NativeArray<Scale>();
-            var hasScale = chunk.Has(scaleType);
-            if (hasScale)
-                scales = chunk.GetNativeArray(scaleType);
-            var rotations = new NativeArray<Rotation>();
-            var hasRotation = chunk.Has(rotationType);
-            if (hasRotation)
-                rotations = chunk.GetNativeArray(rotationType);
-            var cnt = chunk.Count;
-
-            var tints = new NativeArray<SpriteTintComponentData>();
-            var hasTint = chunk.Has(spriteTintType);
-            if (hasTint)
-                tints = chunk.GetNativeArray(spriteTintType);
-
-            var sharedIndex = chunk.GetSharedComponentIndex(renderDataType);
-
-            for (int i = 0; i < cnt; i++)
-            {
-                var pos = positions[i].Value;
-                if (pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY) continue;
-
-                var sprite = sprites[i];
-                var renderScale = float2.zero;
-                if (hasRenderScale) renderScale = renderScales[i].value;
-                else renderScale = new float2(1, 1);
-                var scale = 1f;
-                if (hasScale) scale = scales[i].Value;
-                var rotation = quaternion.identity;
-                if (hasRotation) rotation = rotations[i].Value;
-
-                var color = Vector4.one;
-                if (hasTint) color = tints[i].color;
-
-                pos.z = pos.y;// * 0.01f;
-                var rdata = new RenderData()
-                {
-                    position = pos,
-                    uv = sprite.uv,
-                    color = color,
-                    matrix = Matrix4x4.TRS(pos, rotation, new Vector3(renderScale.x, renderScale.y, 1) * scale)
-                };
-                chunkDataMap.Add(sharedIndex, rdata);
-                chunkMap.TryAdd(sharedIndex, chunk);
-            }
-        }
-    }
-
+[UpdateAfter(typeof(InstancedRendererCollectorSystem))]
+public class SpriteSheetInstancedRendererSystem : ARendererSystem
+{    
     [BurstCompile]
     public struct MergeArraysParallelJob : IJobParallelFor
     {
@@ -164,93 +32,41 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
             colors[startIndex + index] = rdata.color;
         }
     }
-           
-    private EntityManager manager;
-    public static bool DoUpdate { get; set; } = false;
 
     private const int drawCallSize = 1023;
     private Matrix4x4[] matricesInstanced = new Matrix4x4[drawCallSize];
     private Vector4[] uvsInstanced = new Vector4[drawCallSize];
     private Vector4[] colorsInstanced = new Vector4[drawCallSize];
-
-    protected override void OnCreate()
-    {
-        base.OnCreate();
-        manager = EntityManager;
-    }
-
+    
     protected override void OnUpdate()
     {
-        if (!DoUpdate)
-            return;
+        InstancedRendererCollectorSystem.Instance.jobHandle.Complete();
+        var chunkDataMap = InstancedRendererCollectorSystem.Instance.chunkDataMap;
 
-        var camera = Camera.main;
-        var cameraPosition = camera.transform.position;
-        var camHeight = camera.orthographicSize;
-        var camWidth = camHeight * camera.aspect;
-        var maxX = cameraPosition.x + camWidth;
-        var minX = cameraPosition.x - camWidth;
-        var maxY = cameraPosition.y + camHeight;
-        var minY = cameraPosition.y - camHeight;
-
-        var query = GetEntityQuery(ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<SpriteRendererComponentData>(), ComponentType.ReadOnly<RenderSharedComponentData>());
-        var entitiesCount = query.CalculateEntityCount();
-        var chunkCnt = query.CalculateChunkCount();
-
-        var chunkDataMap = new NativeMultiHashMap<int, RenderData>(entitiesCount, Allocator.TempJob);
-        var chunkMap = new NativeHashMap<int, ArchetypeChunk>(chunkCnt, Allocator.TempJob);
-        var chunkJob = new SortByChunkIdAndCalcMatrixJobAndCull()
-        {
-            maxX = maxX,
-            minX = minX,
-            maxY = maxY,
-            minY = minY,
-            chunkDataMap = chunkDataMap.AsParallelWriter(),
-            chunkMap = chunkMap.AsParallelWriter(),
-            spriteType = GetArchetypeChunkComponentType<SpriteRendererComponentData>(true),
-            translationType = GetArchetypeChunkComponentType<Translation>(true),
-            renderScaleType = GetArchetypeChunkComponentType<RenderScaleComponentdata>(true),
-            scaleType = GetArchetypeChunkComponentType<Scale>(true),
-            renderDataType = GetArchetypeChunkSharedComponentType<RenderSharedComponentData>(),
-            rotationType = GetArchetypeChunkComponentType<Rotation>(true),
-            spriteTintType = GetArchetypeChunkComponentType<SpriteTintComponentData>(true)
-        };
-
-        chunkJob.Schedule(query).Complete();
-        var chunksIndices = chunkMap.GetKeyArray(Allocator.TempJob);
-
-        int uv_MaterialPropId = Shader.PropertyToID("_MainTex_UV");
-        int color_MaterialPropId = Shader.PropertyToID("_Color");
-        var mpb = new MaterialPropertyBlock();
-
+        var chunksIndices = chunkDataMap.GetUniqueKeys(Allocator.TempJob);
         for (int j = 0; j < chunksIndices.Length; j++)
         {
-            ArchetypeChunk chunk;
-            if (!chunkMap.TryGetValue(chunksIndices[j], out chunk)) continue;
+            var sharedIndex = chunksIndices[j];
+            if (!chunkDataMap.ContainsKey(sharedIndex))
+                continue;
 
-            //теперь надо получить из словаря данные для нужного sharedIndex
-            var sharedQueue = new NativeQueue<RenderData>(Allocator.TempJob);
-            new MultiHashToQueueJob<int, RenderData>()
-            {
-                queue = sharedQueue,
-                key = chunksIndices[j],
-                map = chunkDataMap
-            }.Schedule().Complete();
-            //списки перевести в массивы, чтобы можно было сортировать            
-            var sharedArray = new NativeArray<RenderData>(sharedQueue.Count, Allocator.TempJob);
-            new QueueToArrayJob<RenderData>()
+            //теперь надо получить из словаря данные для нужного sharedIndex     
+            var mapCnt = chunkDataMap.CountForKey(sharedIndex);
+            var sharedArray = new NativeArray<RenderData>(mapCnt, Allocator.TempJob);
+            var m2aHandle = new MultiHashToArrayValueJob<int, RenderData>()
             {
                 array = sharedArray,
-                queue = sharedQueue
-            }.Schedule().Complete();
+                map = chunkDataMap,
+                key = sharedIndex
+            }.Schedule();
 
             //сортировка всех массивов паралельно
-            int fullVisibleCount = sharedArray.Length;          
-            new Jobs.QuickSortRecursivelyJob<RenderData>
+            int fullVisibleCount = mapCnt;
+            var sortHandle = new QuickSortRecursivelyJob<RenderData>
             {
                 sortArray = sharedArray,
                 descending = true
-            }.Schedule().Complete();
+            }.Schedule(m2aHandle);
 
             //слитие массивов в один большой
             var matrices = new NativeArray<Matrix4x4>(fullVisibleCount, Allocator.TempJob);
@@ -264,13 +80,13 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                 matrices = matrices,
                 uvs = uvs,
                 colors = colors
-            }.Schedule(sharedArray.Length, 10).Complete();
+            }.Schedule(sharedArray.Length, 10, sortHandle).Complete();
 
             //драв колы по 1023 ентити за раз
-            var sharedData = manager.GetSharedComponentData<RenderSharedComponentData>(chunksIndices[j]);
+            var sharedData = manager.GetSharedComponentData<RenderSharedComponentData>(sharedIndex);
             var mesh = sharedData.mesh;
             var material = sharedData.material;
-            
+
             int drawnCount = 0;
             while (drawnCount < fullVisibleCount)
             {
@@ -289,21 +105,20 @@ public class SpriteSheetInstancedRendererSystem : ComponentSystem
                     material,
                     matricesInstanced,
                     callSize,
-                    mpb
+                    mpb,
+                    UnityEngine.Rendering.ShadowCastingMode.Off,
+                    false
                 );
 
                 drawnCount += callSize;
             }
 
-            sharedQueue.Dispose();
-            sharedArray.Dispose();           
+            sharedArray.Dispose();
             matrices.Dispose();
             uvs.Dispose();
             colors.Dispose();
         }
 
         chunksIndices.Dispose();
-        chunkMap.Dispose();
-        chunkDataMap.Dispose();
     }
 }

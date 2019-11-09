@@ -24,7 +24,7 @@ namespace ANU.Utils
                 Algoritm.QuickSort<NativeArrayIndexer<T>, T>(ref indexer, descending);
             }
         }
-
+        
         [BurstCompile]
         public struct MultiHashToQueueJob<TKey, TVal> : IJob where TKey : struct, IEquatable<TKey> where TVal : struct
         {
@@ -41,6 +41,32 @@ namespace ANU.Utils
                     queue.Enqueue(rdata);
                     while (map.TryGetNextValue(out rdata, ref iterator))
                         queue.Enqueue(rdata);
+                }
+            }
+        }
+
+        [BurstCompile]
+        public struct MultiHashToArrayValueJob<TKey, TVal> : IJob where TKey : struct, IEquatable<TKey> where TVal : struct
+        {
+            public NativeArray<TVal> array;
+            [ReadOnly] public NativeMultiHashMap<TKey, TVal> map;
+            [ReadOnly] public TKey key;
+
+            public void Execute()
+            {
+                var index = 0;
+                
+                TVal rdata;
+                NativeMultiHashMapIterator<TKey> iterator;
+                if (map.TryGetFirstValue(key, out rdata, out iterator))
+                {
+                    array[index] = rdata;
+                    index++;
+                    while (map.TryGetNextValue(out rdata, ref iterator))
+                    {
+                        array[index] = rdata;
+                        index++;
+                    }
                 }
             }
         }
@@ -63,5 +89,32 @@ namespace ANU.Utils
                 }
             }
         }
+
+        [BurstCompile]
+        public struct MultiHashToKeysQueueJob<TKey, TVal> : IJobNativeMultiHashMapVisitKeyValue<TKey, TVal> where TKey : struct, IEquatable<TKey> where TVal : struct
+        {
+            public NativeQueue<TKey>.ParallelWriter keys;
+            
+            public void ExecuteNext(TKey key, TVal value)
+            {
+                keys.Enqueue(key);
+            }
+        }
+
+        [BurstCompile]
+        public struct QueueToUniqueListValuesJob<TVal> : IJob where TVal : struct, IEquatable<TVal>
+        {
+            public NativeQueue<TVal> vals;
+            public NativeList<TVal> uniqueVals;
+
+            public void Execute()
+            {
+                TVal val;
+                while (vals.TryDequeue(out val))
+                    if (!uniqueVals.ContainsValue(val))
+                        uniqueVals.Add(val);
+            }
+        }
+
     }
 }

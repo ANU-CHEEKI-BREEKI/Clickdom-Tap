@@ -45,7 +45,8 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [SerializeField] [Range(0.001f, 60)] private float spavnFrequency = 1;
     [SerializeField] private int maxEntityCoun = 0;
     
-    public float SquadId => squadId;
+    public int SquadId => squadId;
+    public AnimationList AnimationProvider => animationProvider;
 
     protected virtual void Start()
     {
@@ -81,7 +82,7 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
         renderData = new RenderSharedComponentData()
         {
             material = animationProvider.Material,
-            mesh = animationProvider.Mesh
+            mesh = animationProvider.Mesh,
         };
         animationData = new AnimationListSharedComponentData()
         {

@@ -33,8 +33,8 @@ public class AnimationList : ScriptableObject
             return animationsSource.Where(a => a != null).First().Mesh;
         }
     }
-
-    [NonSerialized]
+  
+   [NonSerialized]
     private WrapSpriteSheetAnimationComponentData[] animations;
     public WrapSpriteSheetAnimationComponentData[] Animations
     {
