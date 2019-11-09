@@ -7,7 +7,7 @@ using Unity.Entities;
 using Unity.Collections;
 
 [RequireComponent(typeof(ArcherSpawner))]
-public class ArchersVolleyManualTrigger : MonoBehaviour
+public class ArchersVolleyManualTrigger : MonoBehaviour, ISpeedSettable
 {
     [SerializeField] private GameObject[] buttonLaunch;
     [SerializeField] private CircleProgressBarAutoTimer progressPresenter;
@@ -24,7 +24,7 @@ public class ArchersVolleyManualTrigger : MonoBehaviour
         {
             if (progressPresenter != null)
             {
-                var pauseData = spawner.AnimationProvider.PausesData[(int)AnimationType.SHOOT];
+                var pauseData = spawner.AnimationData.pauses[(int)AnimationType.SHOOT];
                 var duration = pauseData.value.pauseDuration;
                 progressPresenter.Duration = duration;
             }
@@ -104,6 +104,18 @@ public class ArchersVolleyManualTrigger : MonoBehaviour
 
         keys.Dispose();
         entities.Dispose();
+    }
+
+    void ISpeedSettable.SetSpeed(float speed)
+    {
+        if (progressPresenter == null)
+            return;
+
+        var pauseDuration = 1f;
+        if (speed != 0)
+            pauseDuration = 60f / speed;
+
+        progressPresenter.Duration = pauseDuration;
     }
 
     [BurstCompile]

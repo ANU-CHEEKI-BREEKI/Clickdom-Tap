@@ -33,7 +33,6 @@ public class AnimationPauseApdater : MonoBehaviour, ISpeedSettable
     private struct SharedIndicesJob : IJobChunk
     {
         [ReadOnly] public ArchetypeChunkEntityType entityType;
-        [ReadOnly] public ArchetypeChunkSharedComponentType<AnimationListSharedComponentData> animationListType;
         [ReadOnly] public ArchetypeChunkSharedComponentType<SquadTagSharedComponentData> squadTagType;
 
         public NativeHashMap<int, int>.ParallelWriter indices;
@@ -42,9 +41,8 @@ public class AnimationPauseApdater : MonoBehaviour, ISpeedSettable
         public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
         {
             int squadIndex = chunk.GetSharedComponentIndex(squadTagType);
-            int launchIndex = chunk.GetSharedComponentIndex(animationListType);
 
-            indices.TryAdd(squadIndex, launchIndex);
+            indices.TryAdd(squadIndex, squadIndex);
 
             var es = chunk.GetNativeArray(entityType);
 
@@ -59,7 +57,8 @@ public class AnimationPauseApdater : MonoBehaviour, ISpeedSettable
 
         var query = manager.CreateEntityQuery(
             typeof(AnimationListSharedComponentData),
-            typeof(SquadTagSharedComponentData)
+            typeof(SquadTagSharedComponentData),
+            typeof(AnimationPauseComponentData)
         );
 
         var indices = new NativeHashMap<int, int>(query.CalculateChunkCount(), Allocator.TempJob);
@@ -69,7 +68,6 @@ public class AnimationPauseApdater : MonoBehaviour, ISpeedSettable
         {
             indices = indices.AsParallelWriter(),
             entities = entities.AsParallelWriter(),
-            animationListType = manager.GetArchetypeChunkSharedComponentType<AnimationListSharedComponentData>(),
             squadTagType = manager.GetArchetypeChunkSharedComponentType<SquadTagSharedComponentData>(),
             entityType = manager.GetArchetypeChunkEntityType()
         }.Schedule(query).Complete();
@@ -82,17 +80,11 @@ public class AnimationPauseApdater : MonoBehaviour, ISpeedSettable
             if (squad.id.value != spawner.SquadId)
                 continue;
 
-            var lindex = 0;
-            indices.TryGetValue(keys[i], out lindex);
-            var animlist = manager.GetSharedComponentData<AnimationListSharedComponentData>(lindex);
-
-
-            foreach (var animation in forAnimation)
-                animlist.pauses[(int)animation].value.pauseDuration = pauseDuration;
-
             ANU.Utils.NativeUtils.IterateForKey(entities, keys[i], (val) =>
             {
-                manager.SetSharedComponentData(val, animlist);
+                var pause = manager.GetComponentData<AnimationPauseComponentData>(val);
+                pause.pauseData.pauseDuration = pauseDuration;
+                manager.SetComponentData(val, pause);
             });
         }
 

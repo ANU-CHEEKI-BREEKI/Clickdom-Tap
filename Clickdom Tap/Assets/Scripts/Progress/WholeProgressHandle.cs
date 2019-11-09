@@ -67,7 +67,7 @@ public class WholeProgressHandle : MonoBehaviour
     {
         PopUpNumbers.Instance.WriteLine((int)damage, position);
 
-        if(progressButch == null)
+        if(batchRoutine == null)
         {
             progressButch = new Wrap<float>() { value = damage };
             batchRoutine = StartCoroutine(IncreaceProgressButched(batchDelay, progressButch, progress.Progress));
@@ -86,7 +86,6 @@ public class WholeProgressHandle : MonoBehaviour
         yield return new WaitForSeconds(batchDelay);
         actualProgress.Value += progressButch.value;
         batchRoutine = null;
-        progressButch = null;
     }
 
     private void OnDrawGizmos()

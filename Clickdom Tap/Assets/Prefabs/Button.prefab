@@ -1,5 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!210 &6785937127895965750
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757691214048116582}
+  m_Enabled: 1
+  m_SortingLayerID: 1929880661
+  m_SortingLayer: 2
+  m_SortingOrder: 1
 --- !u!114 &7549002081742651270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,12 +224,12 @@ PrefabInstance:
     - target: {fileID: 951572779396066942, guid: 378a0dd2fc5654448bf7a0cfcce28f35,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.051874
+      value: -4.565729
       objectReference: {fileID: 0}
     - target: {fileID: 951572779396066942, guid: 378a0dd2fc5654448bf7a0cfcce28f35,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.174344
+      value: 12.4987335
       objectReference: {fileID: 0}
     - target: {fileID: 951572779032229321, guid: 378a0dd2fc5654448bf7a0cfcce28f35,
         type: 3}

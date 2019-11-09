@@ -126,7 +126,7 @@ public class ArcherSpawner : ASpawner, IDamageSettable
 
     protected override string GenerateEntityName()
     {
-        return $"Archer {faction}";
+        return $"Archer S{squadId} - {faction}";
     }
 
     public void SetDamage(float damage)

@@ -46,7 +46,7 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [SerializeField] private int maxEntityCoun = 0;
     
     public int SquadId => squadId;
-    public AnimationList AnimationProvider => animationProvider;
+    public AnimationListSharedComponentData AnimationData => animationData;
 
     protected virtual void Start()
     {

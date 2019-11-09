@@ -27,7 +27,7 @@ MonoBehaviour:
   needPauseOnFrame: 1
   pauseData:
     pauseOnFrame: 23
-    pauseDuration: 5
+    pauseDuration: 10
     pauseSpread: 0.4
   needActionOnFrame: 1
   actionData:

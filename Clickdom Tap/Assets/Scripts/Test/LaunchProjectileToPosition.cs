@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public class LaunchProjectileToPosition : MonoBehaviour
+public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
 {
     [Space]
     [SerializeField] private ShaderSpriteUvAnimationSetupData projectileRenderData;
@@ -61,5 +61,10 @@ public class LaunchProjectileToPosition : MonoBehaviour
         launch.targetPosition = to.ToF2();
         manager.AddComponentData(entity, launch);
         manager.AddComponentData(entity, collisionData);
+    }
+
+    void IDamageSettable.SetDamage(float damage)
+    {
+        collisionData.processData.damage = damage;
     }
 }

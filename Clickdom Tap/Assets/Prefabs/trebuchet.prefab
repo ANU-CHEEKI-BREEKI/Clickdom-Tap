@@ -113,6 +113,10 @@ GameObject:
   - component: {fileID: 2915721957922127311}
   - component: {fileID: 2014269061677425239}
   - component: {fileID: 5583393612177616506}
+  - component: {fileID: 1042611534727947563}
+  - component: {fileID: 31877557460088271}
+  - component: {fileID: 8560443741184568245}
+  - component: {fileID: 7327027056516475519}
   m_Layer: 0
   m_Name: trebuchet
   m_TagString: Untagged
@@ -244,6 +248,176 @@ MonoBehaviour:
       direction:
         x: 0
         y: 0
+--- !u!114 &1042611534727947563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943736142348028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6989718882262bd409b4842ddfdb219b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  count:
+    maxProgress: 1
+    progressValue: 0
+  spawnRate:
+    maxProgress: 1
+    progressValue: 1
+  damage:
+    maxProgress: 10000
+    progressValue: 100
+  attackSpeed:
+    maxProgress: 60
+    progressValue: 1
+--- !u!114 &31877557460088271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943736142348028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74dc025cdbd32db48bf4c48625826f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8560443741184568245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943736142348028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0d8fcc9cc24d140ac57d53b9352ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseDuration: 10
+--- !u!114 &7327027056516475519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943736142348028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcfe2d4af1949c4895abec2500bcdb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count:
+    minCost: 1000
+    maxCost: 1000
+    costCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.22230075
+        outSlope: 0.22230075
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.12190813
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  spawnRate:
+    minCost: 1
+    maxCost: 1
+    costCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.22230075
+        outSlope: 0.22230075
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.12190813
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  damage:
+    minCost: 1000
+    maxCost: 10000
+    costCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.22230075
+        outSlope: 0.22230075
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.12190813
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  attackSpeed:
+    minCost: 1
+    maxCost: 1
+    costCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.22230075
+        outSlope: 0.22230075
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.12190813
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1 &1272085646310237570
 GameObject:
   m_ObjectHideFlags: 0
