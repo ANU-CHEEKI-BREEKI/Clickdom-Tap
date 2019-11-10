@@ -56,7 +56,7 @@ public class FindMeleeTargetSystem : JobComponentSystem
         var pos = translation.Value;
         var quadrant = QuadrantSystem.GetQuadrant(pos);
 
-        var closest = new MeleeTargetComponentData() { target = Entity.Null };
+        var closest = new MeleeTargetComponentData() { target = Entity.Null, targetPosition = translation.Value };
         closest = FindClosest(findingSettings, faction, quadrantMap, pos, QuadrantSystem.GetNearestQuadrantKey(quadrant, QuadrantSystem.NearestQuadrant.CURRENT), closest);
         closest = FindClosest(findingSettings, faction, quadrantMap, pos, QuadrantSystem.GetNearestQuadrantKey(quadrant, QuadrantSystem.NearestQuadrant.DOWN), closest);
         closest = FindClosest(findingSettings, faction, quadrantMap, pos, QuadrantSystem.GetNearestQuadrantKey(quadrant, QuadrantSystem.NearestQuadrant.LEFT), closest);

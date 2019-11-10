@@ -34,4 +34,26 @@ public static class DataToComponentData
         res.data.formationCenter = new float2(formationCenter.x, formationCenter.y);
         return res;
     }
+
+    public static ScaleByPositionComponentData ToComponentData(ScaleByPositionSettings scaleSettings)
+    {
+        var res = new ScaleByPositionComponentData()
+        {
+            minScale = scaleSettings.MinScale,
+            maxScale = scaleSettings.MaxScale,
+            minY = scaleSettings.MinY,
+            maxY = scaleSettings.MaxY
+        };
+        return res;
+    }
+
+    public static ZbyYComponentData ToComponentData(ZByYSettings zbyySettings)
+    {
+        var res = new ZbyYComponentData()
+        {
+            scale = zbyySettings.Scale,
+            zOffset = zbyySettings.ZOffset
+        };
+        return res;
+    }
 }

@@ -676,10 +676,10 @@ TextureImporter:
       name: tent_1
       rect:
         serializedVersion: 2
-        x: 322
-        y: 1009
-        width: 96
-        height: 94
+        x: 389
+        y: 748
+        width: 95
+        height: 92
       alignment: 9
       pivot: {x: 0.5067949, y: 0.20159653}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -704,10 +704,10 @@ TextureImporter:
       name: tent_2
       rect:
         serializedVersion: 2
-        x: 323
-        y: 911
-        width: 102
-        height: 98
+        x: 484
+        y: 748
+        width: 101
+        height: 91
       alignment: 9
       pivot: {x: 0.51279044, y: 0.28699604}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -933,23 +933,14 @@ TextureImporter:
       name: assoult_tower_front_part
       rect:
         serializedVersion: 2
-        x: 383
-        y: 751
-        width: 69
+        x: 329
+        y: 799
+        width: 59
         height: 155
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -1.5, y: -77.5}
-        - {x: -34.5, y: -77.5}
-        - {x: -34.5, y: -35.5}
-        - {x: -27.5, y: -26.5}
-        - {x: -29.5, y: 63.5}
-        - {x: -21.5, y: 77.5}
-        - {x: 11.5, y: 77.5}
-        - {x: 34.5, y: 50.5}
-        - {x: 34.5, y: -68.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -963,23 +954,20 @@ TextureImporter:
       name: assoult_tower_back_part
       rect:
         serializedVersion: 2
-        x: 311
-        y: 751
-        width: 72
+        x: 326
+        y: 956
+        width: 78
         height: 155
       alignment: 9
       pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 30, y: -67.5}
-        - {x: -11, y: -77.5}
-        - {x: -36, y: -77.5}
-        - {x: -36, y: -35.5}
-        - {x: -28, y: -23.5}
-        - {x: -28, y: 77.5}
+      - - {x: 27, y: -77.5}
+        - {x: -39, y: -77.5}
+        - {x: -39, y: 77.5}
         - {x: 11, y: 77.5}
-        - {x: 36, y: 50.5}
-        - {x: 36, y: -54.5}
+        - {x: 33, y: 54.5}
+        - {x: 30, y: 15.5}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -993,12 +981,12 @@ TextureImporter:
       name: assoult_tower_wheel
       rect:
         serializedVersion: 2
-        x: 373
-        y: 897
+        x: 398
+        y: 1008
         width: 19
         height: 19
       alignment: 9
-      pivot: {x: 0.55189437, y: 0.4481105}
+      pivot: {x: 0.5, y: -0.57016796}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1014,8 +1002,8 @@ TextureImporter:
       name: assoult_tower_bridge
       rect:
         serializedVersion: 2
-        x: 401
-        y: 993
+        x: 399
+        y: 1035
         width: 48
         height: 23
       alignment: 9

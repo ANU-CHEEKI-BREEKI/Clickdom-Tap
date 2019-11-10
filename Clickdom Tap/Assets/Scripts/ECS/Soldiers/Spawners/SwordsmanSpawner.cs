@@ -18,6 +18,8 @@ public class SwordsmanSpawner : ASpawner, IDamageSettable
     [Space]
     [SerializeField] float targetFindingRange = 0.5f;
     [SerializeField] float meeleeDamage = 1f;
+    [Space]
+    [SerializeField] private bool increaceProgressByAnimationEvent = false;
 
     protected override void Start()
     {
@@ -42,7 +44,8 @@ public class SwordsmanSpawner : ASpawner, IDamageSettable
         {
             damage = meeleeDamage
         });
-        
+        if (increaceProgressByAnimationEvent)
+            manager.AddComponent<IncreaceProgressByAnimationEventTagComponentData>(entity);
     }
 
     protected override void SetEntitySharedComponentsData(Entity entity, EntityManager manager)

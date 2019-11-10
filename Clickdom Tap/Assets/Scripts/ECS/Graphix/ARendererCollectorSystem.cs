@@ -16,6 +16,14 @@ public struct UseOnlyInstancedRendererTagComponentData : IComponentData { }
 public struct SpriteRendererComponentData : IComponentData
 {
     public Vector4 uv;
+    /// <summary>
+    /// (0,0) in left lower corner on sprite rect. x and y values in [0, 1] range.
+    /// </summary>
+    public Vector2 pivot;
+    /// <summary>
+    /// if not set then pivot will be used as center (0.5, 0.5)
+    /// </summary>
+    public bool usePivot;
 }
 
 [Serializable]
@@ -63,7 +71,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
 
         public int CompareTo(RenderData other)
         {
-            return position.y.CompareTo(other.position.y);
+            return position.z.CompareTo(other.position.z);
         }
     }
 
@@ -128,13 +136,30 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 var color = Vector4.one;
                 if (hasTint) color = tints[i].color;
 
-                pos.z = pos.y;// * 0.01f;
+                var actualRenderScale = new Vector3(renderScale.x, renderScale.y, 1) * scale;
+
+                var actualPivot = sprite.pivot;
+                if (!sprite.usePivot)
+                    actualPivot = Vector2.one / 2;
+                actualPivot -= Vector2.one / 2;
+
+                var actualPosition = pos;
+                var pivotedPosition = pos;
+
+                pivotedPosition.x = actualPivot.x * actualRenderScale.x;
+                pivotedPosition.y = -actualPivot.y * actualRenderScale.y;
+
+                var matrix = Matrix4x4.Translate(actualPosition);
+                matrix *= Matrix4x4.Rotate(rotation);
+                matrix *= Matrix4x4.Translate(pivotedPosition);
+                matrix *= Matrix4x4.Scale(actualRenderScale);
+
                 var rdata = new RenderData()
                 {
                     position = pos,
                     uv = sprite.uv,
                     color = color,
-                    matrix = Matrix4x4.TRS(pos, rotation, new Vector3(renderScale.x, renderScale.y, 1) * scale)
+                    matrix = matrix//Matrix4x4.TRS(pos, rotation, actualRenderScale)
                 };
                 chunkDataMap.Add(sharedIndex, rdata);
             }

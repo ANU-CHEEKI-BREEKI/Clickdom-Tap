@@ -5,45 +5,26 @@ using UnityEngine;
 public class FolowToTransform : MonoBehaviour
 {
     [SerializeField] private Transform toFolow;
-    [SerializeField] private bool onlyOnStart = true;
-    [SerializeField] [Range(0f, 1f)] private float updateDeltaTime = 0.2f;
-    [SerializeField] private bool scaledTime = true;
+    [SerializeField] private bool onStartToo = true;
 
-    private Coroutine updateCoroutime;
     private Transform _transfrom;
 
     private void Start()
     {
         _transfrom = transform;
 
-        Folow();
-
-        if (!onlyOnStart)
-            updateCoroutime = StartCoroutine(FolowUpdate());
+        if (!onStartToo)
+            Folow();
     }
 
-    private void OnDestroy()
+    private void Update()
     {
-        if (updateCoroutime != null)
-            StopCoroutine(updateCoroutime);
+        Folow();
     }
 
     private void Folow()
     {
         if(_transfrom != null)
             _transfrom.position = toFolow.position;
-    }
-
-    private IEnumerator FolowUpdate()
-    {
-        while (true)
-        {
-            if (scaledTime)
-                yield return new WaitForSeconds(updateDeltaTime);
-            else
-                yield return new WaitForSecondsRealtime(updateDeltaTime);
-
-            Folow();
-        } 
     }
 }

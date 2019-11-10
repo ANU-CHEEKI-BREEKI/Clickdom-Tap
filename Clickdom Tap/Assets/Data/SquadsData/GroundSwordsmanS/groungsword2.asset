@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcd2674a0633e354183b3b24e34833f2, type: 3}
-  m_Name: wallarch2
+  m_Name: groungsword2
   m_EditorClassIdentifier: 
   data:
     formation: 0
     formationAccuracy: 0.2
-    heightUnitsCount: 5
+    heightUnitsCount: 15
     radiusUnitsCount: 15
     horisontalSpacing: 0.25
-    verticalSpacing: 0.4
-    rotationDegrees: -50.4
+    verticalSpacing: 0.25
+    rotationDegrees: -48.3
     horisontalShift: 0
-    verticalShift: 45
-    directionLeftToRight: 1
-    directionBottomToTop: 0
+    verticalShift: 0
+    directionLeftToRight: 0
+    directionBottomToTop: 1
     formationCenter:
       x: 0
       y: 0

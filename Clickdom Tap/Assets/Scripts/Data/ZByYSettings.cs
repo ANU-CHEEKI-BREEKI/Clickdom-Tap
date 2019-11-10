@@ -9,5 +9,8 @@ using UnityEngine;
 public class ZByYSettings : ScriptableObject
 {
     [SerializeField] private float scale = 0.01f;
+    [SerializeField] private float zOffset = 0f;
+
     public float Scale => scale;
+    public float ZOffset => zOffset;
 }

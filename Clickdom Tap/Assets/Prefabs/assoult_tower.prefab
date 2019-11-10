@@ -106,6 +106,9 @@ GameObject:
   - component: {fileID: 5783130792362061237}
   - component: {fileID: 3947197244978846483}
   - component: {fileID: 8832181657354152791}
+  - component: {fileID: 5788919402616807467}
+  - component: {fileID: 1739727065063680996}
+  - component: {fileID: 3857373647294909511}
   m_Layer: 0
   m_Name: assoult_tower_wheel
   m_TagString: Untagged
@@ -121,7 +124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2825204102927281838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.20000005, y: -4.8400006, z: -10.5523}
+  m_LocalPosition: {x: -0.375, y: -5.4060006, z: -11.1183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2434406495101871883}
@@ -164,7 +167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -713522873
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6818317534646452059, guid: 0a739c874497c434b9f64cb6d2f84e6b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -190,6 +193,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &5788919402616807467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825204102927281838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &1739727065063680996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825204102927281838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &3857373647294909511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825204102927281838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 0.63, y: 0.63}
 --- !u!1 &5769210933266899290
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +246,9 @@ GameObject:
   - component: {fileID: 7615378373836881141}
   - component: {fileID: 2317557269247266272}
   - component: {fileID: 5854530472213784059}
+  - component: {fileID: 1510316826529294380}
+  - component: {fileID: 3434097123136333720}
+  - component: {fileID: 3836719026502737571}
   m_Layer: 0
   m_Name: assoult_tower_front_part
   m_TagString: Untagged
@@ -285,6 +333,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &1510316826529294380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769210933266899290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &3434097123136333720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769210933266899290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &3836719026502737571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769210933266899290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 2.3, y: 5.165}
 --- !u!1 &6413114906875645881
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +516,9 @@ GameObject:
   - component: {fileID: 3317413890585493834}
   - component: {fileID: 4293080887126141900}
   - component: {fileID: 902614414787602449}
+  - component: {fileID: 2479741725080686487}
+  - component: {fileID: 503754696063599574}
+  - component: {fileID: 5491073618977538811}
   m_Layer: 0
   m_Name: assoult_tower_wheel (1)
   m_TagString: Untagged
@@ -441,7 +534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8337331857063775328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.63, y: -4.600001, z: -10.312301}
+  m_LocalPosition: {x: 0.45500004, y: -5.166001, z: -10.878301}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2434406495101871883}
@@ -484,7 +577,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -713522873
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6818317534646452059, guid: 0a739c874497c434b9f64cb6d2f84e6b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -510,3 +603,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &2479741725080686487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337331857063775328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &503754696063599574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337331857063775328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &5491073618977538811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337331857063775328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 0.63, y: 0.63}

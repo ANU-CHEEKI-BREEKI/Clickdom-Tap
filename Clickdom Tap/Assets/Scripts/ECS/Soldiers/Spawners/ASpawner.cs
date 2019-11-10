@@ -14,7 +14,8 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [SerializeField] protected float spawnRandRange = 0.2f;
     [SerializeField] protected float velocity = 2;
     [Space]
-    [SerializeField] ScaleByPositionSettings scaleByPosSettings;
+    [SerializeField] protected ScaleByPositionSettings scaleByPosSettings;
+    [SerializeField] protected ZByYSettings ZbyYSettings;
     [Space]
     [SerializeField] protected bool flipHorisontalScale = false;
     [Space]
@@ -22,6 +23,7 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [Header("update pause for animations")]
     [SerializeField] private AnimationType[] forAnimation = new AnimationType[1];
     [Space]
+    
     [SerializeField] protected int squadId = 0;
     [SerializeField] protected Transform squadPosition;
     [SerializeField] protected SquadData squadData;
@@ -31,6 +33,8 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [Space]
     [SerializeField] private Color tint = Color.white;
     [Space]
+    [SerializeField] private bool updateAnimationStatesBuTriggers = false;
+
 
     private EntityArchetype archetype;
     private EntityManager manager;
@@ -47,6 +51,29 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     
     public int SquadId => squadId;
     public AnimationListSharedComponentData AnimationData => animationData;
+
+    [ContextMenu("SetUniqueSquadId")]
+    private void SetUniqueSquadId()
+    {
+        var spawners = FindObjectsOfType<ASpawner>();
+
+        if(spawners == null || spawners.Length == 0)
+        {
+            squadId = 1;
+            return;
+        }
+
+        var ids = spawners.Select(s=>s.squadId);
+        var max = ids.OrderBy(id => id).Last() + 1;
+        for (int i = 1; i <= max; i++)
+        {
+            if(!ids.Contains(i))
+            {
+                squadId = i;
+                return;
+            }
+        }
+    }
 
     protected virtual void Start()
     {
@@ -73,9 +100,9 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
             typeof(DestroyWithHealthComponentData),
             typeof(HealthComponentData),
             typeof(AnimatorStatesComponentData), 
-            typeof(AnimatorStateLastTriggeredAnimationComponentData), 
             typeof(FlibHorisontalByMoveDirTagComponentData),
-            typeof(FlibHorisontalByTargetTagComponentData)
+            typeof(FlibHorisontalByTargetTagComponentData),
+            typeof(ZbyYComponentData)
         );
 
         squadTag = DataToComponentData.ToComponentData(squadData, squadId, squadPosition.position);
@@ -178,13 +205,7 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
         {
             value = new float2(flipHorisontalScale ? -1 : 1, 1)
         });
-        manager.SetComponentData(entity, new ScaleByPositionComponentData()
-        {
-            minScale = scaleByPosSettings.MinScale,
-            maxScale = scaleByPosSettings.MaxScale,
-            minY = scaleByPosSettings.MinY,
-            maxY = scaleByPosSettings.MaxY
-        });
+        manager.SetComponentData(entity, DataToComponentData.ToComponentData(scaleByPosSettings));
         manager.SetComponentData(entity, new FactionComponentData() { value = faction });
         manager.SetComponentData(entity, new LinearMovementComponentData()
         {
@@ -202,7 +223,22 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
         {
             color = tint
         });
-        
+        manager.SetComponentData(entity, DataToComponentData.ToComponentData(ZbyYSettings));
+        manager.SetComponentData(entity, new SpriteRendererComponentData()
+        {
+            usePivot = true,
+            pivot = new Vector2(0.5f, 0)
+        });
+        manager.SetComponentData(entity, new FlibHorisontalByMoveDirTagComponentData()
+        {
+            defaultFlipped = flipHorisontalScale
+        });
+        manager.SetComponentData(entity, new FlibHorisontalByTargetTagComponentData()
+        {
+            defaultFlipped = flipHorisontalScale
+        });
+        if (updateAnimationStatesBuTriggers)
+            manager.AddComponent<AnimatorStateLastTriggeredAnimationComponentData>(entity);
     }
 
     protected virtual void SetEntitySharedComponentsData(Entity entity, EntityManager manager)

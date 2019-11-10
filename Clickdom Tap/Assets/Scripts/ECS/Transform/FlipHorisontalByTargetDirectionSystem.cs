@@ -13,33 +13,40 @@ using UnityEngine;
 
 public struct FlibHorisontalByTargetTagComponentData : IComponentData
 {
+    public bool defaultFlipped;
 }
 
 public class FlipHorisontalByTargetDirectionSystem : JobComponentSystem
 {
     [BurstCompile]
-    [RequireComponentTag(typeof(FlibHorisontalByTargetTagComponentData))]
-    struct FlipHorShootTargetMove : IJobForEach<Translation, RenderScaleComponentdata, ArcherTargetPositionComponentData, LinearMovementComponentData>
+    struct FlipHorShootTargetMove : IJobForEach<Translation, RenderScaleComponentdata, ArcherTargetPositionComponentData, LinearMovementComponentData, FlibHorisontalByTargetTagComponentData>
     {
-        public void Execute([ReadOnly] ref Translation pos, ref RenderScaleComponentdata scale, [ReadOnly] ref ArcherTargetPositionComponentData target, [ReadOnly] ref LinearMovementComponentData move)
+        public void Execute([ReadOnly] ref Translation pos, ref RenderScaleComponentdata scale, [ReadOnly] ref ArcherTargetPositionComponentData target, [ReadOnly] ref LinearMovementComponentData move, [ReadOnly] ref FlibHorisontalByTargetTagComponentData tag)
         {
             if (move.isMoving)
                 return;
             var dir = pos.Value.GetDirectionTo(target.value);
-            scale.value.x = math.abs(scale.value.x) * math.sign(dir.x);
+            scale.value.x = math.abs(scale.value.x);
+            if (dir.x != 0)
+                scale.value.x *= math.sign(dir.x);
+            else if (tag.defaultFlipped)
+                scale.value.x *= -1;
         }
     }
 
     [BurstCompile]
-    [RequireComponentTag(typeof(FlibHorisontalByTargetTagComponentData))]
-    struct FlipHorMeleeTargetMove : IJobForEach<Translation, RenderScaleComponentdata, MeleeTargetComponentData, LinearMovementComponentData>
+    struct FlipHorMeleeTargetMove : IJobForEach<Translation, RenderScaleComponentdata, MeleeTargetComponentData, LinearMovementComponentData, FlibHorisontalByTargetTagComponentData>
     {
-        public void Execute([ReadOnly] ref Translation pos, ref RenderScaleComponentdata scale, [ReadOnly] ref MeleeTargetComponentData target, [ReadOnly] ref LinearMovementComponentData move)
+        public void Execute([ReadOnly] ref Translation pos, ref RenderScaleComponentdata scale, [ReadOnly] ref MeleeTargetComponentData target, [ReadOnly] ref LinearMovementComponentData move,[ReadOnly] ref FlibHorisontalByTargetTagComponentData tag)
         {
             if (move.isMoving)
                 return;
             var dir = pos.Value.GetDirectionTo(target.targetPosition.ToF2());
-            scale.value.x = math.abs(scale.value.x) * math.sign(dir.x);
+            scale.value.x = math.abs(scale.value.x);
+            if (dir.x != 0)
+                scale.value.x *= math.sign(dir.x);
+            else if (tag.defaultFlipped)
+                scale.value.x *= -1;
         }
     }
 

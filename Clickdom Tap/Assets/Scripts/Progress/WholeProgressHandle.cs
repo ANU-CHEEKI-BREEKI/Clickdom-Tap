@@ -33,6 +33,9 @@ public class WholeProgressHandle : MonoBehaviour
         var meleeSystem = World.Active.GetOrCreateSystem<WholeProgressIncreacerByMeleeAttack>();
         meleeSystem.Init(this);
 
+        var meleeEventSystem = World.Active.GetOrCreateSystem<WholeProgressIncreacerByAnimationAction>();
+        meleeEventSystem.Init(this);
+
         progress.Progress.ValueChanged += Progress_ValueChanged;
         progress.OnMoneyChanged += Progress_OnMoneyChanged;
 

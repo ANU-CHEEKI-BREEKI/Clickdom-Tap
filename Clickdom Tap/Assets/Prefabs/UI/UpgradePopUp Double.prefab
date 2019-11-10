@@ -422,10 +422,55 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2308765580234064941, guid: 0a739c874497c434b9f64cb6d2f84e6b,
         type: 3}
+    - target: {fileID: 9176216434529013441, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401970318894642103, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337598966059698498, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: path
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678482584673790976, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: path
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468553771836577525, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840712481424544293, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840712481424544293, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 122.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5080705466693545454, guid: f1788423e915b734b8c53234dce659e2,
         type: 3}
       propertyPath: m_Name
       value: SwordUpgradePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186115129338378087, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 48.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186115129338378087, guid: f1788423e915b734b8c53234dce659e2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -88.7
       objectReference: {fileID: 0}
     - target: {fileID: 3012337410277727889, guid: f1788423e915b734b8c53234dce659e2,
         type: 3}
@@ -492,25 +537,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnRateUpgradeButton (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9176216434529013441, guid: f1788423e915b734b8c53234dce659e2,
+    - target: {fileID: 359776972434582995, guid: f1788423e915b734b8c53234dce659e2,
         type: 3}
-      propertyPath: value
-      value: 10
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8207417050800478037, guid: f1788423e915b734b8c53234dce659e2,
         type: 3}
       propertyPath: path
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401970318894642103, guid: f1788423e915b734b8c53234dce659e2,
-        type: 3}
-      propertyPath: value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6337598966059698498, guid: f1788423e915b734b8c53234dce659e2,
-        type: 3}
-      propertyPath: path
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4660137327448714656, guid: f1788423e915b734b8c53234dce659e2,
         type: 3}
@@ -521,16 +556,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2678482584673790976, guid: f1788423e915b734b8c53234dce659e2,
-        type: 3}
-      propertyPath: path
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1468553771836577525, guid: f1788423e915b734b8c53234dce659e2,
-        type: 3}
-      propertyPath: value
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1788423e915b734b8c53234dce659e2, type: 3}

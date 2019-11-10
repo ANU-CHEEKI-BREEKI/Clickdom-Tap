@@ -11,6 +11,11 @@ using UnityEngine;
 
 public static class Utils
 {
+    public static float Average(this Vector3 vector)
+    {
+        return (vector.x + vector.y + vector.z) / 3;
+    }
+
     public static quaternion XLookTo(this quaternion q, float2 direction)
     {
         var k = Quaternion.Euler(0, 0, +90) * new Vector3(direction.x, direction.y, 0);

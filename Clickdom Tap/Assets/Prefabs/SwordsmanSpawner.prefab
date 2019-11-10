@@ -95,8 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRandRange: 0.2
-  velocity: 2
-  scaleByPosSettings: {fileID: 0}
+  velocity: 1.5
+  scaleByPosSettings: {fileID: 11400000, guid: 2de0756cd3c02c8419dab3905e47f454, type: 2}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
   flipHorisontalScale: 0
   animationProvider: {fileID: 11400000, guid: 507392eeb3abf25449c597167d4e09c0, type: 2}
   forAnimation: 03000000
@@ -109,7 +110,7 @@ MonoBehaviour:
   spavnFrequency: 1
   maxEntityCoun: 0
   targetFindingRange: 0.25
-  meeleeDamage: 1
+  meeleeDamage: 10
 --- !u!114 &2933442921217890998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,8 +131,8 @@ MonoBehaviour:
     maxProgress: 60
     progressValue: 1
   damage:
-    maxProgress: 60
-    progressValue: 1
+    maxProgress: 1000
+    progressValue: 10
   attackSpeed:
     maxProgress: 60
     progressValue: 15

@@ -19,7 +19,7 @@ MonoBehaviour:
     radiusUnitsCount: 15
     horisontalSpacing: 0.25
     verticalSpacing: 0.4
-    rotationDegrees: -38.41
+    rotationDegrees: -35.65
     horisontalShift: 0
     verticalShift: 45
     directionLeftToRight: 1

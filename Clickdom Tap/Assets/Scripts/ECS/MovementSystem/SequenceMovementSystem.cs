@@ -39,16 +39,16 @@ public class SequenceMovementSystem : ComponentSystem
 {
     protected override void OnUpdate()
     {
-        Entities.ForEach((Entity entity, SequenceMovementSharedComponentData sequence, ref LinearMovementComponentData line, ref SequenceMovementCurrentPositionIndexComponentData index) => 
+        Entities.ForEach((Entity entity, SequenceMovementSharedComponentData sequence, ref LinearMovementComponentData linearMovement, ref SequenceMovementCurrentPositionIndexComponentData index) => 
         {
             var maxIndex = sequence.movementPositions.Length - 1;
             if (maxIndex == 0) return;
-            if (!line.isMoving)
+            if (!linearMovement.isMoving)
             {
                 if (index.value < maxIndex)
                 {               
                     index.value++;
-                    line.positionToMove = sequence.movementPositions[index.value];
+                    linearMovement.positionToMove = sequence.movementPositions[index.value];
                 }
                 else
                 {

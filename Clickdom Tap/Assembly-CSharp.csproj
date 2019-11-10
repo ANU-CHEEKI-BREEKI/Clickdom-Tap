@@ -132,8 +132,14 @@
     <Compile Include="Assets\Scripts\ECS\Transform\FlipHorisontalByTargetDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\RotationToMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\ScaleByPositionSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Transform\ZbyYSustem.cs" />
+    <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacerByAnimationAction.cs" />
     <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacerByMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacesByParticlesSystem.cs" />
+    <Compile Include="Assets\Scripts\ECSConverters\ISimpleEntityConverter.cs" />
+    <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityConverter.cs" />
+    <Compile Include="Assets\Scripts\ECSConverters\SimpleEntitySpriteRendererConverter.cs" />
+    <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityTransformConverter.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShakerTrigger.cs" />
     <Compile Include="Assets\Scripts\GO\FolowToTransform.cs" />
@@ -176,6 +182,7 @@
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
     <Compile Include="Assets\SetPositionToMouse.cs" />
     <Compile Include="Assets\SpriteCircleProgressBar.cs" />
+    <Compile Include="Assets\TestMatrixTRS.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

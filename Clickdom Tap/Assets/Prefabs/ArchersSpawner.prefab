@@ -238,9 +238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRandRange: 0.2
   velocity: 2
-  scaleByPosSettings: {fileID: 0}
+  scaleByPosSettings: {fileID: 11400000, guid: 2de0756cd3c02c8419dab3905e47f454, type: 2}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
   flipHorisontalScale: 0
-  animationProvider: {fileID: 0}
+  animationProvider: {fileID: 11400000, guid: ce7c035006da3c04cb98f647ffcf23dd, type: 2}
   forAnimation: 04000000
   squadId: 1
   squadPosition: {fileID: 6235383419969632547}

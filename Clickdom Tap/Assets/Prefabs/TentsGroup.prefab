@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4016472584317273554}
   - component: {fileID: 3525525570167987054}
+  - component: {fileID: 8494375362531207273}
+  - component: {fileID: 1788727841600050740}
+  - component: {fileID: 5422412668820422006}
   m_Layer: 0
   m_Name: tent_2 (1)
   m_TagString: Untagged
@@ -56,6 +59,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -80,6 +84,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8494375362531207273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979361294419269085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &1788727841600050740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979361294419269085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &5422412668820422006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979361294419269085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 3.136666, y: 3.11}
 --- !u!1 &2275604260060407950
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +136,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2074040925203717733}
   - component: {fileID: 3448765965723969394}
+  - component: {fileID: 5655758588714353377}
+  - component: {fileID: 2503429363941589194}
+  - component: {fileID: 148584672597660242}
   m_Layer: 0
   m_Name: tent_1
   m_TagString: Untagged
@@ -136,6 +185,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -160,6 +210,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5655758588714353377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275604260060407950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &2503429363941589194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275604260060407950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &148584672597660242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275604260060407950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 3.136666, y: 3.11}
 --- !u!1 &4877843036315056768
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +262,9 @@ GameObject:
   m_Component:
   - component: {fileID: 389965338983828480}
   - component: {fileID: 3388183300730043992}
+  - component: {fileID: 4074995989856018312}
+  - component: {fileID: 5329853756665391214}
+  - component: {fileID: 7806985164253267897}
   m_Layer: 0
   m_Name: tent_1 (1)
   m_TagString: Untagged
@@ -216,6 +311,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -240,6 +336,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4074995989856018312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877843036315056768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &5329853756665391214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877843036315056768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &7806985164253267897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877843036315056768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 3.136666, y: 3.11}
 --- !u!1 &5082250045523933786
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +437,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2822502682457605276}
   - component: {fileID: 6308172248471410640}
+  - component: {fileID: 6372911221227798641}
+  - component: {fileID: 6906219268409877140}
+  - component: {fileID: 3107716775727689516}
   m_Layer: 0
   m_Name: tent_2
   m_TagString: Untagged
@@ -345,6 +486,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -369,6 +511,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6372911221227798641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7209943883036866948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &6906219268409877140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7209943883036866948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &3107716775727689516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7209943883036866948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 3.136666, y: 3.11}
 --- !u!1 &8851300022343745299
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +563,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8480999313042596182}
   - component: {fileID: 2968525826653142160}
+  - component: {fileID: 2137684678186376531}
+  - component: {fileID: 386404923596598282}
+  - component: {fileID: 6569466699418178459}
   m_Layer: 0
   m_Name: tent_1 (2)
   m_TagString: Untagged
@@ -425,6 +612,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -449,3 +637,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2137684678186376531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851300022343745299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+--- !u!114 &386404923596598282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851300022343745299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &6569466699418178459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851300022343745299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  renderScale: {x: 3.136666, y: 3.11}

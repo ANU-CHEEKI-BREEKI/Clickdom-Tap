@@ -66,6 +66,34 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
         );
     }
 
+    static public Vector4 GetUvFor(Sprite sprite, int framesCount = 1, int frameIndex = 0)
+    {
+        if (frameIndex < 0 || frameIndex >= framesCount)
+            throw new ArgumentException(nameof(frameIndex) + $"equals {frameIndex}");
+
+        var width = sprite.rect.width / sprite.texture.width / framesCount;
+        var heigth = sprite.rect.height / sprite.texture.height;
+        var hOffset = sprite.rect.x / sprite.texture.width + width * frameIndex;
+        var vOffset = sprite.rect.y / sprite.texture.height;
+
+        return new Vector4(
+            width,
+            heigth,
+            hOffset,
+            vOffset
+        );
+    }
+
+    static public Vector2 GetPivotFor(Sprite sprite)
+    {
+        var pivot = sprite.pivot;
+
+        pivot.x /= sprite.rect.width;
+        pivot.y /= sprite.rect.height;
+
+        return pivot;
+    }
+
     public bool NeedPauseOnSomeFrames => needPauseOnFrame;
     public PauseData PauseData => pauseData;
 
