@@ -24710,6 +24710,7 @@ GameObject:
   - component: {fileID: 3331479895588907047}
   - component: {fileID: 2567250133476011151}
   - component: {fileID: 8827180340122299139}
+  - component: {fileID: 4798454418611874433}
   - component: {fileID: 125603877422144058}
   - component: {fileID: 6296247015001408082}
   - component: {fileID: 7776550460230890876}
@@ -24805,6 +24806,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4798454418611874433}
+        m_MethodName: CallShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8827180340122299139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24815,6 +24827,64 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fffbc03a6c0926469ac07bacf32be21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  settings:
+    duration: 1
+    magnitude: 1
+    affected:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.08075621
+        outSlope: -0.08075621
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.124323145
+      - serializedVersion: 3
+        time: 0.17759675
+        value: 0.49454987
+        inSlope: -2.5269265
+        outSlope: -2.5269265
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.073056504
+      - serializedVersion: 3
+        time: 0.37300628
+        value: 0.08109833
+        inSlope: -0.20577338
+        outSlope: -0.20577338
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.09024364
+        outSlope: -0.09024364
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.2108494
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+--- !u!114 &4798454418611874433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617017299549119726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b07503e98e851945a0db77ba3bd5394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
@@ -24878,7 +24948,7 @@ MonoBehaviour:
   id: 0
   count:
     maxProgress: 1
-    progressValue: 1
+    progressValue: 0
   spawnRate:
     maxProgress: 1
     progressValue: 1

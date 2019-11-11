@@ -70,10 +70,13 @@ public class ProgressUpgradeObserver : MonoBehaviour
 
     private void Unsubscribe()
     {
-        progress.Count.ValueChanged -= SetCount;
-        progress.Damage.ValueChanged -= SetDamage;
-        progress.SpawnRate.ValueChanged -= SetFrequency;
-        progress.AttackSpeed.ValueChanged -= SetSpeed;
+        if (progress != null)
+        {
+            progress.Count.ValueChanged -= SetCount;
+            progress.Damage.ValueChanged -= SetDamage;
+            progress.SpawnRate.ValueChanged -= SetFrequency;
+            progress.AttackSpeed.ValueChanged -= SetSpeed;
+        }
     }
 }
 

@@ -39,7 +39,8 @@ public class WholeProgressHandle : MonoBehaviour
         progress.Progress.ValueChanged += Progress_ValueChanged;
         progress.OnMoneyChanged += Progress_OnMoneyChanged;
 
-        Progress_ValueChanged(0, 0);
+        Progress_ValueChanged(progress.Progress.Value, progress.Progress.Value);
+        Progress_OnMoneyChanged(progress.Money);
     }
 
     private void OnDestroy()

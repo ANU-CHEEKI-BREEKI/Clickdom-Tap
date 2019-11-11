@@ -140,15 +140,21 @@
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityConverter.cs" />
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntitySpriteRendererConverter.cs" />
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityTransformConverter.cs" />
+    <Compile Include="Assets\Scripts\GO\ASpawnerEffect.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShakerTrigger.cs" />
+    <Compile Include="Assets\Scripts\GO\DeactivateOnStart.cs" />
     <Compile Include="Assets\Scripts\GO\FolowToTransform.cs" />
+    <Compile Include="Assets\Scripts\GO\GOActivator.cs" />
     <Compile Include="Assets\Scripts\GO\InteractableByPriority.cs" />
     <Compile Include="Assets\Scripts\GO\PopUpNumbers.cs" />
     <Compile Include="Assets\Scripts\GO\RopeRenderer.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleAsParent.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleByPosition.cs" />
+    <Compile Include="Assets\Scripts\GO\Shaker.cs" />
     <Compile Include="Assets\Scripts\GO\TrebuchetShooter.cs" />
+    <Compile Include="Assets\Scripts\GO\VirtualCameraShaker.cs" />
+    <Compile Include="Assets\Scripts\GO\VirtualCameraShakerTrigger.cs" />
     <Compile Include="Assets\Scripts\GO\ZByY.cs" />
     <Compile Include="Assets\Scripts\GraphixSettingsHolder.cs" />
     <Compile Include="Assets\Scripts\ParticleStarter.cs" />
@@ -157,6 +163,8 @@
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressButtonBinding.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressCostBinding.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressCostPresenterBinding.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressEvent.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressEventGroup.cs" />
     <Compile Include="Assets\Scripts\Progress\Progress.cs" />
     <Compile Include="Assets\Scripts\Progress\ProgressCost.cs" />
     <Compile Include="Assets\Scripts\Progress\ProgressLoader.cs" />
@@ -351,6 +359,12 @@
     </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

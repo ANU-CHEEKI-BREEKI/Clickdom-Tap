@@ -217,10 +217,13 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
         var cameraPosition = camera.transform.position;
         var camHeight = camera.orthographicSize;
         var camWidth = camHeight * camera.aspect;
-        var maxX = cameraPosition.x + camWidth;
-        var minX = cameraPosition.x - camWidth;
-        var maxY = cameraPosition.y + camHeight;
-        var minY = cameraPosition.y - camHeight;
+
+        var minMaxExpand = 1;//чтобы спрайты, которые входят в сцену из за экрана, появлялиль не внезапно
+
+        var maxX = cameraPosition.x + camWidth  + minMaxExpand;
+        var minX = cameraPosition.x - camWidth  - minMaxExpand;
+        var maxY = cameraPosition.y + camHeight + minMaxExpand;
+        var minY = cameraPosition.y - camHeight - minMaxExpand;
 
         var query = GetEntityQuery(
             UseAsDefault ? defaultQueryDesc : specialQueryDesc
