@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: -1552290536768507364}
   - component: {fileID: 6520975263373587670}
   - component: {fileID: 5967738715514505027}
+  - component: {fileID: -6939849592530044718}
   m_Layer: 0
   m_Name: SwordsmanSpawner
   m_TagString: Untagged
@@ -100,6 +101,18 @@ MonoBehaviour:
   ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
   flipHorisontalScale: 0
   animationProvider: {fileID: 11400000, guid: 507392eeb3abf25449c597167d4e09c0, type: 2}
+  castSpriteShadows: 1
+  shadowSettings: {fileID: 11400000, guid: f8b500c3d7983e34880a5b83182adbf9, type: 2}
+  useLocalDefauldShadowSetting: 0
+  shadowData:
+    scale:
+      x: 1
+      y: -0.581
+    color: {r: 0, g: 0, b: 0, a: 1}
+    positionPercentOffset:
+      x: 0
+      y: -0.65
+      z: 0
   forAnimation: 03000000
   squadId: 2
   squadPosition: {fileID: 9005069450177004891}
@@ -107,10 +120,12 @@ MonoBehaviour:
   faction: 0
   health: 1
   tint: {r: 1, g: 1, b: 1, a: 1}
+  updateAnimationStatesBuTriggers: 0
   spavnFrequency: 1
   maxEntityCoun: 0
   targetFindingRange: 0.25
   meeleeDamage: 10
+  increaceProgressByAnimationEvent: 0
 --- !u!114 &2933442921217890998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6989718882262bd409b4842ddfdb219b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 7
   count:
     maxProgress: 60
     progressValue: 0
@@ -173,3 +188,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forAnimation: 03000000
+--- !u!114 &-6939849592530044718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848252148881765136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae06be6b300c28645b3fcf8f9499d366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

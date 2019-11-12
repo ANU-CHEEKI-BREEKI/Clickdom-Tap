@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class WholeProgress : MonoBehaviour
+public class WholeProgress : ASavable
 {
     [SerializeField] private Progress wholeProgress = new Progress(0, float.MaxValue);
     [SerializeField] private float money = 1;

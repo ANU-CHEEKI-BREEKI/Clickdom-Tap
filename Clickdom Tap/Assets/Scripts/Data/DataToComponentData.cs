@@ -56,4 +56,10 @@ public static class DataToComponentData
         };
         return res;
     }
+
+    public static CastSpritesShadowComponentData ToComponentData(ShadowSettings shadowSettings)
+    {
+        var res = shadowSettings.ShadowsData;
+        return res;
+    }
 }

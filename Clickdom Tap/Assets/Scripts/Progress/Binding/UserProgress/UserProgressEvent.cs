@@ -14,18 +14,24 @@ public class UserProgressEvent : MonoBehaviour
     [SerializeField] private UnityEvent onTriggerEvent;
     [Space]
     [SerializeField] private UserProgressEventGroup eventGtoup;
+    [Space]
+    [SerializeField] bool initOnStart = true;
+    [SerializeField] bool initByInitializator = true;
 
     private UserProgressBinding binding;
 
     private void Start()
     {
+        Debug.Log("UserProgressEvent");
+
         if (eventGtoup != null)
             eventGtoup.AddEvent(this);
 
         binding = GetComponent<UserProgressBinding>();
         Subscribe();
 
-        BindingSource_ValueChanged(binding.BindingSource.Value, binding.BindingSource.Value);
+        if(!initByInitializator)
+            Init();
     }
 
     private void OnDestroy()
@@ -34,6 +40,23 @@ public class UserProgressEvent : MonoBehaviour
             eventGtoup.RemoveEvent(this);
 
         Unsubscribe();
+    }
+
+    private void Subscribe()
+    {
+        binding.BindingSource.ValueChanged += BindingSource_ValueChanged;
+    }
+
+    private void Unsubscribe()
+    {
+        if (binding != null)
+            binding.BindingSource.ValueChanged -= BindingSource_ValueChanged;
+    }
+
+    public void Init()
+    {
+        if (initOnStart)
+            BindingSource_ValueChanged(binding.BindingSource.Value, binding.BindingSource.Value);
     }
 
     private void BindingSource_ValueChanged(float newValue, float oldValue)
@@ -79,14 +102,5 @@ public class UserProgressEvent : MonoBehaviour
             Unsubscribe();
     }
 
-    private void Subscribe()
-    {
-        binding.BindingSource.ValueChanged += BindingSource_ValueChanged;
-    }
 
-    private void Unsubscribe()
-    {
-        if (binding != null)
-            binding.BindingSource.ValueChanged -= BindingSource_ValueChanged;
-    }
 }

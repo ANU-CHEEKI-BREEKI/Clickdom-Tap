@@ -360,3 +360,7 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\UnityEngine.XRModule.xml
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\UnityEngine.ClusterInputModule.xml
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\UnityEngine.ClusterRendererModule.xml
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Cinemachine.dll
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\com.unity.cinemachine.editor.dll
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Cinemachine.pdb
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\com.unity.cinemachine.editor.pdb

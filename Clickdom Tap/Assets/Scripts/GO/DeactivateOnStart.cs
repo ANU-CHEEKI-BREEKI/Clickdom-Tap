@@ -6,6 +6,7 @@ public class DeactivateOnStart : MonoBehaviour
 {
     private void Start()
     {
+        Debug.Log("DeactivateOnStart");
         gameObject.SetActive(false);
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Data\ProjectilesData.cs" />
     <Compile Include="Assets\Scripts\Data\ScaleByPositionSettings.cs" />
     <Compile Include="Assets\Scripts\Data\ShaderSpriteUvAnimationSetupData.cs" />
+    <Compile Include="Assets\Scripts\Data\ShadowSettings.cs" />
     <Compile Include="Assets\Scripts\Data\SquadData.cs" />
     <Compile Include="Assets\Scripts\Data\ZByYSettings.cs" />
     <Compile Include="Assets\Scripts\DeactivateGroup.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Assets\Scripts\GO\ZByY.cs" />
     <Compile Include="Assets\Scripts\GraphixSettingsHolder.cs" />
     <Compile Include="Assets\Scripts\ParticleStarter.cs" />
+    <Compile Include="Assets\Scripts\Progress\ASavable.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\InteractableByCost.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressBinding.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressButtonBinding.cs" />
@@ -165,10 +167,14 @@
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressCostPresenterBinding.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressEvent.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressEventGroup.cs" />
+    <Compile Include="Assets\Scripts\Progress\Binding\UserProgress\UserProgressEventInitializator.cs" />
     <Compile Include="Assets\Scripts\Progress\Progress.cs" />
     <Compile Include="Assets\Scripts\Progress\ProgressCost.cs" />
-    <Compile Include="Assets\Scripts\Progress\ProgressLoader.cs" />
+    <Compile Include="Assets\Scripts\Progress\ProgressSaveLoader.cs" />
     <Compile Include="Assets\Scripts\Progress\ProgressUpgradeObserver.cs" />
+    <Compile Include="Assets\Scripts\Progress\SaveLoader\EntitySpawnerInitializator.cs" />
+    <Compile Include="Assets\Scripts\Progress\SaveLoader\ISaveLoader.cs" />
+    <Compile Include="Assets\Scripts\Progress\SaveLoader\PlayerPrefsSaveLoader.cs" />
     <Compile Include="Assets\Scripts\Progress\UserProgress.cs" />
     <Compile Include="Assets\Scripts\Progress\UserProgressCost.cs" />
     <Compile Include="Assets\Scripts\Progress\WholeProgress.cs" />
@@ -212,6 +218,9 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
@@ -330,6 +339,9 @@
     <Reference Include="Unity.Transforms.Editor">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Transforms.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualEffectGraph.Editor">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
@@ -359,12 +371,6 @@
     </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

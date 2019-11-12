@@ -20,6 +20,19 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [SerializeField] protected bool flipHorisontalScale = false;
     [Space]
     [SerializeField] protected AnimationList animationProvider;
+    [Header("cast shadows")]
+    [Tooltip("duplicate sprite and display it as shadow")]
+    [SerializeField] protected bool castSpriteShadows = false;
+    [Header("shared shadow settings")]
+    [SerializeField] protected ShadowSettings shadowSettings;
+    [Header("default shadow settings")]
+    [SerializeField] protected bool useLocalDefauldShadowSetting = false;
+    [SerializeField] private CastSpritesShadowComponentData shadowData = new CastSpritesShadowComponentData()
+    {
+        color = Color.black,
+        positionPercentOffset = new float3(0, -0.65f, 0),
+        scale = new float2(1, -0.581f)
+    };
     [Header("update pause for animations")]
     [SerializeField] private AnimationType[] forAnimation = new AnimationType[1];
     [Space]
@@ -163,6 +176,12 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     }
 #endif
 
+    public void SpawnImmidiate()
+    {
+        if(squadTag.unitCount != null)
+            Spawn(maxEntityCoun - squadTag.unitCount.value);
+    }
+
     public void Spawn(int entityCount)
     {
         var entities = new NativeArray<Entity>(entityCount, Allocator.Temp);
@@ -239,6 +258,11 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
         });
         if (updateAnimationStatesBuTriggers)
             manager.AddComponent<AnimatorStateLastTriggeredAnimationComponentData>(entity);
+        if (castSpriteShadows)
+            if(!useLocalDefauldShadowSetting && shadowSettings != null)
+                manager.AddComponentData(entity, DataToComponentData.ToComponentData(shadowSettings));
+            else
+                manager.AddComponentData(entity, shadowData);
     }
 
     protected virtual void SetEntitySharedComponentsData(Entity entity, EntityManager manager)

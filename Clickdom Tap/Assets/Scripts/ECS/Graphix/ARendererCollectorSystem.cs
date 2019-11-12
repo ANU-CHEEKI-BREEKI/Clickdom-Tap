@@ -1,5 +1,6 @@
 ﻿using ANU.Utils;
 using System;
+using System.Linq;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -58,6 +59,21 @@ public struct RenderSharedComponentData : ISharedComponentData, IEquatable<Rende
     }
 }
 
+[Serializable]
+public struct CastSpritesShadowComponentData : IComponentData
+{
+    public float2 scale;
+    /// <summary>
+    /// multiplied color tint
+    /// </summary>
+    public Color color;
+    /// <summary>
+    /// сдвиг позиции тени в процентах от масштаба оригинального обьекта(positionPercentOffset > 0)
+    /// </summary>
+    public float3 positionPercentOffset;
+}
+
+
 [UpdateInGroup(typeof(PresentationSystemGroup))]
 [UpdateAfter(typeof(SpriteSheetAnimationSystem))]
 public abstract class ARendererCollectorSystem : JobComponentSystem
@@ -91,6 +107,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
         [ReadOnly] public ArchetypeChunkComponentType<RenderScaleComponentdata> renderScaleType;
         [ReadOnly] public ArchetypeChunkComponentType<Scale> scaleType;
         [ReadOnly] public ArchetypeChunkComponentType<Rotation> rotationType;
+        [ReadOnly] public ArchetypeChunkComponentType<CastSpritesShadowComponentData> shadowType;
         [ReadOnly] public ArchetypeChunkSharedComponentType<RenderSharedComponentData> renderDataType;
 
         public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
@@ -116,6 +133,11 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             var hasTint = chunk.Has(spriteTintType);
             if (hasTint)
                 tints = chunk.GetNativeArray(spriteTintType);
+
+            var shadows = new NativeArray<CastSpritesShadowComponentData>();
+            var hasShadows = chunk.Has(shadowType);
+            if(hasShadows)
+                shadows = chunk.GetNativeArray(shadowType);
 
             var sharedIndex = chunk.GetSharedComponentIndex(renderDataType);
 
@@ -149,19 +171,50 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 pivotedPosition.x = actualPivot.x * actualRenderScale.x;
                 pivotedPosition.y = -actualPivot.y * actualRenderScale.y;
 
-                var matrix = Matrix4x4.Translate(actualPosition);
-                matrix *= Matrix4x4.Rotate(rotation);
-                matrix *= Matrix4x4.Translate(pivotedPosition);
-                matrix *= Matrix4x4.Scale(actualRenderScale);
+                var translateMatrix = Matrix4x4.Translate(actualPosition);
+                var rorateMatrix = Matrix4x4.Rotate(rotation);
+                var pivotedTranslateMatrix = Matrix4x4.Translate(pivotedPosition);
+                var scaleMatrix = Matrix4x4.Scale(actualRenderScale);
+
+                //var matrix = Matrix4x4.Translate(actualPosition);
+                //matrix *= Matrix4x4.Rotate(rotation);
+                //matrix *= Matrix4x4.Translate(pivotedPosition);
+                //matrix *= Matrix4x4.Scale(actualRenderScale);
 
                 var rdata = new RenderData()
                 {
                     position = pos,
                     uv = sprite.uv,
                     color = color,
-                    matrix = matrix//Matrix4x4.TRS(pos, rotation, actualRenderScale)
+                    matrix = translateMatrix * rorateMatrix * pivotedTranslateMatrix * scaleMatrix
                 };
                 chunkDataMap.Add(sharedIndex, rdata);
+
+                if(hasShadows)
+                {
+                    var shadowData = shadows[i];
+
+                    var shadowOffsettedPosition = actualPosition + shadowData.positionPercentOffset * actualRenderScale;
+
+                    var shadowScale = actualRenderScale;
+                    shadowScale.x *= shadowData.scale.x;
+                    shadowScale.y *= shadowData.scale.y;
+
+                    var shadowColor = color * shadowData.color;
+
+                    var shadowTranslateMatrix = Matrix4x4.Translate(shadowOffsettedPosition);
+                    var shadowScaleMatrix = Matrix4x4.Scale(shadowScale);
+
+                    var rshadowrdata = new RenderData()
+                    {
+                        position = shadowOffsettedPosition,
+                        uv = sprite.uv,
+                        color = shadowColor,
+                        matrix = shadowTranslateMatrix * rorateMatrix * pivotedTranslateMatrix * shadowScaleMatrix
+                    };
+                    chunkDataMap.Add(sharedIndex, rshadowrdata);
+                }
+
             }
         }
     }
@@ -171,6 +224,9 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
 
     private EntityQueryDesc defaultQueryDesc;
     private EntityQueryDesc specialQueryDesc;
+
+    private EntityQueryDesc defaultWithShadowsQueryDesc;
+    private EntityQueryDesc specialWithShadowsQueryDesc;
 
     protected virtual ComponentType[] AllDefaultQuery { get; } =
         new[]
@@ -203,6 +259,19 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             All = AllSpecialQuery,
             None = AllNoneQuery
         };
+
+        var shadowQD = new[] { ComponentType.ReadOnly<CastSpritesShadowComponentData>() };
+        defaultWithShadowsQueryDesc = new EntityQueryDesc()
+        {
+            All = AllDefaultQuery.Concat(shadowQD).ToArray(),
+            None = AllNoneQuery
+        };
+        specialWithShadowsQueryDesc = new EntityQueryDesc()
+        {
+            All = AllSpecialQuery.Concat(shadowQD).ToArray(),
+            None = AllNoneQuery
+        };
+
     }
     
     protected override void OnDestroy()
@@ -225,14 +294,21 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
         var maxY = cameraPosition.y + camHeight + minMaxExpand;
         var minY = cameraPosition.y - camHeight - minMaxExpand;
 
-        var query = GetEntityQuery(
-            UseAsDefault ? defaultQueryDesc : specialQueryDesc
-        );
+        var queryDesc = UseAsDefault ? defaultQueryDesc : specialQueryDesc;
+        var shadowQueryDesc = UseAsDefault ? defaultWithShadowsQueryDesc : specialWithShadowsQueryDesc;
+
+        var query = GetEntityQuery(queryDesc);
+        var shadowQuery = GetEntityQuery(shadowQueryDesc);
 
         var entitiesCount = query.CalculateEntityCount();
+        var entitiesWithShadowCount = shadowQuery.CalculateEntityCount();
+        //для каждого энтити с тенью надо будет отрисовать и тень,
+        //так что для них надо в 2 раза больше памяти выделить
+        //и всего выйдет (entitiesCount - entitiesWithShadowCount) + entitiesWithShadowCount * 2.
+        var maxCount = Mathf.Max(entitiesCount, entitiesCount + entitiesWithShadowCount);
 
         chunkDataMap.Dispose();
-        chunkDataMap = new NativeMultiHashMap<int, RenderData>(entitiesCount, Allocator.TempJob);
+        chunkDataMap = new NativeMultiHashMap<int, RenderData>(maxCount, Allocator.TempJob);
         var chunkJob = new SortByChunkIdAndCalcMatrixJobAndCull()
         {
             maxX = maxX,
@@ -246,6 +322,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             scaleType = GetArchetypeChunkComponentType<Scale>(true),
             renderDataType = GetArchetypeChunkSharedComponentType<RenderSharedComponentData>(),
             rotationType = GetArchetypeChunkComponentType<Rotation>(true),
+            shadowType = GetArchetypeChunkComponentType<CastSpritesShadowComponentData>(true),
             spriteTintType = GetArchetypeChunkComponentType<SpriteTintComponentData>(true)
         };
 
