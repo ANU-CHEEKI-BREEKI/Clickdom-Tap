@@ -194,6 +194,48 @@ TextureImporter:
   - first:
       213: 2478794324347671373
     second: touch
+  - first:
+      213: 5091548336765454535
+    second: env_hill_3
+  - first:
+      213: -7602248148765228318
+    second: env_hill_4
+  - first:
+      213: -7404604930356721833
+    second: env_hill_5
+  - first:
+      213: 6658403445040707873
+    second: env_grass
+  - first:
+      213: -2461390397351751446
+    second: env_rock_grassed
+  - first:
+      213: -1133398384868640253
+    second: env_rocks_grassed_2
+  - first:
+      213: 7797890366766555738
+    second: env_rocks_grassed
+  - first:
+      213: 5839908745291065791
+    second: env_hill_1
+  - first:
+      213: -1168156584078475772
+    second: env_hill_2
+  - first:
+      213: -4463632121591680198
+    second: env_rocks
+  - first:
+      213: 8239160857659893436
+    second: env_rock_4
+  - first:
+      213: 479919144530993615
+    second: env_rock_1
+  - first:
+      213: -6357495892027737555
+    second: env_rock_2
+  - first:
+      213: -359003401882473920
+    second: env_rock_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1689,6 +1731,300 @@ TextureImporter:
       bones: []
       spriteID: 2acec4c381d36a64d8c034234817f641
       internalID: 2478794324347671373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_hill_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 610
+        width: 85
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff8d1ac5fc8ec44ba4491c8bb2b2e07
+      internalID: 5091548336765454535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_hill_4
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 614
+        width: 108
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd81fb36ef8eed24488e8de8a2bbd321
+      internalID: -7602248148765228318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_hill_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 588
+        width: 156
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a38f650654f4f74f95fe2ab0acbbe9d
+      internalID: -7404604930356721833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_grass
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 628
+        width: 166
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec6fed32edef824d914ef7eb211a18a
+      internalID: 6658403445040707873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rock_grassed
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 549
+        width: 64
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c44eb3c13e4d3e4448c4dbef58ee8c9c
+      internalID: -2461390397351751446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rocks_grassed_2
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 519
+        width: 58
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e219bef08e866fa4eace19d07f24c84e
+      internalID: -1133398384868640253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rocks_grassed
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 508
+        width: 115
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c20cd00c07bd19d4aba6a202371a5322
+      internalID: 7797890366766555738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_hill_1
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 540
+        width: 159
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fdf638bb10f90f42a3bf5c9552b7d64
+      internalID: 5839908745291065791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_hill_2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 461
+        width: 169
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b5cc879b26335447859775fd794260b
+      internalID: -1168156584078475772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rocks
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 482
+        width: 47
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b47fde03db453346a07895d4ea158f9
+      internalID: -4463632121591680198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rock_4
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 480
+        width: 37
+        height: 23
+      alignment: 9
+      pivot: {x: 0.52167, y: 0.139805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2d44c078b3f121498bb9aa64513625c
+      internalID: 8239160857659893436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rock_1
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 488
+        width: 16
+        height: 11
+      alignment: 9
+      pivot: {x: 0.4665985, y: 0.3299394}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f531010b705ae16448ac166d4d94bd00
+      internalID: 479919144530993615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rock_2
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 482
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87995438f35404439e5bdc2a1555183
+      internalID: -6357495892027737555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_rock_3
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 494
+        width: 25
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc9e22005ccc4447951bf65d8433d53
+      internalID: -359003401882473920
       vertices: []
       indices: 
       edges: []

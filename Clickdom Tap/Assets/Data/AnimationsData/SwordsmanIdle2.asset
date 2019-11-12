@@ -17,10 +17,10 @@ MonoBehaviour:
   spriteSheet: {fileID: 8304610757141259746, guid: 0a739c874497c434b9f64cb6d2f84e6b,
     type: 3}
   framesCount: 6
-  frameDuration: 0.1
+  frameDuration: 0.15
   type: 0
   minInitFrame: 0
-  maxInitFrame: 3
+  maxInitFrame: 6
   layer:
     serializedVersion: 2
     m_Bits: 1
