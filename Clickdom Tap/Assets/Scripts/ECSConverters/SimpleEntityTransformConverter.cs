@@ -20,7 +20,7 @@ public class SimpleEntityTransformConverter : MonoBehaviour, ISimpleEntityConver
         });
         manager.AddComponentData(entity, new Scale()
         {
-            Value = transform.lossyScale.Average()
+            Value = transform.lossyScale.Average2D()
         });
         manager.AddComponentData(entity, new Rotation()
         {

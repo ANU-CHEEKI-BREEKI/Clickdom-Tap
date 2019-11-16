@@ -11,10 +11,15 @@ public class ProgressSaveLoader : MonoBehaviour
     private ISaveLoader saveloader;
     private const string progressSavedKey = "user progress";
 
+    public void InitSaveLoader()
+    {
+        saveloader = new PlayerPrefsSaveLoader();
+    }
+
     [ContextMenu("Awake")]
     private void Awake()
     {
-        saveloader = new PlayerPrefsSaveLoader();
+        InitSaveLoader();
         Load();
     }
 
@@ -28,7 +33,12 @@ public class ProgressSaveLoader : MonoBehaviour
         Save();
     }
 
-
+    [ContextMenu("ResetSavedData")]
+    public void ResetSavedData()
+    {
+        InitSaveLoader();
+        saveloader.Save(progressSavedKey, "");
+    }
 
     [Serializable]
     private class SavedData

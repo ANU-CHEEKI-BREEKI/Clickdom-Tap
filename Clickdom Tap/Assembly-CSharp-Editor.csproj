@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Editor\SequencePathEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\SimpleEntitySpriteRendererConverterEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>

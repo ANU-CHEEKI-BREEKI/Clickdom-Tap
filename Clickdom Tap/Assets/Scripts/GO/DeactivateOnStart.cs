@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class DeactivateOnStart : MonoBehaviour
 {
-    private void Start()
-    {
-        Debug.Log("DeactivateOnStart");
-        gameObject.SetActive(false);
-    }
+    private void Start() => gameObject.SetActive(false);
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using Unity.Entities;
 using static SimpleEntityConverter;
+using UnityEditor;
 
 [RequireComponent(typeof(SimpleEntityConverter), typeof(SpriteRenderer))]
 public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityConverter
@@ -10,6 +11,7 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
     [Space]
     [SerializeField] private Material material;
     [SerializeField] private Mesh mesh;
+    [ContextMenuItem(nameof(RecalcRenderScaleBySprite), nameof(RecalcRenderScaleBySprite))]
     [SerializeField] private Vector2 renderScale = Vector2.one;
 
     private SpriteRenderer _renderer;
@@ -50,7 +52,26 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
             _renderer.enabled = false;
     }
 
-    private void OnDrawGizmos()
+    [ContextMenu(nameof(RecalcRenderScaleBySprite))]
+    public void RecalcRenderScaleBySprite()
+    {
+        Undo.RecordObject(this, nameof(RecalcRenderScaleBySprite));
+
+        if(_renderer == null)
+            _renderer = GetComponent<SpriteRenderer>();
+
+        var rect = _renderer.sprite.rect;
+        renderScale = _renderer.sprite.bounds.size;
+
+        EditorUtility.SetDirty(this);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        DrawScaleRectGizmos();
+    }
+    
+    private void DrawScaleRectGizmos()
     {
         var oldMatrix = Gizmos.matrix;
 
@@ -58,10 +79,10 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
         var pivot = ShaderSpriteUvAnimationSetupData.GetPivotFor(_renderer.sprite);
         pivot -= Vector2.one / 2;
 
-        var scale = renderScale * transform.lossyScale.Average();
+        var scale = renderScale * transform.lossyScale.Average2D();
 
         Vector2 pivotedPosition;
-        pivotedPosition.x = pivot.x * scale.x;
+        pivotedPosition.x = -pivot.x * scale.x;
         pivotedPosition.y = -pivot.y * scale.y;
 
         var matrix = Matrix4x4.Translate(transform.position);

@@ -45,16 +45,18 @@ Material:
     - _CrackBorderAlpfaCutOff: 0.5
     - _CrackBorderDistance: 0.004
     - _DetailNoiseDamper: 0
-    - _Disolve: 0.9660199
+    - _Disolve: 0.9091216
     - _KrackBorderAlpfaCutOff: 0.5
     - _KrackBorderDistance: 0.004
     - _LocalSpace: 1
     - _NoiseDamper: 0
     m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CrackTilingAndOffset: {r: 0.6, g: 0.6, b: 0, a: 0}
     - _CrackTint: {r: 0.18823531, g: 0.18823531, b: 0.18823531, a: 0}
     - _DetailNoiseTilingAndOffset: {r: 7.51, g: 3.55, b: 0, a: 0}
     - _KrackTilingAndOffset: {r: 0.06, g: 0.06, b: 0, a: 0}
     - _KrackTint: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0}
     - _NoiseTilingAndOffset: {r: 3.9, g: 2.04, b: 0, a: 0}
-    - _Tint: {r: 1, g: 1, b: 1, a: 0}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}

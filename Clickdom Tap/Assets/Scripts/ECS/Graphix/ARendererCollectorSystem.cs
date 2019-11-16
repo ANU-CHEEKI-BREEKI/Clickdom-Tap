@@ -168,7 +168,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 var actualPosition = pos;
                 var pivotedPosition = pos;
 
-                pivotedPosition.x = actualPivot.x * actualRenderScale.x;
+                pivotedPosition.x = -actualPivot.x * actualRenderScale.x;
                 pivotedPosition.y = -actualPivot.y * actualRenderScale.y;
 
                 var translateMatrix = Matrix4x4.Translate(actualPosition);
@@ -287,7 +287,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
         var camHeight = camera.orthographicSize;
         var camWidth = camHeight * camera.aspect;
 
-        var minMaxExpand = 1;//чтобы спрайты, которые входят в сцену из за экрана, появлялиль не внезапно
+        var minMaxExpand = 3;//чтобы спрайты, которые входят в сцену из за экрана, появлялиль не внезапно
 
         var maxX = cameraPosition.x + camWidth  + minMaxExpand;
         var minX = cameraPosition.x - camWidth  - minMaxExpand;

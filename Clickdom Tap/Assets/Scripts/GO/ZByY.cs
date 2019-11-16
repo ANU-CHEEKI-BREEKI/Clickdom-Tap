@@ -20,7 +20,7 @@ public class ZByY : MonoBehaviour
             return;
 
         var pos = _transform.position;
-        pos.z = pos.y * settings.Scale;
+        pos.z = pos.y * settings.Scale + settings.ZOffset;
         _transform.position = pos;
     }
 #endif

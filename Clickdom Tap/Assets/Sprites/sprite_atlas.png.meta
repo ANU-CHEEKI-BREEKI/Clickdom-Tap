@@ -37,7 +37,7 @@ TextureImporter:
     second: wall_1
   - first:
       213: 6451264694632907309
-    second: wall_2
+    second: wall_2_part1
   - first:
       213: 6933618418553894829
     second: wall_3
@@ -236,6 +236,78 @@ TextureImporter:
   - first:
       213: -359003401882473920
     second: env_rock_3
+  - first:
+      213: -7764941617822179022
+    second: shadow_tent_2
+  - first:
+      213: 1809431706977055554
+    second: shadow_tent_1
+  - first:
+      213: -1524956852876221711
+    second: shadow_1
+  - first:
+      213: 5351476090715925925
+    second: shadow_2
+  - first:
+      213: 4983692595894577325
+    second: shadow_3
+  - first:
+      213: 5122144402404105106
+    second: shadow_4
+  - first:
+      213: 6774808859653505523
+    second: shadow_5
+  - first:
+      213: 7365127935109791968
+    second: shadow_6
+  - first:
+      213: 603499744909569326
+    second: shadow_7
+  - first:
+      213: -3720017207704447567
+    second: shadow_8
+  - first:
+      213: 5425392845056345224
+    second: shadow_9
+  - first:
+      213: -3882524511400215578
+    second: shadow_10
+  - first:
+      213: -2826679167939420837
+    second: shadow_11
+  - first:
+      213: 8949393687163108856
+    second: shadow_house_1
+  - first:
+      213: -875613176182184361
+    second: shadow_house_2
+  - first:
+      213: -3973051736131720386
+    second: shadow_house_3
+  - first:
+      213: -2756158046643754985
+    second: shadow_tower_1
+  - first:
+      213: 6033135611980454945
+    second: shadow_tower_2
+  - first:
+      213: 339664577559050241
+    second: shadow_tower_3
+  - first:
+      213: 2035996244035235391
+    second: shadow_assoult_tower
+  - first:
+      213: 8632290070776828279
+    second: shadow_ram
+  - first:
+      213: -4435907939852975905
+    second: shadow_house_5
+  - first:
+      213: 5523088294820333074
+    second: shadow_house_5
+  - first:
+      213: 6670459055815367148
+    second: wall_2_part2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -472,17 +544,9 @@ TextureImporter:
         width: 167
         height: 271
       alignment: 9
-      pivot: {x: 0.49609375, y: 0.8249588}
+      pivot: {x: 0.42211714, y: 0.89587224}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -33.5, y: -135.5}
-        - {x: -83.5, y: -82.5}
-        - {x: -83.5, y: 108.5}
-        - {x: 26.5, y: 135.5}
-        - {x: 36.5, y: 135.5}
-        - {x: 83.5, y: 96.5}
-        - {x: 83.5, y: -77.5}
-        - {x: -14.5, y: -135.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -496,21 +560,14 @@ TextureImporter:
       name: tower_2
       rect:
         serializedVersion: 2
-        x: 180
-        y: 836
-        width: 139
-        height: 201
+        x: 96
+        y: 942
+        width: 145
+        height: 200
       alignment: 9
-      pivot: {x: 0.49530688, y: 0.84076655}
+      pivot: {x: 0.39993286, y: 0.92431825}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -3.5, y: -100.5}
-        - {x: -37.5, y: -100.5}
-        - {x: -69.5, y: -57.5}
-        - {x: -69.5, y: 100.5}
-        - {x: 39.5, y: 100.5}
-        - {x: 69.5, y: 62.5}
-        - {x: 69.5, y: -75.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -529,15 +586,9 @@ TextureImporter:
         width: 69
         height: 101
       alignment: 9
-      pivot: {x: 0.54726976, y: 0.8358505}
+      pivot: {x: 0.48762965, y: 0.89405745}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 13.5, y: -50.5}
-        - {x: -34.5, y: -50.5}
-        - {x: -34.5, y: 29.5}
-        - {x: -10.5, y: 50.5}
-        - {x: 34.5, y: 50.5}
-        - {x: 34.5, y: -26.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -551,19 +602,14 @@ TextureImporter:
       name: tower_door
       rect:
         serializedVersion: 2
-        x: 71
-        y: 1205
-        width: 30
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 70
+        y: 1206
+        width: 27
+        height: 46
+      alignment: 9
+      pivot: {x: 0.56091845, y: 0.17818816}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -9, y: -23.5}
-        - {x: -15, y: -23.5}
-        - {x: -15, y: 23.5}
-        - {x: 15, y: 23.5}
-        - {x: 15, y: -12.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -577,22 +623,14 @@ TextureImporter:
       name: wall_1
       rect:
         serializedVersion: 2
-        x: 387
-        y: 1104
-        width: 301
-        height: 336
+        x: 385
+        y: 1217
+        width: 403
+        height: 223
       alignment: 9
-      pivot: {x: 0.20959635, y: 0.98730177}
+      pivot: {x: 0.11763035, y: 0.9165143}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 100.5, y: -168}
-        - {x: 87.5, y: -168}
-        - {x: -87.5, y: -27}
-        - {x: -150.5, y: 4}
-        - {x: -150.5, y: 168}
-        - {x: -84.5, y: 168}
-        - {x: 150.5, y: 53}
-        - {x: 150.5, y: -146}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -603,30 +641,17 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wall_2
+      name: wall_2_part1
       rect:
         serializedVersion: 2
         x: 0
-        y: 763
-        width: 159
-        height: 388
+        y: 828
+        width: 96
+        height: 322
       alignment: 9
-      pivot: {x: 0.15947847, y: 0.9959682}
+      pivot: {x: 0.8755817, y: 0.97610795}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 34.5, y: -194}
-        - {x: 6.5, y: -154}
-        - {x: -35.5, y: -97}
-        - {x: -79.5, y: -9}
-        - {x: -79.5, y: 194}
-        - {x: -34.5, y: 194}
-        - {x: -34.5, y: 137}
-        - {x: -46.5, y: 108}
-        - {x: -20.5, y: 49}
-        - {x: 5.5, y: 10}
-        - {x: 35.5, y: -28}
-        - {x: 79.5, y: -79}
-        - {x: 79.5, y: -194}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -640,22 +665,14 @@ TextureImporter:
       name: wall_3
       rect:
         serializedVersion: 2
-        x: 84
-        y: 1154
-        width: 72
-        height: 98
+        x: 172
+        y: 1142
+        width: 48
+        height: 115
       alignment: 9
-      pivot: {x: 0.78086174, y: 0.96594614}
+      pivot: {x: 0.35614046, y: 0.9610203}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: -49}
-        - {x: -36, y: -49}
-        - {x: -36, y: -19}
-        - {x: -14, y: 18}
-        - {x: 15, y: 49}
-        - {x: 36, y: 49}
-        - {x: 36, y: -2}
-        - {x: 17, y: -23}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -669,21 +686,14 @@ TextureImporter:
       name: gates
       rect:
         serializedVersion: 2
-        x: 688
-        y: 1196
-        width: 186
-        height: 244
+        x: 788
+        y: 1158
+        width: 125
+        height: 282
       alignment: 9
-      pivot: {x: 0.2965869, y: 0.96518195}
+      pivot: {x: 0.71201366, y: 0.9999987}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 93, y: -103}
-        - {x: 53, y: -122}
-        - {x: 39, y: -122}
-        - {x: -93, y: 1}
-        - {x: -93, y: 122}
-        - {x: -41, y: 122}
-        - {x: 93, y: 13}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -697,7 +707,7 @@ TextureImporter:
       name: ladder
       rect:
         serializedVersion: 2
-        x: 874
+        x: 913
         y: 1226
         width: 19
         height: 214
@@ -777,22 +787,14 @@ TextureImporter:
       name: house_1
       rect:
         serializedVersion: 2
-        x: 45
-        y: 1015
-        width: 157
-        height: 143
+        x: 798
+        y: 895
+        width: 153
+        height: 142
       alignment: 9
-      pivot: {x: 0.52788097, y: 0.5308326}
+      pivot: {x: 0.27945405, y: 0.030028436}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -25.5, y: -71.5}
-        - {x: -39.5, y: -71.5}
-        - {x: -77.5, y: -45.5}
-        - {x: -78.5, y: -34.5}
-        - {x: -78.5, y: 39.5}
-        - {x: -57.5, y: 71.5}
-        - {x: 78.5, y: 71.5}
-        - {x: 78.5, y: -36.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -806,25 +808,14 @@ TextureImporter:
       name: house_2
       rect:
         serializedVersion: 2
-        x: 202
+        x: 780
         y: 1037
-        width: 120
-        height: 157
+        width: 164
+        height: 108
       alignment: 9
-      pivot: {x: 0.4790718, y: 0.45246178}
+      pivot: {x: 0.892839, y: 0.22983466}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -60, y: -30.5}
-        - {x: -60, y: 49.5}
-        - {x: -35, y: 78.5}
-        - {x: -17, y: 78.5}
-        - {x: 2, y: 54.5}
-        - {x: 23, y: 53.5}
-        - {x: 27, y: 35.5}
-        - {x: 60, y: -6.5}
-        - {x: 60, y: -64.5}
-        - {x: 9, y: -78.5}
-        - {x: -2, y: -78.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -838,25 +829,14 @@ TextureImporter:
       name: house_3
       rect:
         serializedVersion: 2
-        x: 379
-        y: 1054
-        width: 135
+        x: 762
+        y: 704
+        width: 133
         height: 191
       alignment: 9
-      pivot: {x: 0.4769043, y: 0.40761834}
+      pivot: {x: 0.6013583, y: 0.022454226}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 20.5, y: -95.5}
-        - {x: 4.5, y: -95.5}
-        - {x: -67.5, y: -39.5}
-        - {x: -67.5, y: 61.5}
-        - {x: -19.5, y: 95.5}
-        - {x: 10.5, y: 95.5}
-        - {x: 17.5, y: 67.5}
-        - {x: 56.5, y: 41.5}
-        - {x: 55.5, y: 12.5}
-        - {x: 67.5, y: -1.5}
-        - {x: 67.5, y: -46.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -870,22 +850,14 @@ TextureImporter:
       name: house_4
       rect:
         serializedVersion: 2
-        x: 79
-        y: 930
-        width: 101
-        height: 92
+        x: 257
+        y: 849
+        width: 71
+        height: 110
       alignment: 9
-      pivot: {x: 0.525981, y: 0.6038699}
+      pivot: {x: 0.21513689, y: 0.21374401}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -6.5, y: -46}
-        - {x: -50.5, y: -1}
-        - {x: -50.5, y: 21}
-        - {x: -37.5, y: 39}
-        - {x: -11.5, y: 46}
-        - {x: 10.5, y: 46}
-        - {x: 50.5, y: -3}
-        - {x: 50.5, y: -46}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -899,20 +871,14 @@ TextureImporter:
       name: house_5
       rect:
         serializedVersion: 2
-        x: 158
-        y: 1162
-        width: 58
-        height: 79
+        x: 640
+        y: 1102
+        width: 51
+        height: 90
       alignment: 9
-      pivot: {x: 0.56200016, y: 0.4807129}
+      pivot: {x: 0.6461433, y: 0.11969265}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -29, y: -39.5}
-        - {x: -29, y: 0.5}
-        - {x: 0, y: 39.5}
-        - {x: 29, y: 39.5}
-        - {x: 29, y: -10.5}
-        - {x: 15, y: -39.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -1128,22 +1094,14 @@ TextureImporter:
       name: ram_weapon
       rect:
         serializedVersion: 2
-        x: 647
-        y: 1087
-        width: 134
-        height: 106
+        x: 297
+        y: 959
+        width: 29
+        height: 151
       alignment: 9
-      pivot: {x: 0.7172865, y: 0.5958137}
+      pivot: {x: 0.36717698, y: 0.7262165}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -67, y: -53}
-        - {x: -67, y: -35}
-        - {x: -13, y: -6}
-        - {x: 17, y: 17}
-        - {x: 47, y: 35}
-        - {x: 67, y: 33}
-        - {x: 67, y: 9}
-        - {x: -38, y: -53}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -1246,7 +1204,7 @@ TextureImporter:
       name: trebuchet_arm
       rect:
         serializedVersion: 2
-        x: 895
+        x: 932
         y: 1212
         width: 24
         height: 228
@@ -1267,8 +1225,8 @@ TextureImporter:
       name: trebuchet_weight
       rect:
         serializedVersion: 2
-        x: 293
-        y: 1118
+        x: 401
+        y: 1062
         width: 83
         height: 70
       alignment: 9
@@ -1466,9 +1424,9 @@ TextureImporter:
       name: spritesheet_numbers_10f
       rect:
         serializedVersion: 2
-        x: 1056
+        x: 1050
         y: 1388
-        width: 337
+        width: 350
         height: 52
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2025,6 +1983,279 @@ TextureImporter:
       bones: []
       spriteID: 3bc9e22005ccc4447951bf65d8433d53
       internalID: -359003401882473920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_tent_2
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1031
+        width: 51
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5261317, y: 0.18522434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54f0a8bc6db28e54a97d0927ce2137ce
+      internalID: -7764941617822179022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_tent_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1025
+        width: 49
+        height: 58
+      alignment: 9
+      pivot: {x: 0.51824206, y: 0.20735766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f431d9aac6d4c274793561ee26386c1d
+      internalID: 1809431706977055554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_house_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 944
+        width: 93
+        height: 81
+      alignment: 9
+      pivot: {x: 0.38281512, y: 0.08291212}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a13ded83fb08249addfc41280d126e
+      internalID: 8949393687163108856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_house_2
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 963
+        width: 58
+        height: 63
+      alignment: 9
+      pivot: {x: 0.49999896, y: 0.08829365}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b2f88e15cf6a4b4fa49137155d92ad6
+      internalID: -875613176182184361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_house_3
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 861
+        width: 69
+        height: 83
+      alignment: 9
+      pivot: {x: 0.54106337, y: 0.11134504}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74339643ea065b845af1ff1369355672
+      internalID: -3973051736131720386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_tower_1
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 740
+        width: 54
+        height: 121
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6188879}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54977aa64cc3e04f91272c29aa32288
+      internalID: -2756158046643754985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_tower_2
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 861
+        width: 49
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50746, y: 0.6877684}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e6c164b6fe9b6e49bfed7be2eb8a537
+      internalID: 6033135611980454945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_tower_3
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 816
+        width: 21
+        height: 42
+      alignment: 9
+      pivot: {x: 0.48259336, y: 0.66182745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f996184bcc52a40b0c2f083e32d744
+      internalID: 339664577559050241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_assoult_tower
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 1032
+        width: 37
+        height: 32
+      alignment: 9
+      pivot: {x: 0.50456446, y: 0.15172577}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd4691d67c56834489f03116e6a1ba5
+      internalID: 2035996244035235391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_ram
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 755
+        width: 34
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac42e2682f6b4641bcf88dc28df485a
+      internalID: 8632290070776828279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_house_4
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 1084
+        width: 30
+        height: 55
+      alignment: 9
+      pivot: {x: 0.042504884, y: 0.2504572}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb06c08ce728e54688b2681599f38be
+      internalID: -4435907939852975905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_house_5
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 1106
+        width: 30
+        height: 40
+      alignment: 9
+      pivot: {x: 0.6812724, y: 0.04034729}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86378d18152b4dc41995df834888a056
+      internalID: 5523088294820333074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_2_part2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1164
+        width: 40
+        height: 89
+      alignment: 9
+      pivot: {x: 0.7548321, y: 0.9581244}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f9e8a24181e70429ccc4202246ec80
+      internalID: 6670459055815367148
       vertices: []
       indices: 
       edges: []

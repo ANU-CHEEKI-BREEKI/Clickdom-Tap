@@ -105,9 +105,7 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
                     material,
                     matricesInstanced,
                     callSize,
-                    mpb,
-                    UnityEngine.Rendering.ShadowCastingMode.Off,
-                    false
+                    mpb
                 );
 
                 drawnCount += callSize;

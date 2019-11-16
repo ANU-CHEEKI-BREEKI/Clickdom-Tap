@@ -22,8 +22,6 @@ public class UserProgressEvent : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("UserProgressEvent");
-
         if (eventGtoup != null)
             eventGtoup.AddEvent(this);
 

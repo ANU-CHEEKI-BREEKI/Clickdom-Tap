@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 9030502754598751509, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}
       propertyPath: m_Name
-      value: house_2 Variant
+      value: house_1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 700017524879409585, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}
@@ -67,11 +67,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 839650303931811595, guid: 4137a2f3630006041927d94f838db29b,
+    - target: {fileID: 2043101702491316182, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}
-      propertyPath: m_Sprite
+      propertyPath: settings
       value: 
-      objectReference: {fileID: 575601758146719918, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+      objectReference: {fileID: 11400000, guid: 5ffb2055a14bd194cb6ba03169ee7391,
+        type: 2}
+    - target: {fileID: 1112166747091703792, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112166747091703792, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112166747091703792, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496776125336125939, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: ZbyYSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ffb2055a14bd194cb6ba03169ee7391,
+        type: 2}
+    - target: {fileID: 8780093429070105848, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: renderScale.x
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780093429070105848, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: renderScale.y
+      value: 2.6999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627620268893120038, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: ZbyYSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ffb2055a14bd194cb6ba03169ee7391,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4137a2f3630006041927d94f838db29b, type: 3}

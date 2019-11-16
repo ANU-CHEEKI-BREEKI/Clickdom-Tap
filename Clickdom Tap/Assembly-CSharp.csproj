@@ -62,19 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AnimationEventAdapter.cs" />
-    <Compile Include="Assets\AnimationPauser.cs" />
-    <Compile Include="Assets\CircleProgressBarAutoTimer.cs" />
-    <Compile Include="Assets\FloatToText.cs" />
-    <Compile Include="Assets\HoldButton.cs" />
-    <Compile Include="Assets\LinearProgressBar.cs" />
-    <Compile Include="Assets\ProgressIncreacer.cs" />
-    <Compile Include="Assets\ResetPositionOnAwake.cs" />
+    <Compile Include="Assets\Scripts\AnimationEventAdapter.cs" />
     <Compile Include="Assets\Scripts\AnimationPauseApdater.cs" />
+    <Compile Include="Assets\Scripts\AnimationPauser.cs" />
     <Compile Include="Assets\Scripts\AnimatorTrigger.cs" />
     <Compile Include="Assets\Scripts\ArchersVolleyManualTrigger.cs" />
     <Compile Include="Assets\Scripts\ArrowDamageUpdater.cs" />
     <Compile Include="Assets\Scripts\AutoRemoveWhenStops.cs" />
+    <Compile Include="Assets\Scripts\CircleProgressBarAutoTimer.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
     <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
     <Compile Include="Assets\Scripts\Data\ProjectileEffectSettings.cs" />
@@ -141,6 +136,7 @@
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityConverter.cs" />
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntitySpriteRendererConverter.cs" />
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityTransformConverter.cs" />
+    <Compile Include="Assets\Scripts\FloatToText.cs" />
     <Compile Include="Assets\Scripts\GO\ASpawnerEffect.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShakerTrigger.cs" />
@@ -158,6 +154,8 @@
     <Compile Include="Assets\Scripts\GO\VirtualCameraShakerTrigger.cs" />
     <Compile Include="Assets\Scripts\GO\ZByY.cs" />
     <Compile Include="Assets\Scripts\GraphixSettingsHolder.cs" />
+    <Compile Include="Assets\Scripts\HoldButton.cs" />
+    <Compile Include="Assets\Scripts\LinearProgressBar.cs" />
     <Compile Include="Assets\Scripts\ParticleStarter.cs" />
     <Compile Include="Assets\Scripts\Progress\ASavable.cs" />
     <Compile Include="Assets\Scripts\Progress\Binding\InteractableByCost.cs" />
@@ -179,14 +177,20 @@
     <Compile Include="Assets\Scripts\Progress\UserProgressCost.cs" />
     <Compile Include="Assets\Scripts\Progress\WholeProgress.cs" />
     <Compile Include="Assets\Scripts\Progress\WholeProgressHandle.cs" />
+    <Compile Include="Assets\Scripts\ProgressIncreacer.cs" />
     <Compile Include="Assets\Scripts\RenderSettings.cs" />
+    <Compile Include="Assets\Scripts\ResetPositionOnAwake.cs" />
     <Compile Include="Assets\Scripts\SequencePath.cs" />
+    <Compile Include="Assets\Scripts\SetPositionToMouse.cs" />
+    <Compile Include="Assets\Scripts\ShadowColor.cs" />
+    <Compile Include="Assets\Scripts\SpriteCircleProgressBar.cs" />
     <Compile Include="Assets\Scripts\SwordDamageApdater.cs" />
     <Compile Include="Assets\Scripts\Test\DebugQuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\Test\LaunchMisileToMousePos.cs" />
     <Compile Include="Assets\Scripts\Test\LaunchProjectileToPosition.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnCollisionProjectileEntity.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnOnClick.cs" />
+    <Compile Include="Assets\Scripts\TestMatrixTRS.cs" />
     <Compile Include="Assets\Scripts\Utils\Algorithm.cs" />
     <Compile Include="Assets\Scripts\Utils\Jobs.cs" />
     <Compile Include="Assets\Scripts\Utils\Math.cs" />
@@ -194,9 +198,6 @@
     <Compile Include="Assets\Scripts\Utils\NativeArrayIndexer.cs" />
     <Compile Include="Assets\Scripts\Utils\Physics.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
-    <Compile Include="Assets\SetPositionToMouse.cs" />
-    <Compile Include="Assets\SpriteCircleProgressBar.cs" />
-    <Compile Include="Assets\TestMatrixTRS.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

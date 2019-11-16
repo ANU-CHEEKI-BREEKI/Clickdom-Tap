@@ -82,8 +82,8 @@ namespace ANU.Utils
 
         public static NativeArray<Tkey> GetUniqueKeys<Tkey, Tval>(this NativeMultiHashMap<Tkey, Tval> map, Allocator alocator) where Tkey : struct, IEquatable<Tkey>, IComparable<Tkey> where Tval : struct
         {
-            var tempKeys = map.GetKeyArray(Allocator.Temp);
-            var tempMap = new NativeHashMap<Tkey, Tkey>(tempKeys.Length, Allocator.Temp);
+            var tempKeys = map.GetKeyArray(Allocator.TempJob);
+            var tempMap = new NativeHashMap<Tkey, Tkey>(tempKeys.Length, Allocator.TempJob);
 
             for (int i = 0; i < tempKeys.Length; i++)
                 tempMap.TryAdd(tempKeys[i], tempKeys[i]);

@@ -10,10 +10,15 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public static class Utils
-{
-    public static float Average(this Vector3 vector)
+{    
+    public static float Average2D(this Vector3 vector)
     {
-        return (vector.x + vector.y + vector.z) / 3;
+        return (vector.x + vector.y) / 2;
+    }
+
+    public static float Average(this float2 vector)
+    {
+        return (vector.x + vector.y) / 2;
     }
 
     public static quaternion XLookTo(this quaternion q, float2 direction)
