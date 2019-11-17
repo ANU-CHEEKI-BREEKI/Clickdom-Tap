@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\RenderCullingBounds.cs" />
     <Compile Include="Assets\Scripts\AnimationEventAdapter.cs" />
     <Compile Include="Assets\Scripts\AnimationPauseApdater.cs" />
     <Compile Include="Assets\Scripts\AnimationPauser.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets\Scripts\ArchersVolleyManualTrigger.cs" />
     <Compile Include="Assets\Scripts\ArrowDamageUpdater.cs" />
     <Compile Include="Assets\Scripts\AutoRemoveWhenStops.cs" />
+    <Compile Include="Assets\Scripts\CastShadowsShift.cs" />
     <Compile Include="Assets\Scripts\CircleProgressBarAutoTimer.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
     <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
@@ -94,6 +96,8 @@
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\SpriteSheetAnimationSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\ARendererCollectorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\ARendererSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\CastProjectileShadowsSystems.cs" />
+    <Compile Include="Assets\Scripts\ECS\Graphix\CastShadowShiftSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\DynamicRendererCollectorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\InstancedRendererCollectorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\SpriteSheetDynamicRendererSystem.cs" />
@@ -132,6 +136,7 @@
     <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacerByAnimationAction.cs" />
     <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacerByMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\ECS\WholeProgressIncreacesByParticlesSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\WholeProgressParticlesCollectorSystem.cs" />
     <Compile Include="Assets\Scripts\ECSConverters\ISimpleEntityConverter.cs" />
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityConverter.cs" />
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntitySpriteRendererConverter.cs" />

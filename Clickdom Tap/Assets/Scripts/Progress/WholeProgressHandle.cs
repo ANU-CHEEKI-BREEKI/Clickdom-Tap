@@ -27,8 +27,10 @@ public class WholeProgressHandle : MonoBehaviour
     private void Start()
     {
         progress = GetComponent<WholeProgress>();
-        var system = World.Active.GetOrCreateSystem<WholeProgressIncreacesByParticlesSystem>();
-        system.Init(triggerZone, this);
+        var system = World.Active.GetOrCreateSystem<WholeProgressParticlesCollectorSystem>();
+        system.Init(triggerZone);
+        var projincreacesystem = World.Active.GetOrCreateSystem<WholeProgressIncreacesByParticlesSystem>();
+        projincreacesystem.Init(this);
 
         var meleeSystem = World.Active.GetOrCreateSystem<WholeProgressIncreacerByMeleeAttack>();
         meleeSystem.Init(this);

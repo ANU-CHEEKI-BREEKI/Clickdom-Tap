@@ -4,16 +4,16 @@ using Unity.Entities;
 
 public class SimpleConvertionToEntity : MonoBehaviour
 {
-    [SerializeField] MonoBehaviour toConvert;
-
     private void Awake()
     {
-        var convert = toConvert as IConvertGameObjectToEntity;
-        if (convert == null)
+        var toConvert = GetComponents<IConvertGameObjectToEntity>();
+
+        if (toConvert == null)
             return;
 
         var manager = Unity.Entities.World.Active.EntityManager;
         var entity = manager.CreateEntity();
-        convert.Convert(entity, manager, null);
+        foreach (var item in toConvert)
+            item.Convert(entity, manager, null);
     }
 }

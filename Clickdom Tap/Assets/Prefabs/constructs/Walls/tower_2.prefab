@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929395198791122519}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3600004, y: -2.5800014, z: -2.8896015}
-  m_LocalScale: {x: 0.7558433, y: 0.7558433, z: 0.7558433}
+  m_LocalRotation: {x: -0, y: -0, z: -0.06006948, w: 0.9981942}
+  m_LocalPosition: {x: 1.4900002, y: -1.5700006, z: -1.7584007}
+  m_LocalScale: {x: 0.5579304, y: 0.5579304, z: 0.5579304}
   m_Children: []
   m_Father: {fileID: 774772046305485963}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -6.8880005}
 --- !u!212 &3535389776746081654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +127,9 @@ MonoBehaviour:
   afterConvEvent: 1
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  disableCulling: 1
   renderScale: {x: 0.9, y: 1.5333333}
+  autoSet: 1
 --- !u!114 &2071554271443622224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +251,11 @@ PrefabInstance:
       propertyPath: renderScale.y
       value: 6.666667
       objectReference: {fileID: 0}
+    - target: {fileID: 4341993918608314025, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: disableCulling
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8780093429070105848, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}
       propertyPath: renderScale.x
@@ -258,6 +265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: renderScale.y
       value: 2.7666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780093429070105848, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: disableCulling
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8763558725427994267, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}

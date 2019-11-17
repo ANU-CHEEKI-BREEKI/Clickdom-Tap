@@ -128,5 +128,10 @@ PrefabInstance:
       propertyPath: renderScale.y
       value: 7.4333334
       objectReference: {fileID: 0}
+    - target: {fileID: 4341993918608314025, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: disableCulling
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4137a2f3630006041927d94f838db29b, type: 3}

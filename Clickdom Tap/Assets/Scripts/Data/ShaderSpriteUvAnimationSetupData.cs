@@ -47,6 +47,7 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     public int MaxInitFrame => maxInitFrame;
     public Material Material => material;
     public Mesh Mesh => mesh;
+    public Vector2 Pivot => GetPivotFor(spriteSheet);
     /// <summary>
     /// get uv for 0 frame of current initiated spritesheet
     /// </summary>

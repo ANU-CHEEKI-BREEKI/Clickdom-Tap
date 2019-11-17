@@ -42,7 +42,7 @@ public class AnimatorTrigger : MonoBehaviour, IConvertGameObjectToEntity
             path.LocalPoints.RemoveAt(path.LocalPoints.Count - 1);
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (path == null)
             return;

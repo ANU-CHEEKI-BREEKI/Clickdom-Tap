@@ -16,24 +16,24 @@ public class SequencePath : MonoBehaviour
     public float2[] CopyOfWorldPointsAsF2 { get { return localPositions.Select(p => transform.TransformPoint(p)).Select(p => new float2(p.x, p.y)).ToArray(); } }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        if (!Selection.gameObjects.Contains(this.gameObject))
-        {
-            var radius = 0.1f;
-            Gizmos.color = Color.red;
-            for (int i = 0; i < localPositions.Count - 1; i++)
-            {
-                var point = localPositions[i];
-                point = transform.TransformPoint(point);
-                var nextpoint = localPositions[i + 1];
-                nextpoint = transform.TransformPoint(nextpoint);
-                Gizmos.DrawWireSphere(point, radius);
-                Gizmos.DrawLine(point, nextpoint);
-            }
-            if (LocalPoints.Count > 0)
-                Gizmos.DrawWireSphere(transform.TransformPoint(localPositions[localPositions.Count - 1]), radius);
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    if (!Selection.gameObjects.Contains(this.gameObject))
+    //    {
+    //        var radius = 0.1f;
+    //        Gizmos.color = Color.red;
+    //        for (int i = 0; i < localPositions.Count - 1; i++)
+    //        {
+    //            var point = localPositions[i];
+    //            point = transform.TransformPoint(point);
+    //            var nextpoint = localPositions[i + 1];
+    //            nextpoint = transform.TransformPoint(nextpoint);
+    //            Gizmos.DrawWireSphere(point, radius);
+    //            Gizmos.DrawLine(point, nextpoint);
+    //        }
+    //        if (LocalPoints.Count > 0)
+    //            Gizmos.DrawWireSphere(transform.TransformPoint(localPositions[localPositions.Count - 1]), radius);
+    //    }
+    //}
 #endif
 }

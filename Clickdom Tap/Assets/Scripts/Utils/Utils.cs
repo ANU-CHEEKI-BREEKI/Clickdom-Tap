@@ -21,6 +21,20 @@ public static class Utils
         return (vector.x + vector.y) / 2;
     }
 
+    public static float Average(this float3 vector, bool safety = false)
+    {
+        if (!safety)
+            return (vector.x + vector.y + vector.z) / 3;
+        else
+        {
+            var x = (!float.IsInfinity(vector.x) && !float.IsNaN(vector.x)) ? vector.x : 1f;
+            var y = (!float.IsInfinity(vector.y) && !float.IsNaN(vector.y)) ? vector.y : 1f;
+            var z = (!float.IsInfinity(vector.z) && !float.IsNaN(vector.z)) ? vector.z : 1f;
+
+            return (x + y + z) / 3;
+        }
+    }
+
     public static quaternion XLookTo(this quaternion q, float2 direction)
     {
         var k = Quaternion.Euler(0, 0, +90) * new Vector3(direction.x, direction.y, 0);

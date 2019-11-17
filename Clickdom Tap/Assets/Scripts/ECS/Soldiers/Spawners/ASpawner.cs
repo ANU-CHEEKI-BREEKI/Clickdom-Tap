@@ -23,6 +23,7 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [Header("cast shadows")]
     [Tooltip("duplicate sprite and display it as shadow")]
     [SerializeField] protected bool castSpriteShadows = false;
+    [SerializeField] protected bool shiftShadows = false;
     [Header("shared shadow settings")]
     [SerializeField] protected ShadowSettings shadowSettings;
     [Header("default shadow settings")]
@@ -259,10 +260,23 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
         if (updateAnimationStatesBuTriggers)
             manager.AddComponent<AnimatorStateLastTriggeredAnimationComponentData>(entity);
         if (castSpriteShadows)
-            if(!useLocalDefauldShadowSetting && shadowSettings != null)
-                manager.AddComponentData(entity, DataToComponentData.ToComponentData(shadowSettings));
+        {
+            CastSpritesShadowComponentData shd;
+            if (!useLocalDefauldShadowSetting && shadowSettings != null)
+                shd = DataToComponentData.ToComponentData(shadowSettings);
             else
-                manager.AddComponentData(entity, shadowData);
+                shd = shadowData;
+
+            manager.AddComponentData(entity, shd);
+
+            if (shiftShadows)
+            {
+                manager.AddComponentData(entity, new ShiftCastShadowsTagComponentData()
+                {
+                    positionUnitsOffsetDefaultValue = shd.positionUnitsOffset
+                });
+            }
+        }
     }
 
     protected virtual void SetEntitySharedComponentsData(Entity entity, EntityManager manager)

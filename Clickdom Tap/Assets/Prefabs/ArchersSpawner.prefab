@@ -244,6 +244,7 @@ MonoBehaviour:
   flipHorisontalScale: 0
   animationProvider: {fileID: 11400000, guid: ce7c035006da3c04cb98f647ffcf23dd, type: 2}
   castSpriteShadows: 1
+  shiftShadows: 0
   shadowSettings: {fileID: 11400000, guid: f8b500c3d7983e34880a5b83182adbf9, type: 2}
   useLocalDefauldShadowSetting: 0
   shadowData:
@@ -254,6 +255,10 @@ MonoBehaviour:
     positionPercentOffset:
       x: 0
       y: -0.65
+      z: 0
+    positionUnitsOffset:
+      x: 0
+      y: 0
       z: 0
   forAnimation: 04000000
   squadId: 1
@@ -266,6 +271,10 @@ MonoBehaviour:
   spavnFrequency: 1
   maxEntityCoun: 0
   projectilesData: {fileID: 11400000, guid: 8b1d1b91c8bb17040ab60e8c9b285902, type: 2}
+  castProjectileShadows: 1
+  projectileShadowSettings: {fileID: 11400000, guid: f8b500c3d7983e34880a5b83182adbf9,
+    type: 2}
+  calsProjectileShadowsShifts: 1
   shootTarget1: {fileID: 3359965385615118724}
   shootTarget2: {fileID: 4872898957378389129}
   shootTarget3: {fileID: 7333913536852350370}

@@ -53,6 +53,9 @@ public struct LerpShootTargetProvederComponentData : IComponentData
 public class ArcherSpawner : ASpawner, IDamageSettable
 {
     [SerializeField] ProjectilesData projectilesData;
+    [SerializeField] private bool castProjectileShadows = true;
+    [SerializeField] private ShadowSettings projectileShadowSettings;
+    [SerializeField] private bool calsProjectileShadowsShifts = true;
     [Space]
     [SerializeField] Transform shootTarget1;
     [SerializeField] Transform shootTarget2;
@@ -74,7 +77,9 @@ public class ArcherSpawner : ASpawner, IDamageSettable
             },
             spriteData = new SpriteRendererComponentData()
             {
-                uv = projectilesData.Animation.RandomUV
+                uv = projectilesData.Animation.RandomUV,
+                usePivot = true,
+                pivot = projectilesData.Animation.Pivot
             },
             animaionData = DataToComponentData.ToComponentData(projectilesData.Animation),
             renderData = new RenderSharedComponentData()
@@ -83,8 +88,12 @@ public class ArcherSpawner : ASpawner, IDamageSettable
                 mesh = projectilesData.Animation.Mesh,
             },
             collisionData = projectilesData.Collision,
-            launchData = projectilesData.Launch
+            launchData = projectilesData.Launch,
+            castShadows = castProjectileShadows,
+            calcShadowsShifts = calsProjectileShadowsShifts
         };
+        if (castProjectileShadows)
+            launchArrowData.shadowSettings = DataToComponentData.ToComponentData(projectileShadowSettings);
     }
 
     protected override void SetEntityComponentsData(Entity entity, EntityManager manager)

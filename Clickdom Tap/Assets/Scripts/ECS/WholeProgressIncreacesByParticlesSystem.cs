@@ -11,49 +11,21 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using static WholeProgressParticlesCollectorSystem;
 
 [UpdateBefore(typeof(DeleteProjectileSystem))]
+[UpdateAfter(typeof(WholeProgressParticlesCollectorSystem))]
 public class WholeProgressIncreacesByParticlesSystem : ComponentSystem
 {
-    private Rect triggerZone;
     private WholeProgressHandle progress;
+
     private bool itialized = false;
 
-    public void Init(Rect triggerZone, WholeProgressHandle progress)
+    public void Init(WholeProgressHandle progress)
     {
-        this.triggerZone = triggerZone;
         this.progress = progress;
 
         itialized = true;
-    }
-
-    public struct ProgressData
-    {
-        public float3 position;
-        public float damage;
-    }
-
-    [BurstCompile]
-    public struct CollectTriggeredProjectilesJob : IJobForEach<Translation, ProjectileComponentData, ProjectileCollisionComponentData>
-    {
-        public NativeQueue<ProgressData>.ParallelWriter progressData;
-        [ReadOnly] public Rect triggerZone;
-
-        public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref ProjectileComponentData projectile, [ReadOnly] ref ProjectileCollisionComponentData collision)
-        {
-            if (collision.ownerFaction == FactionComponentData.Faction.ENEMY)
-                return;
-            if (!projectile.itStopsRightNow)
-                return;
-            if (!triggerZone.Contains(translation.Value.ToF2()))
-                return;
-
-            progressData.Enqueue(new ProgressData()
-            {
-                damage = collision.processData.damage,
-                position = translation.Value
-            });
-        }
     }
 
     protected override void OnUpdate()
@@ -61,18 +33,11 @@ public class WholeProgressIncreacesByParticlesSystem : ComponentSystem
         if (!itialized)
             return;
 
-        var progressData = new NativeQueue<ProgressData>(Allocator.TempJob);
-
-        new CollectTriggeredProjectilesJob()
-        {
-            progressData = progressData.AsParallelWriter(),
-            triggerZone = triggerZone
-        }.Schedule(this).Complete();
+        WholeProgressParticlesCollectorSystem.collectJobHandle.Complete();
+        var progressData = WholeProgressParticlesCollectorSystem.triggeredProjectiles;
 
         ProgressData data;
         while (progressData.TryDequeue(out data))
             progress?.IncreaceProgressInPlace(data.damage, data.position);
-
-        progressData.Dispose();
     }
 }

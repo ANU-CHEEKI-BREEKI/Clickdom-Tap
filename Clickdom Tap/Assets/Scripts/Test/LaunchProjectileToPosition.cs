@@ -14,6 +14,10 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
 
     [SerializeField] private ProjectileLaunshSetupComponentData launchData;
     [SerializeField] private ProjectileCollisionComponentData collisionData;
+    [Space]
+    [SerializeField] private bool castShadows = true;
+    [SerializeField] private ShadowSettings shadowSettings;
+    [SerializeField] private Transform startShadowOffset;
 
     private EntityManager manager;
 
@@ -61,6 +65,20 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
         launch.targetPosition = to.ToF2();
         manager.AddComponentData(entity, launch);
         manager.AddComponentData(entity, collisionData);
+
+        if (castShadows)
+        {
+            manager.AddComponentData(entity, DataToComponentData.ToComponentData(shadowSettings));
+            manager.AddComponentData(entity, new CastProjectileShadowsTagComponentData()
+            {
+                defaultAlpha = shadowSettings.ShadowsData.color.a,
+                defaultScale = shadowSettings.ShadowsData.scale,
+                scaleMultiplier = 1.5f,
+                alphaMultiplier = 0.2f,
+                startPositionOffset = new float2(0, startShadowOffset != null ? startShadowOffset.position.y - from.y : 0),
+                maxYOffsetForLerpScaleAndAlpha = 7,
+            });
+        }
     }
 
     void IDamageSettable.SetDamage(float damage)

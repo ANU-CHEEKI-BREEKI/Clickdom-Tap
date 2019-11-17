@@ -127,7 +127,9 @@ MonoBehaviour:
   afterConvEvent: 1
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  renderScale: {x: 5.1, y: 4.733333}
+  disableCulling: 0
+  renderScale: {x: 5.1, y: 4.7333336}
+  autoSet: 1
 --- !u!1 &9030502754598751509
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 4794194957968737408, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.089844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4794194957968737408, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}

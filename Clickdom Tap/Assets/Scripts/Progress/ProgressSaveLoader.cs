@@ -28,6 +28,12 @@ public class ProgressSaveLoader : MonoBehaviour
 
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if(pause)
+            Save();
+    }
+
     private void OnApplicationQuit()
     {
         Save();

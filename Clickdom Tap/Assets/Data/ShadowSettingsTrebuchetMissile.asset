@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66021cb8014501f4cbdd88c764c1c1f1, type: 3}
-  m_Name: ShadowSettings
+  m_Name: ShadowSettingsFarArchers
   m_EditorClassIdentifier: 
   shadowsData:
     flipRotationByX: 0
-    flipRotationByY: 1
+    flipRotationByY: 0
     scale:
       x: 1
       y: -0.581

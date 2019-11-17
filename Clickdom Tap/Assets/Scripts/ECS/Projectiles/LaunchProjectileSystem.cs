@@ -149,7 +149,8 @@ public class LaunchProjectileSystem : ComponentSystem
     public void LaunchArrow(float3 startPos, float scale, 
         ProjectileLaunshSetupComponentData launchData, SpriteSheetAnimationComponentData animaionData,
         RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData,
-        RenderScaleComponentdata renderScale)
+        RenderScaleComponentdata renderScale,
+        bool castShadows, CastSpritesShadowComponentData shadowSettings, bool calcShadowShifts)
     {
         var arrow = manager.CreateEntity(arrowArchetype);
 
@@ -170,12 +171,27 @@ public class LaunchProjectileSystem : ComponentSystem
         manager.SetComponentData(arrow, renderScale);
         manager.SetComponentData(arrow, collisionData);
         manager.SetSharedComponentData(arrow, renderData);
+
+        if(castShadows)
+        {
+            manager.AddComponentData(arrow, shadowSettings);
+            if (calcShadowShifts)
+                manager.AddComponentData(arrow, new CastProjectileShadowsTagComponentData()
+                {
+                    defaultAlpha = shadowSettings.color.a,
+                    alphaMultiplier = 0f,
+                    scaleMultiplier = 1,
+                    startPositionOffset = new float2(0, -1),
+                    maxYOffsetForLerpScaleAndAlpha = 5f
+                });
+        }
     }
 
     public void LaunchArrow(float3 startPos, float scale,
         ProjectileLaunshSetupComponentData launchData, SpriteRendererComponentData spriteData,
         RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData,
-        RenderScaleComponentdata renderScale)
+        RenderScaleComponentdata renderScale,
+        bool castShadows, CastSpritesShadowComponentData shadowSettings, bool calcShadowShifts)
     {
         var arrow = manager.CreateEntity(arrowArchetype);
 
@@ -196,5 +212,20 @@ public class LaunchProjectileSystem : ComponentSystem
         manager.SetComponentData(arrow, renderScale);
         manager.SetComponentData(arrow, collisionData);
         manager.SetSharedComponentData(arrow, renderData);
+
+        if (castShadows)
+        {
+            manager.AddComponentData(arrow, shadowSettings);
+            if (calcShadowShifts)
+                manager.AddComponentData(arrow, new CastProjectileShadowsTagComponentData()
+                {
+                    defaultAlpha = shadowSettings.color.a,
+                    defaultScale = shadowSettings.scale,
+                    scaleMultiplier = 1,
+                    alphaMultiplier = 0f,
+                    startPositionOffset = new float2(0, -1),
+                    maxYOffsetForLerpScaleAndAlpha = 5f
+                });
+        }
     }
 }

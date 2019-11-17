@@ -3,16 +3,28 @@ using System.Collections;
 using Unity.Entities;
 using static SimpleEntityConverter;
 using UnityEditor;
+using UnityEngine.SceneManagement;
+
+#if UNITY_EDITOR
+
+using UnityEditor.SceneManagement;
+
+#endif
 
 [RequireComponent(typeof(SimpleEntityConverter), typeof(SpriteRenderer))]
+[ExecuteInEditMode]
 public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityConverter
 {
     [SerializeField] private AfterConvertionEvent afterConvEvent = AfterConvertionEvent.NOTHING;
     [Space]
     [SerializeField] private Material material;
     [SerializeField] private Mesh mesh;
+    [Space]
+    [SerializeField] private bool disableCulling = false;
+    [Space]
     [ContextMenuItem(nameof(RecalcRenderScaleBySprite), nameof(RecalcRenderScaleBySprite))]
     [SerializeField] private Vector2 renderScale = Vector2.one;
+    [SerializeField] private bool autoSet = true;
 
     private SpriteRenderer _renderer;
 
@@ -20,6 +32,22 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
     {
         _renderer = GetComponent<SpriteRenderer>();
     }
+
+#if UNITY_EDITOR
+
+    private void Reset()
+    {
+        if (autoSet)
+            RecalcRenderScale();
+    }
+
+    private void OnValidate()
+    {
+        if (autoSet)
+            RecalcRenderScale();
+    }
+
+#endif
 
     public void ConvertToEntity(Entity entity, EntityManager manager)
     {
@@ -45,32 +73,48 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
             material = material == null ? _renderer.material : material,
             mesh = mesh
         });
-
+        if (disableCulling)
+            manager.AddComponent<DisableRenderCullingTagComponentData>(entity);
+        
         if (afterConvEvent == AfterConvertionEvent.DELETE)
             Destroy(_renderer);
         else if (afterConvEvent == AfterConvertionEvent.DEACTIVATE)
             _renderer.enabled = false;
     }
 
-    [ContextMenu(nameof(RecalcRenderScaleBySprite))]
-    public void RecalcRenderScaleBySprite()
+    private void RecalcRenderScale()
     {
-        Undo.RecordObject(this, nameof(RecalcRenderScaleBySprite));
-
-        if(_renderer == null)
+        if (_renderer == null)
             _renderer = GetComponent<SpriteRenderer>();
 
         var rect = _renderer.sprite.rect;
         renderScale = _renderer.sprite.bounds.size;
-
-        EditorUtility.SetDirty(this);
     }
+
+    [ContextMenu(nameof(RecalcRenderScaleBySprite))]
+    public void RecalcRenderScaleBySprite()
+    {
+#if UNITY_EDITOR
+        Undo.RecordObject(this, nameof(RecalcRenderScaleBySprite));
+#endif
+
+        RecalcRenderScale();
+
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(gameObject);
+        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+#endif
+    }
+
+
+
+#if UNITY_EDITOR
 
     private void OnDrawGizmosSelected()
     {
         DrawScaleRectGizmos();
     }
-    
+
     private void DrawScaleRectGizmos()
     {
         var oldMatrix = Gizmos.matrix;
@@ -95,4 +139,6 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
 
         Gizmos.matrix = oldMatrix;
     }
+
+#endif
 }

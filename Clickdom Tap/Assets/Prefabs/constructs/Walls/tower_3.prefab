@@ -108,6 +108,11 @@ PrefabInstance:
       propertyPath: renderScale.y
       value: 3.3666668
       objectReference: {fileID: 0}
+    - target: {fileID: 4341993918608314025, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: disableCulling
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8780093429070105848, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}
       propertyPath: renderScale.x
@@ -117,6 +122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: renderScale.y
       value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780093429070105848, guid: 4137a2f3630006041927d94f838db29b,
+        type: 3}
+      propertyPath: disableCulling
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8763558725427994267, guid: 4137a2f3630006041927d94f838db29b,
         type: 3}

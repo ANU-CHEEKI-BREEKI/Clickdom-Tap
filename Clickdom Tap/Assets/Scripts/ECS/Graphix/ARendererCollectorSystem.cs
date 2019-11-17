@@ -13,6 +13,8 @@ using static ANU.Utils.Jobs;
 public struct UseOnlyDynamicRendererTagComponentData : IComponentData { }
 public struct UseOnlyInstancedRendererTagComponentData : IComponentData { }
 
+public struct DisableRenderCullingTagComponentData : IComponentData { }
+
 [Serializable]
 public struct SpriteRendererComponentData : IComponentData
 {
@@ -62,6 +64,9 @@ public struct RenderSharedComponentData : ISharedComponentData, IEquatable<Rende
 [Serializable]
 public struct CastSpritesShadowComponentData : IComponentData
 {
+    public bool flipRotationByX;
+    public bool flipRotationByY;
+
     public float2 scale;
     /// <summary>
     /// multiplied color tint
@@ -71,6 +76,7 @@ public struct CastSpritesShadowComponentData : IComponentData
     /// сдвиг позиции тени в процентах от масштаба оригинального обьекта(positionPercentOffset > 0)
     /// </summary>
     public float3 positionPercentOffset;
+    public float3 positionUnitsOffset;
 }
 
 
@@ -110,6 +116,8 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
         [ReadOnly] public ArchetypeChunkComponentType<CastSpritesShadowComponentData> shadowType;
         [ReadOnly] public ArchetypeChunkSharedComponentType<RenderSharedComponentData> renderDataType;
 
+        [ReadOnly] public ArchetypeChunkComponentType<DisableRenderCullingTagComponentData> disableCullingTagType;
+
         public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
         {
             var positions = chunk.GetNativeArray(translationType);
@@ -139,12 +147,16 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             if(hasShadows)
                 shadows = chunk.GetNativeArray(shadowType);
 
+            var culling = !chunk.Has(disableCullingTagType);
+
             var sharedIndex = chunk.GetSharedComponentIndex(renderDataType);
 
             for (int i = 0; i < cnt; i++)
             {
                 var pos = positions[i].Value;
-                if (pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY) continue;
+
+                if (culling)
+                    if (pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY) continue;
 
                 var sprite = sprites[i];
                 var renderScale = float2.zero;
@@ -158,7 +170,13 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 var color = Vector4.one;
                 if (hasTint) color = tints[i].color;
 
+                if (color.w == 0)
+                    continue;
+
                 var actualRenderScale = new Vector3(renderScale.x, renderScale.y, 1) * scale;
+
+                if (actualRenderScale.x == 0 || actualRenderScale.y == 0)
+                    continue;
 
                 var actualPivot = sprite.pivot;
                 if (!sprite.usePivot)
@@ -176,11 +194,6 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 var pivotedTranslateMatrix = Matrix4x4.Translate(pivotedPosition);
                 var scaleMatrix = Matrix4x4.Scale(actualRenderScale);
 
-                //var matrix = Matrix4x4.Translate(actualPosition);
-                //matrix *= Matrix4x4.Rotate(rotation);
-                //matrix *= Matrix4x4.Translate(pivotedPosition);
-                //matrix *= Matrix4x4.Scale(actualRenderScale);
-
                 var rdata = new RenderData()
                 {
                     position = pos,
@@ -194,7 +207,13 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 {
                     var shadowData = shadows[i];
 
-                    var shadowOffsettedPosition = actualPosition + shadowData.positionPercentOffset * actualRenderScale;
+                    if (shadowData.scale.x == 0 || shadowData.scale.y == 0 || shadowData.color.a == 0)
+                        continue;
+
+                    var shadowOffsettedPosition = 
+                        actualPosition + 
+                        shadowData.positionPercentOffset * actualRenderScale +
+                        shadowData.positionUnitsOffset;
 
                     var shadowScale = actualRenderScale;
                     shadowScale.x *= shadowData.scale.x;
@@ -202,15 +221,32 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
 
                     var shadowColor = color * shadowData.color;
 
+                    var shadowRotation = rotation;
+                    if (shadowData.flipRotationByX)
+                    {
+                        Quaternion q = shadowRotation;
+                        var angles = q.eulerAngles;
+                        angles.z = 180 - angles.z;
+                        shadowRotation = Quaternion.Euler(angles);
+                    }
+                    if (shadowData.flipRotationByY)
+                    {
+                        Quaternion q = shadowRotation;
+                        var angles = q.eulerAngles;
+                        angles.z = 360 - angles.z;
+                        shadowRotation = Quaternion.Euler(angles);
+                    }
+
                     var shadowTranslateMatrix = Matrix4x4.Translate(shadowOffsettedPosition);
                     var shadowScaleMatrix = Matrix4x4.Scale(shadowScale);
+                    var shadowRotateMatrix = Matrix4x4.Rotate(shadowRotation);
 
                     var rshadowrdata = new RenderData()
                     {
                         position = shadowOffsettedPosition,
                         uv = sprite.uv,
                         color = shadowColor,
-                        matrix = shadowTranslateMatrix * rorateMatrix * pivotedTranslateMatrix * shadowScaleMatrix
+                        matrix = shadowTranslateMatrix * shadowRotateMatrix * pivotedTranslateMatrix * shadowScaleMatrix
                     };
                     chunkDataMap.Add(sharedIndex, rshadowrdata);
                 }
@@ -240,6 +276,9 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
     
     public NativeMultiHashMap<int, RenderData> chunkDataMap;
     public JobHandle jobHandle;
+
+    private RenderCullingBounds renderCullingBounds;
+    private Camera camera;
 
     protected sealed override void OnCreate()
     {
@@ -271,7 +310,6 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             All = AllSpecialQuery.Concat(shadowQD).ToArray(),
             None = AllNoneQuery
         };
-
     }
     
     protected override void OnDestroy()
@@ -282,17 +320,42 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
 
     protected sealed override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        var camera = Camera.main;
-        var cameraPosition = camera.transform.position;
-        var camHeight = camera.orthographicSize;
-        var camWidth = camHeight * camera.aspect;
+        if(camera == null)
+        {
+            camera = Camera.main;
+            renderCullingBounds = camera.GetComponent<RenderCullingBounds>();
+        }
 
-        var minMaxExpand = 3;//чтобы спрайты, которые входят в сцену из за экрана, появлялиль не внезапно
+        var maxX = 0f;
+        var minX = 0f;
+        var maxY = 0f;
+        var minY = 0f;
 
-        var maxX = cameraPosition.x + camWidth  + minMaxExpand;
-        var minX = cameraPosition.x - camWidth  - minMaxExpand;
-        var maxY = cameraPosition.y + camHeight + minMaxExpand;
-        var minY = cameraPosition.y - camHeight - minMaxExpand;
+        if (renderCullingBounds != null)
+        {
+            var bounds = renderCullingBounds.CullingBounds;
+
+            maxX = bounds.xMax;
+            minX = bounds.xMin;
+            maxY = bounds.yMax;
+            minY = bounds.yMin;
+        }
+        else
+        {
+            var cameraPosition = camera.transform.position;
+            var camHeight = camera.orthographicSize;
+            var camWidth = camHeight * camera.aspect;
+
+            var minMaxExpand = 1;//чтобы спрайты, которые входят в сцену из за экрана, появлялиль не внезапно
+
+            maxX = cameraPosition.x + camWidth + minMaxExpand;
+            minX = cameraPosition.x - camWidth - minMaxExpand;
+            maxY = cameraPosition.y + camHeight + minMaxExpand;
+            minY = cameraPosition.y - camHeight - minMaxExpand;
+        }
+
+        //Debug.DrawLine(new Vector2(maxX, maxY), new Vector2(minX, minY));
+        //Debug.DrawLine(new Vector2(maxX, minY), new Vector2(minX, maxY));
 
         var queryDesc = UseAsDefault ? defaultQueryDesc : specialQueryDesc;
         var shadowQueryDesc = UseAsDefault ? defaultWithShadowsQueryDesc : specialWithShadowsQueryDesc;
@@ -323,7 +386,8 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             renderDataType = GetArchetypeChunkSharedComponentType<RenderSharedComponentData>(),
             rotationType = GetArchetypeChunkComponentType<Rotation>(true),
             shadowType = GetArchetypeChunkComponentType<CastSpritesShadowComponentData>(true),
-            spriteTintType = GetArchetypeChunkComponentType<SpriteTintComponentData>(true)
+            spriteTintType = GetArchetypeChunkComponentType<SpriteTintComponentData>(true),
+            disableCullingTagType = GetArchetypeChunkComponentType<DisableRenderCullingTagComponentData>(true)
         };
 
         jobHandle = chunkJob.Schedule(query, inputDeps);

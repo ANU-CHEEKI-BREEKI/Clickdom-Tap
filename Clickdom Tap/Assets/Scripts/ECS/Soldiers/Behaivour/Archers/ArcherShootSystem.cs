@@ -21,6 +21,10 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
     public RenderSharedComponentData renderData;
     public ProjectileCollisionComponentData collisionData;
 
+    public bool castShadows;
+    public CastSpritesShadowComponentData shadowSettings;
+    public bool calcShadowsShifts;
+
     public bool animated;
 
     public bool Equals(SquadProjectileLaunchDataSharedComponentData other)
@@ -30,7 +34,11 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
              spriteData.Equals(other.spriteData) &&
             animaionData.Equals(other.animaionData) &&
             renderData.Equals(other.renderData) &&
-            collisionData.Equals(other.collisionData);
+            collisionData.Equals(other.collisionData) &&
+            castShadows == other.castShadows &&
+            shadowSettings.Equals(other.shadowSettings) &&
+            calcShadowsShifts.Equals(other.calcShadowsShifts)
+            ;
     }
 
     public override int GetHashCode()
@@ -40,7 +48,10 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
                 spriteData.GetHashCode()    / 3 +
                 animaionData.GetHashCode()  * 5 +
                 renderData.GetHashCode()    / 6 +
-                collisionData.GetHashCode() * 8;
+                collisionData.GetHashCode() * 8 +
+                shadowSettings.GetHashCode() +
+                castShadows.GetHashCode() +
+                calcShadowsShifts.GetHashCode();
     }
 }
 
@@ -184,7 +195,10 @@ public class ArcherShootSystem : ComponentSystem
                        animation,
                        render,
                        collision,
-                       scale
+                       scale,
+                       sharedData.castShadows,
+                       sharedData.shadowSettings,
+                       sharedData.calcShadowsShifts
                     );
                 }
                 else
@@ -196,7 +210,10 @@ public class ArcherShootSystem : ComponentSystem
                        sprite,
                        render,
                        collision,
-                       scale
+                       scale,
+                       sharedData.castShadows,
+                       sharedData.shadowSettings,
+                       sharedData.calcShadowsShifts
                     );
                 }
             });
