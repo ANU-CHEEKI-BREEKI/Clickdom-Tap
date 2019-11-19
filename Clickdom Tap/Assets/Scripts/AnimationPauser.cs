@@ -29,7 +29,7 @@ public class AnimationPauser : MonoBehaviour, ISpeedSettable
     {
         animator = GetComponent<Animator>();
 
-        onPauseEnds?.Invoke();
+        //onPauseEnds?.Invoke();
     }
 
     private void OnDestroy()

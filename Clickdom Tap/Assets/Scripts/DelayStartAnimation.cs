@@ -9,21 +9,22 @@ public class DelayStartAnimation : MonoBehaviour
     [SerializeField] private bool randomDelay;
     [SerializeField] [Range(0, 10)] private float randomRangeSeconds = 1;
 
+    private Animator animator;
+
     private void Awake()
     {
-        var anamator = GetComponent<Animator>();
-        anamator.enabled = false;
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
 
-        var del = delaySeconds;
+        var delay = delaySeconds;
         if (randomDelay)
-            del += Random.Range(-randomRangeSeconds, randomRangeSeconds);
+            delay += Random.Range(-randomRangeSeconds, randomRangeSeconds);
 
-        StartCoroutine(StartAnimationWithDelay(del, anamator));
+        Invoke("Resume", delay);
     }
 
-    private IEnumerator StartAnimationWithDelay(float delay, Animator animator)
+    private void Resume()
     {
-        yield return new WaitForSeconds(delay);
         animator.enabled = true;
     }
 }
