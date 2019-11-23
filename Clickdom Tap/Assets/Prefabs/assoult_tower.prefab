@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 8875749686637140516}
   - component: {fileID: 5105701846813178466}
   - component: {fileID: 3021357535547171941}
+  - component: {fileID: 5460618194868809150}
+  - component: {fileID: 1721333990844249107}
+  - component: {fileID: 237262287174237249}
   m_Layer: 0
   m_Name: assoult_tower_bridge
   m_TagString: Untagged
@@ -26,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794042485803551119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48000002, y: -1.3699999, z: -7.0822997}
+  m_LocalPosition: {x: 0.4799986, y: -0.61000013, z: 3.838427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2434406495101871883}
@@ -95,6 +98,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &5460618194868809150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794042485803551119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c02d6a261f83d458c9acdf05932899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 2
+--- !u!114 &1721333990844249107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794042485803551119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a1f3ac4b483541aad4af6a5c1857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSettings: {fileID: 0}
+  ZbyYSettings: {fileID: 11400000, guid: 721e0730441f93f44819c55b54dc99d8, type: 2}
+--- !u!114 &237262287174237249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794042485803551119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ad61b10fa2cfa49a06b5231904d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterConvEvent: 1
+  material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  disableCulling: 0
+  renderScale: {x: 1.5999999, y: 0.76666665}
+  autoSet: 1
 --- !u!1 &2825204102927281838
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +283,9 @@ MonoBehaviour:
   afterConvEvent: 2
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  renderScale: {x: 0.63, y: 0.63}
+  disableCulling: 0
+  renderScale: {x: 0.6333333, y: 0.6333333}
+  autoSet: 1
 --- !u!1 &5769210933266899290
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +426,9 @@ MonoBehaviour:
   afterConvEvent: 2
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  renderScale: {x: 2.3, y: 5.165}
+  disableCulling: 0
+  renderScale: {x: 1.9666667, y: 5.1666665}
+  autoSet: 1
 --- !u!1 &6413114906875645881
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +700,9 @@ MonoBehaviour:
   afterConvEvent: 2
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  renderScale: {x: 0.63, y: 0.63}
+  disableCulling: 0
+  renderScale: {x: 0.6333333, y: 0.6333333}
+  autoSet: 1
 --- !u!1001 &2056634492765128996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,7 +778,7 @@ PrefabInstance:
     - target: {fileID: 3781116107125689835, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.50980395
+      value: 0.47058824
       objectReference: {fileID: 0}
     - target: {fileID: 3781116107125689835, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
@@ -755,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
       propertyPath: renderScale.y
-      value: 0.69
+      value: 1.0666667
       objectReference: {fileID: 0}
     - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}

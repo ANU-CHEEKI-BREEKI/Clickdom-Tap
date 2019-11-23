@@ -28,6 +28,8 @@ public class WholeProgressIncreacerByMeleeAttack : ComponentSystem
         if (!itialized)
             return;
 
+        var manager = EntityManager;
+
         var query = GetEntityQuery(
             ComponentType.ReadOnly<Translation>(),
             ComponentType.ReadOnly<SwordsmanTagComponentData>(),
@@ -38,6 +40,7 @@ public class WholeProgressIncreacerByMeleeAttack : ComponentSystem
         var translation = query.ToComponentDataArray<Translation>(Allocator.TempJob);
         var faction = query.ToComponentDataArray<FactionComponentData>(Allocator.TempJob);
         var attack = query.ToComponentDataArray<MeleeAttackComponentData>(Allocator.TempJob);
+        var entities = query.ToEntityArray(Allocator.TempJob);
 
         for (int i = 0; i < faction.Length; i++)
         {
@@ -52,5 +55,6 @@ public class WholeProgressIncreacerByMeleeAttack : ComponentSystem
         faction.Dispose();
         attack.Dispose();
         translation.Dispose();
+        entities.Dispose();
     }
 }

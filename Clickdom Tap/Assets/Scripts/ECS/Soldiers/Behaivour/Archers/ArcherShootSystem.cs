@@ -12,6 +12,8 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
+
+
 public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentData, IEquatable<SquadProjectileLaunchDataSharedComponentData>
 {
     public RenderScaleComponentdata renderScaleData;
@@ -60,19 +62,8 @@ public struct ArcherTargetPositionComponentData :IComponentData
     public float2 value;
 }
 
-[Serializable]
-public struct ActionData
-{
-    public int frame;
-}
-
-public struct ActionOnAnimationFrameComponentData : IComponentData
-{
-    public bool needAction;
-    public ActionData actionData;
-}
-
 //[DisableAutoCreation]
+[UpdateAfter(typeof(DetectAnimationActionSystem))]
 public class ArcherShootSystem : ComponentSystem
 {
     public struct ShootData
@@ -100,7 +91,6 @@ public class ArcherShootSystem : ComponentSystem
 
         [ReadOnly] public ArchetypeChunkComponentType<Translation> translationType;
         [ReadOnly] public ArchetypeChunkComponentType<Scale> scaleType;
-        [ReadOnly] public ArchetypeChunkComponentType<SpriteSheetAnimationComponentData> animationType;
         [ReadOnly] public ArchetypeChunkComponentType<ActionOnAnimationFrameComponentData> actionType;
         [ReadOnly] public ArchetypeChunkComponentType<ArcherTargetPositionComponentData> targetType;
 
@@ -112,24 +102,23 @@ public class ArcherShootSystem : ComponentSystem
 
             var translations = chunk.GetNativeArray(translationType);
             var scales = chunk.GetNativeArray(scaleType);
-            var animations = chunk.GetNativeArray(animationType);
             var actions = chunk.GetNativeArray(actionType);
             var targets = chunk.GetNativeArray(targetType);
 
             for (int i = 0; i < chunk.Count; i++)
             {
                 var action = actions[i];
-                if (!action.needAction)
-                    continue;
-                if (animations[i].currentFrame != action.actionData.frame || !animations[i].out_FrameChangedEventFlag) 
-                    continue;
-
-                detectedActions.Add(index, new ShootData()
+                if (!action.out_ActionFlag)
+                    continue;                
+                
+                var shootData = new ShootData()
                 {
                     ownerPosition = translations[i].Value,
                     ownerScale = scales[i].Value,
-                    targetPosition = targets[i].value
-                });
+                    targetPosition = targets[i].value,
+                };
+
+                detectedActions.Add(index, shootData);
             }
         }
     }
@@ -141,7 +130,6 @@ public class ArcherShootSystem : ComponentSystem
             typeof(SquadProjectileLaunchDataSharedComponentData), 
             typeof(Translation), 
             typeof(Scale), 
-            typeof(SpriteSheetAnimationComponentData),
             typeof(ActionOnAnimationFrameComponentData),
             typeof(ArcherTargetPositionComponentData)
         );
@@ -159,7 +147,6 @@ public class ArcherShootSystem : ComponentSystem
             detectedActions = detectedActions.AsParallelWriter(),
             launchType = GetArchetypeChunkSharedComponentType<SquadProjectileLaunchDataSharedComponentData>(),
             actionType = GetArchetypeChunkComponentType<ActionOnAnimationFrameComponentData>(true),
-            animationType = GetArchetypeChunkComponentType<SpriteSheetAnimationComponentData>(true),
             scaleType = GetArchetypeChunkComponentType<Scale>(true),
             targetType = GetArchetypeChunkComponentType<ArcherTargetPositionComponentData>(true),
             translationType = GetArchetypeChunkComponentType<Translation>(true)

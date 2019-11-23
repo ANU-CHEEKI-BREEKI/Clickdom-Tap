@@ -20,7 +20,8 @@ public class ProjectileEffectSettings : ScriptableObject
 public enum EffectId
 {
     NONE,
-    THEBUCHET_HIT
+    THEBUCHET_HIT,
+    ARROW_HIT_SOUND
 }
 
 [Serializable]

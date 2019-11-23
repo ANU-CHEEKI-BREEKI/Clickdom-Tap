@@ -43,5 +43,5 @@ MonoBehaviour:
     removeEntityWhenProjectileStops: 1
     lifetimeAfterProjectileStop: 1
     absoluteVelocity: 12
-    effectOnParticleStops: 0
+    effectOnParticleStops: 2
     effectOnParticleRemoves: 0

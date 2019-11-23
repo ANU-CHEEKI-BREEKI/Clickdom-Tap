@@ -7,6 +7,7 @@ using UnityEngine;
 public class EffectSpawner : MonoBehaviour
 {
     [SerializeField] private ProjectileEffectSettings effectSettings;
+    [SerializeField] private AudioPlayer audioPlayer;
 
     private static EffectSpawner instance;
 
@@ -20,12 +21,20 @@ public class EffectSpawner : MonoBehaviour
         if (id == EffectId.NONE)
             return;
 
-        var effect = instance.effectSettings.GetEffect(id);
+        if (id == EffectId.ARROW_HIT_SOUND)
+        {
+            if (instance.audioPlayer != null)
+                instance.audioPlayer.PlayRandomClip(position);
+        }
+        else
+        {
+            var effect = instance.effectSettings.GetEffect(id);
 
-        if (effect.effect == null)
-            return;
+            if (effect.effect == null)
+                return;
 
-        var obj = Instantiate(effect.effect, position, rotation);
-        obj.transform.localScale = Vector3.one * scale;
+            var obj = Instantiate(effect.effect, position, rotation);
+            obj.transform.localScale = Vector3.one * scale;
+        }
     }
 }

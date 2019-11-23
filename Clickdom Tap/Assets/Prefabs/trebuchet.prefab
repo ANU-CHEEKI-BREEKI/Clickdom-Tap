@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c083d0eebd0b99447bfc282e9ff76d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 0}
   playOnAwake: 0
   pitchRandRange: 0.2
   volumeScale: {fileID: 11400000, guid: b44c85719a7c1e34793a2469f10bee20, type: 2}
@@ -589,9 +590,15 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: c0ade1a98de866e4cbb92d7f03ce9182, type: 3}
     loop: 1
     volume: 0.04
+    rewriteStereoPan: 0
+    stereoPan: 0
+    rewritePriority: 0
   - clip: {fileID: 8300000, guid: 2e0e3a3479463134f90ccdf4cdc47733, type: 3}
     loop: 0
     volume: 0.1
+    rewriteStereoPan: 0
+    stereoPan: 0
+    rewritePriority: 0
 --- !u!1 &996281658540475612
 GameObject:
   m_ObjectHideFlags: 0

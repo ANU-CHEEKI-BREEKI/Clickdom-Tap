@@ -20,6 +20,14 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [SerializeField] protected bool flipHorisontalScale = false;
     [Space]
     [SerializeField] protected AnimationList animationProvider;
+    [Space]
+    [SerializeField] protected int actionSoundClipId;
+    [SerializeField] protected bool randClipId = false;
+    [SerializeField] protected int actionSoundMaxClipId;
+    [Space]
+    [SerializeField] protected int deathSoundClipId;
+    [SerializeField] protected bool deathRandClipId = false;
+    [SerializeField] protected int deathSoundMaxClipId;
     [Header("cast shadows")]
     [Tooltip("duplicate sprite and display it as shadow")]
     [SerializeField] protected bool castSpriteShadows = false;
@@ -116,7 +124,9 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
             typeof(AnimatorStatesComponentData), 
             typeof(FlibHorisontalByMoveDirTagComponentData),
             typeof(FlibHorisontalByTargetTagComponentData),
-            typeof(ZbyYComponentData)
+            typeof(ZbyYComponentData),
+            typeof(AudioClipComponentData), 
+            typeof(DeathAudioClipComponentData)
         );
 
         squadTag = DataToComponentData.ToComponentData(squadData, squadId, squadPosition.position);
@@ -277,6 +287,25 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
                 });
             }
         }
+
+        manager.SetComponentData(entity, new AudioClipComponentData()
+        {
+            audioSourcePoolId = squadId,
+            randRangeId = randClipId,
+            maxClipId = actionSoundMaxClipId,
+            clipId = actionSoundClipId
+        });
+
+        manager.SetComponentData(entity, new DeathAudioClipComponentData()
+        {
+            audio = new AudioClipComponentData()
+            {
+                audioSourcePoolId = squadId,
+                randRangeId = deathRandClipId,
+                maxClipId = deathSoundMaxClipId,
+                clipId = deathSoundClipId
+            }
+        });
     }
 
     protected virtual void SetEntitySharedComponentsData(Entity entity, EntityManager manager)

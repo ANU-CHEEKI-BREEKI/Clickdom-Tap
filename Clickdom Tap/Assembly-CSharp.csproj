@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\AudioPlayer.cs" />
     <Compile Include="Assets\CoroutineParent.cs" />
+    <Compile Include="Assets\MuteOutOfCameraBounds.cs" />
     <Compile Include="Assets\RenderCullingBounds.cs" />
     <Compile Include="Assets\Scripts\AnimationEventAdapter.cs" />
     <Compile Include="Assets\Scripts\AnimationPauseApdater.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\DrawTypeBinding.cs" />
     <Compile Include="Assets\Scripts\ECS\AlphaAnimation.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
+    <Compile Include="Assets\Scripts\ECS\DeathSoundPlayerSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWhenHealthZeroSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\DestroyEntityWithDelaySystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Graphix\Animation\AnimationPauserSystem.cs" />
@@ -115,14 +117,17 @@
     <Compile Include="Assets\Scripts\ECS\Projectiles\RegisterProjectileHitSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\QuadrantSystem\QuadrantSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\SimpleConvertionToEntity.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\ArcherShootSoundPlayerSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\ArcherShootSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\ShootTargetBySquadUpdateSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\VolleySystem\VolleyAnimationPauserSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\VolleySystem\VolleyAnimationResumerSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Archers\VolleySystem\VolleySquadsCollectorSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\FindMeleeTargetSystem.cs" />
-    <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\MeleeAttackComponentSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\MeleeAttackSoundPlayerSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\MeleeAttackSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Behaivour\Swordsmans\StopMoveIfHasTargetSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Soldiers\DetectAnimationActionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Spawners\ArcherSpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Spawners\ASpawner.cs" />
     <Compile Include="Assets\Scripts\ECS\Soldiers\Spawners\SwordsmanSpawner.cs" />
@@ -145,6 +150,7 @@
     <Compile Include="Assets\Scripts\ECSConverters\SimpleEntityTransformConverter.cs" />
     <Compile Include="Assets\Scripts\FloatToText.cs" />
     <Compile Include="Assets\Scripts\GO\ASpawnerEffect.cs" />
+    <Compile Include="Assets\Scripts\GO\AudioPool.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\CameraShakerTrigger.cs" />
     <Compile Include="Assets\Scripts\GO\DeactivateOnStart.cs" />
@@ -156,6 +162,7 @@
     <Compile Include="Assets\Scripts\GO\ScaleAsParent.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleByPosition.cs" />
     <Compile Include="Assets\Scripts\GO\Shaker.cs" />
+    <Compile Include="Assets\Scripts\GO\SpawnerAudioPool.cs" />
     <Compile Include="Assets\Scripts\GO\TrebuchetShooter.cs" />
     <Compile Include="Assets\Scripts\GO\VirtualCameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\VirtualCameraShakerTrigger.cs" />
