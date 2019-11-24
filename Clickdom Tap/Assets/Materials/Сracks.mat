@@ -45,7 +45,7 @@ Material:
     - _CrackBorderAlpfaCutOff: 0.5
     - _CrackBorderDistance: 0.004
     - _DetailNoiseDamper: 0
-    - _Disolve: 0.83597606
+    - _Disolve: 0.8178806
     - _KrackBorderAlpfaCutOff: 0.5
     - _KrackBorderDistance: 0.004
     - _LocalSpace: 1

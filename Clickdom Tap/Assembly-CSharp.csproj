@@ -65,7 +65,7 @@
     <Compile Include="Assets\AudioPlayer.cs" />
     <Compile Include="Assets\CoroutineParent.cs" />
     <Compile Include="Assets\MuteOutOfCameraBounds.cs" />
-    <Compile Include="Assets\PreferedAspect.cs" />
+    <Compile Include="Assets\PreferedCameraAspect.cs" />
     <Compile Include="Assets\RenderCullingBounds.cs" />
     <Compile Include="Assets\SceneManagerHandler.cs" />
     <Compile Include="Assets\Scripts\AnimationEventAdapter.cs" />
