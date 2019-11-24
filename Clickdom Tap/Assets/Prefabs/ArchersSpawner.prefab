@@ -349,7 +349,7 @@ MonoBehaviour:
     rewritePitcRand: 0
     pitchRange: 0
     loop: 0
-    volume: 0.02
+    volume: 0.04
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0

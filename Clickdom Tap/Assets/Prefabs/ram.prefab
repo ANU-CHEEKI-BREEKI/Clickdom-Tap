@@ -5114,7 +5114,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.4
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -25480,7 +25480,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.4
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -30610,6 +30610,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
+        type: 3}
+      propertyPath: renderScale.x
+      value: 1.1333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
+        type: 3}
+      propertyPath: renderScale.y
+      value: 3.5333333
+      objectReference: {fileID: 0}
     - target: {fileID: 3781116107125689835, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
       propertyPath: m_Sprite
@@ -30625,16 +30635,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0.47058824
-      objectReference: {fileID: 0}
-    - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
-        type: 3}
-      propertyPath: renderScale.x
-      value: 1.1333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
-        type: 3}
-      propertyPath: renderScale.y
-      value: 3.5333333
       objectReference: {fileID: 0}
     - target: {fileID: 8149658471006544427, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}

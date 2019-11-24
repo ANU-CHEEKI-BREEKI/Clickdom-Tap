@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4010530203703613902, guid: 67b3c856c13bace499789ad496458335,
         type: 3}
       propertyPath: m_Name
-      value: ArchersSpawner
+      value: EnemyArchersSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 4010530203703613936, guid: 67b3c856c13bace499789ad496458335,
         type: 3}
@@ -66,6 +66,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998374089768028710, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: Pan2D
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b3c856c13bace499789ad496458335, type: 3}

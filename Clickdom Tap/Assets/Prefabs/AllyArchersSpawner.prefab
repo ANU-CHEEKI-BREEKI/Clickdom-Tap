@@ -96,7 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bddeca078f7b148bfb1216cb0fdf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonLaunch: {fileID: 0}
+  buttonLaunch:
+  - {fileID: 0}
+  progressPresenter: {fileID: 0}
 --- !u!1001 &665039485053373058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168,6 +170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998374089768028710, guid: 67b3c856c13bace499789ad496458335,
+        type: 3}
+      propertyPath: Pan2D
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5613588966230744909, guid: 67b3c856c13bace499789ad496458335, type: 3}

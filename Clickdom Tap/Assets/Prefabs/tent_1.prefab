@@ -127,7 +127,9 @@ MonoBehaviour:
   afterConvEvent: 1
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  renderScale: {x: 3.136666, y: 3.11}
+  disableCulling: 0
+  renderScale: {x: 3.1666667, y: 3.0666666}
+  autoSet: 1
 --- !u!1001 &688640968333609800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 4794194957968737408, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.898
+      value: -0.302
       objectReference: {fileID: 0}
     - target: {fileID: 4794194957968737408, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
@@ -226,6 +228,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3781116107125689835, guid: 00abea689e6e82f43950a2733ae30476,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.47058824
+      objectReference: {fileID: 0}
     - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
       propertyPath: renderScale.x
@@ -234,7 +241,12 @@ PrefabInstance:
     - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
         type: 3}
       propertyPath: renderScale.y
-      value: 1.9333333
+      value: 1.4333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764581982732951432, guid: 00abea689e6e82f43950a2733ae30476,
+        type: 3}
+      propertyPath: autoSet
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00abea689e6e82f43950a2733ae30476, type: 3}

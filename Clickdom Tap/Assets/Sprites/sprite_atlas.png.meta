@@ -308,6 +308,42 @@ TextureImporter:
   - first:
       213: 6670459055815367148
     second: wall_2_part2
+  - first:
+      213: 8705073408884721573
+    second: road_sand
+  - first:
+      213: 1448668599619871193
+    second: road_paving_stones
+  - first:
+      213: -4552590575591612873
+    second: paving_stones
+  - first:
+      213: 2379816544116013410
+    second: rock_big_1
+  - first:
+      213: 935944306422311152
+    second: rock_big_2
+  - first:
+      213: 7499643428749552849
+    second: rock_big_3
+  - first:
+      213: 3385670438891621670
+    second: shadow_rock_big_1
+  - first:
+      213: -6460263312299366984
+    second: shadow_rock_big_2
+  - first:
+      213: -2238465628294590112
+    second: shadow_rock_big_3
+  - first:
+      213: -4977193830015337168
+    second: sand
+  - first:
+      213: 8461140810329490357
+    second: gradient_while_1-0
+  - first:
+      213: 7688899242363766109
+    second: gradient_while_0.5-0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1992,9 +2028,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 690
-        y: 1031
+        y: 1043
         width: 51
-        height: 52
+        height: 40
       alignment: 9
       pivot: {x: 0.5261317, y: 0.18522434}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2013,9 +2049,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 1025
+        y: 1040
         width: 49
-        height: 58
+        height: 43
       alignment: 9
       pivot: {x: 0.51824206, y: 0.20735766}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2256,6 +2292,258 @@ TextureImporter:
       bones: []
       spriteID: 20f9e8a24181e70429ccc4202246ec80
       internalID: 6670459055815367148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: road_sand
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 550
+        width: 172
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4839e3f96b3a0d743950136c267961a2
+      internalID: 8705073408884721573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: road_paving_stones
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 151
+        width: 134
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98405b23cdfa59746a3a0f5abbbf4371
+      internalID: 1448668599619871193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paving_stones
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 432
+        width: 134
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 12, z: 18, w: 11}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cadceb2a8dbbdee429e5f5a8ab3e4bb0
+      internalID: -4552590575591612873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock_big_1
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 369
+        width: 113
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e9eb5a1374437459ce0174a8e40edd
+      internalID: 2379816544116013410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock_big_2
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 367
+        width: 88
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae024e5ef274b254ea1276c264d696e6
+      internalID: 935944306422311152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock_big_3
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 243
+        width: 187
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429113748e26d5c47911db0b8443fe8a
+      internalID: 7499643428749552849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_rock_big_1
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 343
+        width: 101
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c0c3147a0e0bf48ad03197f252ad63
+      internalID: 3385670438891621670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_rock_big_2
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 320
+        width: 87
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3533d9feac4d9ba4188b16588cb7018a
+      internalID: -6460263312299366984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_rock_big_3
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 171
+        width: 205
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc76b6434cf1854492a2912aff1e33d
+      internalID: -2238465628294590112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 343
+        width: 111
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e75941f0ac6852c488e59ccda8699507
+      internalID: -4977193830015337168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gradient_while_1-0
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 1020
+        width: 3
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23cd5fc2ef241547b4a353b7d4b7923
+      internalID: 8461140810329490357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gradient_while_0.5-0
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 1020
+        width: 3
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cddc8d6f06b67ec4cb930eec7c6902b4
+      internalID: 7688899242363766109
       vertices: []
       indices: 
       edges: []

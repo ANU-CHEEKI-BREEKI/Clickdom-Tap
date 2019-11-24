@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Editor\SequencePathEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\SetAnchorsByRectEditorExtention.cs" />
     <Compile Include="Assets\Scripts\Editor\SimpleEntitySpriteRendererConverterEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
@@ -108,9 +109,6 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.SpriteShape.Editor">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Scenes.Hybrid">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Scenes.Hybrid.dll</HintPath>
@@ -163,26 +161,17 @@
     <Reference Include="Unity.Mathematics">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.InternalAPIEngineBridge.001">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Properties">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.SpriteShape.Runtime">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
@@ -211,14 +200,8 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Common.Editor">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -417,9 +400,6 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="NSubstitute">
-      <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/PackageCache/com.unity.2d.common@1.2.0-preview.1/Tests/Editor/Lib/NSubstitute/NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>D:/development/unity/Clickdom Tap/UnityProject/Clickdom Tap/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>

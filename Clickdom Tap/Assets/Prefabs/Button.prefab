@@ -32,7 +32,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 757691214566384736}
-  - component: {fileID: 757691214566384749}
+  - component: {fileID: 8710035692671656884}
   - component: {fileID: 757691214566384750}
   - component: {fileID: 757691214566384751}
   m_Layer: 0
@@ -57,8 +57,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &757691214566384749
-CircleCollider2D:
+--- !u!61 &8710035692671656884
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -70,9 +70,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.010476828, y: 0.01047039}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Size: {x: 0.7276311, y: 0.60206985}
+  m_EdgeRadius: 1
 --- !u!114 &757691214566384750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,12 +234,12 @@ PrefabInstance:
     - target: {fileID: 951572779396066942, guid: 378a0dd2fc5654448bf7a0cfcce28f35,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.691222
+      value: -4.2404885
       objectReference: {fileID: 0}
     - target: {fileID: 951572779396066942, guid: 378a0dd2fc5654448bf7a0cfcce28f35,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5679064
+      value: 12.574634
       objectReference: {fileID: 0}
     - target: {fileID: 951572779032229321, guid: 378a0dd2fc5654448bf7a0cfcce28f35,
         type: 3}
