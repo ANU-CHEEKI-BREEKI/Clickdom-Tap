@@ -588,17 +588,23 @@ MonoBehaviour:
   volumeScale: {fileID: 11400000, guid: b44c85719a7c1e34793a2469f10bee20, type: 2}
   clips:
   - clip: {fileID: 8300000, guid: c0ade1a98de866e4cbb92d7f03ce9182, type: 3}
+    rewritePitcRand: 0
+    pitchRange: 0
     loop: 1
     volume: 0.04
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0
+    priority: 128
   - clip: {fileID: 8300000, guid: 2e0e3a3479463134f90ccdf4cdc47733, type: 3}
+    rewritePitcRand: 0
+    pitchRange: 0
     loop: 0
     volume: 0.1
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0
+    priority: 128
 --- !u!1 &996281658540475612
 GameObject:
   m_ObjectHideFlags: 0

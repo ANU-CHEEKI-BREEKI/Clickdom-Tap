@@ -11,6 +11,7 @@ using UnityEngine;
 
 [UpdateInGroup(typeof(PresentationSystemGroup))]
 [UpdateAfter(typeof(DynamicRendererCollectorSystem))]
+[DisableAutoCreation]
 public class SpriteSheetDynamicRendererSystem : ARendererSystem
 {
     private Camera mainCamera;

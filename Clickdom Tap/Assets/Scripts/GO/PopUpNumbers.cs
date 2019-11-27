@@ -25,6 +25,8 @@ public class PopUpNumbers : MonoBehaviour
     [SerializeField] private ShaderSpriteUvAnimationSetupData numbersSpriteSheet;
     [SerializeField] private FloatData defaultData;
 
+    public bool PopUpEnabled { get; set; } = true;
+
     private RenderSharedComponentData renderData;
 
     private void Awake()
@@ -50,6 +52,9 @@ public class PopUpNumbers : MonoBehaviour
 
     public void WriteLine(int number, Vector3 worldPosition, FloatData floatData)
     {
+        if (!PopUpEnabled)
+            return;
+
         if (number < 0)
             throw new ArgumentException(nameof(number) + " must be greater or equals zero");
 

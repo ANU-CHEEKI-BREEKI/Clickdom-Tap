@@ -77,6 +77,11 @@ public struct CastSpritesShadowComponentData : IComponentData
     /// </summary>
     public float3 positionPercentOffset;
     public float3 positionUnitsOffset;
+
+    /// <summary>
+    /// если надо отключить отрисовку теней
+    /// </summary>
+    public bool disableCastShadow;
 }
 
 
@@ -207,7 +212,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 {
                     var shadowData = shadows[i];
 
-                    if (shadowData.scale.x == 0 || shadowData.scale.y == 0 || shadowData.color.a == 0)
+                    if (shadowData.disableCastShadow || shadowData.scale.x == 0 || shadowData.scale.y == 0 || shadowData.color.a == 0)
                         continue;
 
                     var shadowOffsettedPosition = 

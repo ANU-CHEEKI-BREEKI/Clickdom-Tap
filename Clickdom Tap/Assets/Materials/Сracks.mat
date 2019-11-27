@@ -43,9 +43,9 @@ Material:
     m_Floats:
     - Boolean_F6F794: 0
     - _CrackBorderAlpfaCutOff: 0.5
-    - _CrackBorderDistance: 0.004
+    - _CrackBorderDistance: 0.0035
     - _DetailNoiseDamper: 0
-    - _Disolve: 0.8178806
+    - _Disolve: 0.6012488
     - _KrackBorderAlpfaCutOff: 0.5
     - _KrackBorderDistance: 0.004
     - _LocalSpace: 1

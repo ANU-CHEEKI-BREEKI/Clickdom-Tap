@@ -73,7 +73,7 @@
     <Compile Include="Assets\Scripts\AnimationPauser.cs" />
     <Compile Include="Assets\Scripts\AnimatorTrigger.cs" />
     <Compile Include="Assets\Scripts\ArchersVolleyManualTrigger.cs" />
-    <Compile Include="Assets\Scripts\ArrowDamageUpdater.cs" />
+    <Compile Include="Assets\Scripts\ASpawnerShadowCastUpdater.cs" />
     <Compile Include="Assets\Scripts\AutoRemoveWhenStops.cs" />
     <Compile Include="Assets\Scripts\CastShadowsShift.cs" />
     <Compile Include="Assets\Scripts\CircleProgressBarAutoTimer.cs" />
@@ -88,7 +88,6 @@
     <Compile Include="Assets\Scripts\Data\ZByYSettings.cs" />
     <Compile Include="Assets\Scripts\DeactivateGroup.cs" />
     <Compile Include="Assets\Scripts\DelayStartAnimation.cs" />
-    <Compile Include="Assets\Scripts\DrawTypeBinding.cs" />
     <Compile Include="Assets\Scripts\ECS\AlphaAnimation.cs" />
     <Compile Include="Assets\Scripts\ECS\CommonComponentData.cs" />
     <Compile Include="Assets\Scripts\ECS\DeathSoundPlayerSystem.cs" />
@@ -169,7 +168,6 @@
     <Compile Include="Assets\Scripts\GO\VirtualCameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\VirtualCameraShakerTrigger.cs" />
     <Compile Include="Assets\Scripts\GO\ZByY.cs" />
-    <Compile Include="Assets\Scripts\GraphixSettingsHolder.cs" />
     <Compile Include="Assets\Scripts\HoldButton.cs" />
     <Compile Include="Assets\Scripts\LinearProgressBar.cs" />
     <Compile Include="Assets\Scripts\ParticleStarter.cs" />
@@ -194,10 +192,12 @@
     <Compile Include="Assets\Scripts\Progress\WholeProgress.cs" />
     <Compile Include="Assets\Scripts\Progress\WholeProgressHandle.cs" />
     <Compile Include="Assets\Scripts\ProgressIncreacer.cs" />
-    <Compile Include="Assets\Scripts\RenderSettings.cs" />
     <Compile Include="Assets\Scripts\ResetPositionOnAwake.cs" />
     <Compile Include="Assets\Scripts\SequencePath.cs" />
     <Compile Include="Assets\Scripts\SetPositionToMouse.cs" />
+    <Compile Include="Assets\Scripts\Settings\Bindings\AudioSettingsVolumeSliderBinding.cs" />
+    <Compile Include="Assets\Scripts\Settings\Settings.cs" />
+    <Compile Include="Assets\Scripts\Settings\SettingsHolder.cs" />
     <Compile Include="Assets\Scripts\ShadowColor.cs" />
     <Compile Include="Assets\Scripts\SpriteCircleProgressBar.cs" />
     <Compile Include="Assets\Scripts\SwordDamageApdater.cs" />
@@ -214,6 +214,7 @@
     <Compile Include="Assets\Scripts\Utils\NativeArrayIndexer.cs" />
     <Compile Include="Assets\Scripts\Utils\Physics.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
+    <Compile Include="Assets\VolumeSlider.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

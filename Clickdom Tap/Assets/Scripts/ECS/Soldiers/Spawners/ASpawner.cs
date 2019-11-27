@@ -30,7 +30,7 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
     [SerializeField] protected int deathSoundMaxClipId;
     [Header("cast shadows")]
     [Tooltip("duplicate sprite and display it as shadow")]
-    [SerializeField] protected bool castSpriteShadows = false;
+    [SerializeField] public bool castSpriteShadows = false;
     [SerializeField] protected bool shiftShadows = false;
     [Header("shared shadow settings")]
     [SerializeField] protected ShadowSettings shadowSettings;
@@ -126,7 +126,8 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
             typeof(FlibHorisontalByTargetTagComponentData),
             typeof(ZbyYComponentData),
             typeof(AudioClipComponentData), 
-            typeof(DeathAudioClipComponentData)
+            typeof(DeathAudioClipComponentData),
+            typeof(CastSpritesShadowComponentData)
         );
 
         squadTag = DataToComponentData.ToComponentData(squadData, squadId, squadPosition.position);
@@ -269,23 +270,20 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
         });
         if (updateAnimationStatesBuTriggers)
             manager.AddComponent<AnimatorStateLastTriggeredAnimationComponentData>(entity);
-        if (castSpriteShadows)
+        CastSpritesShadowComponentData shd;
+        if (!useLocalDefauldShadowSetting && shadowSettings != null)
+            shd = DataToComponentData.ToComponentData(shadowSettings);
+        else
+            shd = shadowData;
+        shd.disableCastShadow = !castSpriteShadows;
+        manager.SetComponentData(entity, shd);
+
+        if (shiftShadows)
         {
-            CastSpritesShadowComponentData shd;
-            if (!useLocalDefauldShadowSetting && shadowSettings != null)
-                shd = DataToComponentData.ToComponentData(shadowSettings);
-            else
-                shd = shadowData;
-
-            manager.AddComponentData(entity, shd);
-
-            if (shiftShadows)
+            manager.AddComponentData(entity, new ShiftCastShadowsTagComponentData()
             {
-                manager.AddComponentData(entity, new ShiftCastShadowsTagComponentData()
-                {
-                    positionUnitsOffsetDefaultValue = shd.positionUnitsOffset
-                });
-            }
+                positionUnitsOffsetDefaultValue = shd.positionUnitsOffset
+            });
         }
 
         manager.SetComponentData(entity, new AudioClipComponentData()

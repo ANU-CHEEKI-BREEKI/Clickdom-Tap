@@ -11,6 +11,7 @@ using UnityEngine;
 
 [UpdateInGroup(typeof(PresentationSystemGroup))]
 [UpdateBefore(typeof(InstancedRendererCollectorSystem))]
+[DisableAutoCreation]
 public class DynamicRendererCollectorSystem : ARendererCollectorSystem
 {
     ComponentType[] allSpecialQuery;

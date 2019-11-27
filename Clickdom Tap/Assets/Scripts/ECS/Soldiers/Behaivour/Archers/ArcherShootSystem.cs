@@ -12,9 +12,8 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-
-
-public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentData, IEquatable<SquadProjectileLaunchDataSharedComponentData>
+[Serializable]
+public class SquadProjectileLaunchDataWrapper : IEquatable<SquadProjectileLaunchDataWrapper>
 {
     public RenderScaleComponentdata renderScaleData;
     public ProjectileLaunshSetupComponentData launchData;
@@ -29,7 +28,7 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
 
     public bool animated;
 
-    public bool Equals(SquadProjectileLaunchDataSharedComponentData other)
+    public bool Equals(SquadProjectileLaunchDataWrapper other)
     {
         return launchData.Equals(other.launchData) &&
             renderScaleData.Equals(other.renderScaleData) &&
@@ -45,15 +44,74 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
 
     public override int GetHashCode()
     {
-        return launchData.GetHashCode()     * 2 +
-                renderScaleData.GetHashCode() * 3 +
-                spriteData.GetHashCode()    / 3 +
-                animaionData.GetHashCode()  * 5 +
-                renderData.GetHashCode()    / 6 +
-                collisionData.GetHashCode() * 8 +
-                shadowSettings.GetHashCode() +
-                castShadows.GetHashCode() +
-                calcShadowsShifts.GetHashCode();
+        return launchData.GetHashCode() * 2 +
+               renderScaleData.GetHashCode() * 3 +
+               spriteData.GetHashCode() / 3 +
+               animaionData.GetHashCode() * 5 +
+               renderData.GetHashCode() / 6 +
+               collisionData.GetHashCode() * 8 +
+               shadowSettings.GetHashCode() +
+               castShadows.GetHashCode() +
+               calcShadowsShifts.GetHashCode();
+    }
+}
+
+public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentData, IEquatable<SquadProjectileLaunchDataSharedComponentData>
+{
+    //public RenderScaleComponentdata renderScaleData;
+    //public ProjectileLaunshSetupComponentData launchData;
+    //public SpriteRendererComponentData spriteData;
+    //public SpriteSheetAnimationComponentData animaionData;
+    //public RenderSharedComponentData renderData;
+    //public ProjectileCollisionComponentData collisionData;
+
+    //public bool castShadows;
+    //public CastSpritesShadowComponentData shadowSettings;
+    //public bool calcShadowsShifts;
+
+    //public bool animated;
+
+    public SquadProjectileLaunchDataWrapper data;
+
+    public bool Equals(SquadProjectileLaunchDataSharedComponentData other)
+    {
+        if (ReferenceEquals(data, other.data))
+            return true;
+        else if (data == null && other.data == null)
+            return true;
+        else if (data != null && other.data != null)
+            return data.Equals(other.data);
+        else
+            return false;
+
+        //return launchData.Equals(other.launchData) &&
+        //    renderScaleData.Equals(other.renderScaleData) &&
+        //     spriteData.Equals(other.spriteData) &&
+        //    animaionData.Equals(other.animaionData) &&
+        //    renderData.Equals(other.renderData) &&
+        //    collisionData.Equals(other.collisionData) &&
+        //    castShadows == other.castShadows &&
+        //    shadowSettings.Equals(other.shadowSettings) &&
+        //    calcShadowsShifts.Equals(other.calcShadowsShifts)
+        //    ;
+    }
+
+    public override int GetHashCode()
+    {
+        if (data == null)
+            return 0;
+        else
+            return data.GetHashCode(); 
+
+        //return launchData.GetHashCode()     * 2 +
+        //        renderScaleData.GetHashCode() * 3 +
+        //        spriteData.GetHashCode()    / 3 +
+        //        animaionData.GetHashCode()  * 5 +
+        //        renderData.GetHashCode()    / 6 +
+        //        collisionData.GetHashCode() * 8 +
+        //        shadowSettings.GetHashCode() +
+        //        castShadows.GetHashCode() +
+        //        calcShadowsShifts.GetHashCode();
     }
 }
 
@@ -158,7 +216,10 @@ public class ArcherShootSystem : ComponentSystem
 
         for (int i = 0; i < indices.Length; i++)
         {
-            var sharedData = EntityManager.GetSharedComponentData<SquadProjectileLaunchDataSharedComponentData>(indices[i]);
+            var sharedData = EntityManager.GetSharedComponentData<SquadProjectileLaunchDataSharedComponentData>(indices[i]).data;
+
+            if (sharedData == null)
+                throw new ArgumentNullException($"null data of SquadProjectileLaunchDataSharedComponentData");
 
             var sprite = sharedData.spriteData;
             var animation = sharedData.animaionData;

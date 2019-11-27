@@ -11,6 +11,7 @@ using UnityEngine;
 
 public static class Utils
 {    
+    
     public static float Average2D(this Vector3 vector)
     {
         return (vector.x + vector.y) / 2;

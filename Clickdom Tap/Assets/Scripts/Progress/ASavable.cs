@@ -10,18 +10,24 @@ public abstract class ASavable : MonoBehaviour
     [SerializeField] private int id = -1;
     public int Id { get { return id; } }
 
+    private void Reset()
+    {
+        SetUniqueId();
+    }
+
     [ContextMenu("SetUniqueId")]
     private void SetUniqueId()
     {
         var savables = FindObjectsOfType<ASavable>();
 
         var s_ids = savables
+                   .Where(s => s != this)
                    .Select(s => s.id)
                    .ToList();
 
         try
         {
-            if (!s_ids.Contains(id))
+            if (id >0 && !s_ids.Contains(id))
                 return;
 
             var max = s_ids.OrderBy(id => id).Last() + 1;

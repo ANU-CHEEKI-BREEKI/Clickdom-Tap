@@ -105,10 +105,6 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Syste
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\System.Xml.XmlSerializer.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\System.Xml.XPath.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\System.Xml.XPath.XDocument.dll
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.Common.Editor.dll
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.Common.Runtime.dll
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.SpriteShape.Editor.dll
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.SpriteShape.Runtime.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Analytics.DataPrivacy.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Analytics.Editor.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Analytics.StandardEvents.dll
@@ -124,8 +120,6 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Entities.Hybrid.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Entities.Properties.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Entities.StaticTypeRegistry.dll
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.InternalAPIEditorBridge.001.dll
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.InternalAPIEngineBridge.001.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Jobs.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Jobs.Editor.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Mathematics.dll
@@ -225,7 +219,6 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.Core.Editor.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Collections.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.Core.Runtime.pdb
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.SpriteShape.Editor.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Scenes.Hybrid.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.VisualEffectGraph.Runtime.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Scenes.Editor.pdb
@@ -239,10 +232,7 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Entities.Hybrid.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Mathematics.pdb
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.InternalAPIEngineBridge.001.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Properties.pdb
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.Common.Runtime.pdb
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.SpriteShape.Runtime.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Entities.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Transforms.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Transforms.Editor.pdb
@@ -251,9 +241,7 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Mathematics.Editor.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.RenderPipelines.Core.ShaderLibrary.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.TextMeshPro.pdb
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.2D.Common.Editor.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Analytics.DataPrivacy.pdb
-D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.InternalAPIEditorBridge.001.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Transforms.Hybrid.pdb
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity.Burst.Unsafe.xml
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache

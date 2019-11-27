@@ -182,11 +182,6 @@ PrefabInstance:
       propertyPath: m_textAlignment
       value: 513
       objectReference: {fileID: 0}
-    - target: {fileID: 8572160717705232991, guid: 2e095d64e8c748d49805014b3ecd5eed,
-        type: 3}
-      propertyPath: m_Spacing
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1484735294431331024, guid: 2e095d64e8c748d49805014b3ecd5eed,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -222,6 +217,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8572160717705232991, guid: 2e095d64e8c748d49805014b3ecd5eed,
+        type: 3}
+      propertyPath: m_Spacing
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4443175444818000078, guid: 2e095d64e8c748d49805014b3ecd5eed,
         type: 3}
       propertyPath: m_IgnoreLayout
@@ -240,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 4443175444818000078, guid: 2e095d64e8c748d49805014b3ecd5eed,
         type: 3}
       propertyPath: m_FlexibleWidth
-      value: -1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4443175444818000078, guid: 2e095d64e8c748d49805014b3ecd5eed,
         type: 3}
@@ -250,6 +250,11 @@ PrefabInstance:
     - target: {fileID: 4443175444818000078, guid: 2e095d64e8c748d49805014b3ecd5eed,
         type: 3}
       propertyPath: m_PreferredHeight
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443175444818000078, guid: 2e095d64e8c748d49805014b3ecd5eed,
+        type: 3}
+      propertyPath: m_FlexibleHeight
       value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []

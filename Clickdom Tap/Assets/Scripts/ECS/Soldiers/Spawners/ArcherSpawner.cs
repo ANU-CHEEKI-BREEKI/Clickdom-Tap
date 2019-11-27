@@ -64,6 +64,7 @@ public class ArcherSpawner : ASpawner, IDamageSettable
     [SerializeField] float shootRandomSpread = 0.5f;
 
     private SquadProjectileLaunchDataSharedComponentData launchArrowData;
+    public SquadProjectileLaunchDataSharedComponentData LaunchArrowData => launchArrowData;
 
     protected override void Start()
     {
@@ -71,29 +72,32 @@ public class ArcherSpawner : ASpawner, IDamageSettable
 
         launchArrowData = new SquadProjectileLaunchDataSharedComponentData()
         {
-            renderScaleData = new RenderScaleComponentdata()
+            data = new SquadProjectileLaunchDataWrapper()
             {
-                value = projectilesData.RenderScale
-            },
-            spriteData = new SpriteRendererComponentData()
-            {
-                uv = projectilesData.Animation.RandomUV,
-                usePivot = true,
-                pivot = projectilesData.Animation.Pivot
-            },
-            animaionData = DataToComponentData.ToComponentData(projectilesData.Animation),
-            renderData = new RenderSharedComponentData()
-            {
-                material = projectilesData.Animation.Material,
-                mesh = projectilesData.Animation.Mesh,
-            },
-            collisionData = projectilesData.Collision,
-            launchData = projectilesData.Launch,
-            castShadows = castProjectileShadows,
-            calcShadowsShifts = calsProjectileShadowsShifts
+                renderScaleData = new RenderScaleComponentdata()
+                {
+                    value = projectilesData.RenderScale
+                },
+                spriteData = new SpriteRendererComponentData()
+                {
+                    uv = projectilesData.Animation.RandomUV,
+                    usePivot = true,
+                    pivot = projectilesData.Animation.Pivot
+                },
+                animaionData = DataToComponentData.ToComponentData(projectilesData.Animation),
+                renderData = new RenderSharedComponentData()
+                {
+                    material = projectilesData.Animation.Material,
+                    mesh = projectilesData.Animation.Mesh,
+                },
+                collisionData = projectilesData.Collision,
+                launchData = projectilesData.Launch,
+                castShadows = castProjectileShadows,
+                calcShadowsShifts = calsProjectileShadowsShifts
+            }
         };
         if (castProjectileShadows)
-            launchArrowData.shadowSettings = DataToComponentData.ToComponentData(projectileShadowSettings);
+            launchArrowData.data.shadowSettings = DataToComponentData.ToComponentData(projectileShadowSettings);
     }
 
     protected override void SetEntityComponentsData(Entity entity, EntityManager manager)
@@ -140,7 +144,7 @@ public class ArcherSpawner : ASpawner, IDamageSettable
 
     public void SetDamage(float damage)
     {
-        launchArrowData.collisionData.processData.damage = damage;
+        launchArrowData.data.collisionData.processData.damage = damage;
     }
 
 #if UNITY_EDITOR

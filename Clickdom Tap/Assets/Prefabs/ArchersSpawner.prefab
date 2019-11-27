@@ -162,7 +162,6 @@ GameObject:
   - component: {fileID: 1964236010006659632}
   - component: {fileID: 3098815629916385165}
   - component: {fileID: 3550666286225924679}
-  - component: {fileID: 9212391947690614101}
   - component: {fileID: 5829169751731886045}
   - component: {fileID: 5339878653557434564}
   - component: {fileID: -7308756066603126324}
@@ -271,6 +270,7 @@ MonoBehaviour:
       x: 0
       y: 0
       z: 0
+    disableCastShadow: 0
   forAnimation: 04000000
   squadId: 1
   squadPosition: {fileID: 6235383419969632547}
@@ -291,18 +291,6 @@ MonoBehaviour:
   shootTarget3: {fileID: 7333913536852350370}
   shootTarget4: {fileID: 734304697465023642}
   shootRandomSpread: 0.5
---- !u!114 &9212391947690614101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4010530203703613902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96bbd425368e8b4090b106085da5678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5829169751731886045
 MonoBehaviour:
   m_ObjectHideFlags: 0
