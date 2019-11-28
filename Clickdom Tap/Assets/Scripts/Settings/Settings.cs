@@ -12,7 +12,9 @@ public class Settings
     [SerializeField] private AudioSettings audio = new AudioSettings();
     [SerializeField] private GraphixSettings grapgix = new GraphixSettings();
 
+    public GeneralSettings General => general;
     public AudioSettings Audio => audio;
+    public GraphixSettings Grapgix => grapgix;
 }
 
 [Serializable]
@@ -87,7 +89,65 @@ public class AudioSettings
 [Serializable]
 public class GraphixSettings
 {
-    [SerializeField] private bool soldiersShadows = true;
-    [SerializeField] private bool arrowsShadows = true;
-    [SerializeField] private bool popUpNumbers = true;
+    [SerializeField] private bool displaySoldiersShadows = true;
+    [SerializeField] private bool displayArrowsShadows = true;
+    [SerializeField] private bool displayPopUpNumbers = true;
+    [SerializeField] private bool displayHelperUi = true;
+
+    public event Action<bool> OnDisplaySoldiersShadowsChanged;
+    public event Action<bool> OnDisplayArrowsShadowsChanged;
+    public event Action<bool> OnDisplayPopUpNumbersChanged;
+    public event Action<bool> OnDdisplayHelperUiChanged;
+
+    public bool DisplaySoldiersShadows
+    {
+        get => displaySoldiersShadows;
+        set
+        {
+            if (displaySoldiersShadows != value)
+            {
+                displaySoldiersShadows = value;
+                OnDisplaySoldiersShadowsChanged?.Invoke(displaySoldiersShadows);
+            }
+        }
+    }
+
+    public bool DisplayArrowsShadows
+    {
+        get => displayArrowsShadows;
+        set
+        {
+            if (displayArrowsShadows != value)
+            {
+                displayArrowsShadows = value;
+                OnDisplayArrowsShadowsChanged?.Invoke(displayArrowsShadows);
+            }
+        }
+    }
+
+    public bool DisplayPopUpNumbers
+    {
+        get => displayPopUpNumbers;
+        set
+        {
+            if (displayPopUpNumbers != value)
+            {
+                displayPopUpNumbers = value;
+                OnDisplayPopUpNumbersChanged?.Invoke(displayPopUpNumbers);
+            }
+        }
+    }
+
+    public bool DisplayHelperUi
+    {
+        get => displayHelperUi;
+        set
+        {
+            if (displayHelperUi != value)
+            {
+                displayHelperUi = value;
+                OnDdisplayHelperUiChanged?.Invoke(displayHelperUi);
+            }
+        }
+    }
 }

@@ -245,7 +245,7 @@ PrefabInstance:
     - target: {fileID: 4443175444818000078, guid: 2e095d64e8c748d49805014b3ecd5eed,
         type: 3}
       propertyPath: m_PreferredWidth
-      value: 50
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4443175444818000078, guid: 2e095d64e8c748d49805014b3ecd5eed,
         type: 3}

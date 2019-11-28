@@ -196,6 +196,7 @@
     <Compile Include="Assets\Scripts\SequencePath.cs" />
     <Compile Include="Assets\Scripts\SetPositionToMouse.cs" />
     <Compile Include="Assets\Scripts\Settings\Bindings\AudioSettingsVolumeSliderBinding.cs" />
+    <Compile Include="Assets\Scripts\Settings\Bindings\GraphixSettingsToggleBinding.cs" />
     <Compile Include="Assets\Scripts\Settings\Settings.cs" />
     <Compile Include="Assets\Scripts\Settings\SettingsHolder.cs" />
     <Compile Include="Assets\Scripts\ShadowColor.cs" />
