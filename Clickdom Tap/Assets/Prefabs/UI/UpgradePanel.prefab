@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8481575974091263335}
   - component: {fileID: 536181733334929961}
+  - component: {fileID: 6648399370378916347}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -49,6 +50,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5876422243175265819}
   m_CullTransparentMesh: 0
+--- !u!95 &6648399370378916347
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876422243175265819}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd8b0515e2c7b7d4aba856822561b081, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &65053226184918508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 1375364259603018698, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeButton (1)
+      value: SpawnRateUpgradeButton (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2146534671807723369, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
@@ -165,6 +185,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389599951922926384, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05cda35ad905e374bb6a6b2d0b82ff8b, type: 3}
@@ -296,6 +331,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 944263852324138644, guid: 618db09e5ea218847be04169f5082bff,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2127495219733727392, guid: 618db09e5ea218847be04169f5082bff,
         type: 3}
       propertyPath: m_Type
@@ -319,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 1375364259603018698, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeButton (3)
+      value: AttackSpeedUpgradeButton (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2146534671807723369, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
@@ -441,6 +481,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5389599951922926384, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389599951922926384, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05cda35ad905e374bb6a6b2d0b82ff8b, type: 3}
 --- !u!224 &4267211796063661202 stripped
@@ -459,7 +519,7 @@ PrefabInstance:
     - target: {fileID: 1375364259603018698, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeButton
+      value: CountUpgradeButton
       objectReference: {fileID: 0}
     - target: {fileID: 2146534671807723369, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
@@ -581,6 +641,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -16.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5389599951922926384, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05cda35ad905e374bb6a6b2d0b82ff8b, type: 3}
 --- !u!224 &2511111343692321252 stripped
@@ -599,7 +674,7 @@ PrefabInstance:
     - target: {fileID: 1375364259603018698, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeButton (2)
+      value: DamageUpgradeButton (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2146534671807723369, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
         type: 3}
@@ -705,6 +780,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389599951922926384, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509785861562021124, guid: 05cda35ad905e374bb6a6b2d0b82ff8b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05cda35ad905e374bb6a6b2d0b82ff8b, type: 3}

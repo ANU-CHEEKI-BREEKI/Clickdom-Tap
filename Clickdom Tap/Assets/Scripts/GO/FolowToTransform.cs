@@ -17,6 +17,11 @@ public class FolowToTransform : MonoBehaviour
             Folow();
     }
 
+    private void OnEnable()
+    {
+        Folow();
+    }
+
     private void Update()
     {
         Folow();

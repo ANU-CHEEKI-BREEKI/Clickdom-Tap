@@ -178,7 +178,7 @@ TextureImporter:
     second: icon_speed
   - first:
       213: 5389778403257052593
-    second: icon_count
+    second: icon_count_swords
   - first:
       213: 3403330769429977085
     second: icon_damage
@@ -347,6 +347,36 @@ TextureImporter:
   - first:
       213: 2213731607469278391
     second: square
+  - first:
+      213: 1196904375654745540
+    second: ui_base
+  - first:
+      213: -8742010435244012939
+    second: ui_border
+  - first:
+      213: 5121325735401886823
+    second: ui_icon_settings
+  - first:
+      213: -5811886292574703971
+    second: ui_skide_header
+  - first:
+      213: 2223617850863168235
+    second: ui_slide_handler
+  - first:
+      213: 5160772405469227476
+    second: ui_slide_bg
+  - first:
+      213: -8137834224776509385
+    second: icon_count_arch
+  - first:
+      213: -2143371097112282813
+    second: ui_circle
+  - first:
+      213: -353115278584491946
+    second: ui_circle_small
+  - first:
+      213: -8803052354675734011
+    second: icon_close
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1484,8 +1514,8 @@ TextureImporter:
       name: icon_sword
       rect:
         serializedVersion: 2
-        x: 1343
-        y: 1297
+        x: 1350
+        y: 1303
         width: 50
         height: 50
       alignment: 0
@@ -1505,8 +1535,8 @@ TextureImporter:
       name: ison_archer
       rect:
         serializedVersion: 2
-        x: 1295
-        y: 1297
+        x: 1300
+        y: 1303
         width: 50
         height: 50
       alignment: 0
@@ -1526,8 +1556,8 @@ TextureImporter:
       name: icon_ram
       rect:
         serializedVersion: 2
-        x: 1246
-        y: 1297
+        x: 1250
+        y: 1303
         width: 50
         height: 50
       alignment: 0
@@ -1548,7 +1578,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1200
-        y: 1297
+        y: 1303
         width: 50
         height: 50
       alignment: 0
@@ -1568,8 +1598,8 @@ TextureImporter:
       name: icon_frequency
       rect:
         serializedVersion: 2
-        x: 1198
-        y: 1248
+        x: 1150
+        y: 1253
         width: 50
         height: 50
       alignment: 0
@@ -1589,8 +1619,8 @@ TextureImporter:
       name: icon_speed
       rect:
         serializedVersion: 2
-        x: 1246
-        y: 1250
+        x: 1300
+        y: 1253
         width: 50
         height: 50
       alignment: 0
@@ -1607,11 +1637,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_count
+      name: icon_count_swords
       rect:
         serializedVersion: 2
-        x: 1296
-        y: 1247
+        x: 1250
+        y: 1253
         width: 50
         height: 50
       alignment: 0
@@ -1631,8 +1661,8 @@ TextureImporter:
       name: icon_damage
       rect:
         serializedVersion: 2
-        x: 1346
-        y: 1247
+        x: 1350
+        y: 1253
         width: 50
         height: 50
       alignment: 0
@@ -1653,9 +1683,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1346
-        y: 1199
+        y: 1197
         width: 48
-        height: 48
+        height: 50
       alignment: 9
       pivot: {x: 0.3888575, y: 0.91987354}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1673,12 +1703,12 @@ TextureImporter:
       name: hand_2
       rect:
         serializedVersion: 2
-        x: 1297
+        x: 1298
         y: 1199
-        width: 46
-        height: 47
+        width: 45
+        height: 51
       alignment: 9
-      pivot: {x: 0.409798, y: 0.10482463}
+      pivot: {x: 0.39076877, y: 0.10650515}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1696,10 +1726,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1249
         y: 1202
-        width: 47
+        width: 49
         height: 45
       alignment: 9
-      pivot: {x: 0.18049784, y: 0.15751411}
+      pivot: {x: 0.17350675, y: 0.1594184}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2556,11 +2586,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1397
-        y: 1017
+        y: 1195
         width: 3
         height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2568,6 +2598,216 @@ TextureImporter:
       bones: []
       spriteID: a06ede6f2a823724e973794779424fdc
       internalID: 2213731607469278391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_base
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 880
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da473266005bdf748a487fb26494625d
+      internalID: 1196904375654745540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_border
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 950
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 9, z: 9, w: 11}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e8e74d8921d6948af577795e7402dd
+      internalID: -8742010435244012939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_icon_settings
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 985
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03d78dde04c4ff4a8b74ffec7f9e210
+      internalID: 5121325735401886823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_skide_header
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 950
+        width: 31
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f2a565e743a7345ba7e823e58e7513
+      internalID: -5811886292574703971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_slide_handler
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 915
+        width: 10
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 103fa096843eecf408b048967d37d389
+      internalID: 2223617850863168235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_slide_bg
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 915
+        width: 6
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 4, z: 2, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b435a66029a327408764b8de45b35dc
+      internalID: 5160772405469227476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_count_arch
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1253
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cc0f80846d7ab9459aa6ac0375049dc
+      internalID: -8137834224776509385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_circle
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 810
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0f34b1db154996408220c94316e065e
+      internalID: -2143371097112282813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_circle_small
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 810
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50f3c401918103744ae61e4361baae79
+      internalID: -353115278584491946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_close
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 1303
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0797bab5397eca24c8fda431d96e1004
+      internalID: -8803052354675734011
       vertices: []
       indices: 
       edges: []
