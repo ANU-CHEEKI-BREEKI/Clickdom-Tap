@@ -23,16 +23,50 @@ namespace ANU.Utils
             }
         }
 
-        public static float Descriminant(float a, float b, float c)
+        /// <summary>
+        /// ax^2 + bx + c = 0
+        /// </summary>
+        [Serializable]
+        public struct QuadraticEquation
         {
+            public float a;
+            public float b;
+            public float c;
+
+            /// <summary>
+            /// ax^2 + bx + c = 0
+            /// </summary>
+            public QuadraticEquation(float a = 0, float b = 0, float c = 0)
+            {
+                this.a = a;
+                this.b = b;
+                this.c = c;
+            }
+
+            public float Solve(float x)
+            {
+                return a * x * x + b * x + c;
+            }
+        }
+
+        public static float Descriminant(QuadraticEquation equation)
+        {
+            var a = equation.a;
+            var b = equation.b;
+            var c = equation.c;
+
             return b * b - 4 * a * c;
         }
 
-        public static bool QuadraticEquation(float a, float b, float c, out float2 res)
+        public static bool SolveQuadraticEquation(QuadraticEquation equation, out float2 res)
         {
+            var a = equation.a;
+            var b = equation.b;
+            var c = equation.c;
+
             if (a != 0)
             {
-                var d = Descriminant(a, b, c);
+                var d = Descriminant(equation);
                 if (d < 0)
                 {
                     res.x = 0;
@@ -218,6 +252,28 @@ namespace ANU.Utils
                 var lineY = line.k * point.x + line.b;
                 return trueResultIfLineIncludesPoint ? point.y <= lineY : point.y < lineY;
             }
+        }
+
+        [Obsolete]
+        public static float AngleRadians(float2 direction)
+        {
+            var res = math.PI / 2;
+            if (direction.x != 0)
+                res = math.atan(direction.y / direction.x);
+            return res;
+        }
+
+        public static float AngleDegrees(float2 direction)
+        {
+            var res = Vector2.Angle(direction, Vector2.up);
+            if (direction.x > 0)
+                res = 360 - res;
+            return res;
+        }
+
+        public static float UnityAngleDegreesTodefaultMath(this float unityAngle)
+        {
+            return unityAngle + 90;
         }
     }
 }

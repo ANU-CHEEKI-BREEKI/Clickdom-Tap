@@ -58,7 +58,7 @@ public class LaunchProjectileSystem : ComponentSystem
 
         arrowArchetype = EntityManager.CreateArchetype(
             typeof(ProjectileLaunshSetupComponentData),
-            typeof(RotationToMoveDirectionComponentData),
+            typeof(RotationToMoveDirectionTagComponentData),
             typeof(Translation),
             typeof(Rotation),
             typeof(Scale),

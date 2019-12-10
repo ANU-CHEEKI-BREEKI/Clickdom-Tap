@@ -39,7 +39,9 @@ public class ASpawnerShadowCastUpdater : MonoBehaviour
             spawner.LaunchArrowData.data.calcShadowsShifts = castArrowsShadows;
         }
 
-        Debug.Log("UpdateCastArrowsShadows");
+        var launchers = FindObjectsOfType<LaunchProjectileToPosition>();
+        foreach (var launcher in launchers)
+            launcher.CastChadows = castArrowsShadows;
     }
 }
 

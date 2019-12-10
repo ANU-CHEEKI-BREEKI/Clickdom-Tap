@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\AudioPlayer.cs" />
     <Compile Include="Assets\CoroutineParent.cs" />
+    <Compile Include="Assets\EnableMaskOnStart.cs" />
     <Compile Include="Assets\MuteOutOfCameraBounds.cs" />
     <Compile Include="Assets\PreferedCameraAspect.cs" />
     <Compile Include="Assets\RenderCullingBounds.cs" />
@@ -84,7 +85,9 @@
     <Compile Include="Assets\Scripts\Data\ScaleByPositionSettings.cs" />
     <Compile Include="Assets\Scripts\Data\ShaderSpriteUvAnimationSetupData.cs" />
     <Compile Include="Assets\Scripts\Data\ShadowSettings.cs" />
+    <Compile Include="Assets\Scripts\Data\SkillDescription.cs" />
     <Compile Include="Assets\Scripts\Data\SquadData.cs" />
+    <Compile Include="Assets\Scripts\Data\Trails\TrailsParticleSettings.cs" />
     <Compile Include="Assets\Scripts\Data\ZByYSettings.cs" />
     <Compile Include="Assets\Scripts\DeactivateGroup.cs" />
     <Compile Include="Assets\Scripts\DelayStartAnimation.cs" />
@@ -136,6 +139,10 @@
     <Compile Include="Assets\Scripts\ECS\SquadsSystem\SortSystem\SquadSortNewIndicesSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\SquadsSystem\SortSystem\SquadsortSetIndicesSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\SquadsSystem\SquadSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Trails\ColorInterpolation.cs" />
+    <Compile Include="Assets\Scripts\ECS\Trails\SpawnTrailsSystem.cs" />
+    <Compile Include="Assets\Scripts\ECS\Trails\TrailsDetectSpawnEvent.cs" />
+    <Compile Include="Assets\Scripts\ECS\Trails\TrailsRenderSettingsHolder.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\FlipHorisontalByMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\FlipHorisontalByTargetDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\ECS\Transform\RotationToMoveDirectionSystem.cs" />
@@ -157,12 +164,23 @@
     <Compile Include="Assets\Scripts\GO\DeactivateOnStart.cs" />
     <Compile Include="Assets\Scripts\GO\FolowToTransform.cs" />
     <Compile Include="Assets\Scripts\GO\GOActivator.cs" />
+    <Compile Include="Assets\Scripts\GO\GOEventTrigger.cs" />
+    <Compile Include="Assets\Scripts\GO\HierachyConnector.cs" />
+    <Compile Include="Assets\Scripts\GO\HierarchyItem.cs" />
     <Compile Include="Assets\Scripts\GO\InteractableByPriority.cs" />
     <Compile Include="Assets\Scripts\GO\PopUpNumbers.cs" />
     <Compile Include="Assets\Scripts\GO\RopeRenderer.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleAsParent.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleByPosition.cs" />
     <Compile Include="Assets\Scripts\GO\Shaker.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\ATargetedSkill.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\LaunchProjectileToPosition.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\Presenters\ASkillTargetPresenter.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\Presenters\SimpleSkillTargetPresenter.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\Presenters\SkillUIPresenter.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\SingleShootSkill.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\SkillExecutor.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\VolleyShootSkill.cs" />
     <Compile Include="Assets\Scripts\GO\SpawnerAudioPool.cs" />
     <Compile Include="Assets\Scripts\GO\TrebuchetShooter.cs" />
     <Compile Include="Assets\Scripts\GO\VirtualCameraShaker.cs" />
@@ -203,8 +221,6 @@
     <Compile Include="Assets\Scripts\SpriteCircleProgressBar.cs" />
     <Compile Include="Assets\Scripts\SwordDamageApdater.cs" />
     <Compile Include="Assets\Scripts\Test\DebugQuadrantSystem.cs" />
-    <Compile Include="Assets\Scripts\Test\LaunchMisileToMousePos.cs" />
-    <Compile Include="Assets\Scripts\Test\LaunchProjectileToPosition.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnCollisionProjectileEntity.cs" />
     <Compile Include="Assets\Scripts\Test\SpawnOnClick.cs" />
     <Compile Include="Assets\Scripts\TestMatrixTRS.cs" />
@@ -215,6 +231,7 @@
     <Compile Include="Assets\Scripts\Utils\NativeArrayIndexer.cs" />
     <Compile Include="Assets\Scripts\Utils\Physics.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
+    <Compile Include="Assets\ToggleAnimationPlayer.cs" />
     <Compile Include="Assets\VolumeSlider.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

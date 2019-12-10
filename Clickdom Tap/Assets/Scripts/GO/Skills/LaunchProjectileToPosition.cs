@@ -7,17 +7,38 @@ using UnityEngine;
 
 public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
 {
-    [Space]
+    public enum RotationType { NONE, TO_MOVE_DIRECTION }
+
     [SerializeField] private ShaderSpriteUvAnimationSetupData projectileRenderData;
     [SerializeField] private bool animatedProjectile = false;
     [SerializeField] private float2 renderScale;
-
+    [Space]
+    [SerializeField] private RotationType rotationType;
+    [Space]
     [SerializeField] private ProjectileLaunshSetupComponentData launchData;
     [SerializeField] private ProjectileCollisionComponentData collisionData;
+    [Space]
+    [SerializeField] private bool drawTrails;
+    [SerializeField] private SpawnTrailsComponentData trailsData = new SpawnTrailsComponentData()
+    {
+        spawnDeltaTime = 0.1f,
+        spawnData = new SpawnTrailData()
+        {
+            animationDurationByLifetime = true,
+            trailLifetime = 0.5f,
+            renderScale = new float2(1, 1),
+            spawnRandPosition = new float3(1, 1, 1),
+            startColor = Color.white,
+            endColor=Color.white,
+            interpolationEquation = new ANU.Utils.Math.QuadraticEquation(0,1,0)
+        }
+    };
     [Space]
     [SerializeField] private bool castShadows = true;
     [SerializeField] private ShadowSettings shadowSettings;
     [SerializeField] private Transform startShadowOffset;
+
+    public bool CastChadows { get => castShadows; set => castShadows = value; }
 
     private EntityManager manager;
 
@@ -66,6 +87,11 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
         manager.AddComponentData(entity, launch);
         manager.AddComponentData(entity, collisionData);
 
+        if(drawTrails)
+        {
+            manager.AddComponentData(entity, trailsData);
+        }
+
         if (castShadows)
         {
             manager.AddComponentData(entity, DataToComponentData.ToComponentData(shadowSettings));
@@ -78,6 +104,12 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
                 startPositionOffset = new float2(0, startShadowOffset != null ? startShadowOffset.position.y - from.y : 0),
                 maxYOffsetForLerpScaleAndAlpha = 7,
             });
+        }
+
+        if(rotationType == RotationType.TO_MOVE_DIRECTION)
+        {
+            manager.AddComponent<Rotation>(entity);
+            manager.AddComponent<RotationToMoveDirectionTagComponentData>(entity);
         }
     }
 

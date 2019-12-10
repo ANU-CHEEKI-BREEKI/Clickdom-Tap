@@ -24,7 +24,6 @@ public class ShaderSpriteUvAnimationSetupData : ScriptableObject
     [SerializeField] AnimationType type;
     [SerializeField] int minInitFrame;
     [SerializeField] int maxInitFrame;
-    [SerializeField] LayerMask layer;
     [Header("События анимации")]
     [Tooltip("нужно ли приостанавливать анимацию")]
     [SerializeField] bool needPauseOnFrame;

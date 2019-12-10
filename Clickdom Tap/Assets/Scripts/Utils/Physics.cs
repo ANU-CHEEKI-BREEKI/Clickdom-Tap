@@ -52,7 +52,7 @@ namespace ANU.Utils
             // at^2 + 2*v0*t - 2*s = 0
 
             float2 roots;
-            if (!ANU.Utils.Math.QuadraticEquation(a, 2 * v0, -2 * s, out roots))
+            if (!ANU.Utils.Math.SolveQuadraticEquation(new Math.QuadraticEquation(a, 2 * v0, -2 * s), out roots))
                 return 0;
             else
             {
@@ -89,7 +89,7 @@ namespace ANU.Utils
             var b = 4 * (absoluteVelocity * absoluteVelocity + delta.x * acceleration.x + delta.y * acceleration.y);
             var c = 4 * (-delta.x * delta.x - delta.y * delta.y);
             float2 n2;
-            var hasResult = ANU.Utils.Math.QuadraticEquation(a, b, c, out n2);
+            var hasResult = ANU.Utils.Math.SolveQuadraticEquation(new Math.QuadraticEquation(a, b, c), out n2);
 
             //так как n - это T^2, то n > 0. Более того, нас интересует минимильное вермя.
             if (!hasResult || (n2.x <= 0 && n2.y <= 0))

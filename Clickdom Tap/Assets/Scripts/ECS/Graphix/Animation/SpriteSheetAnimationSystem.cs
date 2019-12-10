@@ -70,13 +70,6 @@ public class SpriteSheetAnimationSystem : JobComponentSystem
                 animationData.horisontalOffset + animationData.frameWidth * animationData.currentFrame,
                 animationData.verticalOffset
             );
-
-            //animationData.uv = new Vector4(
-            //    animationData.frameWidth, 
-            //    animationData.frameHeight, 
-            //    animationData.horisontalOffset + animationData.frameWidth * animationData.currentFrame,
-            //    animationData.verticalOffset
-            //);
         }
     }
 

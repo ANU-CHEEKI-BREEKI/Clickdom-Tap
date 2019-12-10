@@ -32,7 +32,7 @@ public class SquadProjectileLaunchDataWrapper : IEquatable<SquadProjectileLaunch
     {
         return launchData.Equals(other.launchData) &&
             renderScaleData.Equals(other.renderScaleData) &&
-             spriteData.Equals(other.spriteData) &&
+            spriteData.Equals(other.spriteData) &&
             animaionData.Equals(other.animaionData) &&
             renderData.Equals(other.renderData) &&
             collisionData.Equals(other.collisionData) &&
@@ -52,7 +52,8 @@ public class SquadProjectileLaunchDataWrapper : IEquatable<SquadProjectileLaunch
                collisionData.GetHashCode() * 8 +
                shadowSettings.GetHashCode() +
                castShadows.GetHashCode() +
-               calcShadowsShifts.GetHashCode();
+               calcShadowsShifts.GetHashCode()
+               ;
     }
 }
 

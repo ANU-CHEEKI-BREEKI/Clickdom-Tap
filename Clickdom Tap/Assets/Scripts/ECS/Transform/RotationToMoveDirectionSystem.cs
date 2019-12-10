@@ -11,12 +11,12 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public struct RotationToMoveDirectionComponentData : IComponentData { }
+public struct RotationToMoveDirectionTagComponentData : IComponentData { }
 
 public class RotationToMoveDirectionSystem : JobComponentSystem
 {
     [BurstCompile]
-    [RequireComponentTag(typeof(RotationToMoveDirectionComponentData))]
+    [RequireComponentTag(typeof(RotationToMoveDirectionTagComponentData))]
     struct TmplateJob : IJobForEach<Translation, Rotation, VelocityComponentData>
     {
         public void Execute(ref Translation translation, ref Rotation rotation, [ReadOnly] ref VelocityComponentData velocity)

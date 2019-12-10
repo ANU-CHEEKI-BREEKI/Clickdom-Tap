@@ -11,7 +11,25 @@ using UnityEngine;
 
 public static class Utils
 {    
-    
+    public static Vector3 RewriteX (this Vector3 thisVector, float x)
+    {
+        thisVector.x = x;
+        return thisVector;
+    }
+
+    public static Vector3 RewriteY(this Vector3 thisVector, float y)
+    {
+        thisVector.y = y;
+        return thisVector;
+    }
+
+    public static Vector3 RewriteZ(this Vector3 thisVector, float z)
+    {
+        thisVector.z = z;
+        return thisVector;
+    }
+
+
     public static float Average2D(this Vector3 vector)
     {
         return (vector.x + vector.y) / 2;
@@ -40,6 +58,11 @@ public static class Utils
     {
         var k = Quaternion.Euler(0, 0, +90) * new Vector3(direction.x, direction.y, 0);
         return quaternion.LookRotation(new float3(0, 0, 1), new float3(k.x, k.y, 0));
+    }
+
+    public static float2 GetDirectionTo(this Vector2 thisPos, Vector2 targetPos)
+    {
+        return GetDirectionTo((float2)thisPos, (float2)targetPos);
     }
 
     public static float2 GetDirectionTo(this float3 thisPos, float2 targetPos)
@@ -127,6 +150,19 @@ public static class Utils
     public static float2 GetMouseWorldPosition(Camera camera)
     {
         var mouseScreenPos = Input.mousePosition;
+        var mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos);
+        return new float2(mouseWorldPos.x, mouseWorldPos.y);
+    }
+
+    public static Vector2 ScreenToWorld(this Vector2 screenPos)
+    {
+        var cam = Camera.main;
+        return ScreenToWorld(screenPos, cam);
+    }
+
+    public static Vector2 ScreenToWorld(this Vector2 screenPos,  Camera camera)
+    {
+        var mouseScreenPos = screenPos;
         var mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos);
         return new float2(mouseWorldPos.x, mouseWorldPos.y);
     }

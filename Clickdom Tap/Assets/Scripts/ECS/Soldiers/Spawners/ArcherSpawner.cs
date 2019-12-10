@@ -93,7 +93,7 @@ public class ArcherSpawner : ASpawner, IDamageSettable
                 collisionData = projectilesData.Collision,
                 launchData = projectilesData.Launch,
                 castShadows = castProjectileShadows,
-                calcShadowsShifts = calsProjectileShadowsShifts
+                calcShadowsShifts = calsProjectileShadowsShifts,
             }
         };
         if (castProjectileShadows)

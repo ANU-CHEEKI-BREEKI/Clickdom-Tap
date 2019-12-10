@@ -377,6 +377,12 @@ TextureImporter:
   - first:
       213: -8803052354675734011
     second: icon_close
+  - first:
+      213: -1737941397778414580
+    second: ss_dust_4f
+  - first:
+      213: 3452235603071090801
+    second: ss_fire_5f
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -409,9 +415,9 @@ TextureImporter:
     filterMode: 0
     aniso: -1
     mipBias: -100
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -2808,6 +2814,48 @@ TextureImporter:
       bones: []
       spriteID: 0797bab5397eca24c8fda431d96e1004
       internalID: -8803052354675734011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_dust_4f
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 575
+        width: 195
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8844243f5b7b5a44091dcb3453e0c2c8
+      internalID: -1737941397778414580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_fire_5f
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 151
+        width: 200
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91581bc4de65d36469711c6b291ea492
+      internalID: 3452235603071090801
       vertices: []
       indices: 
       edges: []
