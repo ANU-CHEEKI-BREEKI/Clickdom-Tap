@@ -392,6 +392,36 @@ TextureImporter:
   - first:
       213: 6481722595510842125
     second: icon_fire
+  - first:
+      213: -1691351303608061680
+    second: icon_archer_volley
+  - first:
+      213: -1405991050841739883
+    second: icon_archer_volley_count
+  - first:
+      213: 1218810816009281991
+    second: icon_archer_volley_fire
+  - first:
+      213: 5465225209010160496
+    second: icon_trebushet_shoot
+  - first:
+      213: -5794186443190258151
+    second: icon_trebushet_shoot_fire
+  - first:
+      213: -3260269871532310339
+    second: icon_trebushet_volley
+  - first:
+      213: -8923418844514572157
+    second: icon_trebushet_volley_count
+  - first:
+      213: 3045009332017991319
+    second: icon_trebushet_volley_fire
+  - first:
+      213: -695858993170781591
+    second: icon_silver_coins
+  - first:
+      213: -3388081994079103423
+    second: icon_silver_one_coin
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -2920,7 +2950,7 @@ TextureImporter:
         width: 38
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2928,6 +2958,216 @@ TextureImporter:
       bones: []
       spriteID: fce9dafa2fb78254caca434c78c6b6c9
       internalID: 6481722595510842125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_archer_volley
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1290
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9774248777234f4e88a117d8d1a2ef9
+      internalID: -1691351303608061680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_archer_volley_count
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1290
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966158169bbf17149b3634dfc037d61f
+      internalID: -1405991050841739883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_archer_volley_fire
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 1240
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869c63652db328a4d806756d168a4866
+      internalID: 1218810816009281991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_trebushet_shoot
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 1240
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9dac0cd6d86fc4ab4a3ca434fab723
+      internalID: 5465225209010160496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_trebushet_shoot_fire
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1190
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0cc9e219142f504ead41f9074d62b62
+      internalID: -5794186443190258151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_trebushet_volley
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1190
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9fd8eb07b6fccb4e8c737689d737103
+      internalID: -3260269871532310339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_trebushet_volley_count
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1140
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416dc1f356fbbd04f893bf0cd310a50b
+      internalID: -8923418844514572157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_trebushet_volley_fire
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1140
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0961373969d8cb458e982d4e000bca4
+      internalID: 3045009332017991319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_silver_coins
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1090
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dbf52b5647fbd42b7e31c7e24cbfd8
+      internalID: -695858993170781591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_silver_one_coin
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1090
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 377c952a0aac23b47beb3f727983aab5
+      internalID: -3388081994079103423
       vertices: []
       indices: 
       edges: []

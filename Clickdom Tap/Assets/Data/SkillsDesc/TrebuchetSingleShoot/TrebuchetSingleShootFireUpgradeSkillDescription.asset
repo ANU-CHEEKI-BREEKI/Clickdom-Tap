@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bae2d0f9d224584b8adc907e64dc02c, type: 3}
   m_Name: TrebuchetSingleShootFireUpgradeSkillDescription
   m_EditorClassIdentifier: 
-  sprite: {fileID: 8744317983284358825, guid: 0a739c874497c434b9f64cb6d2f84e6b, type: 3}
+  sprite: {fileID: -5794186443190258151, guid: 0a739c874497c434b9f64cb6d2f84e6b, type: 3}
   additionalDescriptions: []

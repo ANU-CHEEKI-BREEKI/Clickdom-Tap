@@ -10,6 +10,10 @@ public class VolleyShootSkill : SingleShootSkill, ICountSettable, IFrequencySett
 
     public override void ExecuteAt(Vector3 position)
     {
+        IsSkillExecutionStartEventDisabled = false;
+        CallOnSkillExecutionStartEvent();
+        IsSkillExecutionStartEventDisabled = true;
+
         var radius = this.radius;
         if (this.scaleByPos)
             radius *= this.scaleSettings.LerpEvaluete(position);

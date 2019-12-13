@@ -5,14 +5,16 @@ using UnityEngine.UI;
 public class SkillUIPresenter : MonoBehaviour
 {
     [SerializeField] private Image skillIcon;
-    [Space]
+    [Header("optional")]
     [SerializeField] private ATargetedSkill skill;
     [Tooltip("id for inner additional description")]
     [SerializeField] private int addDescId = -1;
 
     private bool internalCall = false;
 
-    public void Present(SkillDescription description)
+    public int AddDescId { get => addDescId; set => addDescId = value; }
+
+    public void Present(SkillDescription description, int addDescId = -1)
     {
         if (description == null)
             return;
@@ -27,11 +29,21 @@ public class SkillUIPresenter : MonoBehaviour
         }
     }
 
+    public void Present(SkillDescription description)
+    {
+        Present(description, addDescId);
+    }
+
     public void Present()
+    {
+        Present(addDescId);
+    }
+
+    public void Present(int id)
     {
         if (skill == null)
             return;
 
-        Present(skill.Description);
+        Present(skill.Description, id);
     }
 }

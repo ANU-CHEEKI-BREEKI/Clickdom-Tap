@@ -11,6 +11,34 @@ using UnityEngine;
 
 public static class Utils
 {    
+    public static string ToShortFormattedString(this float number)
+    {
+        var numLen = ((int)number).ToString().Length;
+        var periods = Mathf.Clamp(numLen - 2, 0, 255);
+        var digits = (int)Mathf.Pow(10, periods);
+
+        var div = 1;
+        var postfix = "";
+
+        if(periods >= 9)
+        {
+            div = 1_000_000_000;
+            postfix = "B";
+        }
+        else if (periods >= 6)
+        {
+            div = 1_000_000;
+            postfix = "M";
+        }
+        else if(periods >= 3)
+        {
+            div = 1_000;
+            postfix = "K";
+        }
+
+        return (System.Math.Round((double)(number / digits), 0) * digits / div) + postfix;
+    }
+
     public static Vector3 RewriteX (this Vector3 thisVector, float x)
     {
         thisVector.x = x;

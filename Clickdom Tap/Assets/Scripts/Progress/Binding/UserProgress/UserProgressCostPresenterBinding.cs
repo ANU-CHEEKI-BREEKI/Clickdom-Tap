@@ -5,16 +5,16 @@ using TMPro;
 using System;
 
 [RequireComponent(typeof(UserProgressCostBinding))]
+[RequireComponent(typeof(FloatToText))]
 public class UserProgressCostPresenterBinding : MonoBehaviour
 {
-    [Header("presenter")]
-    [SerializeField] protected TextMeshProUGUI text;
-    [SerializeField] private string format = "";
-
     private UserProgressCostBinding costBinding;
+    private FloatToText f2t;
 
     private void Start()
     {
+        f2t = GetComponent<FloatToText>();
+
         costBinding = GetComponent<UserProgressCostBinding>();
         costBinding.CostBindingSource.OnNewCostExpected += CostBindingSource_OnNewCostExpected;
 
@@ -23,12 +23,13 @@ public class UserProgressCostPresenterBinding : MonoBehaviour
 
     private void OnDestroy()
     {
-        costBinding.CostBindingSource.OnNewCostExpected -= CostBindingSource_OnNewCostExpected;
+        if(costBinding != null)
+            costBinding.CostBindingSource.OnNewCostExpected -= CostBindingSource_OnNewCostExpected;
     }
 
     private void CostBindingSource_OnNewCostExpected(float newCost)
     {
-        text.text = newCost.ToString(format);
+        f2t.Float = newCost;
     }
 
 }

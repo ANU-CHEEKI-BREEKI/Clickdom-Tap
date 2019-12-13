@@ -2,7 +2,9 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class SkillExecutor : MonoBehaviour, IPointerClickHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private ATargetedSkill skill;
@@ -15,9 +17,11 @@ public class SkillExecutor : MonoBehaviour, IPointerClickHandler, IDragHandler, 
     private Vector2 currentTargetPosition;
     private Camera _camera;
 
+    private CanvasGroup cg;
 
     private void Start()
     {
+        cg = GetComponent<CanvasGroup>();
         _camera = Camera.main;
         uiPpresenter = GetComponent<SkillUIPresenter>();
         if (uiPpresenter != null && skill != null)
@@ -31,23 +35,35 @@ public class SkillExecutor : MonoBehaviour, IPointerClickHandler, IDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!cg.interactable)
+            return;
+
         currentTargetPosition = eventData.position.ScreenToWorld(_camera);
         targetPresenter?.PresentTarget(currentTargetPosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!cg.interactable)
+            return;
+
         if (!cancelSkill)
-            skill?.ExecuteAt(currentTargetPosition);
+            ExecuteAtTarget(currentTargetPosition);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!cg.interactable)
+            return;
+
         cancelSkill = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!cg.interactable)
+            return;
+
         cancelSkill = false;
         currentTargetPosition = eventData.position.ScreenToWorld(_camera);
         if (cancelIcon != null)
@@ -56,7 +72,10 @@ public class SkillExecutor : MonoBehaviour, IPointerClickHandler, IDragHandler, 
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if(cancelIcon != null)
+        if (!cg.interactable)
+            return;
+
+        if (cancelIcon != null)
             cancelIcon.enabled = false;
         targetPresenter?.HidePresenter();
     }

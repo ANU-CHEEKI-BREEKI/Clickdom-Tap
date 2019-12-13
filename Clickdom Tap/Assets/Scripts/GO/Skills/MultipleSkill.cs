@@ -14,6 +14,10 @@ public class MultipleSkill : VolleyShootSkill
 
     public override void ExecuteAt(Vector3 position)
     {
+        IsSkillExecutionStartEventDisabled = false;
+        CallOnSkillExecutionStartEvent();
+        IsSkillExecutionStartEventDisabled = true;
+
         var scale = 1f;
         if (scaleSettings != null)
             scale = scaleSettings.LerpEvaluete(position);
@@ -23,5 +27,7 @@ public class MultipleSkill : VolleyShootSkill
             var pos = positionProvider.GetTargetPosition(position, targetsCount, i, scale);
             base.ExecuteAt(pos);
         }
+
+       
     }
 }

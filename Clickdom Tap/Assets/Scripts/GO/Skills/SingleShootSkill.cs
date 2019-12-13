@@ -19,11 +19,16 @@ public class SingleShootSkill : ATargetedSkill, IDamageSettable
     [Header("Rewrite Trails")]
     [Tooltip("Если это поле установлено, то вместо DrawTrails будет установлена данная анимация")]
     [SerializeField] private ShaderSpriteUvAnimationSetupData animationRewriteTrails;
-    
+
+    private ShaderSpriteUvAnimationSetupData initAnimation;
+
+
     private LaunchProjectileToPosition launcher;
 
     public override void ExecuteAt(Vector3 position)
     {
+        CallOnSkillExecutionStartEvent();
+
         if (setZByY)
             position.z = position.y * settings.Scale;
 
@@ -35,7 +40,7 @@ public class SingleShootSkill : ATargetedSkill, IDamageSettable
             from: position + startPositionoffset,
             to: position,
             scale
-        );
+        );      
     }
 
     public override SkillDescription Description => description;
@@ -43,6 +48,7 @@ public class SingleShootSkill : ATargetedSkill, IDamageSettable
     private void Awake()
     {
         launcher = GetComponent<LaunchProjectileToPosition>();
+        initAnimation = launcher.ProjectileRenderData;
     }
 
     protected void Update()
@@ -59,9 +65,11 @@ public class SingleShootSkill : ATargetedSkill, IDamageSettable
         var realDamage = damage * damageSettableScaler;
         launcher.ForceSetDamage(realDamage);
 
+
+
         if (animationRewriteTrails == null)
             launcher.DrawTrails = damage > 1;
         else
-            launcher.ProjectileRenderData = animationRewriteTrails;
+            launcher.ProjectileRenderData = damage > 1 ? animationRewriteTrails : initAnimation;
     }
 }

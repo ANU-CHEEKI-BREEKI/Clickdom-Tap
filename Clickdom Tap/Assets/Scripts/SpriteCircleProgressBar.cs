@@ -2,10 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteCircleProgressBar : MonoBehaviour
+public class SpriteCircleProgressBar : AProgressBar
 {
     [SerializeField] Transform bg;
     [SerializeField] Transform fg;
+
+    public override bool TextVisibility
+    {
+        get
+        {
+            throw new System.NotImplementedException();
+        }
+
+        set
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    public override ProgressFormat Format
+    {
+        get
+        {
+            throw new System.NotImplementedException();
+        }
+
+        set
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    public override ProgressType Type
+    {
+        get
+        {
+            throw new System.NotImplementedException();
+        }
+
+        set
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 
     private float progress;
     private Vector3 startScale;
@@ -27,7 +66,7 @@ public class SpriteCircleProgressBar : MonoBehaviour
         SetProgress(0);
     }
 
-    public void SetProgress(float progress)
+    public override  void SetProgress(float progress)
     {
         if (!initiated)
             Init();
