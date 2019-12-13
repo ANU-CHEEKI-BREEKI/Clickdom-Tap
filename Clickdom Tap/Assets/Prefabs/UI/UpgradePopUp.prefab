@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 0.5568628, g: 0.13725491, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -582,6 +582,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3403330769429977085, guid: 0a739c874497c434b9f64cb6d2f84e6b,
         type: 3}
+    - target: {fileID: 4834560663051500040, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834560663051500040, guid: 5c0dff02e3099f44e83833098f3640d5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0dff02e3099f44e83833098f3640d5, type: 3}
 --- !u!224 &7114535365645407890 stripped

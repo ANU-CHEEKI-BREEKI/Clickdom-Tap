@@ -17,11 +17,13 @@ public class ProjectileEffectSettings : ScriptableObject
     }
 }
 
+//НЕ МЕНЯТЬ ПОРЯДОК ЗНАЧЕНИИЙ!!! ОНИ ИСПОЛЬЗУЮТСЯ В UnityEditor
 public enum EffectId
 {
     NONE,
     THEBUCHET_HIT,
-    ARROW_HIT_SOUND
+    ARROW_HIT_SOUND,
+    THEBUCHET_FIRE_HIT
 }
 
 [Serializable]

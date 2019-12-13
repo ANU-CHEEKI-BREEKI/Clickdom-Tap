@@ -83,7 +83,7 @@ public class WholeProgressParticlesCollectorSystem : JobComponentSystem
         {
             progressData = triggeredProjectiles.AsParallelWriter(),
             triggerZone = triggerZone
-        }.Schedule(this);
+        }.Schedule(this, inputDeps);
         return collectJobHandle;
     }
 }

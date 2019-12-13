@@ -148,47 +148,7 @@ public class LaunchProjectileSystem : ComponentSystem
 
     public void LaunchArrow(float3 startPos, float scale, 
         ProjectileLaunshSetupComponentData launchData, SpriteSheetAnimationComponentData animaionData,
-        RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData,
-        RenderScaleComponentdata renderScale,
-        bool castShadows, CastSpritesShadowComponentData shadowSettings, bool calcShadowShifts)
-    {
-        var arrow = manager.CreateEntity(arrowArchetype);
-
-        manager.SetComponentData(arrow, new Translation()
-        {
-            Value = startPos
-        });
-        manager.SetComponentData(arrow, launchData);
-        manager.SetComponentData(arrow, new Scale()
-        {
-            Value = scale
-        });
-        manager.SetComponentData(arrow, new Rotation()
-        {
-            Value = quaternion.identity
-        });        
-        manager.AddComponentData(arrow, animaionData);
-        manager.SetComponentData(arrow, renderScale);
-        manager.SetComponentData(arrow, collisionData);
-        manager.SetSharedComponentData(arrow, renderData);
-
-        if(castShadows)
-        {
-            manager.AddComponentData(arrow, shadowSettings);
-            if (calcShadowShifts)
-                manager.AddComponentData(arrow, new CastProjectileShadowsTagComponentData()
-                {
-                    defaultAlpha = shadowSettings.color.a,
-                    alphaMultiplier = 0f,
-                    scaleMultiplier = 1,
-                    startPositionOffset = new float2(0, -1),
-                    maxYOffsetForLerpScaleAndAlpha = 5f
-                });
-        }
-    }
-
-    public void LaunchArrow(float3 startPos, float scale,
-        ProjectileLaunshSetupComponentData launchData, SpriteRendererComponentData spriteData,
+        SpriteRendererComponentData spriteData,
         RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData,
         RenderScaleComponentdata renderScale,
         bool castShadows, CastSpritesShadowComponentData shadowSettings, bool calcShadowShifts)
@@ -209,23 +169,66 @@ public class LaunchProjectileSystem : ComponentSystem
             Value = quaternion.identity
         });
         manager.SetComponentData(arrow, spriteData);
+        if(animaionData.frameCount > 1)
+            manager.AddComponentData(arrow, animaionData);
         manager.SetComponentData(arrow, renderScale);
         manager.SetComponentData(arrow, collisionData);
         manager.SetSharedComponentData(arrow, renderData);
 
-        if (castShadows)
+        if(castShadows)
         {
             manager.AddComponentData(arrow, shadowSettings);
             if (calcShadowShifts)
                 manager.AddComponentData(arrow, new CastProjectileShadowsTagComponentData()
                 {
                     defaultAlpha = shadowSettings.color.a,
-                    defaultScale = shadowSettings.scale,
-                    scaleMultiplier = 1,
                     alphaMultiplier = 0f,
+                    scaleMultiplier = 1,
                     startPositionOffset = new float2(0, -1),
                     maxYOffsetForLerpScaleAndAlpha = 5f
                 });
         }
     }
+
+    //public void LaunchArrow(float3 startPos, float scale,
+    //    ProjectileLaunshSetupComponentData launchData, SpriteRendererComponentData spriteData,
+    //    RenderSharedComponentData renderData, ProjectileCollisionComponentData collisionData,
+    //    RenderScaleComponentdata renderScale,
+    //    bool castShadows, CastSpritesShadowComponentData shadowSettings, bool calcShadowShifts)
+    //{
+    //    var arrow = manager.CreateEntity(arrowArchetype);
+
+    //    manager.SetComponentData(arrow, new Translation()
+    //    {
+    //        Value = startPos
+    //    });
+    //    manager.SetComponentData(arrow, launchData);
+    //    manager.SetComponentData(arrow, new Scale()
+    //    {
+    //        Value = scale
+    //    });
+    //    manager.SetComponentData(arrow, new Rotation()
+    //    {
+    //        Value = quaternion.identity
+    //    });
+    //    manager.SetComponentData(arrow, spriteData);
+    //    manager.SetComponentData(arrow, renderScale);
+    //    manager.SetComponentData(arrow, collisionData);
+    //    manager.SetSharedComponentData(arrow, renderData);
+
+    //    if (castShadows)
+    //    {
+    //        manager.AddComponentData(arrow, shadowSettings);
+    //        if (calcShadowShifts)
+    //            manager.AddComponentData(arrow, new CastProjectileShadowsTagComponentData()
+    //            {
+    //                defaultAlpha = shadowSettings.color.a,
+    //                defaultScale = shadowSettings.scale,
+    //                scaleMultiplier = 1,
+    //                alphaMultiplier = 0f,
+    //                startPositionOffset = new float2(0, -1),
+    //                maxYOffsetForLerpScaleAndAlpha = 5f
+    //            });
+    //    }
+    //}
 }

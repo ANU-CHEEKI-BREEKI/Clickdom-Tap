@@ -5,11 +5,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
 [ExecuteInEditMode]
-public class HierachyConnector : MonoBehaviour
+public class HierachyConnector : AHierarchyBase
 {
-    private RectTransform _transform;
-    private CanvasGroup _canvasGroup;
-
     public void Connect(Vector2 from, Vector2 to)
     {
         var dist = Vector3.Distance(from, to);
@@ -25,13 +22,7 @@ public class HierachyConnector : MonoBehaviour
 
         _transform.rotation = rot;
     }
-
-    public void SetActive(bool active)
-    {
-        _canvasGroup.alpha = active ? 1 : 0.6f;
-        _canvasGroup.blocksRaycasts = active;
-    }
-
+    
     private void Reset()
     {
         Init();
@@ -40,14 +31,5 @@ public class HierachyConnector : MonoBehaviour
     private void Update()
     {
         Init();
-    }
-
-    private void Init()
-    {
-        if (_transform == null)
-            _transform = transform as RectTransform;
-
-        if (_canvasGroup == null)
-            _canvasGroup = GetComponent<CanvasGroup>();
     }
 }

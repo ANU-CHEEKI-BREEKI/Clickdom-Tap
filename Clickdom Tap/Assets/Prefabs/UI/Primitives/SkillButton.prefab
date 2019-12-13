@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4087634099542954703}
   - component: {fileID: 3393975590217798789}
   - component: {fileID: 506648877638116920}
+  - component: {fileID: 585210660691764810}
   - component: {fileID: 2127205381263514280}
   m_Layer: 5
   m_Name: SkillButton
@@ -107,8 +108,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
   targetPresenter: {fileID: 0}
+  uiPpresenter: {fileID: 585210660691764810}
   cancelIcon: {fileID: 2672119950197633028}
+--- !u!114 &585210660691764810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772623443330503628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b9bc8bef601ad43b68de58bf375d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   skillIcon: {fileID: 2109676932166857678}
+  skill: {fileID: 0}
+  addDescId: -1
 --- !u!114 &2127205381263514280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5566038, g: 0.13593967, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

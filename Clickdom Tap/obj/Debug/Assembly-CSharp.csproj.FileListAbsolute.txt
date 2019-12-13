@@ -351,3 +351,4 @@ D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\Temp\bin\Debug\Unity
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\obj\Debug\Assembly-CSharp.dll
 D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\obj\Debug\Assembly-CSharp.pdb
+D:\development\unity\Clickdom Tap\UnityProject\Clickdom Tap\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache

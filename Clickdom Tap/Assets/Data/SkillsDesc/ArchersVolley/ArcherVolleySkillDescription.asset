@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bae2d0f9d224584b8adc907e64dc02c, type: 3}
   m_Name: ArcherVolleySkillDescription
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 3134570664356912180, guid: 0a739c874497c434b9f64cb6d2f84e6b, type: 3}
+  additionalDescriptions:
+  - {fileID: 11400000, guid: 9ffc7a3681e12034497b34203f7d0666, type: 2}
+  - {fileID: 11400000, guid: 055aaf45a9a9eeb4498fd742dfd5796d, type: 2}

@@ -62,11 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ArchersProjectileUpdater.cs" />
     <Compile Include="Assets\AudioPlayer.cs" />
     <Compile Include="Assets\CoroutineParent.cs" />
     <Compile Include="Assets\EnableMaskOnStart.cs" />
     <Compile Include="Assets\MuteOutOfCameraBounds.cs" />
     <Compile Include="Assets\PreferedCameraAspect.cs" />
+    <Compile Include="Assets\ProjectileLauncherEffectUpdater.cs" />
     <Compile Include="Assets\RenderCullingBounds.cs" />
     <Compile Include="Assets\SceneManagerHandler.cs" />
     <Compile Include="Assets\Scripts\AnimationEventAdapter.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Assets\Scripts\AutoRemoveWhenStops.cs" />
     <Compile Include="Assets\Scripts\CastShadowsShift.cs" />
     <Compile Include="Assets\Scripts\CircleProgressBarAutoTimer.cs" />
+    <Compile Include="Assets\Scripts\Comment.cs" />
     <Compile Include="Assets\Scripts\Data\AnimationList.cs" />
     <Compile Include="Assets\Scripts\Data\DataToComponentData.cs" />
     <Compile Include="Assets\Scripts\Data\ProjectileEffectSettings.cs" />
@@ -165,24 +168,30 @@
     <Compile Include="Assets\Scripts\GO\FolowToTransform.cs" />
     <Compile Include="Assets\Scripts\GO\GOActivator.cs" />
     <Compile Include="Assets\Scripts\GO\GOEventTrigger.cs" />
-    <Compile Include="Assets\Scripts\GO\HierachyConnector.cs" />
-    <Compile Include="Assets\Scripts\GO\HierarchyItem.cs" />
     <Compile Include="Assets\Scripts\GO\InteractableByPriority.cs" />
     <Compile Include="Assets\Scripts\GO\PopUpNumbers.cs" />
     <Compile Include="Assets\Scripts\GO\RopeRenderer.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleAsParent.cs" />
     <Compile Include="Assets\Scripts\GO\ScaleByPosition.cs" />
     <Compile Include="Assets\Scripts\GO\Shaker.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\ASkillTargetPositionProvider.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\ATargetedSkill.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\LaunchProjectileToPosition.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\LinearCenterPositionProvider.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\MultipleSkill.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\Presenters\ASkillTargetPresenter.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\Presenters\MultipleSkillPresenter.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\Presenters\SimpleSkillTargetPresenter.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\Presenters\SkillUIPresenter.cs" />
+    <Compile Include="Assets\Scripts\GO\Skills\RadialCenterPositionProvider.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\SingleShootSkill.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\SkillExecutor.cs" />
     <Compile Include="Assets\Scripts\GO\Skills\VolleyShootSkill.cs" />
     <Compile Include="Assets\Scripts\GO\SpawnerAudioPool.cs" />
     <Compile Include="Assets\Scripts\GO\TrebuchetShooter.cs" />
+    <Compile Include="Assets\Scripts\GO\UIHierarchyItems\AHierarchyBase.cs" />
+    <Compile Include="Assets\Scripts\GO\UIHierarchyItems\HierachyConnector.cs" />
+    <Compile Include="Assets\Scripts\GO\UIHierarchyItems\HierarchyItem.cs" />
     <Compile Include="Assets\Scripts\GO\VirtualCameraShaker.cs" />
     <Compile Include="Assets\Scripts\GO\VirtualCameraShakerTrigger.cs" />
     <Compile Include="Assets\Scripts\GO\ZByY.cs" />

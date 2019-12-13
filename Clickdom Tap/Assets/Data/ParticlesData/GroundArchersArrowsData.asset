@@ -45,33 +45,3 @@ MonoBehaviour:
     absoluteVelocity: 12
     effectOnParticleStops: 2
     effectOnParticleRemoves: 0
-  drawTrails: 1
-  trails:
-    spawnDeltaTime: 0.005
-    spawnTimer: 0
-    prevPosition:
-      x: 0
-      y: 0
-      z: 0
-    spriteRenderDataId: 0
-    spawnData:
-      spawnRandPosition:
-        x: 0.05
-        y: 0.05
-        z: 0.05
-      trailLifetime: 0.4
-      startColor: {r: 1, g: 1, b: 1, a: 1}
-      endColor: {r: 0, g: 0, b: 0, a: 0.5882353}
-      renderScale:
-        x: 0.1
-        y: 0.25
-      upRotation:
-        x: 0
-        y: 0
-        z: 90
-      rotateByMovementDirection: 1
-      animationDurationByLifetime: 1
-      interpolationEquation:
-        a: 1.6
-        b: 0.5
-        c: 0

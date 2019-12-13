@@ -14,7 +14,13 @@ public class InteractableByPriority : MonoBehaviour
 
     private void Start()
     {
-        canvasg = GetComponent<CanvasGroup>();
+        Init();
+    }
+
+    private void Init()
+    {
+        if(canvasg == null)
+            canvasg = GetComponent<CanvasGroup>();
     }
 
     /// <param name="enabled"></param>
@@ -36,7 +42,13 @@ public class InteractableByPriority : MonoBehaviour
 
     private void SetEnabled(bool enabled)
     {
+        Init();
         canvasg.interactable = enabled;
         canvasg.alpha = enabled ? 1 : disabledAlpha;
+    }
+
+    public void SetEnabledByMaxPriority(bool enabled)
+    {
+        SetEnabled(enabled, int.MaxValue);
     }
 }

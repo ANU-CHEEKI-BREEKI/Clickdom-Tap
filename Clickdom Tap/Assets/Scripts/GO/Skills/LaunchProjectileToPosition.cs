@@ -10,7 +10,7 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
     public enum RotationType { NONE, TO_MOVE_DIRECTION }
 
     [SerializeField] private ShaderSpriteUvAnimationSetupData projectileRenderData;
-    [SerializeField] private bool animatedProjectile = false;
+    public ShaderSpriteUvAnimationSetupData ProjectileRenderData { get => projectileRenderData; set => projectileRenderData = value; }
     [SerializeField] private float2 renderScale;
     [Space]
     [SerializeField] private RotationType rotationType;
@@ -19,6 +19,7 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
     [SerializeField] private ProjectileCollisionComponentData collisionData;
     [Space]
     [SerializeField] private bool drawTrails;
+    public bool DrawTrails { get => drawTrails; set => drawTrails = value; }
     [SerializeField] private SpawnTrailsComponentData trailsData = new SpawnTrailsComponentData()
     {
         spawnDeltaTime = 0.1f,
@@ -38,7 +39,10 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
     [SerializeField] private ShadowSettings shadowSettings;
     [SerializeField] private Transform startShadowOffset;
 
+    [SerializeField] bool disableIDamageSettable = false;
+
     public bool CastChadows { get => castShadows; set => castShadows = value; }
+    public ProjectileLaunshSetupComponentData LaunchData { get => launchData; set => launchData = value; }
 
     private EntityManager manager;
 
@@ -75,8 +79,9 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
         {
             uv = projectileRenderData.UV
         });
-        if(animatedProjectile)
-            manager.AddComponentData(entity, DataToComponentData.ToComponentData(projectileRenderData));
+        var animation = DataToComponentData.ToComponentData(projectileRenderData);
+        if (animation.frameCount > 1)
+            manager.AddComponentData(entity, animation);
         manager.AddSharedComponentData(entity, renderData);
         manager.AddComponentData(entity, new RenderScaleComponentdata()
         {
@@ -113,8 +118,18 @@ public class LaunchProjectileToPosition : MonoBehaviour, IDamageSettable
         }
     }
 
+    public void ForceSetDamage(float damage)
+    {
+        var temp = disableIDamageSettable;
+        disableIDamageSettable = false;
+        (this as IDamageSettable).SetDamage(damage);
+        disableIDamageSettable = temp;
+    }
+
     void IDamageSettable.SetDamage(float damage)
     {
+        if (disableIDamageSettable)
+            return;
         collisionData.processData.damage = damage;
     }
 }

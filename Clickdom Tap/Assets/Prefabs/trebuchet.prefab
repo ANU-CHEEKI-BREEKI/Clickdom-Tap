@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 7327027056516475519}
   - component: {fileID: 5156882060972221217}
   - component: {fileID: 6756580569418183590}
+  - component: {fileID: -4900461051602591729}
   m_Layer: 0
   m_Name: trebuchet
   m_TagString: Untagged
@@ -236,10 +237,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileRenderData: {fileID: 11400000, guid: 6125c46092503394c832085d8153d7ab,
     type: 2}
-  animatedProjectile: 0
   renderScale:
-    x: 0.5
-    y: 2
+    x: 1
+    y: 1
+  rotationType: 0
   launchData:
     ground: 1
     targetWidth: 0
@@ -269,7 +270,7 @@ MonoBehaviour:
       direction:
         x: 0
         y: 0
-  drawTrails: 1
+  drawTrails: 0
   trailsData:
     spawnDeltaTime: 0.005
     spawnTimer: 0
@@ -302,6 +303,7 @@ MonoBehaviour:
   castShadows: 1
   shadowSettings: {fileID: 11400000, guid: f8b500c3d7983e34880a5b83182adbf9, type: 2}
   startShadowOffset: {fileID: 8360700919666427228}
+  disableIDamageSettable: 0
 --- !u!114 &1042611534727947563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +324,7 @@ MonoBehaviour:
     maxProgress: 1
     progressValue: 1
   damage:
-    maxProgress: 10000
+    maxProgress: 5000
     progressValue: 100
   attackSpeed:
     maxProgress: 60
@@ -635,6 +637,20 @@ MonoBehaviour:
     stereoPan: 0
     rewritePriority: 0
     priority: 128
+--- !u!114 &-4900461051602591729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943736142348028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dec947cf31560741994543f5c816299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onParticleStops: 3
+  onParticleRemoves: 0
 --- !u!1 &996281658540475612
 GameObject:
   m_ObjectHideFlags: 0

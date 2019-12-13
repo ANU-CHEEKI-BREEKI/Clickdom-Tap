@@ -7,6 +7,7 @@ public class SkillExecutor : MonoBehaviour, IPointerClickHandler, IDragHandler, 
 {
     [SerializeField] private ATargetedSkill skill;
     [SerializeField] private ASkillTargetPresenter targetPresenter;
+    [SerializeField] private SkillUIPresenter uiPpresenter;
     [Space]
     [SerializeField] private Image cancelIcon;
 
@@ -14,13 +15,12 @@ public class SkillExecutor : MonoBehaviour, IPointerClickHandler, IDragHandler, 
     private Vector2 currentTargetPosition;
     private Camera _camera;
 
-    private SkillUIPresenter uiPpresenter;
 
     private void Start()
     {
         _camera = Camera.main;
         uiPpresenter = GetComponent<SkillUIPresenter>();
-        if (uiPpresenter != null)
+        if (uiPpresenter != null && skill != null)
             uiPpresenter.Present(skill.Description);
     }
     

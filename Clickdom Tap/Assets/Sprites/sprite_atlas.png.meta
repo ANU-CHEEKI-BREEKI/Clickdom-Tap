@@ -112,7 +112,7 @@ TextureImporter:
     second: trebuchet_weight
   - first:
       213: -7451953295746623981
-    second: spritesheet_arrows
+    second: arrow
   - first:
       213: 4793074969510804509
     second: arrow_2
@@ -383,6 +383,15 @@ TextureImporter:
   - first:
       213: 3452235603071090801
     second: ss_fire_5f
+  - first:
+      213: -8803052354675734011
+    second: icon_checkmark
+  - first:
+      213: -6826983611271438129
+    second: ss_arrow_fire_8f
+  - first:
+      213: 6481722595510842125
+    second: icon_fire
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1328,12 +1337,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_arrows
+      name: arrow
       rect:
         serializedVersion: 2
-        x: 0
-        y: 144
-        width: 384
+        x: 287
+        y: 157
+        width: 46
         height: 5
       alignment: 9
       pivot: {x: 1, y: 0.5}
@@ -2844,7 +2853,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 151
+        y: 156
         width: 200
         height: 64
       alignment: 9
@@ -2856,6 +2865,69 @@ TextureImporter:
       bones: []
       spriteID: 91581bc4de65d36469711c6b291ea492
       internalID: 3452235603071090801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_checkmark
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1195
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5109e8e80cc23ca4ca2fa04f86ec249e
+      internalID: -8803052354675734011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_arrow_fire_8f
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 382
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a79ca1f15511ba64d86e7b3ecbab1a79
+      internalID: -6826983611271438129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_fire
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 157
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce9dafa2fb78254caca434c78c6b6c9
+      internalID: 6481722595510842125
       vertices: []
       indices: 
       edges: []

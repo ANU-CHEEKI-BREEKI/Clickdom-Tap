@@ -14,16 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  spriteSheet: {fileID: -7451953295746623981, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+  spriteSheet: {fileID: 8239160857659893436, guid: 0a739c874497c434b9f64cb6d2f84e6b,
     type: 3}
   framesCount: 8
   frameDuration: 0
   type: 0
   minInitFrame: 0
   maxInitFrame: 0
-  layer:
-    serializedVersion: 2
-    m_Bits: 1
   needPauseOnFrame: 0
   pauseData:
     pauseOnFrame: 0

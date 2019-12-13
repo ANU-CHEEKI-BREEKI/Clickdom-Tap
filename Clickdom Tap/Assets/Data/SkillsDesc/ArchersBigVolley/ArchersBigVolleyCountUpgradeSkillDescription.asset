@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bae2d0f9d224584b8adc907e64dc02c, type: 3}
   m_Name: ArchersBigVolleyCountUpgradeSkillDescription
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 3134570664356912180, guid: 0a739c874497c434b9f64cb6d2f84e6b, type: 3}
+  additionalDescriptions: []

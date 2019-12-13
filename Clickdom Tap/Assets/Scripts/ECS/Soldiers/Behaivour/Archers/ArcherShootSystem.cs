@@ -26,8 +26,6 @@ public class SquadProjectileLaunchDataWrapper : IEquatable<SquadProjectileLaunch
     public CastSpritesShadowComponentData shadowSettings;
     public bool calcShadowsShifts;
 
-    public bool animated;
-
     public bool Equals(SquadProjectileLaunchDataWrapper other)
     {
         return launchData.Equals(other.launchData) &&
@@ -59,19 +57,6 @@ public class SquadProjectileLaunchDataWrapper : IEquatable<SquadProjectileLaunch
 
 public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentData, IEquatable<SquadProjectileLaunchDataSharedComponentData>
 {
-    //public RenderScaleComponentdata renderScaleData;
-    //public ProjectileLaunshSetupComponentData launchData;
-    //public SpriteRendererComponentData spriteData;
-    //public SpriteSheetAnimationComponentData animaionData;
-    //public RenderSharedComponentData renderData;
-    //public ProjectileCollisionComponentData collisionData;
-
-    //public bool castShadows;
-    //public CastSpritesShadowComponentData shadowSettings;
-    //public bool calcShadowsShifts;
-
-    //public bool animated;
-
     public SquadProjectileLaunchDataWrapper data;
 
     public bool Equals(SquadProjectileLaunchDataSharedComponentData other)
@@ -84,17 +69,6 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
             return data.Equals(other.data);
         else
             return false;
-
-        //return launchData.Equals(other.launchData) &&
-        //    renderScaleData.Equals(other.renderScaleData) &&
-        //     spriteData.Equals(other.spriteData) &&
-        //    animaionData.Equals(other.animaionData) &&
-        //    renderData.Equals(other.renderData) &&
-        //    collisionData.Equals(other.collisionData) &&
-        //    castShadows == other.castShadows &&
-        //    shadowSettings.Equals(other.shadowSettings) &&
-        //    calcShadowsShifts.Equals(other.calcShadowsShifts)
-        //    ;
     }
 
     public override int GetHashCode()
@@ -103,16 +77,6 @@ public struct SquadProjectileLaunchDataSharedComponentData : ISharedComponentDat
             return 0;
         else
             return data.GetHashCode(); 
-
-        //return launchData.GetHashCode()     * 2 +
-        //        renderScaleData.GetHashCode() * 3 +
-        //        spriteData.GetHashCode()    / 3 +
-        //        animaionData.GetHashCode()  * 5 +
-        //        renderData.GetHashCode()    / 6 +
-        //        collisionData.GetHashCode() * 8 +
-        //        shadowSettings.GetHashCode() +
-        //        castShadows.GetHashCode() +
-        //        calcShadowsShifts.GetHashCode();
     }
 }
 
@@ -226,7 +190,6 @@ public class ArcherShootSystem : ComponentSystem
             var animation = sharedData.animaionData;
             var collision = sharedData.collisionData;
             var render = sharedData.renderData;
-            var animated = sharedData.animated;
             var scale = sharedData.renderScaleData;
 
             detectedActions.IterateForKey(indices[i], (detect) =>
@@ -235,36 +198,19 @@ public class ArcherShootSystem : ComponentSystem
                 launch.targetPosition = detect.targetPosition;
                 launch.targetWidth *= detect.ownerScale;
 
-                if (animated)
-                {
-                    LaunchProjectileSystem.Instance.LaunchArrow(
-                       detect.ownerPosition,
-                       detect.ownerScale,
-                       launch,
-                       animation,
-                       render,
-                       collision,
-                       scale,
-                       sharedData.castShadows,
-                       sharedData.shadowSettings,
-                       sharedData.calcShadowsShifts
-                    );
-                }
-                else
-                {
-                    LaunchProjectileSystem.Instance.LaunchArrow(
-                       detect.ownerPosition,
-                       detect.ownerScale,
-                       launch,
-                       sprite,
-                       render,
-                       collision,
-                       scale,
-                       sharedData.castShadows,
-                       sharedData.shadowSettings,
-                       sharedData.calcShadowsShifts
-                    );
-                }
+                LaunchProjectileSystem.Instance.LaunchArrow(
+                    detect.ownerPosition,
+                    detect.ownerScale,
+                    launch,
+                    animation,
+                    sprite,
+                    render,
+                    collision,
+                    scale,
+                    sharedData.castShadows,
+                    sharedData.shadowSettings,
+                    sharedData.calcShadowsShifts
+                );
             });
         }
 

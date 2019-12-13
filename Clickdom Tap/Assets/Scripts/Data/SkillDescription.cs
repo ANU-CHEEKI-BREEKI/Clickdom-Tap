@@ -11,5 +11,8 @@ public class SkillDescription : ScriptableObject
 {
     [SerializeField] private Sprite sprite;
     public Sprite Sprite => sprite;
+
+    [SerializeField] private SkillDescription[] additionalDescriptions;
+    public SkillDescription[] AdditionalDescriptions => additionalDescriptions;
 }
 

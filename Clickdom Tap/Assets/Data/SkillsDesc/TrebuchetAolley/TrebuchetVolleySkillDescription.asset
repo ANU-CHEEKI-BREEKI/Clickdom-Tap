@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bae2d0f9d224584b8adc907e64dc02c, type: 3}
   m_Name: TrebuchetVolleySkillDescription
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 8744317983284358825, guid: 0a739c874497c434b9f64cb6d2f84e6b, type: 3}
+  additionalDescriptions:
+  - {fileID: 11400000, guid: f9152018cc6dba74f952ecc153289e05, type: 2}
+  - {fileID: 11400000, guid: 71d3eeec55c2fb44f8e1cb544aef1e19, type: 2}

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bae2d0f9d224584b8adc907e64dc02c, type: 3}
   m_Name: TrebuchetSingleShootSkillDescription
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 8744317983284358825, guid: 0a739c874497c434b9f64cb6d2f84e6b, type: 3}
+  additionalDescriptions:
+  - {fileID: 11400000, guid: d2b3a25e9c93ff742af393926a416864, type: 2}

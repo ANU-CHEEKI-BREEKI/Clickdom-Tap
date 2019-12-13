@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VolleyShootSkill : SingleShootSkill
+public class VolleyShootSkill : SingleShootSkill, ICountSettable, IFrequencySettable
 {
     [Space]
     [SerializeField] private float radius = 3;
@@ -29,6 +29,19 @@ public class VolleyShootSkill : SingleShootSkill
 
             yield return new WaitForSeconds(pauseBetwenShoots);
         }
+    }
 
+    void ICountSettable.SetCount(float count)
+    {
+        shootCount = (int)count;
+    }
+
+    /// <summary>
+    /// radius of skill zone
+    /// </summary>
+    /// <param name="frequency"></param>
+    void IFrequencySettable.SetFrequency(float frequency)
+    {
+        radius = frequency;
     }
 }
