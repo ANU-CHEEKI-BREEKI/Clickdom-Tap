@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class SkillUIPresenter : MonoBehaviour
 {
     [SerializeField] private Image skillIcon;
+    [SerializeField] private Image[] addIcons;
     [Header("optional")]
-    [SerializeField] private ATargetedSkill skill;
+    [SerializeField] private ASkill skill;
     [Tooltip("id for inner additional description")]
     [SerializeField] private int addDescId = -1;
 
@@ -20,7 +21,11 @@ public class SkillUIPresenter : MonoBehaviour
             return;
 
         if (addDescId == -1 || internalCall)
+        {
             skillIcon.sprite = description.Sprite;
+            foreach (var addIcon in addIcons)
+                addIcon.sprite = description.Sprite;
+        }
         else if (description.AdditionalDescriptions.Length > addDescId)
         {
             internalCall = true;

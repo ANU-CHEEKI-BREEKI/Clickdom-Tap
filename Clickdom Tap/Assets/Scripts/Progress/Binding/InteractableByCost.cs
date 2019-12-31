@@ -19,6 +19,11 @@ public class InteractableByCost : MonoBehaviour
 
         userScore.OnMoneyChanged += UserScore_OnMoneyChanged;
 
+        Init();
+    }
+
+    private void Init()
+    {
         UserScore_OnMoneyChanged(userScore.Money);
     }
 

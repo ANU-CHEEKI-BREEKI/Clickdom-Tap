@@ -15,9 +15,12 @@ public class WholeProgressHandle : MonoBehaviour
     [SerializeField] Material caslteMaerial;
     [SerializeField] float disolveMin = 0.26f;
     [SerializeField] float disolveMax = 1;
-
+    [Space]
     [SerializeField] private FloatEvent wholeProgressChanged = new FloatEvent();
     [SerializeField] private FloatEvent moneyChanged = new FloatEvent();
+    
+
+    public float DamageMultiplier { get; set; } = 1f;
 
     private WholeProgress progress;
     private Coroutine batchRoutine;
@@ -41,6 +44,11 @@ public class WholeProgressHandle : MonoBehaviour
         progress.Progress.ValueChanged += Progress_ValueChanged;
         progress.OnMoneyChanged += Progress_OnMoneyChanged;
 
+        Init();
+    }
+
+    private void Init()
+    {
         Progress_ValueChanged(progress.Progress.Value, progress.Progress.Value);
         Progress_OnMoneyChanged(progress.Money);
     }
@@ -71,6 +79,8 @@ public class WholeProgressHandle : MonoBehaviour
 
     public void IncreaceProgressInPlace(float damage, Vector3 position, float batchDelay = 1f)
     {
+        damage *= DamageMultiplier;
+
         PopUpNumbers.Instance.WriteLine((int)damage, position);
 
         if(batchRoutine == null)

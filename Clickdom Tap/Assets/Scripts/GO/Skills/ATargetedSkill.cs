@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 
-public abstract class ATargetedSkill : MonoBehaviour
+public abstract class ATargetedSkill : ASkill
 {
     [SerializeField] private UnityEvent onSkillExecutionStart;
 
@@ -16,7 +16,4 @@ public abstract class ATargetedSkill : MonoBehaviour
     }
 
     public abstract void ExecuteAt(Vector3 position);
-
-    public abstract SkillDescription Description { get; }
-    
 }

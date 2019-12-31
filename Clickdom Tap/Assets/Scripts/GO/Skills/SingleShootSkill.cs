@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(LaunchProjectileToPosition))]
 public class SingleShootSkill : ATargetedSkill, IDamageSettable
 {
-    [SerializeField] protected SkillDescription description;
-
     [SerializeField] protected bool setZByY;
     [SerializeField] protected ZByYSettings settings;
     [SerializeField] protected bool scaleByPos;
@@ -43,7 +41,7 @@ public class SingleShootSkill : ATargetedSkill, IDamageSettable
         );      
     }
 
-    public override SkillDescription Description => description;
+   
 
     private void Awake()
     {

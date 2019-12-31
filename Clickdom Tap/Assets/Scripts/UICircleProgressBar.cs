@@ -10,6 +10,7 @@ public class UICircleProgressBar : AProgressBar
     [SerializeField] private ProgressFormat progressFormat;
     [SerializeField] private ProgressType progressType;
 
+
     private float progress;
 
     private bool initiated = false;

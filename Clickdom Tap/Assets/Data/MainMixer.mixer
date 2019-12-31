@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!245 &-8794287970630684510
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot VCam 2
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 0d3c00e4330632c4489d779d16a96aba
+  m_FloatValues:
+    cf4121441949eae4d9425150b9f6518f: -0.08374829
+    7ccc46db6d8f972499f8a79aa20081f5: 0.13552584
+    b40919fe1bac9dd4594e7c76057201f1: -10
+    f257fbdfce08554478e91ff42b768bda: 0.04171297
+  m_TransitionOverrides: {}
 --- !u!244 &-7344664004092600807
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -14,6 +29,26 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-4727170788552974901
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EffectsBase
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b4f0f76ce7db88a47ab8f1d1c4cd88d6
+  m_Children:
+  - {fileID: -2926896442834975753}
+  m_Volume: b40919fe1bac9dd4594e7c76057201f1
+  m_Pitch: 057fdd2e19c155b479b7f93e9bce2b72
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 1699547163639751194}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-2926896442834975753
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -44,13 +79,18 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
-  m_StartSnapshot: {fileID: 24500006}
+  - {fileID: -8794287970630684510}
+  - {fileID: 7112316712672640760}
+  - {fileID: 1621758984236956868}
+  m_StartSnapshot: {fileID: 1621758984236956868}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: f257fbdfce08554478e91ff42b768bda
     name: EffectsVolume
+  - guid: b40919fe1bac9dd4594e7c76057201f1
+    name: EffectsBaseVolume
   - guid: cf4121441949eae4d9425150b9f6518f
     name: MasterVolume
   - guid: 7ccc46db6d8f972499f8a79aa20081f5
@@ -63,6 +103,7 @@ AudioMixerController:
     - 1ac6a3536cc1e9d41862e90496fe3ce3
     - 6f536aa4926fca94e869f7ff97b36269
     - a01c163b7d29dc744baa3abdeee92189
+    - b4f0f76ce7db88a47ab8f1d1c4cd88d6
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -77,7 +118,7 @@ AudioMixerGroupController:
   m_GroupID: dde733a197ce48d4c8762afd4727430d
   m_Children:
   - {fileID: 5075375056087236000}
-  - {fileID: -2926896442834975753}
+  - {fileID: -4727170788552974901}
   - {fileID: 375479601452997302}
   m_Volume: cf4121441949eae4d9425150b9f6518f
   m_Pitch: a904dddfe8236564992cbd1016d3f317
@@ -108,11 +149,14 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: Snapshot VCam 1
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 04f691970f9baf9479783622dca1c4e3
   m_FloatValues:
-    cf4121441949eae4d9425150b9f6518f: 0
+    cf4121441949eae4d9425150b9f6518f: -0.08374829
+    7ccc46db6d8f972499f8a79aa20081f5: 0.13552584
+    b40919fe1bac9dd4594e7c76057201f1: -5
+    f257fbdfce08554478e91ff42b768bda: 0.04171297
   m_TransitionOverrides: {}
 --- !u!243 &375479601452997302
 AudioMixerGroupController:
@@ -133,6 +177,35 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &1621758984236956868
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot VCam 4
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: a88701efa17bf7f44b6ef45fd64ebfdb
+  m_FloatValues:
+    cf4121441949eae4d9425150b9f6518f: -0.08374829
+    7ccc46db6d8f972499f8a79aa20081f5: 0.13552584
+    b40919fe1bac9dd4594e7c76057201f1: -20
+    f257fbdfce08554478e91ff42b768bda: 0.04171297
+  m_TransitionOverrides: {}
+--- !u!244 &1699547163639751194
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: b32ea810a0199df4798f602f83458676
+  m_EffectName: Attenuation
+  m_MixLevel: 9c46d27064dc0274781dc811e18ef11d
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &2396325316742759777
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -180,3 +253,18 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &7112316712672640760
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot VCam 3
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 90e65354256298f4dab1e672eb59bf24
+  m_FloatValues:
+    cf4121441949eae4d9425150b9f6518f: -0.08374829
+    7ccc46db6d8f972499f8a79aa20081f5: 0.13552584
+    b40919fe1bac9dd4594e7c76057201f1: -15
+    f257fbdfce08554478e91ff42b768bda: 0.04171297
+  m_TransitionOverrides: {}

@@ -25,7 +25,11 @@ public class ProgressUpgradeObserver : MonoBehaviour
 
         Subscribe();
 
-        //тут это делать нельзя!
+        Init();
+    }
+
+    private void Init()
+    {
         SetCount(progress.Count.Value, progress.Count.Value);
         SetDamage(progress.Damage.Value, progress.Count.Value);
         SetFrequency(progress.SpawnRate.Value, progress.Count.Value);

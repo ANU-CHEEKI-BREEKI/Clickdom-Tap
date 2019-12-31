@@ -9,6 +9,11 @@ public class UserProgressEventInitializator : MonoBehaviour
 
     private void Start()
     {
+            Init();
+    }
+
+    private void Init()
+    {
         foreach (var item in eventsToInit)
             if (item != null)
                 item.Init();

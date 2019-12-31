@@ -13,7 +13,7 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] private ScaleByPositionSettings volumeScale;
     [Space]
     [SerializeField] private AudioSettings[] clips;
-
+    
     private AudioSource source;
 
     private void Awake()
@@ -35,6 +35,11 @@ public class AudioPlayer : MonoBehaviour
     public void PlayRandomClip(Vector3 position)
     {
         PlayClipAtPos(Random.Range(0, clips.Length), position);
+    }
+
+    public void PlayRandomClip()
+    {
+        PlayClipAtPos(Random.Range(0, clips.Length), transform.position);
     }
 
     public void PlayClipAtPos(int index, Vector3 position)
@@ -106,7 +111,7 @@ public class AudioPlayer : MonoBehaviour
         public bool rewritePitcRand = false;
         [Range(0, 0.5f)] public float pitchRange = 0;
         [Space]
-        public bool loop; 
+        public bool loop = false; 
         [Range(0f, 1f)] public float volume = 1f;
         [Space]
         public bool rewriteStereoPan = false;

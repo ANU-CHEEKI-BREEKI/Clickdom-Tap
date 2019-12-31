@@ -1037,6 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillIcon: {fileID: 3238613975588153739}
+  addIcons: []
   skill: {fileID: 0}
   addDescId: -1
 --- !u!114 &3691962976602824112

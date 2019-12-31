@@ -18,6 +18,11 @@ public class UserProgressCostPresenterBinding : MonoBehaviour
         costBinding = GetComponent<UserProgressCostBinding>();
         costBinding.CostBindingSource.OnNewCostExpected += CostBindingSource_OnNewCostExpected;
 
+        Init();
+    }
+
+    private void Init()
+    {
         CostBindingSource_OnNewCostExpected(costBinding.CostBindingSource.EvaluateRelated);
     }
 

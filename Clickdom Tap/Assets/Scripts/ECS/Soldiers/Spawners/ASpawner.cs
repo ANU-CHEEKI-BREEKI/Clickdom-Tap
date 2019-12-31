@@ -190,8 +190,12 @@ public abstract class ASpawner : MonoBehaviour, ICountSettable, IFrequencySettab
 
     public void SpawnImmidiate()
     {
-        if(squadTag.unitCount != null)
-            Spawn(maxEntityCoun - squadTag.unitCount.value);
+
+        if (squadTag.unitCount != null)
+        {
+            var cnt = maxEntityCoun - squadTag.unitCount.value;
+            Spawn(cnt);
+        }
     }
 
     public void Spawn(int entityCount)

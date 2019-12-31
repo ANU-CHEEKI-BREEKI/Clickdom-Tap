@@ -4,7 +4,12 @@ using System.Collections;
 public class UISkillCooldown : MonoBehaviour, ISpeedSettable
 {
     [SerializeField] private AProgressBar progressBar;
+    [SerializeField] private bool hideProgressBarOnCompleted = false;
+    [Space]
     [SerializeField] private InteractableByPriority presenterIntaraction;
+    [SerializeField] private int interactionPriority = 100_000;
+
+    private Coroutine coroutine = null;
 
     private float coolDownDurationInSeconds = 0f;
 
@@ -17,12 +22,16 @@ public class UISkillCooldown : MonoBehaviour, ISpeedSettable
 
     public void StartCooldown()
     {
-        StartCoroutine(Cooldown(coolDownDurationInSeconds));
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        coroutine = StartCoroutine(Cooldown(coolDownDurationInSeconds));
     }
 
     private IEnumerator Cooldown(float duration)
     {
-        presenterIntaraction?.SetEnabled(false, int.MaxValue);
+        presenterIntaraction?.SetEnabled(false, interactionPriority);
+
+        progressBar.gameObject.SetActive(true);
         progressBar.MinValue = 0;
         progressBar.MaxValue = duration;
         progressBar.Type = AProgressBar.ProgressType.DECREACE;
@@ -44,6 +53,11 @@ public class UISkillCooldown : MonoBehaviour, ISpeedSettable
         if (progressBar != null)
             progressBar.TextVisibility = false;
 
-        presenterIntaraction?.SetEnabled(true, int.MaxValue);
+        presenterIntaraction?.SetEnabled(true, interactionPriority);
+
+        if (hideProgressBarOnCompleted)
+            progressBar.gameObject.SetActive(false);
+
+        coroutine = null;
     }
 }

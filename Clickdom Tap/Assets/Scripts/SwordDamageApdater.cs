@@ -15,7 +15,6 @@ public class SwordDamageApdater : MonoBehaviour, IDamageSettable
         spawner = GetComponent<ASpawner>();
     }
 
-
     public void SetDamage(float damage)
     {
         UpdateDamageEntities(damage);

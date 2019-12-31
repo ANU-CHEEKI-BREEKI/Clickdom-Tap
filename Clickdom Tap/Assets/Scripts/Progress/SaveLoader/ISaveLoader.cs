@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 public interface ISaveLoader
 {
-    event Action<string> OnSavedAsync;
-    event Action<string> OnLoadedAsync;
-
-    void Save(string id, string data);
-    string Load(string id);
-    
-    Task SaveAsync(string id, string data);
-    Task<string> LoadAsync(string id);
+    void Save(string id, string data, Action<bool> onSaved = null);
+    void Load(string id, Action<bool, string> onLoaded = null);
 }

@@ -21,6 +21,8 @@ public class SwordsmanSpawner : ASpawner, IDamageSettable
     [Space]
     [SerializeField] private bool increaceProgressByAnimationEvent = false;
 
+    public float MeeleeDamage => meeleeDamage;
+
     protected override void Start()
     {
         base.Start();

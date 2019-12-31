@@ -5086,7 +5086,7 @@ MonoBehaviour:
     rewritePitcRand: 0
     pitchRange: 0
     loop: 0
-    volume: 0.2
+    volume: 1
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0
@@ -25422,6 +25422,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onExecuteByIndex: []
 --- !u!114 &5113613000737892572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25443,7 +25444,7 @@ MonoBehaviour:
     rewritePitcRand: 0
     pitchRange: 0
     loop: 1
-    volume: 0.05
+    volume: 0.7
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0
@@ -25452,7 +25453,7 @@ MonoBehaviour:
     rewritePitcRand: 0
     pitchRange: 0
     loop: 0
-    volume: 0.1
+    volume: 1
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0

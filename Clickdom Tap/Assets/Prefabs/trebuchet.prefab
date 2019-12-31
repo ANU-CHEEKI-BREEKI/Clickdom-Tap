@@ -398,8 +398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count:
-    minCost: 1000
-    maxCost: 1000
+    minCost: 10000
+    maxCost: 10000
     costCurve:
       serializedVersion: 2
       m_Curve:
@@ -479,8 +479,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   attackSpeed:
-    minCost: 1
-    maxCost: 1
+    minCost: 5000
+    maxCost: 100000
     costCurve:
       serializedVersion: 2
       m_Curve:
@@ -623,7 +623,7 @@ MonoBehaviour:
     rewritePitcRand: 0
     pitchRange: 0
     loop: 1
-    volume: 0.04
+    volume: 1
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
     rewritePitcRand: 0
     pitchRange: 0
     loop: 0
-    volume: 0.1
+    volume: 1
     rewriteStereoPan: 0
     stereoPan: 0
     rewritePriority: 0

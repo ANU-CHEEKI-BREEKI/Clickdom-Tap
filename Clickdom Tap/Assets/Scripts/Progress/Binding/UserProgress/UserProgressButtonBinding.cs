@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(UserProgressBinding), typeof(UserProgressCostBinding))]
 public class UserProgressButtonBinding : MonoBehaviour
@@ -20,6 +21,8 @@ public class UserProgressButtonBinding : MonoBehaviour
     [SerializeField] private CanvasGroup canvasg;
     [Header("user score")]
     [SerializeField] private WholeProgress score;
+    [Space]
+    //[SerializeField] private UnityEvent onBindingExecuted;
 
     private UserProgressBinding binding;
     private UserProgressCostBinding costBinding;
@@ -43,6 +46,8 @@ public class UserProgressButtonBinding : MonoBehaviour
                 SetEnabled(binding.BindingSource.PercentValue < 1);
 
             score.Money -= cost;
+
+            //onBindingExecuted?.Invoke();
         });
 
         if (bindingIntecactable)

@@ -11,4 +11,9 @@ public class DeactivateGroup : MonoBehaviour
         foreach (var go in toDeactivate)
             go?.SetActive(active);
     }
+
+    public void SetActivationReverce(bool active)
+    {
+        SetActivation(!active);
+    }
 }
