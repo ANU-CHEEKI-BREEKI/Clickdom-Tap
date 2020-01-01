@@ -13,8 +13,8 @@ public abstract class ADurationsConsumable : ASkill
     private Coroutine _coroutine = null;
 
     [SerializeField] private SingleUserProgress count;
-    [SerializeField] private FloatToText countF2T;
-    [SerializeField] private FloatToText durationF2T;
+    [SerializeField] private FloatToText[] countF2T;
+    [SerializeField] private FloatToText[] durationF2T;
     [SerializeField] private InteractableByPriority interact;
     [SerializeField] private int interactPriority = 100_000;
     [Space]
@@ -33,9 +33,11 @@ public abstract class ADurationsConsumable : ASkill
     private void Init(float newval)
     {
         if(countF2T!= null)
-            countF2T.Float = newval;
+            foreach (var cf2t in countF2T)
+                cf2t.Float = newval;
         if (durationF2T != null)
-            durationF2T.Float = duration;
+            foreach (var df2t in durationF2T)
+                df2t.Float = duration;
 
         interact?.SetEnabled(newval >= 1, priority: interactPriority);
     }

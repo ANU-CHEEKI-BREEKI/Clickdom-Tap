@@ -98,6 +98,14 @@ public class ProgressSaveLoader : MonoBehaviour
         }
         else
         {
+            Instance.RegisterRedirectEvent(onDataLoaded, Instance.onDataLoaded);
+
+            Instance.RegisterRedirectEvent(onDataSaved, Instance.onDataSaved);
+            Instance.RegisterRedirectEvent(onDataSavedForQuit, Instance.onDataSavedForQuit);
+
+            Instance.RegisterRedirectEvent(onStartOperation, Instance.onStartOperation);
+            Instance.RegisterRedirectEvent(onEndOperation, Instance.onEndOperation);
+
             if (applyLoadedDataOnAwake && Instance.IsDataLoaded)
                 Instance.ApplyLoadedData(true, Instance.loadedData);
         }
@@ -203,7 +211,6 @@ public class ProgressSaveLoader : MonoBehaviour
             Instance.Save();
             return;
         }
-
         SaveWithAction(null);
     }
 
@@ -245,5 +252,25 @@ public class ProgressSaveLoader : MonoBehaviour
 
         Debug.Log("ProgressSaveLoader - Load");
         saveloader.Load(progressSavedKey, onLoaded);
+    }
+
+    private void RegisterRedirectEvent(UnityEvent original, UnityEvent target)
+    {
+        UnityAction ev = null;
+        ev = ()=>
+        {
+            original.Invoke();
+        };
+        target.AddListener(ev);
+    }
+
+    private void RegisterRedirectEvent(StringUnityEvent original, StringUnityEvent target)
+    {
+        UnityAction<string> ev = null;
+        ev = (val) =>
+        {
+            original.Invoke(val);
+        };
+        target.AddListener(ev);
     }
 }

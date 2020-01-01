@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4190632266700897794}
   - component: {fileID: 7032615038658720246}
   - component: {fileID: 8199631242739296763}
+  - component: {fileID: 5764908190553424292}
   m_Layer: 5
   m_Name: SilverPackEarned
   m_TagString: Untagged
@@ -4867,6 +4868,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlesParent: {fileID: 1109091647458775776}
+--- !u!114 &5764908190553424292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241693265743537215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f4b585029c9a945a1ca63bd1bb11c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleTransform: {fileID: 5170099992418478540}
+  systemsToUpdate:
+  - {fileID: 1109091647458775776}
+  - {fileID: 5049442326737690169}
 --- !u!1 &4479356989739186933
 GameObject:
   m_ObjectHideFlags: 0
@@ -5421,7 +5438,7 @@ ParticleSystemForceField:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_MultiplyDragByParticleSize: 0
+    m_MultiplyDragByParticleSize: 1
     m_MultiplyDragByParticleVelocity: 0
 --- !u!1 &4901136757939484680
 GameObject:

@@ -12,7 +12,10 @@ public class GIAP : IStoreListener
     {
         giap_silver_pack,
         giap_double_silver_gain,
-        giap_double_damage
+        giap_double_damage,
+        giap_silver_pack_sale,
+        giap_double_silver_gain_sale,
+        giap_double_damage_sale,
     }
 
     private string[] consumablesIdsCache;

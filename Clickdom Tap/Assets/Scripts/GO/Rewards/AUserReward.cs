@@ -9,7 +9,14 @@ using UnityEngine.Events;
 public abstract class AUserReward : MonoBehaviour
 {
     [SerializeField] protected float rewardValue;
+    [SerializeField] private FloatToText rewardValueText;
     [SerializeField] private UnityEvent onRewardEarned;
+
+    private void Start()
+    {
+        if (rewardValueText != null)
+            rewardValueText.Float = rewardValue;
+    }
 
     public void EarnReward()
     {
