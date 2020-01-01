@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(UserProgressBinding))]
+[RequireComponent(typeof(AUserProgressBindingBase))]
 public class UserProgressEvent : MonoBehaviour
 {
     public enum EventType { LESS, LESS_OR_EQUALS, EQUALS, GREATER_OR_EQUALS, GREATER }
@@ -18,14 +18,14 @@ public class UserProgressEvent : MonoBehaviour
     [SerializeField] bool initOnStart = true;
     [SerializeField] bool initByInitializator = true;
 
-    private UserProgressBinding binding;
+    private AUserProgressBindingBase binding;
 
     private void Start()
     {
         if (eventGtoup != null)
             eventGtoup.AddEvent(this);
 
-        binding = GetComponent<UserProgressBinding>();
+        binding = GetComponent<AUserProgressBindingBase>();
         Subscribe();
 
         if(!initByInitializator)

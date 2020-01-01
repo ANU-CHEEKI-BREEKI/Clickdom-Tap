@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UserProgress : ASavable
+public class UserProgress : AUserProgressBase
 {
     [SerializeField] Progress count = new Progress(0, 60);
     [SerializeField] Progress spawnRate = new Progress(1, 60);

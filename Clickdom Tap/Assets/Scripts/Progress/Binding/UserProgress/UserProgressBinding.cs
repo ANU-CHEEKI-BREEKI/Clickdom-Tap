@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class UserProgressBinding : MonoBehaviour
+public class UserProgressBinding : AUserProgressBindingBase
 {
     public enum BindingPath { COUNT, DAMAGE, FREQUENCY, SPEED }
 
@@ -12,7 +12,6 @@ public class UserProgressBinding : MonoBehaviour
     [SerializeField] protected BindingPath path;
 
     public BindingPath Path => path;
-    public Progress BindingSource { get; protected set; }
 
     virtual protected void Start()
     {

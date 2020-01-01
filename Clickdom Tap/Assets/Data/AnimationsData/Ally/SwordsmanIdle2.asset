@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4ae8e19605d7f24e85deb3f7b0afe73, type: 3}
-  m_Name: SwordsmanIdle1
+  m_Name: SwordsmanIdle2
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  spriteSheet: {fileID: 1830040954066358357, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+  spriteSheet: {fileID: 8304610757141259746, guid: 0a739c874497c434b9f64cb6d2f84e6b,
     type: 3}
-  framesCount: 8
-  frameDuration: 0.1
+  framesCount: 6
+  frameDuration: 0.15
   type: 0
   minInitFrame: 0
-  maxInitFrame: 3
-  layer:
-    serializedVersion: 2
-    m_Bits: 1
+  maxInitFrame: 6
   needPauseOnFrame: 0
   pauseData:
     pauseOnFrame: 0

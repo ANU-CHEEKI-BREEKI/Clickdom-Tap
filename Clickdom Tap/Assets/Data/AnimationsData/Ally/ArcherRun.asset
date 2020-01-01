@@ -10,25 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4ae8e19605d7f24e85deb3f7b0afe73, type: 3}
-  m_Name: ArcherShoot
+  m_Name: ArcherRun
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: d47abb4ec156ae44c97d20f60024342c, type: 2}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  spriteSheet: {fileID: -7237757063699679498, guid: 0a739c874497c434b9f64cb6d2f84e6b,
+  spriteSheet: {fileID: 2384379878709756388, guid: 0a739c874497c434b9f64cb6d2f84e6b,
     type: 3}
-  framesCount: 29
+  framesCount: 6
   frameDuration: 0.1
   type: 0
   minInitFrame: 0
-  maxInitFrame: 5
-  layer:
-    serializedVersion: 2
-    m_Bits: 1
-  needPauseOnFrame: 1
+  maxInitFrame: 3
+  needPauseOnFrame: 0
   pauseData:
-    pauseOnFrame: 23
-    pauseDuration: 10
-    pauseSpread: 0.4
-  needActionOnFrame: 1
+    pauseOnFrame: 0
+    pauseDuration: 0
+    pauseSpread: 0
+  needActionOnFrame: 0
   actionData:
-    frame: 25
+    frame: 0

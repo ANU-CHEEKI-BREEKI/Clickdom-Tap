@@ -16,6 +16,7 @@ public class ProgressSaveLoader : MonoBehaviour
     [SerializeField] private bool applyLoadedDataOnAwake = false;
     [Space]
     [SerializeField] private UnityEvent onDataSaved;
+    [SerializeField] private UnityEvent onStartSavingForQuit;
     [SerializeField] private UnityEvent onDataSavedForQuit;
     [Space]
     [SerializeField] private StringUnityEvent onStartOperation;
@@ -101,6 +102,7 @@ public class ProgressSaveLoader : MonoBehaviour
             Instance.RegisterRedirectEvent(onDataLoaded, Instance.onDataLoaded);
 
             Instance.RegisterRedirectEvent(onDataSaved, Instance.onDataSaved);
+            Instance.RegisterRedirectEvent(onDataSavedForQuit, Instance.onStartSavingForQuit);
             Instance.RegisterRedirectEvent(onDataSavedForQuit, Instance.onDataSavedForQuit);
 
             Instance.RegisterRedirectEvent(onStartOperation, Instance.onStartOperation);
@@ -182,7 +184,6 @@ public class ProgressSaveLoader : MonoBehaviour
         public List<SavedData> collection = new List<SavedData>();
     }
 
-    private bool saveForQuitCall = false;
     public void SaveForQuit()
     {
         if (Instance != this)
@@ -191,7 +192,7 @@ public class ProgressSaveLoader : MonoBehaviour
             return;
         }
 
-        saveForQuitCall = true;
+        onStartSavingForQuit?.Invoke();
 
         if (saveloader != prefsSaveLoader)
             SaveWithAction(()=>
