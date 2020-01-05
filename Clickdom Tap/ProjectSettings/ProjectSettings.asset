@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0.5
+  bundleVersion: 1.0.5hf
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -167,7 +167,7 @@ PlayerSettings:
     Android: com.damki.clickdomtap
     Standalone: com.Company.ProductName
   buildNumber: {}
-  AndroidBundleVersionCode: 10
+  AndroidBundleVersionCode: 12
   AndroidMinSdkVersion: 17
   AndroidTargetSdkVersion: 28
   AndroidPreferredInstallLocation: 1

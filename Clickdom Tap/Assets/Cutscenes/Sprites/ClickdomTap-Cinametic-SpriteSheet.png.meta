@@ -695,6 +695,18 @@ TextureImporter:
   - first:
       213: -2165329289112025425
     second: rock_3_shadow
+  - first:
+      213: -1799391033514303169
+    second: prist_cloak_center_part
+  - first:
+      213: 1383237793839032469
+    second: church_wall
+  - first:
+      213: 1447574465138960052
+    second: church_column
+  - first:
+      213: -5382080243403623010
+    second: church_window
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1235,10 +1247,10 @@ TextureImporter:
       name: old_king_dead_1
       rect:
         serializedVersion: 2
-        x: 448
-        y: 3379
-        width: 332
-        height: 148
+        x: 0
+        y: 1768
+        width: 1071
+        height: 313
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1256,10 +1268,10 @@ TextureImporter:
       name: old_king_dead_2
       rect:
         serializedVersion: 2
-        x: 409
-        y: 3264
-        width: 377
-        height: 106
+        x: 0
+        y: 1560
+        width: 732
+        height: 208
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1277,10 +1289,10 @@ TextureImporter:
       name: old_king_dead_3
       rect:
         serializedVersion: 2
-        x: 406
-        y: 3129
-        width: 137
-        height: 124
+        x: 1071
+        y: 1769
+        width: 318
+        height: 312
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1739,10 +1751,10 @@ TextureImporter:
       name: new_king_torce
       rect:
         serializedVersion: 2
-        x: 802
-        y: 3347
-        width: 153
-        height: 80
+        x: 1397
+        y: 1735
+        width: 274
+        height: 157
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1760,10 +1772,10 @@ TextureImporter:
       name: new_king_head_2
       rect:
         serializedVersion: 2
-        x: 805
-        y: 3522
-        width: 78
-        height: 73
+        x: 1560
+        y: 1934
+        width: 143
+        height: 146
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1781,10 +1793,10 @@ TextureImporter:
       name: new_king_head_1
       rect:
         serializedVersion: 2
-        x: 798
-        y: 3430
-        width: 83
-        height: 91
+        x: 1409
+        y: 1892
+        width: 151
+        height: 188
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1802,10 +1814,10 @@ TextureImporter:
       name: new_king_fool_head
       rect:
         serializedVersion: 2
-        x: 1137
-        y: 3624
-        width: 97
-        height: 64
+        x: 2293
+        y: 2246
+        width: 291
+        height: 192
       alignment: 9
       pivot: {x: 0.1495097, y: 0.38195038}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1823,10 +1835,10 @@ TextureImporter:
       name: new_king_fool_hair_base
       rect:
         serializedVersion: 2
-        x: 799
-        y: 3644
-        width: 111
-        height: 51
+        x: 1954
+        y: 2281
+        width: 333
+        height: 153
       alignment: 9
       pivot: {x: 0.23874435, y: 0.5495068}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1844,21 +1856,14 @@ TextureImporter:
       name: new_king_fool_torce_1
       rect:
         serializedVersion: 2
-        x: 1137
-        y: 3524
-        width: 93
-        height: 97
+        x: 2720
+        y: 2036
+        width: 269
+        height: 291
       alignment: 9
       pivot: {x: 0.28530326, y: 0.24408525}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7.5, y: -48.5}
-        - {x: -24.5, y: -48.5}
-        - {x: -46.5, y: -24.5}
-        - {x: -46.5, y: 4.5}
-        - {x: -3.5, y: 48.5}
-        - {x: 46.5, y: 48.5}
-        - {x: 46.5, y: -0.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -1872,22 +1877,14 @@ TextureImporter:
       name: new_king_fool_torce_2
       rect:
         serializedVersion: 2
-        x: 1110
-        y: 3438
-        width: 72
-        height: 85
+        x: 2497
+        y: 1617
+        width: 216
+        height: 255
       alignment: 9
       pivot: {x: 0.3051283, y: 0.13177274}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 12, y: -42.5}
-        - {x: -20, y: -42.5}
-        - {x: -36, y: -33.5}
-        - {x: -36, y: 2.5}
-        - {x: -16, y: 42.5}
-        - {x: 21, y: 42.5}
-        - {x: 36, y: 30.5}
-        - {x: 36, y: -15.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -1901,10 +1898,10 @@ TextureImporter:
       name: new_king_fool_torce_3
       rect:
         serializedVersion: 2
-        x: 1161
-        y: 3343
-        width: 76
-        height: 50
+        x: 2506
+        y: 1871
+        width: 228
+        height: 150
       alignment: 9
       pivot: {x: 0.49289742, y: 0.6079248}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1922,21 +1919,14 @@ TextureImporter:
       name: new_king_fool_leg_top
       rect:
         serializedVersion: 2
-        x: 1105
-        y: 3317
-        width: 51
-        height: 125
+        x: 2743
+        y: 1714
+        width: 153
+        height: 303
       alignment: 9
-      pivot: {x: 0.5529043, y: 0.9014922}
+      pivot: {x: 0.55290353, y: 0.8692635}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 25.5, y: -62.5}
-        - {x: -6.5, y: -62.5}
-        - {x: -25.5, y: -43.5}
-        - {x: -25.5, y: 62.5}
-        - {x: -13.5, y: 62.5}
-        - {x: 8.5, y: 55.5}
-        - {x: 25.5, y: 48.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -1950,20 +1940,14 @@ TextureImporter:
       name: new_king_fool_leg_bot
       rect:
         serializedVersion: 2
-        x: 1001
-        y: 3296
-        width: 118
-        height: 35
+        x: 2617
+        y: 2345
+        width: 354
+        height: 105
       alignment: 9
-      pivot: {x: 0.8786953, y: 0.25266013}
+      pivot: {x: 0.9322875, y: 0.4520345}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -59, y: -17.5}
-        - {x: -59, y: 17.5}
-        - {x: 18, y: 17.5}
-        - {x: 47, y: 17.5}
-        - {x: 59, y: 8.5}
-        - {x: 59, y: -17.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -1977,12 +1961,12 @@ TextureImporter:
       name: new_king_fool_foot
       rect:
         serializedVersion: 2
-        x: 1158
-        y: 3313
-        width: 60
-        height: 28
+        x: 2425
+        y: 2027
+        width: 180
+        height: 84
       alignment: 9
-      pivot: {x: 0.20319621, y: 0.76981896}
+      pivot: {x: 0.21495904, y: 0.7572138}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1998,19 +1982,14 @@ TextureImporter:
       name: new_king_fool_arm_top
       rect:
         serializedVersion: 2
-        x: 1209
-        y: 3448
-        width: 42
-        height: 105
+        x: 2593
+        y: 2025
+        width: 126
+        height: 315
       alignment: 9
       pivot: {x: 0.51284647, y: 0.839202}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -21, y: -52.5}
-        - {x: -21, y: 35.5}
-        - {x: 2, y: 52.5}
-        - {x: 21, y: 52.5}
-        - {x: 21, y: -52.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -2024,10 +2003,10 @@ TextureImporter:
       name: new_king_fool_arm_bot
       rect:
         serializedVersion: 2
-        x: 1166
-        y: 3398
-        width: 64
-        height: 22
+        x: 2729
+        y: 1616
+        width: 249
+        height: 69
       alignment: 9
       pivot: {x: 0.12899399, y: 0.47546387}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2045,10 +2024,10 @@ TextureImporter:
       name: new_king_fool_fist
       rect:
         serializedVersion: 2
-        x: 1187
-        y: 3423
-        width: 31
-        height: 27
+        x: 2468
+        y: 2144
+        width: 93
+        height: 81
       alignment: 9
       pivot: {x: 0.16924852, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2066,19 +2045,14 @@ TextureImporter:
       name: new_king_fool_cloak_3
       rect:
         serializedVersion: 2
-        x: 1009
-        y: 3365
-        width: 72
-        height: 58
+        x: 1920
+        y: 1833
+        width: 216
+        height: 174
       alignment: 9
       pivot: {x: 0.6948683, y: 0.7139935}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -36, y: -29}
-        - {x: -36, y: 29}
-        - {x: 36, y: 17}
-        - {x: 36, y: -2}
-        - {x: -14, y: -29}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -2092,24 +2066,14 @@ TextureImporter:
       name: new_king_fool_cloak_1
       rect:
         serializedVersion: 2
-        x: 999
-        y: 3441
-        width: 117
-        height: 138
+        x: 2144
+        y: 1595
+        width: 351
+        height: 414
       alignment: 9
       pivot: {x: 0.87359774, y: 0.86758024}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -58.5, y: -69}
-        - {x: -58.5, y: -19}
-        - {x: -20.5, y: 39}
-        - {x: 19.5, y: 69}
-        - {x: 58.5, y: 69}
-        - {x: 58.5, y: 12}
-        - {x: 38.5, y: 22}
-        - {x: 17.5, y: -3}
-        - {x: 4.5, y: -40}
-        - {x: -38.5, y: -69}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -2123,21 +2087,14 @@ TextureImporter:
       name: new_king_fool_cloak_2
       rect:
         serializedVersion: 2
-        x: 1039
-        y: 3413
-        width: 59
-        height: 116
+        x: 1948
+        y: 1487
+        width: 177
+        height: 348
       alignment: 9
       pivot: {x: 0.91159004, y: 0.597692}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 8.5, y: -58}
-        - {x: -29.5, y: -52}
-        - {x: -29.5, y: -31}
-        - {x: -5.5, y: 1}
-        - {x: 17.5, y: 54}
-        - {x: 29.5, y: 58}
-        - {x: 29.5, y: -58}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -2508,12 +2465,12 @@ TextureImporter:
       name: new_king_head_3
       rect:
         serializedVersion: 2
-        x: 883
-        y: 3435
-        width: 71
-        height: 63
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1703
+        y: 1934
+        width: 146
+        height: 146
+      alignment: 9
+      pivot: {x: 0.5, y: 0.64126545}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2529,10 +2486,10 @@ TextureImporter:
       name: new_king_fool_hair_1
       rect:
         serializedVersion: 2
-        x: 914
-        y: 3616
-        width: 27
-        height: 79
+        x: 1954
+        y: 2027
+        width: 81
+        height: 237
       alignment: 9
       pivot: {x: 0.5543122, y: 0.8465128}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2550,10 +2507,10 @@ TextureImporter:
       name: new_king_fool_hair_2
       rect:
         serializedVersion: 2
-        x: 943
-        y: 3626
-        width: 18
-        height: 69
+        x: 2241
+        y: 2034
+        width: 54
+        height: 207
       alignment: 9
       pivot: {x: 0.5407342, y: 0.83651423}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2571,10 +2528,10 @@ TextureImporter:
       name: new_king_fool_hair_3
       rect:
         serializedVersion: 2
-        x: 965
-        y: 3623
-        width: 33
-        height: 72
+        x: 2035
+        y: 2044
+        width: 99
+        height: 216
       alignment: 9
       pivot: {x: 0.6110951, y: 0.8530443}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2592,10 +2549,10 @@ TextureImporter:
       name: new_king_fool_hair_7
       rect:
         serializedVersion: 2
-        x: 985
-        y: 3558
-        width: 15
-        height: 62
+        x: 2140
+        y: 2074
+        width: 45
+        height: 186
       alignment: 9
       pivot: {x: 0.4185262, y: 0.8745078}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2613,10 +2570,10 @@ TextureImporter:
       name: new_king_fool_hair_6
       rect:
         serializedVersion: 2
-        x: 964
-        y: 3554
-        width: 17
-        height: 63
+        x: 2187
+        y: 2072
+        width: 51
+        height: 189
       alignment: 9
       pivot: {x: 0.51437557, y: 0.87632143}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2634,10 +2591,10 @@ TextureImporter:
       name: new_king_fool_hair_5
       rect:
         serializedVersion: 2
-        x: 944
-        y: 3572
-        width: 20
-        height: 46
+        x: 2312
+        y: 2104
+        width: 60
+        height: 138
       alignment: 9
       pivot: {x: 0.5, y: 0.80286175}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2655,10 +2612,10 @@ TextureImporter:
       name: new_king_fool_hair_4
       rect:
         serializedVersion: 2
-        x: 923
-        y: 3567
-        width: 19
-        height: 46
+        x: 2372
+        y: 2104
+        width: 57
+        height: 138
       alignment: 9
       pivot: {x: 0.65436435, y: 0.84536874}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6607,6 +6564,90 @@ TextureImporter:
       bones: []
       spriteID: 486398aa2530b3b42bc8c12159f9c7e6
       internalID: -2165329289112025425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: prist_cloak_center_part
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3308
+        width: 95
+        height: 176
+      alignment: 9
+      pivot: {x: 0.26818976, y: 0.9515367}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d243f970a13a81f4ba926ebde990a3b1
+      internalID: -1799391033514303169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: church_wall
+      rect:
+        serializedVersion: 2
+        x: 1966
+        y: 2448
+        width: 451
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484bb2e5085d5b6489fd140a58042803
+      internalID: 1383237793839032469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: church_column
+      rect:
+        serializedVersion: 2
+        x: 2429
+        y: 2440
+        width: 73
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35113b282a7d3a445b91d70d5538145e
+      internalID: 1447574465138960052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: church_window
+      rect:
+        serializedVersion: 2
+        x: 2512
+        y: 2584
+        width: 80
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a53116d07ddc24d9dcb182079bd645
+      internalID: -5382080243403623010
       vertices: []
       indices: 
       edges: []
