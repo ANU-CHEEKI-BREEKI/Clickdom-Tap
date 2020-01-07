@@ -1,0 +1,38 @@
+# Don't obfuscate. We only need dead code striping.
+-dontobfuscate
+
+
+# For enumeration classes, see http://proguard.sourceforge.net/manual/examples.html#enumerations
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+
+#
+-keep class com.damki.clickdomtap.** { *; }
+
+
+# Unity IAP
+-keep class com.unity.purchasing.** { *; }
+-keep class com.android.vending.billing.** { *; }
+-dontwarn com.unity.purchasing.**
+
+
+# Fecebook Core SDK
+#-keep class com.facebook.** { *; }
+-keep class com.facebook.unity.** { *; }
+-keep class com.facebook.appevents.** { *; }
+
+
+# AppsFlyer
+-keep class com.appsflyer.** { *; }
+
+
+# GameService Rules
+-keep class com.google.android.gms.** { *; }
+-keep class com.google.games.bridge.** { *; }
+
+
+# Google Ads
+-keep class com.google.unity.ads.** { *; }
