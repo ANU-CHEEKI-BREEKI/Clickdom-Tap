@@ -52,9 +52,12 @@ public class RewardedAdAdapter : MonoBehaviour
         var mtd = MainThreadDispatcher.Instance;
 
         GAds.Instance.LoadRevardedAd(
-            adId, 
+            adId,
             (success) => mtd.Enqueue(
-                () => OnRewardAvailable?.Invoke(GAds.Instance.HasCachedAd(adId))
+                () => {
+                    Debug.Log($"RevardedAdLoaded: {success}");
+                    OnRewardAvailable?.Invoke(GAds.Instance.HasCachedAd(adId));
+                }
             )
         );
     }

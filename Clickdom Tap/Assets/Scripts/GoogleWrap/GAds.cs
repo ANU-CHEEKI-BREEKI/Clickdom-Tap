@@ -85,7 +85,11 @@ namespace ANU.GoogleWrap
 
         public void LoadRevardedAd(RewardedAdId id, Action<bool> onLoaded)
         {
-            var ad = new RewardedAd(ToStringId(GetActualId(id)));
+            var strActualAdId = ToStringId(GetActualId(id));
+
+            Debug.Log($"LoadRevardedAd: {id} [{strActualAdId}]");
+
+            var ad = new RewardedAd(strActualAdId);
             var request = new AdRequest.Builder()
                             .Build();
             
@@ -96,6 +100,8 @@ namespace ANU.GoogleWrap
             };
             ad.OnAdFailedToLoad += (sender, args) =>
             {
+                Debug.Log($"OnAdFailedToLoad: {id}, {args.Message}");
+
                 ClearCachedAd(id, ad);
                 onLoaded?.Invoke(false);
             };
@@ -105,6 +111,8 @@ namespace ANU.GoogleWrap
 
         public void ShowRewardedAd(RewardedAdId id, Action onEarnedreward,  Action onOpened, Action onClosed, Action onFailedToShow)
         {
+            Debug.Log($"ShowRewardedAd: {id}");
+
             var ad = GetCachedAd(id);
 
             if(ad == null)
