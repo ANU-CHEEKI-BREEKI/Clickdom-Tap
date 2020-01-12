@@ -25,6 +25,8 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
     [ContextMenuItem(nameof(RecalcRenderScaleBySprite), nameof(RecalcRenderScaleBySprite))]
     [SerializeField] private Vector2 renderScale = Vector2.one;
     [SerializeField] private bool autoSet = true;
+    [Space]
+    [SerializeField] private bool allowCracks = false;
 
     private SpriteRenderer _renderer;
 
@@ -80,6 +82,9 @@ public class SimpleEntitySpriteRendererConverter : MonoBehaviour, ISimpleEntityC
             Destroy(_renderer);
         else if (afterConvEvent == AfterConvertionEvent.DEACTIVATE)
             _renderer.enabled = false;
+
+        if(allowCracks)
+            manager.AddComponent<SpriteCracksComponentData>(entity);
     }
 
     private void RecalcRenderScale()

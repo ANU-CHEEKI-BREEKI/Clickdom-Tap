@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AtlasMaterial
-  m_Shader: {fileID: 4800000, guid: 60857e377f6e6a9428e8bb1d2f77e58d, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_Shader: {fileID: 4800000, guid: 3bd48ea391ab24d4cb0d3f3eef435f96, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -22,6 +22,18 @@ Material:
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CracksMaskAdditionalTex:
+        m_Texture: {fileID: 2800000, guid: 1cd0bdd4921d5fa409cb34b53b9518cd, type: 3}
+        m_Scale: {x: 7.51, y: 3.55}
+        m_Offset: {x: 1.36, y: 0.06}
+    - _CracksMaskMaskTex:
+        m_Texture: {fileID: 2800000, guid: 1cd0bdd4921d5fa409cb34b53b9518cd, type: 3}
+        m_Scale: {x: 4.04, y: 2.04}
+        m_Offset: {x: 1.77, y: 0.94}
+    - _CracksTex:
+        m_Texture: {fileID: 2800000, guid: a463765809adaab47a0f0f9800988e76, type: 3}
+        m_Scale: {x: 25, y: 25}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -56,8 +68,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _BorderCracksAlphaCutoff: 0.5
+    - _BorderCracksDistance: 0.0035
     - _BumpScale: 1
+    - _CracksDisolve: 1
     - _Cutoff: 0.5
+    - _CutoffGrayshade: 0.85
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -73,6 +89,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CracksColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainTex_UV: {r: 0, g: 0, b: 0, a: 0}

@@ -35,6 +35,11 @@ public struct SpriteTintComponentData : IComponentData
     public Vector4 color;
 }
 
+public struct SpriteCracksComponentData : IComponentData
+{
+    public float cracksAmount;
+}
+
 public struct RenderScaleComponentdata : IComponentData
 {
     public float2 value;
@@ -95,6 +100,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
         public Matrix4x4 matrix;
         public Vector4 uv; 
         public Color color;
+        public float cracksAmount;
 
         public int CompareTo(RenderData other)
         {
@@ -115,6 +121,7 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
         [ReadOnly] public ArchetypeChunkComponentType<Translation> translationType;
         [ReadOnly] public ArchetypeChunkComponentType<SpriteRendererComponentData> spriteType;
         [ReadOnly] public ArchetypeChunkComponentType<SpriteTintComponentData> spriteTintType;
+        [ReadOnly] public ArchetypeChunkComponentType<SpriteCracksComponentData> spriteCracksType;
         [ReadOnly] public ArchetypeChunkComponentType<RenderScaleComponentdata> renderScaleType;
         [ReadOnly] public ArchetypeChunkComponentType<Scale> scaleType;
         [ReadOnly] public ArchetypeChunkComponentType<Rotation> rotationType;
@@ -147,6 +154,11 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             if (hasTint)
                 tints = chunk.GetNativeArray(spriteTintType);
 
+            var cracks = new NativeArray<SpriteCracksComponentData>();
+            var hasCracks = chunk.Has(spriteCracksType);
+            if (hasCracks)
+                cracks = chunk.GetNativeArray(spriteCracksType);
+
             var shadows = new NativeArray<CastSpritesShadowComponentData>();
             var hasShadows = chunk.Has(shadowType);
             if(hasShadows)
@@ -178,6 +190,10 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                 if (color.w == 0)
                     continue;
 
+                var crackAmount = 0f;
+                if (hasCracks)
+                    crackAmount = cracks[i].cracksAmount;
+
                 var actualRenderScale = new Vector3(renderScale.x, renderScale.y, 1) * scale;
 
                 if (actualRenderScale.x == 0 || actualRenderScale.y == 0)
@@ -204,7 +220,8 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
                     position = pos,
                     uv = sprite.uv,
                     color = color,
-                    matrix = translateMatrix * rorateMatrix * pivotedTranslateMatrix * scaleMatrix
+                    matrix = translateMatrix * rorateMatrix * pivotedTranslateMatrix * scaleMatrix,
+                    cracksAmount = crackAmount
                 };
                 chunkDataMap.Add(sharedIndex, rdata);
 
@@ -392,7 +409,8 @@ public abstract class ARendererCollectorSystem : JobComponentSystem
             rotationType = GetArchetypeChunkComponentType<Rotation>(true),
             shadowType = GetArchetypeChunkComponentType<CastSpritesShadowComponentData>(true),
             spriteTintType = GetArchetypeChunkComponentType<SpriteTintComponentData>(true),
-            disableCullingTagType = GetArchetypeChunkComponentType<DisableRenderCullingTagComponentData>(true)
+            disableCullingTagType = GetArchetypeChunkComponentType<DisableRenderCullingTagComponentData>(true),
+            spriteCracksType = GetArchetypeChunkComponentType<SpriteCracksComponentData>(true)
         };
 
         jobHandle = chunkJob.Schedule(query, inputDeps);

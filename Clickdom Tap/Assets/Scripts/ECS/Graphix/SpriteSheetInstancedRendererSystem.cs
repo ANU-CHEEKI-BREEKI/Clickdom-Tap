@@ -23,6 +23,7 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
         public NativeArray<Matrix4x4> matrices;
         public NativeArray<Vector4> uvs;
         public NativeArray<Vector4> colors;
+        public NativeArray<float> crackAmounts;
 
         public void Execute(int index)
         {
@@ -30,6 +31,7 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
             matrices[startIndex + index] = rdata.matrix;
             uvs[startIndex + index] = rdata.uv;
             colors[startIndex + index] = rdata.color;
+            crackAmounts[startIndex + index] = 1 - rdata.cracksAmount;
         }
     }
 
@@ -37,7 +39,8 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
     private Matrix4x4[] matricesInstanced = new Matrix4x4[drawCallSize];
     private Vector4[] uvsInstanced = new Vector4[drawCallSize];
     private Vector4[] colorsInstanced = new Vector4[drawCallSize];
-    
+    private float[] cracksInstanced = new float[drawCallSize];
+
     protected override void OnUpdate()
     {
         InstancedRendererCollectorSystem.Instance.jobHandle.Complete();
@@ -72,6 +75,7 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
             var matrices = new NativeArray<Matrix4x4>(fullVisibleCount, Allocator.TempJob);
             var uvs = new NativeArray<Vector4>(fullVisibleCount, Allocator.TempJob);
             var colors = new NativeArray<Vector4>(fullVisibleCount, Allocator.TempJob);
+            var crackAmounts = new NativeArray<float>(fullVisibleCount, Allocator.TempJob);
 
             new MergeArraysParallelJob()
             {
@@ -79,7 +83,8 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
                 startIndex = 0,
                 matrices = matrices,
                 uvs = uvs,
-                colors = colors
+                colors = colors,
+                crackAmounts = crackAmounts
             }.Schedule(sharedArray.Length, 10, sortHandle).Complete();
 
             //драв колы по 1023 ентити за раз
@@ -95,9 +100,11 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
                 NativeArray<Matrix4x4>.Copy(matrices, drawnCount, matricesInstanced, 0, callSize);
                 NativeArray<Vector4>.Copy(uvs, drawnCount, uvsInstanced, 0, callSize);
                 NativeArray<Vector4>.Copy(colors, drawnCount, colorsInstanced, 0, callSize);
+                NativeArray<float>.Copy(crackAmounts, drawnCount, cracksInstanced, 0, callSize);
 
                 mpb.SetVectorArray(uv_MaterialPropId, uvsInstanced);
                 mpb.SetVectorArray(color_MaterialPropId, colorsInstanced);
+                mpb.SetFloatArray(crackDisolve_MaterialPropId, cracksInstanced);
 
                 Graphics.DrawMeshInstanced(
                     mesh,
@@ -115,6 +122,7 @@ public class SpriteSheetInstancedRendererSystem : ARendererSystem
             matrices.Dispose();
             uvs.Dispose();
             colors.Dispose();
+            crackAmounts.Dispose();
         }
 
         chunksIndices.Dispose();

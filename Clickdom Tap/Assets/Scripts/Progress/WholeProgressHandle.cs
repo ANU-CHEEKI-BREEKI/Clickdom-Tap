@@ -12,9 +12,6 @@ public class WholeProgressHandle : MonoBehaviour
     public class FloatEvent : UnityEvent<float> { }
 
     [SerializeField] Rect triggerZone;
-    [SerializeField] Material caslteMaerial;
-    [SerializeField] float disolveMin = 0.26f;
-    [SerializeField] float disolveMax = 1;
     [Space]
     [SerializeField] private FloatEvent wholeProgressChanged = new FloatEvent();
     [SerializeField] private FloatEvent moneyChanged = new FloatEvent();
@@ -26,6 +23,8 @@ public class WholeProgressHandle : MonoBehaviour
     private Coroutine batchRoutine;
 
     private Wrap<float> progressButch = null;
+
+    private CracksAmountUpdateSystem cracksSystem;
 
     private void Start()
     {
@@ -40,6 +39,8 @@ public class WholeProgressHandle : MonoBehaviour
 
         var meleeEventSystem = World.Active.GetOrCreateSystem<WholeProgressIncreacerByAnimationAction>();
         meleeEventSystem.Init(this);
+
+        cracksSystem = World.Active.GetOrCreateSystem<CracksAmountUpdateSystem>();
 
         progress.Progress.ValueChanged += Progress_ValueChanged;
         progress.OnMoneyChanged += Progress_OnMoneyChanged;
@@ -65,9 +66,8 @@ public class WholeProgressHandle : MonoBehaviour
     private void Progress_ValueChanged(float newValue, float oldValue)
     {
         var val = progress.Progress.PercentValue;
-        var disolve = Mathf.Lerp(disolveMax, disolveMin, val);
 
-        caslteMaerial.SetFloat("_Disolve", disolve);
+        cracksSystem.CracksAmount = val;
 
         wholeProgressChanged.Invoke(val);
     }
