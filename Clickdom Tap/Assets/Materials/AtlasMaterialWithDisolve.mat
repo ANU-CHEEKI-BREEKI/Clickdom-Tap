@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AtlasMaterialWithDisolve
+  m_Shader: {fileID: 4800000, guid: 3bd48ea391ab24d4cb0d3f3eef435f96, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CracksMask:
+        m_Texture: {fileID: 2800000, guid: 1cd0bdd4921d5fa409cb34b53b9518cd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CracksMaskAdditionalTex:
+        m_Texture: {fileID: 2800000, guid: 1cd0bdd4921d5fa409cb34b53b9518cd, type: 3}
+        m_Scale: {x: 7.51, y: 3.55}
+        m_Offset: {x: 0, y: 0}
+    - _CracksMaskMaskTex:
+        m_Texture: {fileID: 2800000, guid: 1cd0bdd4921d5fa409cb34b53b9518cd, type: 3}
+        m_Scale: {x: 3.9, y: 2.04}
+        m_Offset: {x: 0, y: 0}
+    - _CracksMaskTex:
+        m_Texture: {fileID: 2800000, guid: 1cd0bdd4921d5fa409cb34b53b9518cd, type: 3}
+        m_Scale: {x: 1.86, y: 0.57}
+        m_Offset: {x: 0.44, y: -0.54}
+    - _CracksTex:
+        m_Texture: {fileID: 2800000, guid: a463765809adaab47a0f0f9800988e76, type: 3}
+        m_Scale: {x: 25, y: 25}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 0a739c874497c434b9f64cb6d2f84e6b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BorderCracksAlphaCutoff: 0.5
+    - _BorderCracksDistance: 0.0035
+    - _CracksDisolve: 0
+    - _CutoffAplha: 0.8
+    - _CutoffGrayshade: 0.85
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CracksColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
