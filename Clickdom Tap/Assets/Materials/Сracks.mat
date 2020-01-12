@@ -45,7 +45,11 @@ Material:
     - _CrackBorderAlpfaCutOff: 0.5
     - _CrackBorderDistance: 0.0035
     - _DetailNoiseDamper: 0
+<<<<<<< HEAD
     - _Disolve: 0.99997723
+=======
+    - _Disolve: 0.281
+>>>>>>> 21a76557... added cracks shader with sprite sheet animation support
     - _KrackBorderAlpfaCutOff: 0.5
     - _KrackBorderDistance: 0.004
     - _LocalSpace: 1
