@@ -23,5 +23,6 @@ public abstract class ARendererSystem : ComponentSystem
 
     protected int uv_MaterialPropId = Shader.PropertyToID("_MainTex_UV");
     protected int color_MaterialPropId = Shader.PropertyToID("_Color");
+    protected int crackDisolve_MaterialPropId = Shader.PropertyToID("_CracksDisolve");
     protected MaterialPropertyBlock mpb = new MaterialPropertyBlock();
 }

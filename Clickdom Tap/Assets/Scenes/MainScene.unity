@@ -4155,6 +4155,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &112624381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8103,6 +8104,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &217119970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22764,6 +22766,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &562666315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26395,6 +26398,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &675508619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30497,6 +30501,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &749848074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33716,6 +33721,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &801275820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65698,6 +65704,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &1293470783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73379,7 +73386,7 @@ PrefabInstance:
     - target: {fileID: 6115699871159694251, guid: 94e2fb43e2c597746ab3b02cff614fab,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6115699871159694251, guid: 94e2fb43e2c597746ab3b02cff614fab,
         type: 3}
@@ -73582,7 +73589,7 @@ PrefabInstance:
     - target: {fileID: 6115699871159694251, guid: 2816f684410532d4a9a1af663925b84f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6115699871159694251, guid: 2816f684410532d4a9a1af663925b84f,
         type: 3}
@@ -76124,6 +76131,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &1442422378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87886,9 +87894,6 @@ MonoBehaviour:
     y: -15
     width: 40
     height: 30
-  caslteMaerial: {fileID: 2100000, guid: fd66fed0a46d5d54e9d6cde1c3df949a, type: 2}
-  disolveMin: 0.26
-  disolveMax: 1
   wholeProgressChanged:
     m_PersistentCalls:
       m_Calls:
@@ -102688,6 +102693,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!114 &1971594074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108160,7 +108166,7 @@ PrefabInstance:
     - target: {fileID: 6115699871159694251, guid: 94e2fb43e2c597746ab3b02cff614fab,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6115699871159694251, guid: 94e2fb43e2c597746ab3b02cff614fab,
         type: 3}
@@ -114212,6 +114218,7 @@ MonoBehaviour:
   disableCulling: 0
   renderScale: {x: 0.6333333, y: 7.133333}
   autoSet: 1
+  allowCracks: 0
 --- !u!1001 &5074034438862783835
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ Material:
     m_Floats:
     - _BorderCracksAlphaCutoff: 0.5
     - _BorderCracksDistance: 0.0035
-    - _CracksDisolve: 0
+    - _CracksDisolve: 0.469
     - _CutoffAplha: 0.8
     - _CutoffGrayshade: 0.85
     m_Colors:

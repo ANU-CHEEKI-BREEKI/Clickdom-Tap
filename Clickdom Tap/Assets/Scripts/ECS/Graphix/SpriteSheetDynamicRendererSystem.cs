@@ -39,6 +39,7 @@ public class SpriteSheetDynamicRendererSystem : ARendererSystem
             {
                 mpb.SetVector(uv_MaterialPropId, data.uv);
                 mpb.SetColor(color_MaterialPropId, data.color);
+                mpb.SetFloat(crackDisolve_MaterialPropId, 1 - data.cracksAmount);
 
                 Graphics.DrawMesh(
                     mesh,

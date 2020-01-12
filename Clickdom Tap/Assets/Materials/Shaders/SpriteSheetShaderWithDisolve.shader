@@ -11,7 +11,6 @@
 		_CracksColor ("CracksColor", Color) = (0,0,0,1)
 
 		_CutoffGrayshade("CutoffGrayshade", Range(0, 1)) = 0.85
-		_CracksDisolve("CracksDisolve", Range(0, 1)) = 0
 
 		_BorderCracksAlphaCutoff("BorderCracksAlphaCutoff", Range(0, 1)) = 0.5
 		_BorderCracksDistance("BorderCracksDistance", Range(0, 0.01)) = 0.0035
@@ -59,7 +58,6 @@
 
 			float4 _CracksColor;
 
-			float _CracksDisolve;
 			float _CutoffGrayshade;
 
 			float _BorderCracksAlphaCutoff;
@@ -68,7 +66,7 @@
 			UNITY_INSTANCING_BUFFER_START(Props)
 				UNITY_DEFINE_INSTANCED_PROP(fixed4,  _Color)
 				UNITY_DEFINE_INSTANCED_PROP(fixed4,  _MainTex_UV)
-				//UNITY_DEFINE_INSTANCED_PROP(fixed4,  _CracksDisolve)
+				UNITY_DEFINE_INSTANCED_PROP(float,  _CracksDisolve)
 			UNITY_INSTANCING_BUFFER_END(Props)
 
 			v2f vert (appdata v)
@@ -129,7 +127,7 @@
 				else
 				{
 					//calc cracks amount
-					float disolve = _CracksDisolve;//UNITY_ACCESS_INSTANCED_PROP(Props, _CracksDisolve);
+					float disolve = UNITY_ACCESS_INSTANCED_PROP(Props, _CracksDisolve);
 					disolve = Remap(disolve, 0, 1, -0.65, 0.65);
 					cracksMaskColor += disolve;
 					cracksMaskColor = float4(
