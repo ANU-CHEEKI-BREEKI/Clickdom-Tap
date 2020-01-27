@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 7607150813504711812, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
       propertyPath: attackSpeed.maxCost
-      value: 400000
+      value: 40000
       objectReference: {fileID: 0}
     - target: {fileID: 7607150813504711812, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
@@ -2680,22 +2680,22 @@ PrefabInstance:
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 69.99978
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
@@ -23333,7 +23333,7 @@ PrefabInstance:
     - target: {fileID: 7607150813504711812, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
       propertyPath: attackSpeed.maxCost
-      value: 200000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 7853708624381894432, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
@@ -54152,7 +54152,7 @@ PrefabInstance:
     - target: {fileID: 7607150813504711812, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
       propertyPath: attackSpeed.maxCost
-      value: 300000
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 7607150813504711812, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
@@ -74568,22 +74568,22 @@ PrefabInstance:
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 69.99978
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
@@ -80793,7 +80793,7 @@ PrefabInstance:
     - target: {fileID: 7607150813504711812, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
       propertyPath: attackSpeed.maxCost
-      value: 500000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 7607150813504711812, guid: 68797e1acac5654459a2b59e81b2d454,
         type: 3}
@@ -87858,7 +87858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   wholeProgress:
-    maxProgress: 20000000
+    maxProgress: 30000000
     progressValue: 0
   money: 1
   moneyEarnMultiplier: 0.1
@@ -104952,22 +104952,22 @@ PrefabInstance:
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 69.99978
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
@@ -107976,22 +107976,22 @@ PrefabInstance:
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.689969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 69.99978
       objectReference: {fileID: 0}
     - target: {fileID: 6951095397608987278, guid: 38e0f95ee902d864ca6572c3b3cbeb56,
         type: 3}

@@ -102,7 +102,7 @@ public class ProgressSaveLoader : MonoBehaviour
             Instance.RegisterRedirectEvent(onDataLoaded, Instance.onDataLoaded);
 
             Instance.RegisterRedirectEvent(onDataSaved, Instance.onDataSaved);
-            Instance.RegisterRedirectEvent(onDataSavedForQuit, Instance.onStartSavingForQuit);
+            Instance.RegisterRedirectEvent(onStartSavingForQuit, Instance.onStartSavingForQuit);
             Instance.RegisterRedirectEvent(onDataSavedForQuit, Instance.onDataSavedForQuit);
 
             Instance.RegisterRedirectEvent(onStartOperation, Instance.onStartOperation);

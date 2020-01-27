@@ -47,11 +47,12 @@
     <file>Assets/Plugins/Android/androidx.vectordrawable.vectordrawable-animated-1.0.0.aar</file>
     <file>Assets/Plugins/Android/androidx.versionedparcelable.versionedparcelable-1.0.0.aar</file>
     <file>Assets/Plugins/Android/androidx.viewpager.viewpager-1.0.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-applinks-5.13.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-common-5.13.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-core-5.13.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-login-5.13.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-share-5.13.0.aar</file>
+    <file>Assets/Plugins/Android/com.android.installreferrer.installreferrer-1.1.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-applinks-5.15.0.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-common-5.15.0.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-core-5.15.0.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-login-5.15.0.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-share-5.15.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-ads-18.2.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-ads-base-18.2.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-ads-identifier-17.0.0.aar</file>
@@ -79,7 +80,7 @@
     <file>Assets/Plugins/Android/com.parse.bolts.bolts-tasks-1.4.0.jar</file>
   </files>
   <settings>
-    <setting name="androidAbis" value="armeabi-v7a" />
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
     <setting name="bundleId" value="com.damki.clickdomtap" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
