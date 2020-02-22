@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1073231138846",
+    "firebase_url": "https://clickdom-tap-90510589.firebaseio.com",
+    "project_id": "clickdom-tap-90510589",
+    "storage_bucket": "clickdom-tap-90510589.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073231138846:android:eaafa67c823881ff131e0f",
+        "android_client_info": {
+          "package_name": "com.damki.clickdomtap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073231138846-eiv735jloa0j2h7pk5t9aeuk6r3h04cf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoyFBie6SadjHhU5BGTemO9N9e7tKmTvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073231138846-eiv735jloa0j2h7pk5t9aeuk6r3h04cf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

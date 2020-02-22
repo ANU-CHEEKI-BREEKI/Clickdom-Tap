@@ -10051,8 +10051,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 750395231}
   m_HandleRect: {fileID: 750395230}
   m_Direction: 0
-  m_Value: 0.00091812527
-  m_Size: 0.66017383
+  m_Value: 0.0009180234
+  m_Size: 0.6332211
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -20674,9 +20674,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.099999994
     width: 1
-    height: 1
+    height: 0.8
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -72432,6 +72432,7 @@ GameObject:
   - component: {fileID: 1352671172}
   - component: {fileID: 1352671173}
   - component: {fileID: 1352671174}
+  - component: {fileID: 1352671175}
   m_Layer: 0
   m_Name: AnalyticsInitializator
   m_TagString: Untagged
@@ -72475,6 +72476,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3af58b17daa2e644981d93dd92b45ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1352671175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352671171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8fdc78b1ef498428d4cb3cf5368979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1358372133

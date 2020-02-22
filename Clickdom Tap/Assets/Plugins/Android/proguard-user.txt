@@ -1,6 +1,8 @@
 # Don't obfuscate. We only need dead code striping.
 -dontobfuscate
 
+ # Add this global rule
+-keepattributes Signature
 
 # For enumeration classes, see http://proguard.sourceforge.net/manual/examples.html#enumerations
 -keepclassmembers enum * {

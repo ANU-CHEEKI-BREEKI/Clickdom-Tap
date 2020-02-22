@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://clickdom-tap-90510589.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">1073231138846</string>
+  <string name="google_storage_bucket" translatable="false">clickdom-tap-90510589.appspot.com</string>
+  <string name="project_id" translatable="false">clickdom-tap-90510589</string>
+  <string name="google_api_key" translatable="false">AIzaSyAoyFBie6SadjHhU5BGTemO9N9e7tKmTvs</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAoyFBie6SadjHhU5BGTemO9N9e7tKmTvs</string>
+  <string name="google_app_id" translatable="false">1:1073231138846:android:eaafa67c823881ff131e0f</string>
+  <string name="default_web_client_id" translatable="false">1073231138846-eiv735jloa0j2h7pk5t9aeuk6r3h04cf.apps.googleusercontent.com</string>
+</resources>

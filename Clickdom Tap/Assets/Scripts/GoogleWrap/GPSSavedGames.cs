@@ -34,8 +34,14 @@ namespace ANU.GoogleWrap
                             var data = Encoding.ASCII.GetBytes(gameData);
                             WriteGame(game, data, game.TotalTimePlayed + DateTime.Now.Subtract(game.LastModifiedTimestamp), (saveStatus, savedGame) =>
                             {
-                                if(saveStatus != SavedGameRequestStatus.Success)
+                                var bytes = 0;
+                                if (saveStatus != SavedGameRequestStatus.Success)
+                                {
                                     Debug.Log("===================== WriteGame failed with status: " + status.ToString());
+                                    if (data != null)
+                                        bytes = data.Length;
+                                }
+                                FirebaseAnalyticsWrapper.LogRemoteSavedDataEvent(data.Length, PlayGamesPlatform.Instance.SavedGame.GetType().Name);
 
                                 onGameSaved?.Invoke(saveStatus == SavedGameRequestStatus.Success);
                             });
@@ -58,33 +64,39 @@ namespace ANU.GoogleWrap
             try
             {
                 OpenSavedGame(saveId, (status, game) =>
-            {
-                if (status != SavedGameRequestStatus.Success)
                 {
-                    Debug.Log("===================== OpenSavedGame failed with status: " + status.ToString());
-                    onGameLoaded?.Invoke(false, "");
-                }
-                else
-                {
-                    try
+                    if (status != SavedGameRequestStatus.Success)
                     {
-                        ReadGameData(game, (loadStatus, loadData) =>
-                        {
-                            if (loadStatus != SavedGameRequestStatus.Success)
-                                Debug.Log("===================== ReadGameData failed with status: " + status.ToString());
-
-                            var data = "";
-                            if (loadData != null)
-                                data = Encoding.ASCII.GetString(loadData);
-                            onGameLoaded?.Invoke(loadStatus == SavedGameRequestStatus.Success, data);
-                        });
-                    }
-                    catch
-                    {
+                        Debug.Log("===================== OpenSavedGame failed with status: " + status.ToString());
                         onGameLoaded?.Invoke(false, "");
                     }
-                }
-            });
+                    else
+                    {
+                        try
+                        {
+                            ReadGameData(game, (loadStatus, loadData) =>
+                            {
+                                if (loadStatus != SavedGameRequestStatus.Success)
+                                    Debug.Log("===================== ReadGameData failed with status: " + status.ToString());
+
+                                var data = "";
+                                var bytes = 0;
+                                if (loadData != null)
+                                {
+                                    data = Encoding.ASCII.GetString(loadData);
+                                    bytes = loadData.Length;
+                                }
+                                FirebaseAnalyticsWrapper.LogRemoteLoadedDataEvent(bytes, PlayGamesPlatform.Instance.SavedGame.GetType().Name);
+
+                                onGameLoaded?.Invoke(loadStatus == SavedGameRequestStatus.Success, data);
+                            });
+                        }
+                        catch
+                        {
+                            onGameLoaded?.Invoke(false, "");
+                        }
+                    }
+                });
             }
             catch
             {
