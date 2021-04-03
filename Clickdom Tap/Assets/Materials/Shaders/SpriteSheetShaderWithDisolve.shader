@@ -39,8 +39,8 @@
 
 			struct v2f
 			{
-				float2 uv: TEXCOORD;
-				float2 meshUv: TEXCOORD;
+				float2 uv: TEXCOORD0;
+				//float2 meshUv: TEXCOORD1;
 				float4 vertex: SV_POSITION;
 				UNITY_VERTEX_INPUT_INSTANCE_ID 
 			};
@@ -79,7 +79,7 @@
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = (v.uv * UNITY_ACCESS_INSTANCED_PROP(Props, _MainTex_UV).xy) + UNITY_ACCESS_INSTANCED_PROP(Props, _MainTex_UV).zw;
 
-				o.meshUv = v.uv;
+				//o.meshUv = v.uv;
 
 				return o;
 			}
@@ -108,11 +108,15 @@
 			{
 				UNITY_SETUP_INSTANCE_ID(i);
 
+				//float2 meshUv = i.meshUv;
+				float2 meshUv = i.uv;
+				float2 spriteUv = i.uv;
+
 				//calc cracks mask pixel color
-				float2 cracksUv = TRANSFORM_TEX(i.meshUv, _CracksMaskMaskTex);
+				float2 cracksUv = TRANSFORM_TEX(meshUv, _CracksMaskMaskTex);
 				fixed4 crackMaskColor = tex2D(_CracksMaskMaskTex, cracksUv);
 
-				float2 addCracksUv = TRANSFORM_TEX(i.meshUv, _CracksMaskAdditionalTex);
+				float2 addCracksUv = TRANSFORM_TEX(meshUv, _CracksMaskAdditionalTex);
 				fixed4 additionalCrackMaskColor = tex2D(_CracksMaskAdditionalTex, addCracksUv);
 
 				fixed4 cracksMaskColor = crackMaskColor * additionalCrackMaskColor;
@@ -144,22 +148,21 @@
 					{
 						//if this pixel in chack
 						//then we need to apply cracl tectute to it
-						float2 crackTexUv = TRANSFORM_TEX(i.meshUv, _CracksTex);
+						float2 crackTexUv = TRANSFORM_TEX(meshUv, _CracksTex);
 						crackTexColor = tex2D(_CracksTex, crackTexUv);
 						//tint it
 						crackTexColor *= _CracksColor;
 
 						//if this pixel in chack and it near original sprite alpha border
 						//then we need return zero alpha
-						if(HasNearTransparentPixel(i.uv))
+						if(HasNearTransparentPixel(spriteUv))
 							return 0;
 					}
 				}
 				cracksMaskColor.a = 1;
 
 				//calc real pixel color
-				float2 uv = i.uv;
-				fixed4 pixColor = tex2D(_MainTex, uv) * UNITY_ACCESS_INSTANCED_PROP(Props, _Color);
+				fixed4 pixColor = tex2D(_MainTex, spriteUv) * UNITY_ACCESS_INSTANCED_PROP(Props, _Color);
 				
 				//calc cracked pixel color
 				return pixColor * cracksMaskColor + crackTexColor * pixColor.a;

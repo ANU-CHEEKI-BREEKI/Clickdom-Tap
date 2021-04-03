@@ -41,11 +41,11 @@ public static class FirebaseAnalyticsWrapper
             return;
 
         FirebaseAnalytics.LogEvent(
-            "Save data remote operation",
+            "SaveDataRemoteOperation",
             new Parameter[]
             {
-                new Parameter("Bytes written", bytesWritten),
-                new Parameter("Store name", storeName)
+                new Parameter("BytesWritten", bytesWritten),
+                new Parameter("StoreName", storeName)
             }
         );
     }
@@ -60,11 +60,11 @@ public static class FirebaseAnalyticsWrapper
             return;
 
         FirebaseAnalytics.LogEvent(
-            "Load data remote operation",
+            "LoadDataRemoteOperation",
             new Parameter[]
             {
-                new Parameter("Bytes read", bytesRead),
-                new Parameter("Store name", storeName)
+                new Parameter("BytesRead", bytesRead),
+                new Parameter("StoreName", storeName)
             }
         );
     }
@@ -79,11 +79,11 @@ public static class FirebaseAnalyticsWrapper
             return;
 
         FirebaseAnalytics.LogEvent(
-            "Save data local operation",
+            "SaveDataLocalOperation",
             new Parameter[]
             {
-                new Parameter("Bytes written", bytesWritten),
-                new Parameter("Store name", storeName)
+                new Parameter("BytesWritten", bytesWritten),
+                new Parameter("StoreName", storeName)
             }
         );
     }
@@ -98,11 +98,11 @@ public static class FirebaseAnalyticsWrapper
             return;
 
         FirebaseAnalytics.LogEvent(
-            "Load data local operation",
+            "LoadDataLocalOperation",
             new Parameter[]
             {
-                new Parameter("Bytes read", bytesRead),
-                new Parameter("Store name", storeName)
+                new Parameter("BytesRead", bytesRead),
+                new Parameter("StoreName", storeName)
             }
         );
     }

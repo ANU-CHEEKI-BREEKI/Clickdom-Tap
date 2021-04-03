@@ -21,7 +21,7 @@ public class FlipHorisontalByMoveDirectionSystem : JobComponentSystem
     [BurstCompile]
     struct FlipHorByLinearMove : IJobForEach<Translation, RenderScaleComponentdata, LinearMovementComponentData, FlibHorisontalByMoveDirTagComponentData>
     {
-        public void Execute([ReadOnly] ref Translation pos, ref RenderScaleComponentdata scale, [ReadOnly]  ref LinearMovementComponentData move, [ReadOnly] ref FlibHorisontalByMoveDirTagComponentData tag)
+        public void Execute([ReadOnly] ref Translation pos, ref RenderScaleComponentdata scale, [ReadOnly] ref LinearMovementComponentData move, [ReadOnly] ref FlibHorisontalByMoveDirTagComponentData tag)
         {
             if (!move.isMoving)
                 return;
