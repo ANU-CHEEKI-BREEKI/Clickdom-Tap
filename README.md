@@ -14,20 +14,3 @@ Sound resources for effects were borrowed from free Internet resources.<br>
 <br>
 This repository serves as a portfolio.<br>
 All resources, except music, may be used for any purpose other than commercial.<br>
-
-# [ru] Clickdom-Tap  
-Кликер на Unity с использованием DOTS  
-[Опубликовано](https://play.google.com/store/apps/details?id=com.damki.clickdomtap) в Google Play.
-
-<li>Игровой движок Unity 2019+</li>
-<li>Язык С#</li>
-<li>OS: Android</li>
-<li>Архитектура DOTS (Unity ECS + C# Jobs System + Burst Compiler)</li>
-<li>Пользовательская обертка над системой рендеринга Unity для поддержки шейдерной спрайтовой анимации совместимой с Unity ECS</li>
-<li>Пользовательская система ECS частиц с физикой равноускоренного движения, кэшированием в карте квадрантов и определением коллизии</li>  
-<br>
-Весь исходный код, графические и другие ресурсы (кроме звуковых) были созданы с нуля.<br>
-Звуковые ресурсы для эффектов были заимствованы на бесплатных интернет ресурсах.<br>
-<br>
-Данный репозиторий служит портфолио.<br>
-Все ресурсы, кроме музыки, разрешается использовать в любых целях, кроме коммерческих.<br>
