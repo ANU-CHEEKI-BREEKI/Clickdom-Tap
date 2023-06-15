@@ -1,4 +1,4 @@
-# [en] Clickdom-Tap
+# Clickdom-Tap
 Clicker made by Unity with DOTS  
 [Published](https://play.google.com/store/apps/details?id=com.damki.clickdomtap) on Google Play.
 
